@@ -1,0 +1,10 @@
+@font-face{
+    font-family: HiveTxt;
+    src: url(/src/assets/fonts/Chewy-Regular.ttf);
+}
+
+h1{
+    font-family: "HiveTxt", cursive;
+    font-size: 64px;
+    color: #ffb84d;
+}
