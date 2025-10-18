@@ -2,12 +2,28 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>The HubHive</title>
-        <link rel="stylesheet" href="../Styles/style.css">
+        <title>The HiveHub</title>
+        <link rel="stylesheet" href="../Styles/main.css">
     </head>
     <body>
-        <div>
-            <h1>HubHive</h1>
+        <div class="HH-authenticator">
+            <div class="HH-Header">
+                <h1>HubHive</h1>
+            </div>
+
+            <div class="HH-contents">
+                <div class="username">
+                    <p>Filler for username</p>
+                </div>
+                <div class="password">
+                    <p>Filler for password</p>
+                </div>
+            </div>
+
+            <footer class="HH-footer">
+                <p>forgot password?</p>
+            </div>
         </div>
+        
     </body>
 </html>
