@@ -1,10 +1,38 @@
 @font-face{
     font-family: HiveTxt;
-    src: url(/src/assets/fonts/Chewy-Regular.ttf);
+    src: url(/src/assets/fonts/Chewy-Regular.ttf) format("truetype");
+}
+@font-face{
+    font-family: HiveTxt2;
+    src: url(/src/assets/fonts/Pacifico-Regular.ttf) format("truetype");
+}
+
+body
+{
+    background-color: black;
+}
+
+div
+{
+    width: fit-content;
+    height:fit-content;
+
+    align-content: center;
+    justify-self: center;
+
+    border:#ffb84d;
+    border-style: solid;
+    border-width: 3px;
+    
 }
 
 h1{
-    font-family: "HiveTxt", cursive;
+    font-family: "HiveTxt2", cursive;
     font-size: 64px;
     color: #ffb84d;
+
+    padding-right: 5cm;
+    padding-left: 5cm;
+    padding-top: 0.5cm;
+    padding-bottom: 0.5cm;
 }
