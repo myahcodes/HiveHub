@@ -10,6 +10,12 @@
 
 }
 
+@keyframes HeaderAnim{
+    33% {transform: rotate(10deg);}
+    66% {transform: rotate(-10deg);}
+    100% {transform: rotate(0deg);}
+}
+
 body
 {
     background-color: black;
@@ -37,6 +43,11 @@ body
     padding-left: 4cm;
     padding-top: 0.4cm;
     padding-bottom: 0.4cm;
+}
+
+.HH-Header h1:hover{
+    animation-name: HeaderAnim;
+    animation-duration: 0.8s;
 }
 
 .HH-contents{
