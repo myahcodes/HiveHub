@@ -13,6 +13,7 @@
 body
 {
     background-color: black;
+    color: #ffb84d;
 }
 
 .HH-authenticator
@@ -31,7 +32,6 @@ body
 .HH-Header h1{
     font-family: "Pacifico", cursive;
     font-size: 64px;
-    color: #ffb84d;
 
     padding-right: 4cm;
     padding-left: 4cm;
@@ -39,17 +39,13 @@ body
     padding-bottom: 0.4cm;
 }
 
-.HH-content{
+.HH-contents{
     font-family: "Pacifico", cursive;
-    color: #ffb84d;
 
-    justify-self: center;
     display: block;
 }
 
 .username{
-    color: #ffb84d;
-
     width:fit-content;
 
     justify-self:center;
@@ -66,12 +62,11 @@ body
 }
 
 .password{
-    color: #ffb84d;
-
     width: fit-content;
 
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1cm;
 
     padding-left: 1cm;
     padding-right: 1cm;
@@ -83,12 +78,14 @@ body
 
 .HH-footer{
     font-family: "Pacifico", cursive;
-    color: #ffb84d;
 
     width: fit-content;
 
     margin-left: auto;
     margin-right: auto;
+
+    border-top-color: #ffb84d;
+    border-top-style:solid;
 }
 
 .HH-footer p:hover{
