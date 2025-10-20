@@ -24,6 +24,8 @@ body
 
 .HH-authenticator
 {
+    font-family: "Pacifico", cursive;
+
     width: fit-content;
     height:fit-content;
 
@@ -36,7 +38,6 @@ body
 }
 
 .HH-Header h1{
-    font-family: "Pacifico", cursive;
     font-size: 64px;
 
     padding-right: 4cm;
@@ -48,12 +49,6 @@ body
 .HH-Header h1:hover{
     animation-name: HeaderAnim;
     animation-duration: 0.8s;
-}
-
-.HH-contents{
-    font-family: "Pacifico", cursive;
-
-    display: block;
 }
 
 .username{
@@ -88,8 +83,6 @@ body
 }
 
 .HH-footer{
-    font-family: "Pacifico", cursive;
-
     width: fit-content;
 
     margin-left: auto;
