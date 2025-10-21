@@ -59,6 +59,8 @@ body
 .HH-footer{
     width: fit-content;
 
+    margin-top: 0.4cm;
+
     border-top-color: #ffb84d;
     border-top-style:solid;
 }
