@@ -56,31 +56,6 @@ body
     animation-duration: 0.8s;
 }
 
-.username{
-    width:fit-content;
-
-    margin-bottom:9px;
-
-    padding-left: 1cm;
-    padding-right: 1cm;
-
-    border: #ffb84d;
-    border-style: solid;
-}
-
-.password{
-    width: fit-content;
-
-    margin-bottom: 1cm;
-
-    padding-left: 1cm;
-    padding-right: 1cm;
-
-    border: #ffb84d;
-    border-style:solid;
-
-}
-
 .HH-footer{
     width: fit-content;
 
