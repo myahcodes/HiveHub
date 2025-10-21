@@ -1,0 +1,45 @@
+@font-face {
+    font-family: Chewy, system-ui;
+    src: url(/src/assets/fonts/Chewy-Regular.ttf) format("truetype");
+    font-style: normal;
+}
+
+.signOn_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signOn_form input{
+    font-family: "Chewy", cursive;
+    font-size: 20px;
+
+    color: #ffb84d;
+    background-color: black;
+    
+    display:inherit;
+
+    width: 7.5cm;
+    height: 1.1cm;
+
+    margin-bottom: 9px;
+
+    border: #ffb84d;
+    border-style: solid;
+}
+.signOn_form input::placeholder {
+    color: #ffb84d;
+}
+
+.signOn_form button {
+    font-family: "Chewy", cursive;
+    font-size: 20px;
+
+    display: block;
+
+    width: 7.77cm;
+
+    padding: 0.2cm 2.5cm 0.2cm 2.5cm;
+
+    border-style: none;
+}
