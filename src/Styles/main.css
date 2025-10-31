@@ -1,13 +1,12 @@
-@font-face{
-    font-family: Chewy, system-ui;
-    src: url(/src/assets/fonts/Chewy-Regular.ttf) format("truetype");
-    font-style: normal;
+@font-face {
+    font-family: Magic;
+    src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
+    font-display: swap;
 }
-@font-face{
-    font-family: Pacifico, cursive;
-    src: url(/src/assets/fonts/Pacifico-Regular.ttf) format("truetype");
-    font-style: normal;
-
+@font-face {
+    font-family: BeePollen;
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+    font-display: swap;
 }
 
 @keyframes HeaderAnim{
@@ -16,15 +15,20 @@
     100% {transform: rotate(0deg);}
 }
 
-body
-{
+body {
+    background-image: url(../images/HHBckgrd.jpeg);
+    background-position: center top;
+    background-size: 100% auto;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+
     background-color: black;
     color: #ffb84d;
 }
 
 .HH-authenticator
 {
-    font-family: "Pacifico", cursive;
+    font-family: BeePollen, Chewy;
 
     display: flex;
     flex-direction: column;
@@ -34,21 +38,15 @@ body
     width: fit-content;
     height:fit-content;
 
-    margin: auto;
-
-    border:#ffb84d;
-    border-style: solid;
-    border-width: 3px;
-    
+    margin: auto;    
 }
 
-.HH-Header h1{
+.HH-Header h1 {
+    font-family: Magic, 'Comic Sans MS';
     font-size: 64px;
 
-    padding-right: 4cm;
-    padding-left: 4cm;
-    padding-top: 0.4cm;
-    padding-bottom: 0.4cm;
+    width: fit-content;
+    height:fit-content;
 }
 
 .HH-Header h1:hover{
