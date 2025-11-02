@@ -21,16 +21,29 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: #ffb84d;
+    min-height: 100%;
+}
+
+/* For login and signup pages */
+body.auth-page {
     background-image: url(../images/HHBckgrd.jpeg);
     background-position: center top;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: #ffb84d;
+}
+
+/* For pages with hex grid */
+body.hex-grid-page {
+    background-image: url(../images/HHBckgrd.jpeg);
+    background-position: center top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
 }
 
 .HH-authenticator
