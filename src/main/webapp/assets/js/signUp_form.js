@@ -1,6 +1,6 @@
 /*Create references to parent block and footer*/
 
-const container = document.querySelector(".HH-authenticator");
+const container = document.querySelector(".HH-contents");
 const footer = document.querySelector(".HH-footer");
 
 /*Create form*/
@@ -11,14 +11,14 @@ form.className = "signOn_form";
 /*Email field*/
 
 const txt_email = document.createElement("input");
-txt_username.type = "text";
-txt_username.placeholder = "Email";
+txt_email.type = "text";
+txt_email.placeholder = "Email";
 
 /*Full name field*/
 
 const txt_name = document.createElement("input");
-txt_username.type = "text";
-txt_username.placeholder = "Name";
+txt_name.type = "text";
+txt_name.placeholder = "Name";
 
 /*Username field*/
 
@@ -60,6 +60,6 @@ form.appendChild(txt_password);
 form.appendChild(btn_Login);
 form.appendChild(btn_signup);
 
-/*Place form in HH-authenticator block*/
+/*Place form in HH-contents block*/
 
-container.insertBefore(form, footer);
+container.appendChild(form);
