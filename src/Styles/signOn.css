@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Chewy, system-ui;
-    src: url(/src/assets/fonts/Chewy-Regular.ttf) format("truetype");
+    font-family: BeePollen, system-ui;
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
     font-style: normal;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .signOn_form input{
-    font-family: "Chewy", cursive;
+    font-family: BeePollen, cursive;
     font-size: 20px;
 
     color: #ffb84d;
@@ -32,7 +32,7 @@
 }
 
 .signOn_form button {
-    font-family: "Chewy", cursive;
+    font-family: BeePollen, cursive;
     font-size: 20px;
 
     display: block;
