@@ -1,8 +1,6 @@
 @font-face {
     font-family: Magic;
     src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
-    font-weight: normal;
-    font-style: normal;
     font-display: swap;
 }
 @font-face {
@@ -46,9 +44,10 @@ body {
 .HH-Header h1 {
     font-family: Magic, 'Comic Sans MS';
     font-size: 64px;
-
+    font-weight: normal;
+    font-style: normal;
     width: fit-content;
-    height:fit-content;
+    height: fit-content;
 }
 
 .HH-Header h1:hover{
