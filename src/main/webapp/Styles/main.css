@@ -1,0 +1,69 @@
+@font-face {
+    font-family: Magic;
+    src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
+    font-display: swap;
+}
+@font-face {
+    font-family: BeePollen;
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+    font-display: swap;
+}
+
+@keyframes HeaderAnim{
+    33% {transform: rotate(10deg);}
+    66% {transform: rotate(-10deg);}
+    100% {transform: rotate(0deg);}
+}
+
+body {
+    background-image: url(../images/HHBckgrd.jpeg);
+    background-position: center top;
+    background-size: 100% auto;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+
+    background-color: black;
+    color: #ffb84d;
+}
+
+.HH-authenticator
+{
+    font-family: BeePollen, Chewy;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+
+    width: fit-content;
+    height:fit-content;
+
+    margin: auto;    
+}
+
+.HH-Header h1 {
+    font-family: Magic, 'Comic Sans MS';
+    font-size: 64px;
+    font-weight: normal;
+    font-style: normal;
+    width: fit-content;
+    height: fit-content;
+}
+
+.HH-Header h1:hover{
+    animation-name: HeaderAnim;
+    animation-duration: 0.8s;
+}
+
+.HH-footer{
+    width: fit-content;
+
+    margin-top: 0.4cm;
+
+    border-top-color: #ffb84d;
+    border-top-style:solid;
+}
+
+.HH-footer p:hover{
+    text-decoration: underline;
+}
