@@ -1,6 +1,6 @@
 @font-face {
     font-family: BeePollen, system-ui;
-    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+    src: url("/assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
     font-style: normal;
 }
 
