@@ -1,11 +1,11 @@
 @font-face {
     font-family: Magic;
-    src: url("/assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
+    src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
     font-display: swap;
 }
 @font-face {
     font-family: BeePollen;
-    src: url("/assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
     font-display: swap;
 }
 
@@ -16,7 +16,7 @@
 }
 
 body {
-    background-image: url(/images/HHBckgrd.jpeg);
+    background-image: url(../images/HHBckgrd.jpeg);
     background-position: center top;
     background-size: 100% auto;
     background-attachment: scroll;
