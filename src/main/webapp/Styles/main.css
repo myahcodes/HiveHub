@@ -30,7 +30,7 @@ body {
 
 /* For login and signup pages */
 body.auth-page {
-    background-image: url(../images/HHBckgrd.jpeg);
+    background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
     background-size: cover;
     background-attachment: fixed;
