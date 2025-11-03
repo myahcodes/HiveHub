@@ -49,5 +49,12 @@ form.appendChild(btn_signup);
 
 container.insertBefore(form, footer);
 
+btn_signup.addEventListener("click", function(event) {
+    window.location.href = "SignUp.html";
+});
 
+btn_Login.addEventListener("click", function(event) {
+    form.submit();
+    window.location.href = "Login.html";
+});
 
