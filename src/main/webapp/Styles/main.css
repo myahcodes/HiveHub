@@ -39,7 +39,7 @@ body.auth-page {
 
 /* For pages with hex grid */
 body.hex-grid-page {
-    background-image: url(../images/HHBckgrd.jpeg);
+    background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
     background-size: 100% auto;
     background-repeat: no-repeat;
