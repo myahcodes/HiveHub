@@ -66,6 +66,7 @@ body.hex-grid-page {
     font-size: 64px;
     font-weight: normal;
     font-style: normal;
+
     width: fit-content;
     height: fit-content;
 }
@@ -75,15 +76,26 @@ body.hex-grid-page {
     animation-duration: 0.8s;
 }
 
-.HH-footer{
+.HH-footer {
+    font-family: BeePollen, Chewy;
+    text-decoration: none;
+
     width: fit-content;
 
     margin-top: 0.4cm;
 
     border-top-color: #ffb84d;
-    border-top-style:solid;
+    border-top-style: solid;
 }
 
-.HH-footer p:hover{
+.HH-footer a{
+    margin-top: 1cm;
+}
+
+.HH-footer a:visited {
+    color: inherit;
+}
+
+.HH-footer a:hover {
     text-decoration: underline;
 }
