@@ -7,27 +7,32 @@ const footer = document.querySelector(".HH-footer");
 
 const form = document.createElement("form");
 form.className = "signOn_form";
-/*Username field*/
 
-const txt_username = document.createElement("input");
-txt_username.type = "text";
-txt_username.placeholder = "Username, email";
+/*Email field*/
 
-/*Password field*/
+const txt_email = document.createElement("input");
+txt_email.type = "text";
+txt_email.placeholder = "Email";
+txt_email.required = true;
 
-const txt_password = document.createElement("input");
-txt_password.type = "password";
-txt_password.placeholder = "Password";
+/*Creation of Submit button*/
+
+const btn_Submit = document.createElement("button");
+btn_Submit.textContent = "Submit";
+btn_Submit.id = "submit_button";
+btn_Submit.type = "submit";
+
+btn_Submit.style.color = " #ffb84d";
+btn_Submit.style.backgroundColor = "black";
 
 /*Creation of Login Button*/
 
 const btn_Login = document.createElement("button");
 btn_Login.textContent = "Login";
 btn_Login.id = "login_button";
-btn_Login.type = "submit";
 
 btn_Login.style.color = "black";
-btn_Login.style.backgroundColor = " #ffb84d";
+btn_Login.style.backgroundColor = "#ffb84d";
 
 /*Creation of Signup Button*/
 
@@ -40,7 +45,11 @@ btn_signup.style.backgroundColor = "black";
 
 /*Place buttons in the form*/
 
-form.appendChild(txt_username);
-form.appendChild(txt_password);
+form.appendChild(txt_email);
+form.appendChild(btn_Submit);
 form.appendChild(btn_Login);
 form.appendChild(btn_signup);
+
+/*Place form in HH-authenticator block*/
+
+container.insertBefore(form, footer);
