@@ -65,10 +65,10 @@ btn_Login.addEventListener("click", function (event) {
     window.location.href = "Login.html";
 });
 
-btn_Submit.addEventListener("click", function () {
-    if(!form.checkValidity()) {
+btn_Submit.addEventListener("click", function (event) {
+    event.preventDefault();
+    if (!form.checkValidity()) {
         return;
     }
-  form.submit();
   container.insertBefore(alert("If the email is registered, you will receive password reset instructions."),form);
 });

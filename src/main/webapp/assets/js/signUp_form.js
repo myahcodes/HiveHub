@@ -68,14 +68,14 @@ form.appendChild(btn_Login);
 container.appendChild(form);
 
 /*Move to the login page on clicking  SignUp button*/
-btn_signup.addEventListener("click", function() {
+btn_signup.addEventListener("click", function(event) {
+    event.preventDefault();
     // Check form validity first
     if (!form.checkValidity()) {
         // If form is not valid, error prompt
         return;
     }
     
-    form.submit(); // Submit the form
     window.location.href = "Login.html"; // Redirects to login page
 });
 
