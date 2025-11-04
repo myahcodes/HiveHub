@@ -1,8 +1,22 @@
 
 .profile-container {
-    display: inline-block;
-    flex-direction: row;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: "pfp_area label_area";
+    column-gap: 1cm;
+    justify-content: center;
+}
+
+.profile-container h1{
+    grid-area: label_area;
+    display:flex;
+    flex-direction:column;
+    width:fit-content;
+    height: fit-content;
+}
+
+.profile-container img{
+    grid-area: pfp_area;
 }
 
 .buzz-container {
