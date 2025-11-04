@@ -55,13 +55,26 @@ body.hex-grid-page {
 
 .HH-MyHive {
     font-family: BeePollen, Chewy;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     width: fit-content;
     height: fit-content;
+
     margin: auto;
+}
+
+.HH-MyHive button{
+    font-family: BeePollen, Chewy;
+    font-size: 24px;
+
+    color: #ffb84d;
+    background-color: black;
+
+    border: none;
 }
 
 .HH-Header h1 {
@@ -69,6 +82,7 @@ body.hex-grid-page {
     font-size: 64px;
     font-weight: normal;
     font-style: normal;
+
     width: fit-content;
     height: fit-content;
 }
@@ -80,16 +94,22 @@ body.hex-grid-page {
 
 .HH-footer {
     font-family: BeePollen, Chewy;
+
     width: fit-content;
+
     margin-top: 0.4cm;
+
     border-top-color: #ffb84d;
     border-top-style: solid;
 }
 
 .HH-footer a {
     color: inherit;
+
     text-decoration: none;
+
     display: block;
+
     margin-top: 0.4cm;
 }
 
