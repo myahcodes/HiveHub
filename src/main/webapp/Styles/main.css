@@ -2,15 +2,24 @@
     font-family: Magic;
     src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
 }
+
 @font-face {
     font-family: BeePollen;
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
 }
 
-@keyframes HeaderAnim{
-    33% {transform: rotate(10deg);}
-    66% {transform: rotate(-10deg);}
-    100% {transform: rotate(0deg);}
+@keyframes HeaderAnim {
+    33% {
+        transform: rotate(10deg);
+    }
+
+    66% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 html {
@@ -26,37 +35,33 @@ body {
     min-height: 100%;
 }
 
-/* For login and signup pages */
-body.auth-page {
-    background-image: url(../assets/img/HHBckgrd.jpeg);
-    background-position: center top;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
+    /* For login and signup pages */
+    body.auth-page {
+        background-image: url(../assets/img/HHBckgrd.jpeg);
+        background-position: center top;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
 
-/* For pages with hex grid */
-body.hex-grid-page {
-    background-image: url(../assets/img/HHBckgrd.jpeg);
-    background-position: center top;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
+    /* For pages with hex grid */
+    body.hex-grid-page {
+        background-image: url(../assets/img/HHBckgrd.jpeg);
+        background-position: center top;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+    }
 
-.HH-authenticator
-{
+.HH-authenticator {
     font-family: BeePollen, Chewy;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items:center;
-
+    align-items: center;
     width: fit-content;
-    height:fit-content;
-
-    margin: auto;    
+    height: fit-content;
+    margin: auto;
 }
 
 .HH-Header h1 {
@@ -64,40 +69,34 @@ body.hex-grid-page {
     font-size: 64px;
     font-weight: normal;
     font-style: normal;
-
     width: fit-content;
     height: fit-content;
 }
 
-.HH-Header h1:hover{
-    animation-name: HeaderAnim;
-    animation-duration: 0.8s;
-}
+    .HH-Header h1:hover {
+        animation-name: HeaderAnim;
+        animation-duration: 0.8s;
+    }
 
 .HH-footer {
     font-family: BeePollen, Chewy;
-
     width: fit-content;
-
     margin-top: 0.4cm;
-
     border-top-color: #ffb84d;
     border-top-style: solid;
 }
 
-.HH-footer a{
-    color: inherit;
-    text-decoration: none;
+    .HH-footer a {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        margin-top: 0.4cm;
+    }
 
-    display: block;
+        .HH-footer a:visited {
+            color: inherit;
+        }
 
-    margin-top: 0.4cm;
-}
-
-.HH-footer a:visited {
-    color: inherit;
-}
-
-.HH-footer a:hover {
-    text-decoration: underline;
-}
+        .HH-footer a:hover {
+            text-decoration: underline;
+        }
