@@ -1,12 +1,10 @@
 @font-face {
     font-family: Magic;
     src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
-    font-display: swap;
 }
 @font-face {
     font-family: BeePollen;
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
-    font-display: swap;
 }
 
 @keyframes HeaderAnim{
