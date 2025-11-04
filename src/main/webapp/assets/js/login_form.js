@@ -12,12 +12,14 @@ form.className = "signOn_form";
 const txt_username = document.createElement("input");
 txt_username.type = "text";
 txt_username.placeholder = "Username, email";
+txt_username.required = true;
 
 /*Password field*/
 
 const txt_password = document.createElement("input");
 txt_password.type = "password";
 txt_password.placeholder = "Password";
+txt_password.required = true;
 
 /*Creation of Login Button*/
 
@@ -55,6 +57,6 @@ btn_signup.addEventListener("click", function(event) {
 
 btn_Login.addEventListener("click", function(event) {
     form.submit();
-    window.location.href = "Login.html";
+    window.location.href = "Home.html";
 });
 
