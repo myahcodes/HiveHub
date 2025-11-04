@@ -78,7 +78,6 @@ body.hex-grid-page {
 
 .HH-footer {
     font-family: BeePollen, Chewy;
-    text-decoration: none;
 
     width: fit-content;
 
@@ -89,7 +88,12 @@ body.hex-grid-page {
 }
 
 .HH-footer a{
-    margin-top: 1cm;
+    color: inherit;
+    text-decoration: none;
+
+    display: block;
+
+    margin-top: 0.4cm;
 }
 
 .HH-footer a:visited {
