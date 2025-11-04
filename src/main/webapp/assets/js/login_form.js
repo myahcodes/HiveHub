@@ -52,10 +52,15 @@ form.appendChild(btn_signup);
 container.insertBefore(form, footer);
 
 btn_signup.addEventListener("click", function(event) {
+    event.preventDefault();
     window.location.href = "SignUp.html";
 });
 
 btn_Login.addEventListener("click", function(event) {
+    if(!form.checkValidity()) {
+        return;
+    }
+
     form.submit();
     window.location.href = "Home.html";
 });
