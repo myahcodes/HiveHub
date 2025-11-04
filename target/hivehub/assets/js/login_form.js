@@ -57,11 +57,11 @@ btn_signup.addEventListener("click", function(event) {
 });
 
 btn_Login.addEventListener("click", function(event) {
-    if(!form.checkValidity()) {
+    event.preventDefault();
+    if (!form.checkValidity()) {
         return;
     }
 
-    form.submit();
     window.location.href = "Home.html";
 });
 
