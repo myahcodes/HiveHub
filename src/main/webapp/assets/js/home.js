@@ -5,11 +5,20 @@ const buzz_container = document.querySelector(".buzz-container");
 const footer = document.querySelector(".HH-footer");
 
 /*Create profile picture element*/
-const pfp_border = document.createElement('img');
-pfp_border.src = 'assets/icons/combBlank.svg';
-pfp_border.width = 150;
-pfp_border.float = "center";
-pfp_border.onerror = function () { console.log("Error loading profile picture border."); };
+const pfp_outline = document.createElement('img');
+pfp_outline.src = 'assets/icons/combBlank.svg';
+pfp_outline.width = 150;
+pfp_outline.float = "center";
+pfp_outline.onerror = function () { console.log("Error loading profile picture border."); };
+
+pfp_outline.addEventListener('mouseover', () => {
+    pfp_outline.classList.add('shake');
+
+    pfp_outline.addEventListener('animationend', () =>
+        pfp_outline.classList.remove('shake'),
+        { once: true }
+    );
+});
 
 const pfp_Icon = document.createElement('img');
 pfp_Icon.src = 'assets/icons/defaultPfp.svg';
@@ -35,7 +44,7 @@ buzz.textContent = "Buzz";
 buzz.style.padding = "4px 25px";
 
 /*Place elements*/
-pf_container.appendChild(pfp_border);
+pf_container.appendChild(pfp_outline);
 pf_container.appendChild(pfp_Icon);
 
 buzz_container.appendChild(new_buzz);
