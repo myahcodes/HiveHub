@@ -1,30 +1,5 @@
-
-.profile-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-areas: "pfp_area label_area";
-    column-gap: 1cm;
-    justify-content: center;
-}
-
-.profile-container h1{
-    grid-area: label_area;
-    display:flex;
-    flex-direction:column;
-    width:fit-content;
-    height: fit-content;
-}
-
-.profile-container img{
-    grid-area: pfp_area;
-}
-
-.buzz-container {
-    width: fit-content;
-    border-bottom: 1px solid #ffb84d;
-}
-
-#buzz-content {
-    width: 15cm;
-    height: fit-content;
+.home-feed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

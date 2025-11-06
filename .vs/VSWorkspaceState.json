@@ -2,8 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets\\js"
+    "\\src\\main",
+    "\\src\\main\\webapp",
+    "\\src\\main\\webapp\\Styles",
+    "\\target"
   ],
-  "SelectedNode": "\\about.html",
+  "SelectedNode": "\\src\\main\\webapp\\Styles\\home.css",
   "PreviewInSolutionExplorer": false
 }
