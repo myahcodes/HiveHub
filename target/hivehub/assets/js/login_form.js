@@ -59,9 +59,10 @@ btn_signup.addEventListener("click", function(event) {
 btn_Login.addEventListener("click", function(event) {
     event.preventDefault();
     if (!form.checkValidity()) {
+        alert("Please fill in all required fields.");
         return;
     }
 
-    window.location.href = "Home.html";
+    window.location.href = "Profile.html";
 });
 

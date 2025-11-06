@@ -36,7 +36,7 @@ body {
 }
 
 /* For login and signup pages */
-body.home-page {
+body.SignOn-page {
     background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
     background-size: cover;
@@ -45,7 +45,7 @@ body.home-page {
 }
 
 /* For pages with honey combs */
-body.hex-grid-page {
+body.Main-page {
     background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
     background-size: 100% auto;
