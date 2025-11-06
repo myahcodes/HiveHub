@@ -26,7 +26,11 @@
 
 .buzz-container {
     width: fit-content;
-    border-bottom: 1px solid #ffb84d;
+}
+
+#divider {
+    width: 100%;
+    border-color: #ffb84d;
 }
 
 #buzz-content {
