@@ -4,9 +4,9 @@
     "\\src",
     "\\src\\main",
     "\\src\\main\\webapp",
-    "\\src\\main\\webapp\\Styles",
+    "\\src\\main\\webapp\\assets",
     "\\target"
   ],
-  "SelectedNode": "\\src\\main\\webapp\\Styles\\main.css",
+  "SelectedNode": "\\src\\main\\webapp\\Home.html",
   "PreviewInSolutionExplorer": false
 }

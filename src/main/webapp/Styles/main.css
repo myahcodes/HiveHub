@@ -67,6 +67,20 @@ body.Main-page {
     margin: auto;
 }
 
+.HH-Home {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: fit-content;
+    height: fit-content;
+
+    margin: auto;
+}
+}
+
 .HH-MyHive button{
     font-family: BeePollen, Chewy;
     font-size: 24px;
