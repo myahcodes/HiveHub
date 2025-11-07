@@ -1,12 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
+    "\\Local settings (.vs)",
+    "\\Local settings (.vs)\\HiveHub",
+    "\\Local settings (.vs)\\HiveHub\\FileContentIndex",
     "\\src\\main",
     "\\src\\main\\webapp",
-    "\\src\\main\\webapp\\assets",
-    "\\target"
+    "\\src\\main\\webapp\\assets"
   ],
-  "SelectedNode": "\\src\\main\\webapp\\Login.html",
+  "SelectedNode": "\\Local settings (.vs)\\HiveHub\\FileContentIndex\\27824dc0-62e0-4875-b9c4-aff6f384f484.vsidx",
   "PreviewInSolutionExplorer": false
 }
