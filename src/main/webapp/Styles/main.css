@@ -39,19 +39,19 @@ body {
 body.SignOn-page {
     background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
-    background-size: cover;
+    background-size: contain;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
 /* For pages with honey combs */
-body.Main-page {
-    background-image: url(../assets/img/HHBckgrd.jpeg);
-    background-position: center top;
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-}
+    body.Main-page {
+        background-image: url(../assets/img/HHBckgrd.jpeg);
+        background-position: center top;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+    }
 
 .HH-MyHive {
     font-family: BeePollen, Chewy;
