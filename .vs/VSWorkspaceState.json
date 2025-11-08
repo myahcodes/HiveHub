@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\webapp"
   ],
-  "SelectedNode": "\\E:\\School Other\\Software Engineering\\Repos\\HiveHub",
+  "SelectedNode": "\\src\\main\\webapp\\Home.html",
   "PreviewInSolutionExplorer": false
 }
