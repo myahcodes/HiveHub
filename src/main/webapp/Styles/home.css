@@ -3,5 +3,54 @@
     max-width: 600px;
 }
 .buzz {
-
+    border-bottom: 1px solid #ffb84d;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+/*Header & Avatar*/
+.buzz-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profile {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+.user-info {
+    display: flex;
+    flex-direction: column;
+ }
+.display-name {
+    font-weight: bold;
+}
+/*Post*/
+.buzz-content p {
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+.buzz-media {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+/*Interactions*/
+.buzz-actions {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    border-top: 1px solid #ffb84d;
+    margin-top: 10px;
+}
+.action-bttn {
+    background: none;
+    border: none;
+    color: #ffb84d;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.action-bttn:hover {
+    color: #ffa64d;
 }

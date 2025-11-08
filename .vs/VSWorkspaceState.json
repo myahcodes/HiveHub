@@ -3,8 +3,11 @@
     "",
     "\\src",
     "\\src\\main",
-    "\\src\\main\\webapp"
+    "\\src\\main\\webapp",
+    "\\src\\main\\webapp\\assets",
+    "\\src\\main\\webapp\\assets\\js",
+    "\\src\\main\\webapp\\Styles"
   ],
-  "SelectedNode": "\\src\\main\\webapp\\Home.html",
+  "SelectedNode": "\\src\\main\\webapp\\Styles\\home.css",
   "PreviewInSolutionExplorer": false
 }
