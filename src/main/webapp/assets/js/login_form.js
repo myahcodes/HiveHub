@@ -63,6 +63,6 @@ btn_Login.addEventListener("click", function(event) {
         return;
     }
 
-    window.location.href = "Profile.html";
+    window.location.href = "Home.html";
 });
 
