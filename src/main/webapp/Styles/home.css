@@ -1,11 +1,12 @@
 .buzz_feed {
     width: 100%;
-    max-width: 600px;
+    max-width: fit-content;
+    overflow-y: auto;
+    flex-grow: 1;
 }
 .buzz {
     border-bottom: 1px solid #ffb84d;
     margin-bottom: 15px;
-    padding: 15px;
 }
 /*Header & Avatar*/
 .buzz-header {
@@ -20,10 +21,16 @@
 }
 .user-info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
  }
 .display-name {
-    font-weight: bold;
+    padding-right: 4px;
+}
+.user-info-divide {
+    border-right: 1px solid #ffb84d;
+    padding-right: 6px;
+    padding-left: 6px;
+
 }
 /*Post*/
 .buzz-content p {
