@@ -72,10 +72,9 @@ body.Main-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    align-items: center;
     width: 46%;
     height: fit-content;
-
     margin: auto;
 }
 
