@@ -50,7 +50,7 @@ body.Main-page {
     background-position: center top;
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
 }
 
 .HH-MyHive {
