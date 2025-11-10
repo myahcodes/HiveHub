@@ -7,19 +7,19 @@
     transition: all 0.3s ease-in-out;
     background-color: black;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: contain
 }
 
 #left-nav {
     background-image: url(../assets/img/leftNav.jpg);
     left: 0;
-    border-right: 1px solid #ffb84d;
+    border-right: 3px solid #ffb84d;
 }
 
 #right-nav {
     background-image: url(../assets/img/rightNav.jpg);
     right: 0;
-    border-left: 2.5px solid #ffb84d;
+    border-left: 3px solid #ffb84d;
 }
 .HH-contents {
     width: 100%;
