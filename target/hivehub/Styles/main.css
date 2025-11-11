@@ -36,21 +36,21 @@ body {
 }
 
 /* For login and signup pages */
-body.home-page {
+body.SignOn-page {
     background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
-    background-size: cover;
+    background-size: 100vw 100vh;
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
 /* For pages with honey combs */
-body.hex-grid-page {
-    background-image: url(../assets/img/HHBckgrd.jpeg);
+body.Main-page {
+    /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
     background-position: center top;
-    background-size: 100% auto;
+    background-size: 100vw 100vh;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
 }
 
 .HH-MyHive {
@@ -64,6 +64,17 @@ body.hex-grid-page {
     width: fit-content;
     height: fit-content;
 
+    margin: auto;
+}
+
+.HH-Home {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    height: fit-content;
     margin: auto;
 }
 

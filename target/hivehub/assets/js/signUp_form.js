@@ -73,6 +73,7 @@ btn_signup.addEventListener("click", function(event) {
     // Check form validity first
     if (!form.checkValidity()) {
         // If form is not valid, error prompt
+        alert("Please fill in all required fields.");
         return;
     }
     
