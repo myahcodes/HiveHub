@@ -1,5 +1,10 @@
 # HiveHub
 This a repository for the WebApp, HiveHub which is community calendar and event sharing/matchmaking/rating platform.
+# The Git Girls: Group 1
+*Myah Magwood
+*Alana Henry
+*Ande Adams
+*Andrea Mabry
 
 # Extensions:
 * Tomcat (AI-rimi): Advanced Apache Tomcat management. Full server control, smart deployment, browser integration and debugging support, ctr+s to deploy.
