@@ -1,3 +1,4 @@
+
 #left-nav, #right-nav {
     position: fixed;
     height: 100%;
@@ -7,7 +8,8 @@
     transition: all 0.3s ease-in-out;
     background-color: black;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    /* FIX: Changed from 100% auto to contain to prevent cropping */
+    background-size: contain;
     background-position: center;
 }
 
@@ -21,6 +23,8 @@
     background-image: url(../assets/img/rightNav.jpg);
     right: 0;
     border-left: 3px solid #ffb84d;
+}
+
 }
 .HH-contents {
     width: 100%;
