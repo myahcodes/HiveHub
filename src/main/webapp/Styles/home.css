@@ -1,7 +1,6 @@
 
 #left-nav, #right-nav {
     position: fixed;
-    height: 100svh;
     height: 100dvh;
     width: 24%;
     top: 0;
