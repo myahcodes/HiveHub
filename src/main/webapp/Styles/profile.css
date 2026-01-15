@@ -13,6 +13,7 @@
     column-gap: 1cm;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .profile-container h1{
@@ -25,8 +26,6 @@
 
     width:100%;
     height: fit-content;
-
-    margin-bottom: 20px;
 }
 
 .profile-container img{
