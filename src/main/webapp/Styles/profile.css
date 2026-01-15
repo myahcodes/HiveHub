@@ -13,6 +13,7 @@
     column-gap: 1cm;
     justify-content: center;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .profile-container h1{
@@ -33,7 +34,6 @@
 
 .buzz-container {
     width: fit-content;
-    margin-top: 20px;
 }
 
 #divider {
