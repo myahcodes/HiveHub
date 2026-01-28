@@ -30,6 +30,7 @@ pfp_Icon.onerror = function () { console.log("Error loading profile picture."); 
 const settings_icon = document.createElement('img');
 
 /*Create My Buzz elements*/
+const 
 
 const new_buzz = document.createElement('button');
 new_buzz.textContent = "New";
