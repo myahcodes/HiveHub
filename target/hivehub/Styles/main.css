@@ -138,11 +138,10 @@ body.Main-page {
 
 .HH-footer {
     font-family: BeePollen, Chewy;
-
     width: fit-content;
-
     margin-top: 0.4cm;
-
+    justify-content: center;
+    align-items: center;
     border-top-color: #ffb84d;
     border-top-style: solid;
 }
