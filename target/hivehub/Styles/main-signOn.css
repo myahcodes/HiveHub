@@ -43,6 +43,18 @@ body {
     background-repeat: no-repeat;
     background-attachment: scroll;
 }*/
+#left-nav, #right-nav {
+    position: fixed;
+    height: 100%;
+    width: 24%;
+    top: 0;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 #left-nav {
     background-image: url(../assets/img/leftNav.jpg);
     left: 0;
