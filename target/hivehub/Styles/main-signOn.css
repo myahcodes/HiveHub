@@ -25,7 +25,7 @@ body {
     color: #ffb84d;
     min-height: 100%;
 }
-
+/*No longer needed?*/
 /* For login and signup pages */
 /*body.auth-page {
     background-image: url(../assets/img/HHBckgrd.jpeg);
