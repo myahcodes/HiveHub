@@ -27,21 +27,43 @@ body {
 }
 
 /* For login and signup pages */
-body.auth-page {
+/*body.auth-page {
     background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
-}
+}*/
 
 /* For pages with hex grid */
-body.hex-grid-page {
+/*body.hex-grid-page {
     background-image: url(../assets/img/HHBckgrd.jpeg);
     background-position: center top;
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-attachment: scroll;
+}*/
+#left-nav {
+    background-image: url(../assets/img/leftNav.jpg);
+    left: 0;
+    border-right: 3px solid #ffb84d;
+}
+
+#right-nav {
+    background-image: url(../assets/img/rightNav.jpg);
+    right: 0;
+    border-left: 3px solid #ffb84d;
+}
+
+@media (max-width: 768px) {
+    #left-nav, #right-nav {
+        display: none;
+    }
+
+    /* Adjust main content to take full width when navs are gone */
+    .HH-Home {
+        width: 90% !important;
+    }
 }
 
 .HH-authenticator
