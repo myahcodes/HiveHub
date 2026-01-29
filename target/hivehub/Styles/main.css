@@ -35,7 +35,7 @@ html {
     transition: all 0.3s ease-in-out;
     background-color: black;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     background-position: center;
 }
 
@@ -49,6 +49,16 @@ html {
     background-image: url(../assets/img/rightNav.jpg);
     right: 0;
     border-left: 3px solid #ffb84d;
+}
+@media (max-width: 768px) {
+    #left-nav, #right-nav {
+        display: none;
+    }
+
+    /* Adjust main content to take full width when navs are gone */
+    .HH-Home {
+        width: 90% !important;
+    }
 }
 body {
     margin: 0;
