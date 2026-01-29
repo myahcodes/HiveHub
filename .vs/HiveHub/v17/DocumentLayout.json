@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\SignUp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\SignUp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main-signOn.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Styles\\main-signOn.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Forgot.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Forgot.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\about.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Discovery.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Discovery.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Settings.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Settings.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -35,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\Styles\\profile.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Profile.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Profile.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:target\\hivehub\\Styles\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
@@ -50,37 +62,115 @@
       "DocumentGroups": [
         {
           "DockedWidth": 214,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SignUp.html",
-              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\SignUp.html",
-              "RelativeDocumentMoniker": "target\\hivehub\\SignUp.html",
-              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\SignUp.html",
-              "RelativeToolTip": "target\\hivehub\\SignUp.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-01-29T02:47:52.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "main-signOn.css",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main-signOn.css",
               "RelativeDocumentMoniker": "target\\hivehub\\Styles\\main-signOn.css",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main-signOn.css",
               "RelativeToolTip": "target\\hivehub\\Styles\\main-signOn.css",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAkwCwAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAHMAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-01-29T02:30:52.042Z",
+              "WhenOpened": "2026-01-29T02:49:44.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
+              "Title": "about.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\about.html",
+              "RelativeDocumentMoniker": "target\\hivehub\\about.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\about.html",
+              "RelativeToolTip": "target\\hivehub\\about.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-29T02:49:12.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Discovery.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Discovery.html",
+              "RelativeDocumentMoniker": "target\\hivehub\\Discovery.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Discovery.html",
+              "RelativeToolTip": "target\\hivehub\\Discovery.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-29T02:49:03.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Forgot.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Forgot.html",
+              "RelativeDocumentMoniker": "target\\hivehub\\Forgot.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Forgot.html",
+              "RelativeToolTip": "target\\hivehub\\Forgot.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-29T02:48:59.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "index.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\index.html",
+              "RelativeDocumentMoniker": "target\\hivehub\\index.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\index.html",
+              "RelativeToolTip": "target\\hivehub\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-29T02:48:53.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Home.html",
+              "RelativeDocumentMoniker": "target\\hivehub\\Home.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Home.html",
+              "RelativeToolTip": "target\\hivehub\\Home.html",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-15T04:29:07.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.css",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main.css",
+              "RelativeDocumentMoniker": "target\\hivehub\\Styles\\main.css",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main.css",
+              "RelativeToolTip": "target\\hivehub\\Styles\\main.css",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAJEAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-01-15T04:31:00.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Settings.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Settings.html",
+              "RelativeDocumentMoniker": "target\\hivehub\\Settings.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Settings.html",
+              "RelativeToolTip": "target\\hivehub\\Settings.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-01-29T02:48:39.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Login.html",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Login.html",
               "RelativeDocumentMoniker": "target\\hivehub\\Login.html",
@@ -93,20 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Home.html",
-              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Home.html",
-              "RelativeDocumentMoniker": "target\\hivehub\\Home.html",
-              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Home.html",
-              "RelativeToolTip": "target\\hivehub\\Home.html",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-01-15T04:29:07.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "nav_bars.js",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\assets\\js\\nav_bars.js",
               "RelativeDocumentMoniker": "target\\hivehub\\assets\\js\\nav_bars.js",
@@ -119,19 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Profile.html",
-              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Profile.html",
-              "RelativeDocumentMoniker": "target\\hivehub\\Profile.html",
-              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Profile.html",
-              "RelativeToolTip": "target\\hivehub\\Profile.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-01-15T04:15:12.583Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "profile.css",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\profile.css",
               "RelativeDocumentMoniker": "src\\main\\webapp\\Styles\\profile.css",
@@ -143,20 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "main.css",
-              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main.css",
-              "RelativeDocumentMoniker": "target\\hivehub\\Styles\\main.css",
-              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\main.css",
-              "RelativeToolTip": "target\\hivehub\\Styles\\main.css",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-01-15T04:31:00.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "home.css",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\target\\hivehub\\Styles\\home.css",
               "RelativeDocumentMoniker": "target\\hivehub\\Styles\\home.css",
@@ -168,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Home.html",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Home.html",
               "RelativeDocumentMoniker": "src\\main\\webapp\\Home.html",
