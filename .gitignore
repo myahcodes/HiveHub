@@ -1,6 +1,6 @@
 .vs/ 
 /target/
 
-database.properties
+/main/resources/database.properties
 *.properties
 .env
