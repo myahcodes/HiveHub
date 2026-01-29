@@ -1,2 +1,6 @@
 .vs/ 
 /target/
+
+database.properties
+*.properties
+.env
