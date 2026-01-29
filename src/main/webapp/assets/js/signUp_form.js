@@ -1,3 +1,5 @@
+console.log("SignUp.js loaded successfully!");
+
 /*Create references to parent block and footer*/
 
 const container = document.querySelector(".HH-contents");
@@ -67,17 +69,59 @@ form.appendChild(btn_Login);
 
 container.appendChild(form);
 
-/*Move to the login page on clicking  SignUp button*/
+/*Sign Up button - Send data to RegisterServlet*/
 btn_signup.addEventListener("click", function(event) {
+    console.log("Sign up button clicked!");
     event.preventDefault();
+    
     // Check form validity first
     if (!form.checkValidity()) {
-        // If form is not valid, error prompt
+        console.log("Form not valid");
         alert("Please fill in all required fields.");
         return;
     }
     
-    window.location.href = "Login.html"; // Redirects to login page
+    console.log("Form is valid, creating FormData");
+    
+    // Create FormData and send to backend
+    const formData = new FormData();
+    formData.append('email', txt_email.value);
+    formData.append('name', txt_name.value);
+    formData.append('username', txt_username.value);
+    formData.append('password', txt_password.value);
+    
+    console.log("FormData created:");
+    console.log("Email:", txt_email.value);
+    console.log("Name:", txt_name.value);
+    console.log("Username:", txt_username.value);
+    console.log("Password:", txt_password.value ? "***" : "empty");
+    
+    console.log("Sending fetch to /hivehub/register");
+    
+    // Send to RegisterServlet
+    fetch('/hivehub/register', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        console.log("Response received:", response);
+        if (response.redirected) {
+            console.log("Redirecting to:", response.url);
+            window.location.href = response.url;
+        } else {
+            return response.text();
+        }
+    })
+    .then(data => {
+        if (data) {
+            console.log("Response data:", data);
+            alert('Registration failed. Username may already exist.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Registration failed. Please try again.');
+    });
 });
 
 btn_Login.addEventListener("click", function(event) {
