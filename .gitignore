@@ -1,6 +1,9 @@
-.vs/ 
+.vs/
 /target/
 
 # Configuration files with passwords
 config.properties
 src/main/resources/config.properties
+/main/resources/database.properties
+*.properties
+.env
