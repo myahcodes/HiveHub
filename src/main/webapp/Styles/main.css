@@ -161,7 +161,7 @@ body {
 .sprite-base {
     width: 137px;
     height: 117px;
-    background-image: url('css_sprites.png');
+    background-image: url('../assets/img/nav/bttn_icons/css_sprites.png');
     background-repeat: no-repeat;
     display: block;
 }
