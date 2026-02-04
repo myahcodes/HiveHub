@@ -1,60 +1,61 @@
 /*Right Nav Data*/
 const right_btns = [
-    { class: 'homeBttn', url: 'Home.html', label: 'Home', top: 'px', right: 'px' },
-    { class: 'buzzboardBttn', url: 'buzzboard.html', label: 'Buzzboard', top: 'px', right: 'px' },
-    { class: 'discoveryBttn', url: 'discovery.html', label: 'Discovery', top: 'px', right: 'px' },
-    { class: 'postBttn', url: '', label: 'Posting page', top: 'px', right: 'px' }
+    { class: 'homeIcon', url: 'Home.html', label: 'Home', top: '20px', right: '10px' },
+    { class: 'buzzboardIcon', url: 'buzzboard.html', label: 'Buzzboard', top: '20px', right: '157px' },
+    { class: 'searchGlasses', url: 'discovery.html', label: 'Discovery', top: '147px', right: '10px' },
+    { class: 'postIcon', url: '', label: 'Posting page', top: '147px', right: '157px' }
 ];
-
+/*Left Nav Data*/
 const left_btns = [
-    { class: 'profileBttn', url: 'profile.html', label: 'Profile', top: 'px', left: 'px' },
-    { class: '', url: 'hive.html', label: 'My Hive', top: 'px', left: 'px' }
+    { class: 'profileBttn', url: 'profile.html', label: 'Profile', top: '20px', left: '10px' },
+    { class: 'hiveIcon', url: 'hive.html', label: 'My Hive', top: '20px', left: '157px' }
 ];
 /*Ref containers*/
 const nav_right = document.querySelector("#right-nav");
 const nav_left = document.querySelector("#left-nav");
 
-/*Create Profile Button*/
 function renderButtons(btnArray, container) {
-    if (!container) return; // Safety check
+    if (!container) return;
+
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
     btnArray.forEach(data => {
-        // Create the anchor link
         const link = document.createElement('a');
         link.href = data.url;
         link.title = data.label;
-
-        /* Apply Absolute Positioning to the Link */
         link.style.position = 'absolute';
+
         if (data.top) link.style.top = data.top;
-        if (data.bottom) link.style.bottom = data.bottom;
         if (data.left) link.style.left = data.left;
         if (data.right) link.style.right = data.right;
 
-        // Create the button
         const btn = document.createElement('button');
-
         btn.type = 'button';
         btn.className = 'nav-icon-btn';
-        btn.setAttribute('aria-label', data.label);
 
-        // Create the Div for the Sprite (instead of <img>)
         const iconDiv = document.createElement('div');
-        // This adds both a general icon class and your specific sprite class
-        iconDiv.className = `sprite-icon ${data.class}`;
 
-        // Nest them: Link > Button > Sprite Div
+        const isActive = data.url === currentPage;
+
+        if (isActive) {
+            iconDiv.classList.add('sprite-base', `${data.class}Slct`);
+        } else {
+            iconDiv.classList.add('sprite-base', data.class);
+
+            btn.addEventListener('mouseenter', () => {
+                iconDiv.classList.replace(data.class, `${data.class}Slct`);
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                iconDiv.classList.replace(`${data.class}Slct`, data.class);
+            });
+        }
+
         btn.appendChild(iconDiv);
         link.appendChild(btn);
         container.appendChild(link);
     });
 }
 
-    // 4. Execute the render
-    renderButtons(right_btns, nav_right);
-    renderButtons(left_btns, nav_left);
-
-
-// 2. Execute the render
 renderButtons(right_btns, nav_right);
 renderButtons(left_btns, nav_left);

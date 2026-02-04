@@ -27,31 +27,6 @@ html {
     min-height: 100%;
 }
 
-#left-nav, #right-nav {
-    position: fixed;
-    height: 100%;
-    width: 24%;
-    top: 0;
-    z-index: 10;
-    transition: all 0.3s ease-in-out;
-    background-color: black;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-#left-nav {
-    background-image: url(../assets/img/nav/bar/leftNav.jpg);
-    left: 0;
-    border-right: 3px solid #ffb84d;
-}
-
-#right-nav {
-    background-image: url(../assets/img/nav/bar/rightNav.jpg);
-    right: 0;
-    border-left: 3px solid #ffb84d;
-}
-
 @media (max-width: 768px) {
     #left-nav, #right-nav {
         display: none;
@@ -72,22 +47,22 @@ body {
 }
 
     /* For login and signup pages */
- body.SignOn-page {
-    /* background-image: url(../assets/img/HHBckgrd.jpeg); */
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
- }
+    body.SignOn-page {
+        /* background-image: url(../assets/img/HHBckgrd.jpeg); */
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
 
-/* For pages with honey combs */
-body.Main-page {
-    /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+    /* For pages with honey combs */
+    body.Main-page {
+        /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
 
 .HH-MyHive {
     font-family: BeePollen, Chewy;
@@ -156,3 +131,102 @@ body.Main-page {
         .HH-footer a:hover {
             text-decoration: underline;
         }
+
+#left-nav, #right-nav {
+    position: fixed;
+    height: 100%;
+    width: 24%;
+    top: 0;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#left-nav {
+    background-image: url(../assets/img/nav/bar/leftNav.jpg);
+    left: 0;
+    border-right: 3px solid #ffb84d;
+}
+
+#right-nav {
+    background-image: url(../assets/img/nav/bar/rightNav.jpg);
+    right: 0;
+    border-left: 3px solid #ffb84d;
+}
+
+/*Nav Bar & Buttons*/
+.sprite-base {
+    width: 137px;
+    height: 117px;
+    background-image: url('css_sprites.png');
+    background-repeat: no-repeat;
+    display: block;
+}
+
+/* Coordinates Only */
+.buzzboardIconSlct {
+    background-position: -10px -10px;
+}
+
+.buzzDropdownSlct {
+    background-position: -167px -10px;
+}
+
+.commentIconSlct {
+    background-position: -10px -147px;
+}
+
+.hiveIconSlct {
+    background-position: -167px -147px;
+}
+
+.homeIconSlct {
+    background-position: -324px -10px;
+}
+
+.commentIcon {
+    background-position: -324px -147px;
+}
+
+.searchGlassesSlct {
+    background-position: -10px -284px;
+}
+
+.buzzDropdown {
+    background-position: -167px -284px;
+}
+
+.postIconSlct {
+    background-position: -324px -284px;
+}
+
+.postIcon {
+    background-position: -481px -10px;
+}
+
+.searchGlasses {
+    background-position: -481px -147px;
+}
+
+.homeIcon {
+    background-position: -481px -284px;
+}
+
+.buzzboardIcon {
+    background-position: -10px -421px;
+}
+
+.hiveIcon {
+    background-position: -167px -421px;
+}
+
+/* Button reset */
+.nav-icon-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
