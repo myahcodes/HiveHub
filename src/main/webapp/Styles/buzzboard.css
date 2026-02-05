@@ -1,4 +1,28 @@
-.month-nav li
+@font-face {
+    font-family: Magic;
+    src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: BeePollen;
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+}
+
+.HH-contents{
+    font: BeePollen, Chewy;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.month-nav
 {
+    font: BeePollen, Chewy;
+    font-size: 
     text-decoration: none;
+
+    display: inline-flex;
+
 }
