@@ -29,6 +29,10 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "nav_bars.js",
@@ -42,10 +46,6 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.css",
@@ -53,7 +53,7 @@
               "RelativeDocumentMoniker": "src\\main\\webapp\\Styles\\main.css",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\main.css",
               "RelativeToolTip": "src\\main\\webapp\\Styles\\main.css",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAAAKMAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAAAKMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-02-03T16:04:28.505Z",
               "EditorCaption": ""
@@ -66,7 +66,7 @@
               "RelativeDocumentMoniker": "src\\main\\webapp\\Styles\\home.css",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\home.css",
               "RelativeToolTip": "src\\main\\webapp\\Styles\\home.css",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAFgAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAIBJwFgAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-02-03T16:03:34.956Z",
               "EditorCaption": ""
@@ -79,7 +79,7 @@
               "RelativeDocumentMoniker": "src\\main\\Home.html",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Home.html",
               "RelativeToolTip": "src\\main\\Home.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2026-02-02T01:51:01.753Z",
               "EditorCaption": ""
