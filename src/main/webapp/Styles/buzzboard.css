@@ -17,12 +17,8 @@
     align-items: center;
 }
 
-.month-nav
+.month-nav li
 {
     font: BeePollen, Chewy;
-    font-size: 
-    text-decoration: none;
-
-    display: inline-flex;
-
+    list-style-type: none;
 }
