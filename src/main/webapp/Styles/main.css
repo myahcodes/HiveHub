@@ -163,6 +163,8 @@ body {
     height: 117px;
     background-size: 628px 538px;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
     background-image: url('../assets/img/nav/bttn_icons/bttn_sprites.png');
     background-repeat: no-repeat;
     display: block;
