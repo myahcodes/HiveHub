@@ -132,6 +132,7 @@ body {
             text-decoration: underline;
         }
 
+/*Nav Bar & Buttons*/
 #left-nav, #right-nav {
     position: fixed;
     height: 100%;
@@ -157,4 +158,9 @@ body {
     border-left: 3px solid #ffb84d;
 }
 
-/*Nav Bar & Buttons*/
+.left-bttns {
+
+}
+.right-bttns {
+
+}
