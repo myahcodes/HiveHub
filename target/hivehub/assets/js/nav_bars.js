@@ -1,14 +1,13 @@
 /*Right Nav Data*/
 const right_btns = [
-    {img: '.', url: 'home.html', label: 'Home', top: 'px', right: 'px'},
-    {img: '.', url: 'buzzboard.html', label: 'Buzzboard', top: 'px', right: 'px'},
-    {img: '.', url: 'post.html', label: 'Make Post', top: 'px', right: 'px'},
-    {img: '.', url: 'discovery.html', label: 'Discovery', top: 'px', right: 'px'}
+    {class: 'homeBttn', url: 'Home.html', label: 'Home', top: 'px', right: 'px'},
+    {class: 'buzzboardBttn', url: 'buzzboard.html', label: 'Buzzboard', top: 'px', right: 'px'},
+    {class: 'discoveryBttn', url: 'discovery.html', label: 'Discovery', top: 'px', right: 'px'}
 ];
 
 const left_btns = [
-    {img: '.', url: 'profile.html', label: 'Profile', top: 'px', left: 'px'},
-    {img: '.', url: 'give.html', label: 'My Hive', top: 'px', left: 'px'}
+    {class: 'profileBttn', url: 'profile.html', label: 'Profile', top: 'px', left: 'px'},
+    {class: '', url: 'hive.html', label: 'My Hive', top: 'px', left: 'px'}
 ];
 /*Ref containers*/
 const nav_right = document.querySelector("#right-nav");

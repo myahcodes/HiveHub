@@ -40,13 +40,13 @@ html {
 }
 
 #left-nav {
-    background-image: url(../assets/img/leftNav.jpg);
+    background-image: url(../assets/img/nav/bar/leftNav.jpg);
     left: 0;
     border-right: 3px solid #ffb84d;
 }
 
 #right-nav {
-    background-image: url(../assets/img/rightNav.jpg);
+    background-image: url(../assets/img/nav/bar/rightNav.jpg);
     right: 0;
     border-left: 3px solid #ffb84d;
 }
@@ -70,7 +70,7 @@ body {
 
 /* For login and signup pages */
 body.SignOn-page {
-    background-image: url(../assets/img/HHBckgrd.jpeg);
+    /* background-image: url(../assets/img/HHBckgrd.jpeg); */
     background-position: center top;
     background-size: 100vw 100vh;
     background-attachment: fixed;
