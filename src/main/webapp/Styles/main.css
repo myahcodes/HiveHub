@@ -171,8 +171,8 @@ body {
     clip-path: polygon( 26.5% 0%, 91.5% 10.5%, 100% 60%, 73.5% 100%, 8.5% 89.5%, 0% 40%);
 }
 
-.icon-home { background-position: -10px -10px; }
-.icon-home:hover, .icon-home.active { background-position: -316px -163px; }
+.icon-home { background-position: -316px -163px; }
+.icon-home:hover, .icon-home.active { background-position: -10px -10px; }
 
 .icon-hive { background-position: -469px -316px; }
 .icon-hive:hover, .icon-hive.active { background-position: -163px -10px; }
