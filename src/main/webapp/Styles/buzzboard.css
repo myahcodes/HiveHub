@@ -47,12 +47,18 @@
     background-color: #ffb84d;
 }
 
-.weekdays li
+.weekdays
 {
     list-style-type: none;
+    border: solid;
+
+    justify-self: center;
 }
 
-.days li
+.days
 {
     list-style-type: none;
+    border: solid;
+
+    justify-self: right;
 }
