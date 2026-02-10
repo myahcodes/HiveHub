@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\Styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\img\\nav\\bttn_icons\\bttn_sprites.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\assets\\img\\nav\\bttn_icons\\bttn_sprites.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\Home.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Settings.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\Settings.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -30,19 +30,20 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "bttn_sprites.png - PNG [4176x4176, 32 bit, PNG]",
-              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\img\\nav\\bttn_icons\\bttn_sprites.png",
-              "RelativeDocumentMoniker": "src\\main\\webapp\\assets\\img\\nav\\bttn_icons\\bttn_sprites.png",
-              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\img\\nav\\bttn_icons\\bttn_sprites.png - PNG [4176x4176, 32 bit, PNG]",
-              "RelativeToolTip": "src\\main\\webapp\\assets\\img\\nav\\bttn_icons\\bttn_sprites.png - PNG [4176x4176, 32 bit, PNG]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2026-02-05T15:56:28.472Z",
-              "EditorCaption": " - PNG [4176x4176, 32 bit, PNG]"
+              "DocumentIndex": 2,
+              "Title": "Settings.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Settings.html",
+              "RelativeDocumentMoniker": "src\\main\\Settings.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Settings.html",
+              "RelativeToolTip": "src\\main\\Settings.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-08T00:08:53.04Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -52,9 +53,22 @@
               "RelativeDocumentMoniker": "src\\main\\webapp\\Styles\\main.css",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\main.css",
               "RelativeToolTip": "src\\main\\webapp\\Styles\\main.css",
-              "ViewState": "AgIAAKEAAAAAAAAAAAAAAK8AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAAAK0AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-02-03T16:04:28.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Home.html",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Home.html",
+              "RelativeDocumentMoniker": "src\\main\\Home.html",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Home.html",
+              "RelativeToolTip": "src\\main\\Home.html",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-02T01:51:01.753Z",
               "EditorCaption": ""
             },
             {
@@ -65,21 +79,9 @@
               "RelativeDocumentMoniker": "src\\main\\webapp\\Styles\\home.css",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\home.css",
               "RelativeToolTip": "src\\main\\webapp\\Styles\\home.css",
-              "ViewState": "AgIAAFEAAAAAAAAAAIBJwFgAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFgAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-02-03T16:03:34.956Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Home.html",
-              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Home.html",
-              "RelativeDocumentMoniker": "src\\main\\Home.html",
-              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Home.html",
-              "RelativeToolTip": "src\\main\\Home.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-02-02T01:51:01.753Z"
             }
           ]
         }
