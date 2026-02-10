@@ -6,7 +6,7 @@ const footer = document.querySelector(".HH-footer");
 
 /*Create profile picture element*/
 const pfp_outline = document.createElement('img');
-pfp_outline.src = '..img/icons/combBlank.svg';
+pfp_outline.src = '../img/icons/combBlank.svg';
 pfp_outline.width = 150;
 pfp_outline.float = "center";
 pfp_outline.onerror = function () { console.log("Error loading profile picture border."); };
