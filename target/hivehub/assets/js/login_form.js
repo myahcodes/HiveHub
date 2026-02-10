@@ -36,6 +36,7 @@ btn_Login.style.backgroundColor = " #ffb84d";
 const btn_signup = document.createElement("button");
 btn_signup.textContent = "Sign Up";
 btn_signup.id = "signup_button";
+btn_signup.type = "button";
 
 btn_signup.style.color = " #ffb84d";
 btn_signup.style.backgroundColor = "black";
@@ -63,6 +64,23 @@ btn_Login.addEventListener("click", function(event) {
         return;
     }
 
-    window.location.href = "Home.html";
-});
+    const payload = {
+        username: txt_username.value,
+        password: txt_password.value
+    };
 
+    fetch("api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Login response:", data);
+            window.location.href = "Home.html";
+        })
+        .catch((error) => {
+            console.error("Login error:", error);
+            alert("Login failed. Please try again.");
+        });
+});

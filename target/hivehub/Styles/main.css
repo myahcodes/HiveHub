@@ -26,6 +26,113 @@ html {
     height: 100%;
     min-height: 100%;
 }
+
+@media (max-width: 768px) {
+    #left-nav, #right-nav {
+        display: none;
+    }
+
+    /* Adjust main content to take full width when navs are gone */
+    .HH-Home {
+        width: 90% !important;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: #ffb84d;
+    min-height: 100%;
+}
+
+    /* For login and signup pages */
+    body.SignOn-page {
+        /* background-image: url(../assets/img/HHBckgrd.jpeg); */
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+
+    /* For pages with honey combs */
+    body.Main-page {
+        /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+.HH-MyHive {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+.HH-Home {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    height: fit-content;
+    margin: auto;
+}
+
+.HH-MyHive button {
+    font-family: BeePollen, Chewy;
+    font-size: 24px;
+    color: #ffb84d;
+    background-color: black;
+    border: none;
+}
+
+.HH-Header h1 {
+    font-family: Magic, 'Comic Sans MS';
+    font-size: 64px;
+    font-weight: normal;
+    font-style: normal;
+    width: fit-content;
+    height: fit-content;
+}
+
+    .HH-Header h1:hover {
+        animation-name: HeaderAnim;
+        animation-duration: 0.8s;
+    }
+
+.HH-footer {
+    font-family: BeePollen, Chewy;
+    width: fit-content;
+    margin-top: 0.4cm;
+    text-align: center;
+    border-top-color: #ffb84d;
+    border-top-style: solid;
+}
+
+    .HH-footer a {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        margin-top: 0.4cm;
+    }
+
+        .HH-footer a:visited {
+            color: inherit;
+        }
+
+        .HH-footer a:hover {
+            text-decoration: underline;
+        }
+
+/*Nav Bar & Buttons*/
 #left-nav, #right-nav {
     position: fixed;
     height: 100%;
@@ -50,115 +157,10 @@ html {
     right: 0;
     border-left: 3px solid #ffb84d;
 }
-@media (max-width: 768px) {
-    #left-nav, #right-nav {
-        display: none;
-    }
 
-    /* Adjust main content to take full width when navs are gone */
-    .HH-Home {
-        width: 90% !important;
-    }
+.left-bttns {
+
 }
-body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: #ffb84d;
-    min-height: 100%;
-}
+.right-bttns {
 
-/* For login and signup pages */
-body.SignOn-page {
-    /* background-image: url(../assets/img/HHBckgrd.jpeg); */
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-
-/* For pages with honey combs */
-body.Main-page {
-    /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.HH-MyHive {
-    font-family: BeePollen, Chewy;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    width: fit-content;
-    height: fit-content;
-
-    margin: auto;
-}
-
-.HH-Home {
-    font-family: BeePollen, Chewy;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 48%;
-    height: fit-content;
-    margin: auto;
-}
-
-.HH-MyHive button{
-    font-family: BeePollen, Chewy;
-    font-size: 24px;
-
-    color: #ffb84d;
-    background-color: black;
-
-    border: none;
-}
-
-.HH-Header h1 {
-    font-family: Magic, 'Comic Sans MS';
-    font-size: 64px;
-    font-weight: normal;
-    font-style: normal;
-
-    width: fit-content;
-    height: fit-content;
-}
-
-.HH-Header h1:hover {
-    animation-name: HeaderAnim;
-    animation-duration: 0.8s;
- }
-
-.HH-footer {
-    font-family: BeePollen, Chewy;
-    width: fit-content;
-    margin-top: 0.4cm;
-    text-align: center;
-    border-top-color: #ffb84d;
-    border-top-style: solid;
-}
-
-.HH-footer a {
-    color: inherit;
-
-    text-decoration: none;
-
-    display: block;
-
-    margin-top: 0.4cm;
-}
-
-.HH-footer a:visited {
-    color: inherit;
-}
-
-.HH-footer a:hover {
-    text-decoration: underline;
 }

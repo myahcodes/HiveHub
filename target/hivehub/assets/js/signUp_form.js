@@ -39,6 +39,7 @@ txt_password.required = true;
 const btn_Login = document.createElement("button");
 btn_Login.textContent = "Login";
 btn_Login.id = "login_button";
+btn_Login.type = "button";
 
 btn_Login.style.color = " #ffb84d";
 btn_Login.style.backgroundColor = "black";
@@ -76,8 +77,28 @@ btn_signup.addEventListener("click", function(event) {
         alert("Please fill in all required fields.");
         return;
     }
-    
-    window.location.href = "Login.html"; // Redirects to login page
+
+    const payload = {
+        email: txt_email.value,
+        name: txt_name.value,
+        username: txt_username.value,
+        password: txt_password.value
+    };
+
+    fetch("api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("Signup response:", data);
+            window.location.href = "Login.html";
+        })
+        .catch((error) => {
+            console.error("Signup error:", error);
+            alert("Signup failed. Please try again.");
+        });
 });
 
 btn_Login.addEventListener("click", function(event) {
