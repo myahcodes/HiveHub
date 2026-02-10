@@ -41,16 +41,18 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    grid-gap: 5px;
+    grid-gap: 10px;
 
-    color: black;
-    background-color: #ffb84d;
+    color: #ffb84d;
+    background-color: black;
 }
 
 .weekdays
 {
     list-style-type: none;
-    border: solid;
+    
+    width: 100%;
+    border: solid #ffb84d;
 
     justify-self: center;
 }
@@ -58,7 +60,9 @@
 .days
 {
     list-style-type: none;
+
+    width: 100%;
     border: solid;
 
-    justify-self: right;
+    justify-self: center;
 }
