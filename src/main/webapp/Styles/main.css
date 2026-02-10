@@ -158,9 +158,23 @@ body {
     border-left: 3px solid #ffb84d;
 }
 
-.left-bttns {
-
+.left-bttns, .right-bttns {
+    width: 137px;
+    height: 117px;
+    background-image: url(../assets/img/nav/bttn_icons/dbttn_sprites.png);
+    background-repeat: no-repeat;
+    display: block;
+    z-index: 11;
 }
-.right-bttns {
 
-}
+#icon-buzzboard {background-position: -10px -10px;}
+#icon-buzzboard:hover, #icon-buzzboard:active {background-position: -10px -137px;}
+
+#icon-buzzDropdown {background-position: -167px -147px;}
+#icon-buzzDropdown:hover, #icon-buzzDropdown:active {background-position: -167px -284px;}
+
+#icon-comment {background-position: -10px -147px;}
+#icon-comment:hover, #icon-comment:active {background-position: -324px -284px;}
+
+#icon-buzzboard {background-position: -10px -10px;}
+#icon-buzzboard:hover, #icon-buzzboard:active {background-position: -10px -137px;}
