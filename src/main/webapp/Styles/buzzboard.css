@@ -8,8 +8,11 @@
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
 }
 
-.HH-contents{
-    font: BeePollen, Chewy;
+
+
+.HH-contents
+{
+    font-family: BeePollen, Chewy;
     
     display: flex;
     flex-direction: column;
@@ -17,8 +20,39 @@
     align-items: center;
 }
 
+.month-panel 
+{
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: #ffb84d;
+}
+
 .month-nav li
 {
-    font: BeePollen, Chewy;
+    font-family: BeePollen, Chewy;
+    list-style-type: none;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.days-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 5px;
+
+    color: black;
+    background-color: #ffb84d;
+}
+
+.weekdays li
+{
+    list-style-type: none;
+}
+
+.days li
+{
     list-style-type: none;
 }
