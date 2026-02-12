@@ -20,27 +20,53 @@
 
 .HH-Buzzboard
 {
+    display:inherit;
+    flex-direction: inherit;
+
     width: fit-content;
     height: fit-content;
+    padding: 10px;
+
     background-color: #ffb84d;
     border: solid #ffb84d;
 }
 
 .month-panel 
 {
+    display:inherit;
+
     color: black;
     font-size: 40px;
     font-weight: bold;
-    background-color: #ffb84d;
+
+    background-color: red;
+
+    justify-content: left;
 }
 
 .month-nav li
 {
     font-family: BeePollen, Chewy;
+
     list-style-type: none;
-    display:inline-flex;
+
+    display: inline-flex;
+
     align-items: center;
     justify-content: center;
+}
+
+.prev
+{
+    position:relative;
+
+    margin-right: 5px;
+}
+
+.next
+{
+    position: relative;
+    margin-left: 5px;
 }
 
 .days-container {
@@ -68,10 +94,20 @@
     color: #ffb84d;
     list-style-type: none;
 
-    width: 100%;
+    width: 70px;
+    height: 50px;
     background-color: black;
 
     justify-self: right;
+}
+
+.days:hover
+{
+    color: black;
+
+    background-color: #ffb84d;
+
+    border: 1px solid black;
 }
 
 .details-section
@@ -83,8 +119,8 @@
 {
     justify-self: center;
 
-    width:fit-content;
-    height:fit-content;
+    width: fit-content;
+    height: fit-content;
 
     margin-top: 25px;
     
