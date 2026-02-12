@@ -23,8 +23,8 @@
     display:inherit;
     flex-direction: inherit;
 
-    width: fit-content;
-    height: fit-content;
+    width: 50%;
+    height: 50%;
     padding: 10px;
 
     background-color: #ffb84d;
@@ -52,8 +52,8 @@
 
     display: inline-flex;
 
-    align-items: center;
-    justify-content: center;
+    align-self: center;
+    justify-self: center;
 }
 
 .prev
@@ -71,11 +71,14 @@
 
 .days-container {
     display: grid;
+
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 2px 2.5px;
  
-    background-color: #ffb84d;
+    background-color: red;
+
+    width: 20%;
 }
 
 .weekdays
@@ -87,6 +90,7 @@
     border: solid #ffb84d;
 
     justify-self: center;
+    align-self:center;
 }
 
 .days
@@ -98,7 +102,7 @@
     height: 50px;
     background-color: black;
 
-    justify-self: right;
+    float: right;
 }
 
 .days:hover
@@ -123,7 +127,6 @@
     height: fit-content;
 
     margin-top: 25px;
-    
 }
 
 #toggle_button
