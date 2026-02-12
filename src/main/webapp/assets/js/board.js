@@ -4,6 +4,7 @@
 const next_month = document.querySelector(".next");
 const prev_month = document.querySelector(".prev");
 const current_month = document.querySelector("#MOY");
+const show_details = document.querySelector("#toggle_button");
 
 const Months =[
     "January",
@@ -44,14 +45,38 @@ prev_month.addEventListener("mouseout", () => {
     prev_month.style.transform = "scale(1)";
 });
 
-// Function to change month:
+// Function to change months:
 
 next_month.addEventListener("click", function () {
     new_month++;
+
+    // check if at the end of queue
+    if (new_month > 11)
+    {
+        new_month = 0;
+    }
+
     current_month.innerHTML = Months[new_month];
+
 });
 
 prev_month.addEventListener("click", function () {
     new_month--;
+
+    // check if at beginning of queue
+    if (new_month < 0) {
+        new_month = 11;
+    }
+
     current_month.innerHTML = Months[new_month];
 });
+
+// add details toggle:
+
+show_details.addEventListener("mouseover", () => {
+    // do things on hover here: 
+})
+
+show_details.addEventListener("click", () => {
+    // reveal self here:
+})
