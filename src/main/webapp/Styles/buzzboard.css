@@ -71,16 +71,30 @@
     width: 100%;
     background-color: black;
 
-    justify-self: center;
-}
-
-#line
-{
-    border: 1px solid;
-    border-color: black;
+    justify-self: right;
 }
 
 .details-section
 {
     color: black;
+}
+
+.button-container
+{
+    justify-self: center;
+
+    width:fit-content;
+    height:fit-content;
+
+    margin-top: 25px;
+    
+}
+
+#toggle_button
+{
+    background-color: black;
+
+    border: 3px outset;
+    border-radius: 5px;
+    border-color: black;
 }
