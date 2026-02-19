@@ -13,6 +13,7 @@
     font-family: BeePollen, Chewy;
     
     display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -20,6 +21,7 @@
 
 .HH-Buzzboard {
     display:flex;
+
     flex-direction: column;
     
     max-width: auto;
@@ -34,16 +36,19 @@
     display:flex;
 
     background-color: #ffb84d;
+
     gap:30px;
 }
 
 .month-panel 
 {
     display:flex;
+
     justify-content: center;
     align-items: center;
 
     color: black;
+
     font-size: 40px;
     font-weight: bold;
 
@@ -65,13 +70,16 @@
 #MOY
 {
     width: 200px;
+
     display: flex;
+
     justify-content: center;
 }
 
 .prev
 {
     display: flex;
+
     justify-content: center;
 
     margin-right: 5px;
@@ -80,6 +88,7 @@
 .next
 {
     display: flex;
+
     justify-content: center;
 
     margin-left: 5px;
@@ -87,14 +96,18 @@
 
 .calendar-grid {
     display: grid;
+
     grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: 100px;
     grid-gap: 1.1px 1.5px;
+
     width: 100%;
     min-width: 0;
+
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
     background-color: #ffb84d;
     background-color: #ffb84d;
 
@@ -122,10 +135,13 @@
 .days 
 {
     display: flex;
+
     flex-direction: row;
     align-items: flex-start;
+
     color: #ffb84d;
     background-color: black;
+
     box-sizing: border-box;
     
     
@@ -152,22 +168,18 @@
     color: black;
 }
 
-.button-container
-{
-    justify-self: center;
-
-    width: fit-content;
-    height: fit-content;
-
-    margin-top: 25px;
-}
-
 #toggle_button
 {
+    display:flex; 
+
+    justify-self: center;
+
     background-color: black;
 
     width: 20px;
     height: 10px;
+    margin-top: 25px;
+
     border: 3px outset;
     border-radius: 5px;
     border-color: black;

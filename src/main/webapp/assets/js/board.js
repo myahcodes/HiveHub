@@ -4,7 +4,7 @@
 const next_month = document.querySelector(".next");
 const prev_month = document.querySelector(".prev");
 const current_month = document.querySelector("#MOY");
-const show_details = document.querySelector("#toggle_button");
+const details_button = document.querySelector("#toggle_button");
 const show_details = document.querySelector("#details-content")
 
 const Months =[
@@ -78,17 +78,17 @@ prev_month.addEventListener("click", function () {
 
 // add details toggle:
 
-show_details.addEventListener("mouseover", () => {
+details_button.addEventListener("mouseover", () => {
     // do things on hover here: 
     document.body.style.cursor = "pointer";
 });
 
-show_details.addEventListener("mouseout", () =>
+details_button.addEventListener("mouseout", () =>
     {
         document.body.style.cursor = "default";
     });
 
-show_details.addEventListener("click", () => {
+details_button.addEventListener("click", () => {
     // reveal self here:
 
 });
