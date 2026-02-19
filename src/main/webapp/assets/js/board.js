@@ -28,21 +28,25 @@ let new_month = 0;
 next_month.addEventListener("mouseover", function () {
     // enlargen on hover:
     next_month.style.transform = "scale(1.2)";
+    document.body.style.cursor = "pointer";
 });
 
 next_month.addEventListener("mouseout", function () {
     //revert on mouse exit:
     next_month.style.transform = "scale(1)";
+    document.body.style.cursor = "default";
 });
 
 prev_month.addEventListener("mouseover", () => {
     //enlargen on hover:
     prev_month.style.transform = "scale(1.2)";
+    document.body.style.cursor = "pointer";
 });
 
 prev_month.addEventListener("mouseout", () => {
     //revert on mouse exit:
     prev_month.style.transform = "scale(1)";
+    document.body.style.cursor = "default";
 });
 
 // Function to change months:
@@ -75,8 +79,15 @@ prev_month.addEventListener("click", function () {
 
 show_details.addEventListener("mouseover", () => {
     // do things on hover here: 
-})
+    document.body.style.cursor = "pointer";
+});
+
+show_details.addEventListener("mouseout", () =>
+    {
+        document.body.style.cursor = "default";
+    });
 
 show_details.addEventListener("click", () => {
     // reveal self here:
-})
+
+});

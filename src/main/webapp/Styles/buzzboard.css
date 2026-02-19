@@ -18,30 +18,35 @@
     align-items: center;
 }
 
-.HH-Buzzboard
-{
-    display:inherit;
-    flex-direction: inherit;
-
-    width: 50%;
-    height: 50%;
-    padding: 10px;
+.HH-Buzzboard {
+    display:flex;
+    flex-direction: column;
+    
+    max-width: auto;
+    padding: 0 10px 0 10px;
 
     background-color: #ffb84d;
     border: solid #ffb84d;
 }
 
+.month-nav
+{
+    display:flex;
+
+    background-color: #ffb84d;
+    gap:30px;
+}
 .month-panel 
 {
-    display:inherit;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 
     color: black;
     font-size: 40px;
     font-weight: bold;
 
-    background-color: red;
-
-    justify-content: left;
+    background-color: #ffb84d;
 }
 
 .month-nav li
@@ -56,53 +61,86 @@
     justify-self: center;
 }
 
+#MOY
+{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
 .prev
 {
-    position:relative;
+    display: flex;
+    justify-content: center;
 
     margin-right: 5px;
 }
 
 .next
 {
-    position: relative;
+    display: flex;
+    justify-content: center;
+
     margin-left: 5px;
 }
 
-.days-container {
+.calendar-grid {
     display: grid;
-
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 2px 2.5px;
- 
-    background-color: red;
+    grid-auto-rows: 100px;
+    grid-gap: 1.1px 1.5px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #ffb84d;
+    background-color: #ffb84d;
 
-    width: 20%;
+    list-style-type: none;
+}
+
+.calendar-grid li
+{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    
+    box-sizing: border-box;
+    border: solid #ffb84d;
+    aspect-ratio:1/1;
 }
 
 .weekdays
-{
+{   
     color: black;
-    list-style-type: none;
-    
-    width: 100%;
-    border: solid #ffb84d;
-
-    justify-self: center;
-    align-self:center;
+    background-color: #ffb84d;
+.weekdays {
+    color: black;
+    background-color: #ffb84d;
 }
 
-.days
-{
+.days {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     color: #ffb84d;
-    list-style-type: none;
-
-    width: 70px;
-    height: 50px;
     background-color: black;
+    box-sizing: border-box;
+    
+    
+    box-sizing: border-box;
+}
 
-    float: right;
+.days p
+{
+    margin: 0 0 auto auto;
+    padding: 2.5px;
+.days p
+{
+    margin: 0 0 auto auto;
+    padding: 2.5px;
 }
 
 .days:hover
@@ -133,7 +171,14 @@
 {
     background-color: black;
 
+    width: 20px;
+    height: 10px;
     border: 3px outset;
     border-radius: 5px;
     border-color: black;
+}
+
+#details-content
+{
+    display:none;
 }
