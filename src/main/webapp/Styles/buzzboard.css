@@ -36,6 +36,7 @@
     background-color: #ffb84d;
     gap:30px;
 }
+
 .month-panel 
 {
     display:flex;
@@ -112,16 +113,14 @@
     aspect-ratio:1/1;
 }
 
-.weekdays
-{   
-    color: black;
-    background-color: #ffb84d;
-.weekdays {
+.weekdays 
+{
     color: black;
     background-color: #ffb84d;
 }
 
-.days {
+.days 
+{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -133,10 +132,6 @@
     box-sizing: border-box;
 }
 
-.days p
-{
-    margin: 0 0 auto auto;
-    padding: 2.5px;
 .days p
 {
     margin: 0 0 auto auto;
