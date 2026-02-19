@@ -5,6 +5,7 @@ const next_month = document.querySelector(".next");
 const prev_month = document.querySelector(".prev");
 const current_month = document.querySelector("#MOY");
 const show_details = document.querySelector("#toggle_button");
+const show_details = document.querySelector("#details-content")
 
 const Months =[
     "January",
