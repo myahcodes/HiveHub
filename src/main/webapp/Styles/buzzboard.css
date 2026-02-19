@@ -176,7 +176,7 @@
 
     background-color: black;
 
-    width: 20px;
+    width: 40px;
     height: 10px;
     margin-top: 25px;
 
@@ -187,5 +187,8 @@
 
 #details-content
 {
-    overflow:hidden;
+    display: list-item;
+
+    background-color: #ffb84d;
+    overflow: hidden;
 }

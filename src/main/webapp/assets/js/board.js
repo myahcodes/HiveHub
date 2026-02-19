@@ -6,6 +6,8 @@ const prev_month = document.querySelector(".prev");
 const current_month = document.querySelector("#MOY");
 const details_button = document.querySelector("#toggle_button");
 const show_details = document.querySelector("#details-content")
+const days_grid = document.querySelector(".calendar-grid");
+const days_class = document.querySelector(".days");
 
 const Months =[
     "January",
@@ -24,7 +26,7 @@ const Months =[
 
 let new_month = 0;
 
-// Function of enlargment:
+// Function of enlargement:
 
 next_month.addEventListener("mouseover", function () {
     // enlargen on hover:
@@ -61,6 +63,20 @@ next_month.addEventListener("click", function () {
         new_month = 0;
     }
 
+    switch (new_month) {
+        case 1: {
+            //28 days
+            for (count = 0; count < 3; count++) {
+                days_grid.lastElementChild.style.display = "none";
+            }
+        }
+        case 3: days_grid.lastElementChild.style.display = "none"; //30 days
+        case 5: days_grid.lastElementChild.style.display = "none"; //30 days
+        case 8: days_grid.lastElementChild.style.display = "none"; //30 days
+        case 10: days_grid.lastElementChild.style.display = "none"; //30 days
+        default: // regular 31 days
+    }
+
     current_month.innerHTML = Months[new_month];
 
 });
@@ -73,6 +89,20 @@ prev_month.addEventListener("click", function () {
         new_month = 11;
     }
 
+    switch (new_month) {
+        case 1: {
+            //28 days
+            for (count = 0; count < 3; count++) {
+                days_grid.lastElementChild.style.display = "none";
+            }
+        }
+        case 3: days_grid.lastElementChild.style.display = "none"; //April 30 days
+        case 5: days_grid.lastElementChild.style.display = "none"; //30 days
+        case 8: days_grid.lastElementChild.style.display = "none"; //30 days
+        case 10: days_grid.lastElementChild.style.display = "none"; //30 days
+        default: days_grid.children.style.display = "default" // regular 31 days
+    }
+
     current_month.innerHTML = Months[new_month];
 });
 
@@ -81,14 +111,16 @@ prev_month.addEventListener("click", function () {
 details_button.addEventListener("mouseover", () => {
     // do things on hover here: 
     document.body.style.cursor = "pointer";
+    details_button.style.backgroundColor = "#ffb84d";
 });
 
 details_button.addEventListener("mouseout", () =>
-    {
-        document.body.style.cursor = "default";
-    });
+{
+    document.body.style.cursor = "default";
+    details_button.style.backgroundColor = "black";
+});
 
 details_button.addEventListener("click", () => {
     // reveal self here:
-
+    show_details.style.overflow = "visible";
 });
