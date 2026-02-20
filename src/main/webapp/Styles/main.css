@@ -75,7 +75,7 @@ body {
     margin: auto;
 }
 
-.HH-Home {
+.HH-Home, .HH-Posting {
     font-family: BeePollen, Chewy;
     display: flex;
     flex-direction: column;
@@ -199,7 +199,7 @@ body {
     left: 154px;
 }
 
-/* --- Right Nav Positions --- */
+/*Right Nav Positions*/
 #right-nav .icon-buzzboard {
     top: 404px;
     right: 149px;

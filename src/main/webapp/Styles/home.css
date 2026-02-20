@@ -84,20 +84,33 @@
 /*Interactions*/
 .buzz-actions {
     display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
-/*    border-top: 1px solid #ffb84d;*/
-    margin-top: 10px;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.buzz-position {
+    display: flex;
+    gap: 15px;
 }
 
-.action-bttn {
-    background: none;
+.action-bttns {
+    width: 30px;
+    height: 30px;
+    background-image: url(../assets/img/activityBar/activitySprites.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
     border: none;
-    color: #ffb84d;
-    cursor: pointer;
-    transition: color 0.2s;
+    outline: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
+    display: block;
+    position: relative;
 }
 
-    .action-bttn:hover {
-        color: #ffa64d;
-    }
+.action-bttns:hover {transform: scale(1.15);}
+
+.commentFeedIcon {background-position: -10px -10px}
+.addToBuzzboardIcon {background-position: -10px -60px}
+.shareIcon {background-position: -60px -10px}
