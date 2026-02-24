@@ -66,9 +66,9 @@ next_month.addEventListener("click", function () {
     switch (new_month) {
         case 1: {
             //28 days
-            for (count = 0; count < 3; count++) {
-                days_grid.lastElementChild.style.display = "none";
-            }
+            days_grid.lastElementChild.style.display = "none";
+            days_grid.lastElementChild.previousElementSibling.style.display = "none";
+            days_grid.lastElementChild.previousElementSibling.previousElementSibling.style.display = "none";
         }
         case 3: days_grid.lastElementChild.style.display = "none"; //30 days
         case 5: days_grid.lastElementChild.style.display = "none"; //30 days
@@ -92,11 +92,10 @@ prev_month.addEventListener("click", function () {
     switch (new_month) {
         case 1: {
             //28 days
-            for (count = 0; count < 3; count++) {
-                days_grid.lastElementChild.style.display = "none";
-            }
+            days_grid.lastElementChild.previousElementSibling.style.display = "none";
+            days_grid.lastElementChild.style.display = "none";
         }
-        case 3: days_grid.lastElementChild.style.display = "none"; //April 30 days
+        case 3: days_grid.lastElementChild.style.display = "none"; //30 days
         case 5: days_grid.lastElementChild.style.display = "none"; //30 days
         case 8: days_grid.lastElementChild.style.display = "none"; //30 days
         case 10: days_grid.lastElementChild.style.display = "none"; //30 days
