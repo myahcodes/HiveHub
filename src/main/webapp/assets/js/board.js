@@ -7,7 +7,7 @@ const current_month = document.querySelector("#MOY");
 const details_button = document.querySelector("#toggle_button");
 const show_details = document.querySelector("#details-content")
 const days_grid = document.querySelector(".calendar-grid");
-const days_class = document.querySelector(".days");
+const days_class = document.getElementsByClassName("days");
 
 const Months =[
     "January",
@@ -63,6 +63,12 @@ next_month.addEventListener("click", function () {
         new_month = 0;
     }
 
+    // reset the days shown each click:
+
+    for (let i = 0; i < days_class.length; i++) {
+        days_class[i].style.display = "initial";
+    }
+
     switch (new_month) {
         case 1: {
             //28 days
@@ -85,15 +91,23 @@ prev_month.addEventListener("click", function () {
     new_month--;
 
     // check if at beginning of queue
-    if (new_month < 0) {
+    if (new_month <= 0)
+    {
         new_month = 11;
+    }
+
+    // reset the days shown each click:
+
+    for (let i = 0; i < days_class.length; i++) {
+        days_class[i].style.display = "initial";
     }
 
     switch (new_month) {
         case 1: {
             //28 days
-            days_grid.lastElementChild.previousElementSibling.style.display = "none";
             days_grid.lastElementChild.style.display = "none";
+            days_grid.lastElementChild.previousElementSibling.style.display = "none";
+            days_grid.lastElementChild.previousElementSibling.previousElementSibling.style.display = "none";
         }
         case 3: days_grid.lastElementChild.style.display = "none"; //30 days
         case 5: days_grid.lastElementChild.style.display = "none"; //30 days
