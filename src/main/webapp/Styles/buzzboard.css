@@ -118,7 +118,6 @@
 {
     display: flex;
 
-    justify-content: center;
     align-items: center;
     
     box-sizing: border-box;
@@ -136,7 +135,6 @@
 {
     display: flex;
 
-    flex-direction: row;
     align-items: flex-start;
 
     color: #ffb84d;
