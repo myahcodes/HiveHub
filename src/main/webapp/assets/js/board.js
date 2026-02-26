@@ -91,7 +91,7 @@ prev_month.addEventListener("click", function () {
     new_month--;
 
     // check if at beginning of queue
-    if (new_month <= 0)
+    if (new_month < 0)
     {
         new_month = 11;
     }
@@ -113,7 +113,7 @@ prev_month.addEventListener("click", function () {
         case 5: days_grid.lastElementChild.style.display = "none"; //30 days
         case 8: days_grid.lastElementChild.style.display = "none"; //30 days
         case 10: days_grid.lastElementChild.style.display = "none"; //30 days
-        default: days_grid.children.style.display = "default" // regular 31 days
+        default: // regular 31 days
     }
 
     current_month.innerHTML = Months[new_month];
