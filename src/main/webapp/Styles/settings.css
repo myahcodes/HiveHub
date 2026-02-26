@@ -5,7 +5,7 @@
 }
 
 .HH-contents {
-    font-family: BeePollen, Chewy;
+    font-family: BeePollen;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,18 +14,70 @@
 
 #search-bar-settings {
     display: flex;
-    flex-direction:row;
-    border: #ffb84d;
+    align-items: center;
+    justify-content: left;
+
+    width: 675px;
+    height: 50px;
+    border: #ffb84d solid;
+}
+
+.searchbar{
+    display: flex;
+    flex-direction: row;
+}
+
+#search-comb{
+    width: 40px;
+    height: 40px;
+
+    padding: 7px 10px 7px 7px;
+}
+
+#search-bar{
+    font-family: inherit;
+    color: inherit;
+
+    display: flex;
+
+    align-self:center;
+
+    height: 45px;
+    width: 610px;
+    background-color: black;
+    border-style: none;
+}
+
+#search-bar::placeholder{
+    color: inherit;
 }
 
 .options{
     display:flex;
+    flex-direction: column;
 
     padding-left: 20px;
 }
 
-.logout_button{
+.Profile-options h2:hover
+{
+    text-decoration: solid underline #ffb84d;
+}
+
+.Account-options h2:hover{
+    text-decoration: solid underline #ffb84d;
+}
+
+.Privacy-options h2:hover{
+    text-decoration: solid underline #ffb84d;
+}
+
+#logout_button{
+    font-family: inherit;
     color: black;
 
+    width: 100px;
+    height: 30px;
     background-color: #ffb84d;
+    border-style: none;
 }
