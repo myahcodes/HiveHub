@@ -62,14 +62,17 @@
 .Profile-options h2:hover
 {
     text-decoration: solid underline #ffb84d;
+    cursor: pointer;
 }
 
-.Account-options h2:hover{
+.Account-options h2:hover {
     text-decoration: solid underline #ffb84d;
+    cursor: pointer;
 }
 
-.Privacy-options h2:hover{
+.Privacy-options h2:hover {
     text-decoration: solid underline #ffb84d;
+    cursor: pointer;
 }
 
 #logout_button{
