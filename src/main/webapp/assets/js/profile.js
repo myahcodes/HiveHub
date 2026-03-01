@@ -5,10 +5,11 @@ const buzz_container = document.querySelector(".buzz-container");
 const footer = document.querySelector(".HH-footer");
 
 /*Create profile picture element*/
-const pfp_outline = document.createElement('img');
-pfp_outline.src = '../img/icons/combBlank.svg';
+const pfp_outline = document.createElement("img");
+pfp_outline.src = "/webapp/assets/img/icons/combBlank.svg";
 pfp_outline.width = 150;
 pfp_outline.float = "center";
+console.log(pfp_outline.src);
 pfp_outline.onerror = function () { console.log("Error loading profile picture border."); };
 
 pfp_outline.addEventListener('mouseover', () => {
@@ -20,8 +21,8 @@ pfp_outline.addEventListener('mouseover', () => {
     );
 });
 
-const pfp_Icon = document.createElement('img');
-pfp_Icon.src = '../img/icons/defaultPfp.svg';
+const pfp_Icon = document.createElement("img");
+pfp_Icon.src = "/webapp/assets/img/icons/defaultPfp.svg";
 pfp_Icon.width = 150;
 pfp_Icon.float = "center";
 pfp_Icon.onerror = function () { console.log("Error loading profile picture."); };
