@@ -107,6 +107,7 @@ body {
 .HH-Header h1:hover {
     animation-name: HeaderAnim;
     animation-duration: 0.8s;
+    cursor: default;
 }
 
 .HH-footer {
