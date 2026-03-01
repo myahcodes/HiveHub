@@ -9,10 +9,9 @@ const pfp_outline = document.createElement("img");
 pfp_outline.src = "/webapp/assets/img/icons/combBlank.svg";
 pfp_outline.width = 150;
 pfp_outline.float = "center";
-console.log(pfp_outline.src);
 pfp_outline.onerror = function () { console.log("Error loading profile picture border."); };
 
-pfp_outline.addEventListener('mouseover', () => {
+pfp_outline.addEventListener('mouseenter', () => {
     pfp_outline.classList.add('shake');
 
     pfp_outline.addEventListener('animationend', () =>
@@ -36,13 +35,59 @@ const new_buzz = document.createElement('button');
 new_buzz.textContent = "New";
 new_buzz.style.padding = "4px 25px";
 
+new_buzz.addEventListener('mouseenter', () => {
+
+    new_buzz.style.cursor = "pointer";
+    new_buzz.style.backgroundColor = "#ffb84d";
+    new_buzz.style.color = "black";
+});
+
+new_buzz.addEventListener('mouseleave', () => {
+
+    new_buzz.style.cursor = "default";
+    new_buzz.style.backgroundColor = "black";
+    new_buzz.style.color = "#ffb84d";
+});
+
+// old buzz button secton:
+
 const old_buzz = document.createElement('button');
 old_buzz.textContent = "Old";
 old_buzz.style.padding = "4px 25px";
 
+old_buzz.addEventListener('mouseenter', () => {
+
+    old_buzz.style.cursor = "pointer";
+    old_buzz.style.backgroundColor = "#ffb84d";
+    old_buzz.style.color = "black";
+});
+
+old_buzz.addEventListener('mouseleave', () => {
+
+    old_buzz.style.cursor = "default";
+    old_buzz.style.backgroundColor = "black";
+    old_buzz.style.color = "#ffb84d";
+});
+
 const buzz = document.createElement('button');
 buzz.textContent = "Buzz";
 buzz.style.padding = "4px 25px";
+
+// buzz button section:
+
+buzz.addEventListener('mouseenter', () => {
+
+    buzz.style.cursor = "pointer";
+    buzz.style.backgroundColor = "#ffb84d";
+    buzz.style.color = "black";
+});
+
+buzz.addEventListener('mouseleave', () => {
+
+    buzz.style.cursor = "default";
+    buzz.style.backgroundColor = "black";
+    buzz.style.color = "#ffb84d";
+});
 
 /*Place elements*/
 pf_container.appendChild(pfp_outline);
