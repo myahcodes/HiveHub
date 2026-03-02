@@ -1,4 +1,9 @@
 
+//cosemtic references:
+
+const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3");
+const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
+
 /*Reference containers*/
 const pf_container = document.querySelector(".profile-container");
 const buzz_container = document.querySelector(".buzz-container");
@@ -36,6 +41,8 @@ new_buzz.textContent = "New";
 new_buzz.style.padding = "4px 25px";
 
 new_buzz.addEventListener('mouseenter', () => {
+    hover_audio.currentTime = 0;
+    hover_audio.play();
 
     new_buzz.style.cursor = "pointer";
     new_buzz.style.backgroundColor = "#ffb84d";
@@ -49,6 +56,11 @@ new_buzz.addEventListener('mouseleave', () => {
     new_buzz.style.color = "#ffb84d";
 });
 
+new_buzz.addEventListener("click", () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+});
+
 // old buzz button secton:
 
 const old_buzz = document.createElement('button');
@@ -56,6 +68,8 @@ old_buzz.textContent = "Old";
 old_buzz.style.padding = "4px 25px";
 
 old_buzz.addEventListener('mouseenter', () => {
+    hover_audio.currentTime = 0;
+    hover_audio.play();
 
     old_buzz.style.cursor = "pointer";
     old_buzz.style.backgroundColor = "#ffb84d";
@@ -69,6 +83,11 @@ old_buzz.addEventListener('mouseleave', () => {
     old_buzz.style.color = "#ffb84d";
 });
 
+old_buzz.addEventListener("click", () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+});
+
 const buzz = document.createElement('button');
 buzz.textContent = "Buzz";
 buzz.style.padding = "4px 25px";
@@ -76,6 +95,8 @@ buzz.style.padding = "4px 25px";
 // buzz button section:
 
 buzz.addEventListener('mouseenter', () => {
+    hover_audio.currentTime = 0;
+    hover_audio.play();
 
     buzz.style.cursor = "pointer";
     buzz.style.backgroundColor = "#ffb84d";
@@ -87,6 +108,11 @@ buzz.addEventListener('mouseleave', () => {
     buzz.style.cursor = "default";
     buzz.style.backgroundColor = "black";
     buzz.style.color = "#ffb84d";
+});
+
+buzz.addEventListener("click", () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
 });
 
 /*Place elements*/
