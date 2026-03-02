@@ -108,10 +108,8 @@ btn_signup.addEventListener("click", function(event) {
     }
 
     setTimeout(() => {
-        window.location.href = "SignUp.html";
+        window.location.href = "Login.html";// Redirects to login page
     }, 550); // equivalent to 5.5 milliseconds
-    
-    window.location.href = "Login.html"; // Redirects to login page
 });
 
 btn_Login.addEventListener("click", function(event) {
