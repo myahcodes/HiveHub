@@ -59,33 +59,7 @@
     padding-left: 20px;
 }
 
-.Profile-options h2:hover
-{
-    text-decoration: solid underline #ffb84d;
-    cursor: pointer;
-}
-
-.Profile-options p:hover{
-    text-decoration: solid underline #ffb84d;
-    cursor: pointer;
-}
-
-.Account-options h2:hover {
-    text-decoration: solid underline #ffb84d;
-    cursor: pointer;
-}
-
-.Account-options p:hover{
-    text-decoration: solid underline #ffb84d;
-    cursor: pointer;
-}
-
-.Privacy-options h2:hover {
-    text-decoration: solid underline #ffb84d;
-    cursor: pointer;
-}
-
-.Privacy-options p:hover{
+.option:hover{
     text-decoration: solid underline #ffb84d;
     cursor: pointer;
 }
