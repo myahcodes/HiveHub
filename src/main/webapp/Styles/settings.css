@@ -52,6 +52,10 @@
     color: inherit;
 }
 
+#search-bar:focus{
+    outline: none;
+}
+
 .options{
     display:flex;
     flex-direction: column;
