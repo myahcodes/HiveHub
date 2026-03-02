@@ -1,4 +1,4 @@
-const hover_control = new Audio("/webapp/assets/audio/47313572-pop-on-269286.mp3");
+const hover_control = new Audio("/webapp/assets/audio/pop-on.mp3");
 const click_audio = new Audio("/webapp/assets/audio/classic-click.mp3");
 
 const options_effects = document.querySelectorAll(".option");
