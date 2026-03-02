@@ -65,7 +65,17 @@
     cursor: pointer;
 }
 
+.Profile-options p:hover{
+    text-decoration: solid underline #ffb84d;
+    cursor: pointer;
+}
+
 .Account-options h2:hover {
+    text-decoration: solid underline #ffb84d;
+    cursor: pointer;
+}
+
+.Account-options p:hover{
     text-decoration: solid underline #ffb84d;
     cursor: pointer;
 }
@@ -75,7 +85,14 @@
     cursor: pointer;
 }
 
+.Privacy-options p:hover{
+    text-decoration: solid underline #ffb84d;
+    cursor: pointer;
+}
+
 #logout_button{
+    cursor:pointer;
+
     font-family: inherit;
     color: black;
 
