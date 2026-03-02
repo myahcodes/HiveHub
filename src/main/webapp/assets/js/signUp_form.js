@@ -119,8 +119,6 @@ btn_Login.addEventListener("click", function(event) {
     click_audio.play();
 
     setTimeout(() => {
-        window.location.href = "SignUp.html";
+        window.location.href = "Login.html";
     }, 550); // equivalent to 5.5 milliseconds
-
-    window.location.href = "Login.html";
 });
