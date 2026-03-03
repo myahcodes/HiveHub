@@ -171,6 +171,5 @@ details_button.addEventListener("click", () => {
         // reveal self here:
         const detail_pointer = show_details.content.cloneNode(true);
         cloned = details_container.appendChild(detail_pointer.firstElementChild);
-        ;
     }
 });
