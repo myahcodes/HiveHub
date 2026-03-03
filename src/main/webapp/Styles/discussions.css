@@ -1,0 +1,13 @@
+@font-face {
+    font-family: BeePollen, system-ui;
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+    font-style: normal;
+}
+
+.HH-contents {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

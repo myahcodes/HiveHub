@@ -1,32 +1,3 @@
-
-#left-nav, #right-nav {
-    position: fixed;
-    height: 100svh;
-    height: 100dvh;
-    width: 24%;
-    top: 0;
-    z-index: 10;
-    transition: all 0.3s ease-in-out;
-    background-color: black;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-#left-nav
-{
-    background-image: url(../assets/img/leftNav.jpg);
-    left: 0;
-    border-right: 3px solid #ffb84d;
-}
-
-#right-nav {
-    background-image: url(../assets/img/rightNav.jpg);
-    right: 0;
-    border-left: 3px solid #ffb84d;
-}
-
-}
-
 .HH-contents {
     width: 100%;
 }
@@ -113,20 +84,33 @@
 /*Interactions*/
 .buzz-actions {
     display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
-    border-top: 1px solid #ffb84d;
-    margin-top: 10px;
-}h
-
-.action-bttn {
-    background: none;
-    border: none;
-    color: #ffb84d;
-    cursor: pointer;
-    transition: color 0.2s;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.buzz-position {
+    display: flex;
+    gap: 15px;
 }
 
-    .action-bttn:hover {
-        color: #ffa64d;
-    }
+.action-bttns {
+    width: 30px;
+    height: 30px;
+    background-image: url(../assets/img/activityBar/activitySprites.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
+    display: block;
+    position: relative;
+}
+
+.action-bttns:hover {transform: scale(1.15);}
+
+.commentFeedIcon {background-position: -10px -10px}
+.addToBuzzboardIcon {background-position: -10px -60px}
+.shareIcon {background-position: -60px -10px}

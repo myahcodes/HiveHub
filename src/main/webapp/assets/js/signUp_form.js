@@ -1,4 +1,6 @@
-console.log("SignUp.js loaded successfully!");
+//cosmetic references:
+const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
+const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3")
 
 /*Create references to parent block and footer*/
 
@@ -16,11 +18,21 @@ const txt_email = document.createElement("input");
 txt_email.type = "text";
 txt_email.placeholder = "Email";
 
+txt_email.onfocus = () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+};
+
 /*Full name field*/
 
 const txt_name = document.createElement("input");
 txt_name.type = "text";
 txt_name.placeholder = "Name";
+
+txt_name.onfocus = () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+};
 
 /*Username field*/
 
@@ -29,12 +41,22 @@ txt_username.type = "text";
 txt_username.placeholder = "Username";
 txt_username.required = true;
 
+txt_username.onfocus = () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+};
+
 /*Password field*/
 
 const txt_password = document.createElement("input");
 txt_password.type = "password";
 txt_password.placeholder = "Password";
 txt_password.required = true;
+
+txt_password.onfocus = () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+};
 
 /*Creation of Login Button*/
 
@@ -44,6 +66,7 @@ btn_Login.id = "login_button";
 
 btn_Login.style.color = " #ffb84d";
 btn_Login.style.backgroundColor = "black";
+btn_Login.style.cursor = "pointer";
 
 /*Creation of Signup Button*/
 
@@ -54,6 +77,7 @@ btn_signup.type = "submit";
 
 btn_signup.style.color = "black";
 btn_signup.style.backgroundColor = " #ffb84d";
+btn_signup.style.cursor = "pointer";
 
 /*Place buttons in the form*/
 
@@ -69,62 +93,32 @@ form.appendChild(btn_Login);
 
 container.appendChild(form);
 
-/*Sign Up button - Send data to RegisterServlet*/
+/*Move to the login page on clicking  SignUp button*/
 btn_signup.addEventListener("click", function(event) {
-    console.log("Sign up button clicked!");
     event.preventDefault();
-    
+
+    click_audio.currentTime = 0;
+    click_audio.play();
+
     // Check form validity first
     if (!form.checkValidity()) {
-        console.log("Form not valid");
+        // If form is not valid, error prompt
         alert("Please fill in all required fields.");
         return;
     }
-    
-    console.log("Form is valid, creating FormData");
-    
-    // Create FormData and send to backend
-    const formData = new FormData();
-    formData.append('email', txt_email.value);
-    formData.append('name', txt_name.value);
-    formData.append('username', txt_username.value);
-    formData.append('password', txt_password.value);
-    
-    console.log("FormData created:");
-    console.log("Email:", txt_email.value);
-    console.log("Name:", txt_name.value);
-    console.log("Username:", txt_username.value);
-    console.log("Password:", txt_password.value ? "***" : "empty");
-    
-    console.log("Sending fetch to /hivehub/register");
-    
-    // Send to RegisterServlet
-    fetch('/hivehub/register', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        console.log("Response received:", response);
-        if (response.redirected) {
-            console.log("Redirecting to:", response.url);
-            window.location.href = response.url;
-        } else {
-            return response.text();
-        }
-    })
-    .then(data => {
-        if (data) {
-            console.log("Response data:", data);
-            alert('Registration failed. Username may already exist.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Registration failed. Please try again.');
-    });
+
+    setTimeout(() => {
+        window.location.href = "Login.html";// Redirects to login page
+    }, 550); // equivalent to 5.5 milliseconds
 });
 
 btn_Login.addEventListener("click", function(event) {
     event.preventDefault();
-    window.location.href = "Login.html";
+
+    click_audio.currentTime = 0;
+    click_audio.play();
+
+    setTimeout(() => {
+        window.location.href = "Login.html";
+    }, 550); // equivalent to 5.5 milliseconds
 });

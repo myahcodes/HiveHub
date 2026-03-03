@@ -27,6 +27,17 @@ html {
     min-height: 100%;
 }
 
+@media (max-width: 768px) {
+    #left-nav, #right-nav {
+        display: none;
+    }
+
+    /* Adjust main content to take full width when navs are gone */
+    .HH-Home {
+        width: 90% !important;
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -35,56 +46,51 @@ body {
     min-height: 100%;
 }
 
-/* For login and signup pages */
-body.SignOn-page {
-    background-image: url(../assets/img/HHBckgrd.jpeg);
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
+    /* For login and signup pages */
+    body.SignOn-page {
+        /* background-image: url(../assets/img/HHBckgrd.jpeg); */
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
 
-/* For pages with honey combs */
-body.Main-page {
-    /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+    /* For pages with honey combs */
+    body.Main-page {
+        /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
 
 .HH-MyHive {
     font-family: BeePollen, Chewy;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: fit-content;
     height: fit-content;
-
     margin: auto;
 }
 
-.HH-Home {
+.HH-Home, .HH-Posting {
     font-family: BeePollen, Chewy;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 48%;
+    width: 46%;
     height: fit-content;
     margin: auto;
 }
 
-.HH-MyHive button{
+.HH-MyHive button {
     font-family: BeePollen, Chewy;
     font-size: 24px;
-
     color: #ffb84d;
     background-color: black;
-
     border: none;
 }
 
@@ -101,22 +107,27 @@ body.Main-page {
 .HH-Header h1:hover {
     animation-name: HeaderAnim;
     animation-duration: 0.8s;
- }
+    cursor: default;
+}
 
 .HH-footer {
     font-family: BeePollen, Chewy;
+    text-align: center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
 
     width: fit-content;
-
     margin-top: 0.4cm;
-
+    
     border-top-color: #ffb84d;
     border-top-style: solid;
 }
 
 .HH-footer a {
     color: inherit;
-
     text-decoration: none;
 
     display: block;
@@ -130,4 +141,92 @@ body.Main-page {
 
 .HH-footer a:hover {
     text-decoration: underline;
+}
+
+/*Nav Bar & Buttons*/
+#left-nav, #right-nav {
+    position: fixed;
+    width: 322px;
+    height: 768px;
+    top: 0;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+#left-nav {
+    background-image: url(../assets/img/nav/bar/leftNav.jpg);
+    left: 0;
+    border-right: 3px solid #ffb84d;
+}
+
+#right-nav {
+    background-image: url(../assets/img/nav/bar/rightNav.jpg);
+    right: 0;
+    border-left: 3px solid #ffb84d;
+}
+
+.left-bttns, .right-bttns {
+    position: absolute;
+    width: 133px;
+    height: 133px;
+    background-image: url(../assets/img/nav/bttn_icons/bttn_sprites.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    overflow: hidden;
+    clip-path: polygon( 26.5% 0%, 91.5% 10.5%, 100% 60%, 73.5% 100%, 8.5% 89.5%, 0% 40%);
+}
+
+.icon-home { background-position: -316px -163px; }
+.icon-home:hover, .icon-home.active { background-position: -10px -10px; }
+
+.icon-hive { background-position: -469px -316px; }
+.icon-hive:hover, .icon-hive.active { background-position: -163px -10px; }
+
+.icon-post { background-position: -163px -163px; }
+.icon-post:hover, .icon-post.active { background-position: -10px -163px; }
+
+.icon-search { background-position: -316px -10px; }
+.icon-search:hover, .icon-search.active { background-position: -316px -316px; }
+
+.icon-comment { background-position: -10px -316px; }
+.icon-comment:hover, .icon-comment.active { background-position: -163px -469px; }
+
+.icon-buzzboard { background-position: -469px -163px; }
+.icon-buzzboard:hover, .icon-buzzboard.active { background-position: -163px -316px; }
+
+.icon-buzzDropdown { background-position: -469px -10px; }
+.icon-buzzDropdown:hover, .icon-buzzDropdown.active { background-position: -10px -469px; }
+
+/*Button positioning*/
+/*Left Nav */
+#left-nav .icon-hive {
+    top: 142px;
+    left: 154px;
+}
+
+/*Right Nav Positions*/
+#right-nav .icon-buzzboard {
+    top: 404px;
+    right: 149px;
+}
+
+#right-nav .icon-search {
+    top: 243px;
+    right: 5px;
+}
+
+#right-nav .icon-home {
+    top: 365px;
+    right: 32px;
+}
+
+#right-nav .icon-post {
+    top: 280px;
+    right: 125px;
 }

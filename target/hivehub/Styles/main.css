@@ -35,20 +35,30 @@ html {
     transition: all 0.3s ease-in-out;
     background-color: black;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     background-position: center;
 }
 
 #left-nav {
-    background-image: url(../assets/img/leftNav.jpg);
+    background-image: url(../assets/img/nav/bar/leftNav.jpg);
     left: 0;
     border-right: 3px solid #ffb84d;
 }
 
 #right-nav {
-    background-image: url(../assets/img/rightNav.jpg);
+    background-image: url(../assets/img/nav/bar/rightNav.jpg);
     right: 0;
     border-left: 3px solid #ffb84d;
+}
+@media (max-width: 768px) {
+    #left-nav, #right-nav {
+        display: none;
+    }
+
+    /* Adjust main content to take full width when navs are gone */
+    .HH-Home {
+        width: 90% !important;
+    }
 }
 body {
     margin: 0;
@@ -60,7 +70,7 @@ body {
 
 /* For login and signup pages */
 body.SignOn-page {
-    background-image: url(../assets/img/HHBckgrd.jpeg);
+    /* background-image: url(../assets/img/HHBckgrd.jpeg); */
     background-position: center top;
     background-size: 100vw 100vh;
     background-attachment: fixed;
@@ -128,11 +138,9 @@ body.Main-page {
 
 .HH-footer {
     font-family: BeePollen, Chewy;
-
     width: fit-content;
-
     margin-top: 0.4cm;
-
+    text-align: center;
     border-top-color: #ffb84d;
     border-top-style: solid;
 }
