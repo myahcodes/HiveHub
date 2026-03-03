@@ -1,6 +1,8 @@
 
 // make variables:
 
+const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3");
+const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
 const next_month = document.querySelector(".next");
 const prev_month = document.querySelector(".prev");
 const current_month = document.querySelector("#MOY");
@@ -29,6 +31,9 @@ let new_month = 0;
 // Function of enlargement:
 
 next_month.addEventListener("mouseover", function () {
+    hover_audio.currentTime = 0;
+    hover_audio.play();
+
     // enlargen on hover:
     next_month.style.transform = "scale(1.2)";
     document.body.style.cursor = "pointer";
@@ -41,6 +46,9 @@ next_month.addEventListener("mouseout", function () {
 });
 
 prev_month.addEventListener("mouseover", () => {
+    hover_audio.currentTime = 0;
+    hover_audio.play();
+
     //enlargen on hover:
     prev_month.style.transform = "scale(1.2)";
     document.body.style.cursor = "pointer";
@@ -83,6 +91,8 @@ next_month.addEventListener("click", function () {
         default: // regular 31 days
     }
 
+    click_audio.currentTime = 0;
+    click_audio.play();
     current_month.innerHTML = Months[new_month];
 
 });
@@ -116,12 +126,16 @@ prev_month.addEventListener("click", function () {
         default: // regular 31 days
     }
 
+    click_audio.currentTime = 0;
+    click_audio.play();
     current_month.innerHTML = Months[new_month];
 });
 
 // add details toggle:
 
 details_button.addEventListener("mouseover", () => {
+    hover_audio.currentTime = 0;
+    hover_audio.play();
     // do things on hover here: 
     document.body.style.cursor = "pointer";
     details_button.style.backgroundColor = "#ffb84d";
@@ -134,6 +148,9 @@ details_button.addEventListener("mouseout", () =>
 });
 
 details_button.addEventListener("click", () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+
     // reveal self here:
-    show_details.style.overflow = "visible";
+    //show_details.style.overflow;
 });
