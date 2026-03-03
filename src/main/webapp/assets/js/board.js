@@ -1,15 +1,26 @@
 
-// make variables:
+// audio variables:
 
 const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3");
 const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
+
+//month variables:
+
 const next_month = document.querySelector(".next");
 const prev_month = document.querySelector(".prev");
 const current_month = document.querySelector("#MOY");
-const details_button = document.querySelector("#toggle_button");
-const show_details = document.querySelector("#details-content")
+
+//days variables:
+
 const days_grid = document.querySelector(".calendar-grid");
 const days_class = document.getElementsByClassName("days");
+
+//details variables:
+
+const details_container = document.querySelector(".details-section");
+const details_button = document.querySelector("#toggle_button");
+let show_details = document.querySelector("#details-content");
+let cloned = null;
 
 const Months =[
     "January",
@@ -148,9 +159,18 @@ details_button.addEventListener("mouseout", () =>
 });
 
 details_button.addEventListener("click", () => {
+
     click_audio.currentTime = 0;
     click_audio.play();
 
-    // reveal self here:
-    //show_details.style.overflow;
+    if (cloned) {
+        cloned.remove();
+        cloned = null;
+    }
+    else {
+        // reveal self here:
+        const detail_pointer = show_details.content.cloneNode(true);
+        cloned = details_container.appendChild(detail_pointer.firstElementChild);
+        ;
+    }
 });
