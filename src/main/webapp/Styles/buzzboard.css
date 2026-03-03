@@ -119,6 +119,7 @@
     display: flex;
 
     align-items: center;
+    justify-content: center;
     
     box-sizing: border-box;
     border: solid #ffb84d;
@@ -148,6 +149,7 @@
 
 .days p
 {
+    float: right;
     margin: 0 0 auto auto;
     padding: 2.5px;
 }
