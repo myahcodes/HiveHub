@@ -14,6 +14,7 @@ const txt_email = document.createElement("input");
 txt_email.type = "text";
 txt_email.placeholder = "Email";
 txt_email.required = true;
+txt_email.name = "email";
 
 /*Creation of Submit button*/
 
@@ -68,7 +69,30 @@ btn_Login.addEventListener("click", function (event) {
 btn_Submit.addEventListener("click", function (event) {
     event.preventDefault();
     if (!form.checkValidity()) {
+        alert("Please enter your email.");
         return;
     }
-  container.insertBefore(alert("If the email is registered, you will receive password reset instructions."),form);
+
+    const payload = new URLSearchParams({
+        email: txt_email.value.trim()
+    });
+
+    fetch("api/auth/forgot", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
+    })
+        .then(async (response) => {
+            const data = await response.json();
+            if (!response.ok || !data.ok) {
+                throw new Error(data.message || "Unable to submit password reset request.");
+            }
+            alert(data.message);
+            window.location.href = "Login.html";
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
 });

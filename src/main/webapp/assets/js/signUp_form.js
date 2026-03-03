@@ -13,12 +13,16 @@ form.className = "signOn_form";
 const txt_email = document.createElement("input");
 txt_email.type = "text";
 txt_email.placeholder = "Email";
+txt_email.required = true;
+txt_email.name = "email";
 
 /*Full name field*/
 
 const txt_name = document.createElement("input");
 txt_name.type = "text";
 txt_name.placeholder = "Name";
+txt_name.required = true;
+txt_name.name = "name";
 
 /*Username field*/
 
@@ -26,6 +30,7 @@ const txt_username = document.createElement("input");
 txt_username.type = "text";
 txt_username.placeholder = "Username";
 txt_username.required = true;
+txt_username.name = "username";
 
 /*Password field*/
 
@@ -33,6 +38,7 @@ const txt_password = document.createElement("input");
 txt_password.type = "password";
 txt_password.placeholder = "Password";
 txt_password.required = true;
+txt_password.name = "password";
 
 /*Creation of Login Button*/
 
@@ -78,26 +84,30 @@ btn_signup.addEventListener("click", function(event) {
         return;
     }
 
-    const payload = {
-        email: txt_email.value,
-        name: txt_name.value,
-        username: txt_username.value,
+    const payload = new URLSearchParams({
+        email: txt_email.value.trim(),
+        name: txt_name.value.trim(),
+        username: txt_username.value.trim(),
         password: txt_password.value
-    };
+    });
 
-    fetch("api/signup", {
+    fetch("api/auth/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
     })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Signup response:", data);
+        .then(async (response) => {
+            const data = await response.json();
+            if (!response.ok || !data.ok) {
+                throw new Error(data.message || "Sign up failed.");
+            }
+            alert("Account created. Please log in.");
             window.location.href = "Login.html";
         })
         .catch((error) => {
-            console.error("Signup error:", error);
-            alert("Signup failed. Please try again.");
+            alert(error.message);
         });
 });
 

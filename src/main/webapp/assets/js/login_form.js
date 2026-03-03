@@ -13,6 +13,7 @@ const txt_username = document.createElement("input");
 txt_username.type = "text";
 txt_username.placeholder = "Username, email";
 txt_username.required = true;
+txt_username.name = "identifier";
 
 /*Password field*/
 
@@ -20,6 +21,7 @@ const txt_password = document.createElement("input");
 txt_password.type = "password";
 txt_password.placeholder = "Password";
 txt_password.required = true;
+txt_password.name = "password";
 
 /*Creation of Login Button*/
 
@@ -64,23 +66,26 @@ btn_Login.addEventListener("click", function(event) {
         return;
     }
 
-    const payload = {
-        username: txt_username.value,
+    const payload = new URLSearchParams({
+        identifier: txt_username.value.trim(),
         password: txt_password.value
-    };
+    });
 
-    fetch("api/login", {
+    fetch("api/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
     })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Login response:", data);
-            window.location.href = "Home.html";
+        .then(async (response) => {
+            const data = await response.json();
+            if (!response.ok || !data.ok) {
+                throw new Error(data.message || "Login failed.");
+            }
+            window.location.href = data.redirect || "Home.html";
         })
         .catch((error) => {
-            console.error("Login error:", error);
-            alert("Login failed. Please try again.");
+            alert(error.message);
         });
 });
