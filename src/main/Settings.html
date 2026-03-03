@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hivehub</title>
+    <title>Hivehub-Settings</title>
     <link rel="icon" href="webapp/assets/img/icons/defaultPfp.svg" />
     <link rel="stylesheet" href="webapp/Styles/main.css">
+    <link rel="stylesheet" href="webapp/Styles/settings.css"/>
     <!--<link rel="stylesheet" href="Styles/home.css" />-->
 </head>
 <body class="Main-page">
@@ -12,29 +13,68 @@
         <a href="Profile.html" class=""></a>
         <a href="Hive.html" class="left-bttns icon-hive"></a>
     </div>
+
     <div id="right-nav">
         <a href="Discovery.html" class="right-bttns icon-search"></a>
         <a href="Posting.html" class="right-bttns icon-post"></a>
         <a href="Buzzboard.html" class="right-bttns icon-buzzboard"></a>
         <a href="Home.html" class="right-bttns icon-home"></a>
     </div>
-    <div class="HH-authenticator">
+
+    <div class="HH-contents">
+        
         <div class="HH-Header">
             <h1>Settings</h1>
         </div>
+        
+        <div id="search-bar-settings">
+            
+            <div class="searchbar">
+                <img id="search-comb" src="webapp/assets/img/icons/hiveIcon.svg" alt="img"/>
+                <input id="search-bar" placeholder="search" onmousedown="new Audio('/webapp/assets/audio/click-sound.mp3').play()"/>
+            </div>
 
-        <div class="HH-contents">
+        </div>
+
+            <div class= "options">
+
+                <div class="Profile-options">
+                    <h2 class="option">Profile</h2>
+                    <p class="option">Icon</p>
+                    <p class="option">Display name</p>
+                    <p class="option">Bio</p>
+                </div>
+
+                <div class="Account-options">
+                    <h2 class="option">Account</h2>
+                    <p class="option">Change password</p>
+                    <p class="option">Update email/user</p>
+                    <p class="option">Deactivate</p>
+                </div>
+
+                <div class="Privacy-options">
+                    <h2 class="option">Privacy</h2>
+                    <p class="option">Event activity</p>
+                    <p class="option">Visibility</p>
+                    <p class="option">Bio</p>
+                </div>
+                
+            </div>
+
+            <button id="logout_button">Logout</button>
+
             <div>
                 <noscript>Scripts are required to run the site.</noscript>
             </div>
-        </div>
+
+    </div>
 
         <footer class="HH-footer">
-            <a href="Forgot.html">forgot password?</a>
+            <a href="contact.html">contact us</a>
             <a href="about.html">about us</a>
         </footer>
-    </div>
-    <script src=""></script>
+
+    <script src="webapp/assets/js/settings.js"></script>
     <script src="webapp/assets/js/navBttn_activity.js"></script>
 </body>
 </html>
