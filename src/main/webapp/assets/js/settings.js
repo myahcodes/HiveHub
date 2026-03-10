@@ -14,3 +14,48 @@ options_effects.forEach(option => {
         click_audio.play();
     });
 });
+
+
+
+// Display name options:
+
+const profile_options = document.querySelector(".Profile-options");
+const display_template = document.querySelector("#display-change-template");
+const display_option = document.querySelector("#display-option");
+let clone = null;
+
+display_option.addEventListener("click", () => {
+
+    if (clone) {
+        clone.remove();
+        clone = null;
+    }
+    else {
+        const clone_pointer = display_template.content.cloneNode(true);
+        clone = profile_options.appendChild(clone_pointer.firstElementChild);
+    }
+});
+
+//icon options:
+
+//Bio options:
+
+//change password:
+
+//update email/username
+
+//deactivate:
+
+//event activity:
+
+//visibility:
+
+const options_modal = document.querySelector(".option-wrapper");
+const options_elements = options_modal.firstElementChild;
+
+document.body.addEventListener("click", (e) => {
+    if (clone && e.target === options_elements) {
+        clone.remove();
+        clone = null;
+    }
+});
