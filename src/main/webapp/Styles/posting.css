@@ -1,6 +1,4 @@
-/* Complete posting.css with custom dropdown */
-
-.post-card {
+﻿.post-card {
     background: black;
     width: 500px;
     margin: 20px auto;
@@ -389,7 +387,7 @@
     }
 
         .custom-dropdown .dropdown-button::after {
-            content: "?";
+            content: "▼"; /* fixed arrow */
             font-size: 12px;
             color: #ffb84d;
         }
@@ -452,8 +450,189 @@
         flex: 1;
     }
 
-    /* Ensure inputs inside flex row don't have extra bottom margin */
+    
     #location-modal .flex input,
     #location-modal .flex .custom-dropdown {
         margin-bottom: 0;
     }
+
+/* Tag section below title */
+.post-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 8px 0 12px 0;
+    padding: 0 4px;
+}
+
+.tag-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(255, 184, 77, 0.5);
+    color: #ffb84d;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-family: BeePollen, Chewy, sans-serif;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+}
+
+    .tag-trigger:hover {
+        background: rgba(255, 184, 77, 0.2);
+        border-color: #ffb84d;
+    }
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+}
+
+.tag-button {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 184, 77, 0.2);
+    border: 1px solid #ffb84d;
+    color: #ffb84d;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-family: BeePollen, Chewy, sans-serif;
+    border-radius: 16px;
+    cursor: default;
+}
+
+    .tag-button .remove-tag {
+        margin-left: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1;
+    }
+
+        .tag-button .remove-tag:hover {
+            color: black;
+        }
+
+/* Tag modal styles */
+#tag-modal {
+    width: 450px !important;
+    max-width: 95%;
+}
+/* Delete button on custom tags inside modal */
+.tag-opt.custom-tag {
+    position: relative;
+    padding-right: 24px;
+}
+
+.remove-modal-tag {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1;
+    color: #ffb84d;
+}
+
+    .remove-modal-tag:hover {
+        color: black;
+    }
+
+/* Edit input (when double-clicking a custom tag) */
+.tag-opt.edit-input {
+    background: transparent;
+    border: 1px solid #ffb84d;
+    color: #ffb84d;
+    padding: 4px 10px;
+    font-family: BeePollen, Chewy, sans-serif;
+    font-size: 13px;
+    border-radius: 2px;
+    outline: none;
+    width: auto;
+    min-width: 10ch;
+}
+.tag-section-header {
+    color: #ffb84d;
+    font-family: BeePollen, Chewy, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px 0 4px 0;
+    padding-left: 4px;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 4px;
+    background: black;
+}
+
+.tag-opt {
+    background: transparent;
+    border: 1px solid rgba(255, 184, 77, 0.5);
+    color: #ffb84d;
+    padding: 8px 12px;
+    font-family: BeePollen, Chewy, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-align: center;
+}
+
+    .tag-opt:hover {
+        background: rgba(255, 184, 77, 0.2);
+    }
+
+    .tag-opt.selected {
+        background: #ffb84d;
+        color: black;
+        border-color: #ffb84d;
+    }
+
+/* Custom tag input inside Interests row*/
+#Interest-tags input.tag-opt {
+    display: inline-block;
+    width: auto;
+    min-width: 10ch;
+    max-width: 22ch;
+    background: transparent;
+    border: 1px solid rgba(255, 184, 77, 0.5);
+    border-radius: 2px;
+    color: #ffb84d;
+    padding: 8px 12px;
+    font-family: BeePollen, Chewy, sans-serif;
+    font-size: 13px;
+    transition: border-color 0.2s, border-width 0.2s;
+    box-sizing: content-box;
+    cursor: text;
+}
+
+    #Interest-tags input.tag-opt:focus {
+        border-color: #ffb84d;
+        outline: none;
+    }
+
+    #Interest-tags input.tag-opt::placeholder {
+        color: rgba(255, 184, 77, 0.5);
+        text-align: center;
+    }
+
+    #Interest-tags input.tag-opt.warning {
+        border-color: #ff4444 !important;
+        border-width: 2px !important;
+    }
+
+#custom-tag-input .tag-opt {
+    min-height: 10px;
+}

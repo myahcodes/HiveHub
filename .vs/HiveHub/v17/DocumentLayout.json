@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\posting.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\Styles\\posting.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Posting.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\Posting.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\SignUp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\SignUp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\posting.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\Styles\\posting.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\js\\post_form.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\assets\\js\\post_form.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\Styles\\main.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\js\\post_form.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\webapp\\assets\\js\\post_form.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\SignUp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\main\\SignUp.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\home.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -42,23 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 241,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "post_form.js",
-              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\js\\post_form.js",
-              "RelativeDocumentMoniker": "src\\main\\webapp\\assets\\js\\post_form.js",
-              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\js\\post_form.js",
-              "RelativeToolTip": "src\\main\\webapp\\assets\\js\\post_form.js",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAAwA4AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-02-20T03:08:26.125Z"
             },
             {
               "$type": "Document",
@@ -74,26 +62,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Posting.html",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Posting.html",
               "RelativeDocumentMoniker": "src\\main\\Posting.html",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\Posting.html",
               "RelativeToolTip": "src\\main\\Posting.html",
-              "ViewState": "AgIAAAkCAAAAAAAAAAAowBkCAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFYBAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2026-02-20T02:48:46.639Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "posting.css",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\posting.css",
               "RelativeDocumentMoniker": "src\\main\\webapp\\Styles\\posting.css",
               "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\Styles\\posting.css",
               "RelativeToolTip": "src\\main\\webapp\\Styles\\posting.css",
-              "ViewState": "AgIAALcBAAAAAAAAAAAIwMcBAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-02-20T03:25:16.496Z",
               "EditorCaption": ""
@@ -101,6 +89,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "post_form.js",
+              "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\js\\post_form.js",
+              "RelativeDocumentMoniker": "src\\main\\webapp\\assets\\js\\post_form.js",
+              "ToolTip": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\webapp\\assets\\js\\post_form.js",
+              "RelativeToolTip": "src\\main\\webapp\\assets\\js\\post_form.js",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAAAA8BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-20T03:08:26.125Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "SignUp.html",
               "DocumentMoniker": "E:\\School Other\\Software Engineering\\Repos\\HiveHub\\src\\main\\SignUp.html",
               "RelativeDocumentMoniker": "src\\main\\SignUp.html",
@@ -108,8 +108,7 @@
               "RelativeToolTip": "src\\main\\SignUp.html",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-02-20T02:57:15.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-20T02:57:15.907Z"
             },
             {
               "$type": "Document",

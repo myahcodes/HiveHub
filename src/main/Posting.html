@@ -25,7 +25,13 @@
         <div class="post-card p-4">
             <!-- Title Field -->
             <input type="text" id="post-title" placeholder="Title" class="title-input">
-
+            <!--Tag Field-->
+            <div class="post-tags">
+                <button id="tagging" class="tag-trigger">
+                    <i data-lucide="tag" class="w-4 h-4"></i> Add Tags
+                </button>
+                <div id="tag-list" class="tags-container"></div>
+            </div>
             <!--Editor Container-->
             <div class="post-editor">
                 <div class="toolbar">
@@ -99,7 +105,7 @@
         </div>
     </div>
 
-    <!-- Hidden file input for image/video -->
+    <!-- image/video -->
     <input type="file" id="hidden-file-input" accept="image/*,video/*" style="display: none;" />
 
     <!-- Location Modal with custom country dropdown -->
@@ -318,221 +324,33 @@
             <button id="location-cancel">Cancel</button>
         </div>
     </div>
-
+    <div id="tag-modal" class="modal hidden">
+        <h4>Select Tags</h4>
+        <div class="tag-section-header">Post Type</div>
+        <div class="tag-row" id="Type-tags">
+            <button type="button" class="tag-opt" data-tag="Opening">Grand Opening</button>
+            <button type="button" class="tag-opt" data-tag="Event">Event</button>
+            <button type="button" class="tag-opt" data-tag="Announcement">Announcement</button>
+            <button type="button" class="tag-opt" data-tag="Discussion">Discussion</button>
+        </div>
+        <div class="tag-section-header">Interests</div>
+        <div class="tag-row" id="Interest-tags">
+            <button type="button" class="tag-opt" data-tag="Food">Food</button>
+            <button type="button" class="tag-opt" data-tag="Music">Music</button>
+            <button type="button" class="tag-opt" data-tag="Tech">Tech</button>
+            <button type="button" class="tag-opt" data-tag="Art">Art</button>
+            <button type="button" class="tag-opt" data-tag="Thrifting">Thrifting</button>
+            <input type="text" id="custom-tag-input" class="tag-opt" placeholder="New Tag" />
+        </div>
+        <div class="modal-actions">
+            <button id="tag-insert">Add</button>
+            <button id="tag-cancel">Cancel</button>
+        </div>
+    </div>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
-
-    <script type="module">
-        import { Editor } from 'https://esm.sh/@tiptap/core'
-        import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
-        import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder'
-        import Link from 'https://esm.sh/@tiptap/extension-link'
-        import Image from 'https://esm.sh/@tiptap/extension-image'
-
-        lucide.createIcons();
-
-        // Emoji picker setup
-        const pickerContainer = document.getElementById('emoji-picker-container');
-        const picker = picmo.createPicker({
-            rootElement: pickerContainer,
-            showPreview: false,
-            showSearch: true,
-            theme: 'dark'
-        });
-
-        picker.addEventListener('emoji:select', (selection) => {
-            editor.chain().focus().insertContent(selection.emoji).run();
-            pickerContainer.classList.remove('show');
-        });
-
-        document.getElementById('emoji-trigger').onclick = (e) => {
-            e.stopPropagation();
-            pickerContainer.classList.toggle('show');
-        };
-
-        document.addEventListener('click', (e) => {
-            if (!pickerContainer.contains(e.target) && !document.getElementById('emoji-trigger').contains(e.target)) {
-                pickerContainer.classList.remove('show');
-            }
-        });
-
-        // Editor setup
-        const editor = new Editor({
-            element: document.querySelector('#editor-content'),
-            extensions: [
-                StarterKit,
-                Placeholder.configure({
-                    placeholder: 'Text (optional)',
-                }),
-                Link.configure({ openOnClick: false }),
-                Image,
-            ],
-            content: '',
-            onUpdate() { updateToolbarState(); }
-        });
-
-        const commands = {
-            undo: () => editor.chain().focus().undo().run(),
-            redo: () => editor.chain().focus().redo().run(),
-            bold: () => editor.chain().focus().toggleBold().run(),
-            italic: () => editor.chain().focus().toggleItalic().run(),
-            h1: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
-            h2: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
-            paragraph: () => editor.chain().focus().setParagraph().run(),
-            bulletList: () => editor.chain().focus().toggleBulletList().run(),
-            orderedList: () => editor.chain().focus().toggleOrderedList().run(),
-        };
-
-        document.querySelectorAll('[data-cmd]').forEach(btn => {
-            btn.onclick = (e) => {
-                const cmd = btn.getAttribute('data-cmd');
-                if (commands[cmd]) commands[cmd]();
-            };
-        });
-
-        function updateToolbarState() {
-            document.querySelectorAll('[data-cmd]').forEach(btn => {
-                const cmd = btn.getAttribute('data-cmd');
-                const isActive = (cmd === 'h1' || cmd === 'h2')
-                    ? editor.isActive('heading', { level: parseInt(cmd[1]) })
-                    : editor.isActive(cmd);
-
-                if (isActive) btn.classList.add('is-active');
-                else btn.classList.remove('is-active');
-            });
-        }
-
-        // Modal management
-        const backdrop = document.getElementById('modal-backdrop');
-        const linkModal = document.getElementById('link-modal');
-        const locationModal = document.getElementById('location-modal');
-        let currentModal = null;
-
-        function hideAllModals() {
-            if (currentModal) currentModal.classList.add('hidden');
-            backdrop.classList.add('hidden');
-            currentModal = null;
-        }
-
-        function showModal(modal) {
-            if (currentModal) currentModal.classList.add('hidden');
-            modal.classList.remove('hidden');
-            backdrop.classList.remove('hidden');
-            currentModal = modal;
-        }
-
-        backdrop.addEventListener('click', hideAllModals);
-
-        // Link button
-        document.getElementById('btn-link').onclick = (e) => {
-            e.stopPropagation();
-            showModal(linkModal);
-            document.getElementById('link-url').focus();
-        };
-
-        document.getElementById('link-insert').onclick = () => {
-            const url = document.getElementById('link-url').value.trim();
-            if (!url) return;
-            editor.chain().focus().setLink({ href: url }).run();
-            hideAllModals();
-            document.getElementById('link-url').value = '';
-        };
-
-        document.getElementById('link-cancel').onclick = hideAllModals;
-
-        // Image button
-        const hiddenFileInput = document.getElementById('hidden-file-input');
-        document.getElementById('btn-image').onclick = (e) => {
-            e.stopPropagation();
-            hiddenFileInput.click();
-        };
-
-        hiddenFileInput.addEventListener('change', () => {
-            const file = hiddenFileInput.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const dataUrl = e.target.result;
-                if (file.type.startsWith('image/')) {
-                    editor.chain().focus().setImage({ src: dataUrl }).run();
-                } else if (file.type.startsWith('video/')) {
-                    editor.chain().focus().insertContent(`<video controls src="${dataUrl}" style="max-width:100%;"></video>`).run();
-                }
-            };
-            reader.readAsDataURL(file);
-            hiddenFileInput.value = '';
-        });
-
-        // Location button and custom dropdown
-        const countryButton = document.getElementById('country-button');
-        const countryList = document.getElementById('country-list');
-        let selectedCountry = '';
-
-        // Toggle dropdown
-        countryButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            countryList.classList.toggle('hidden');
-        });
-
-        // Select option
-        countryList.querySelectorAll('li').forEach(li => {
-            li.addEventListener('click', () => {
-                const value = li.getAttribute('data-value');
-                const text = li.textContent;
-                countryButton.textContent = text;
-                countryButton.classList.remove('placeholder');
-                selectedCountry = value;
-                countryList.classList.add('hidden');
-            });
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!countryButton.contains(e.target) && !countryList.contains(e.target)) {
-                countryList.classList.add('hidden');
-            }
-        });
-
-        document.getElementById('btn-location').onclick = (e) => {
-            e.stopPropagation();
-            showModal(locationModal);
-        };
-
-        document.getElementById('location-insert').onclick = () => {
-            const street = document.getElementById('loc-street').value.trim();
-            const city = document.getElementById('loc-city').value.trim();
-            const state = document.getElementById('loc-state').value.trim();
-            const zip = document.getElementById('loc-zip').value.trim();
-            // Country is intentionally omitted
-            const parts = [street, city, state, zip].filter(p => p);
-            if (parts.length === 0) return;
-            const address = parts.join(', ');
-            const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
-            editor.chain().focus().insertContent(`<a href="${mapsUrl}" target="_blank" class="location-badge">📍 ${address}</a> `).run();
-            hideAllModals();
-            // Clear fields
-            document.getElementById('loc-street').value = '';
-            document.getElementById('loc-city').value = '';
-            document.getElementById('loc-state').value = '';
-            document.getElementById('loc-zip').value = '';
-            countryButton.textContent = 'Country';
-            countryButton.classList.add('placeholder');
-            selectedCountry = '';
-        };
-
-        document.getElementById('location-cancel').onclick = hideAllModals;
-
-        // Post button
-        document.getElementById('post-btn').onclick = () => {
-            const title = document.getElementById('post-title').value;
-            if (!title) return alert("Title required");
-            const status = document.getElementById('post-status');
-            status.classList.remove('hidden');
-            setTimeout(() => status.classList.add('hidden'), 2000);
-            console.log({ title, html: editor.getHTML() });
-        };
-    </script>
+    <script type="module" src="webapp/assets/js/post_form.js"></script>
     <script src="webapp/assets/js/navBttn_activity.js"></script>
 </body>
 </html>
