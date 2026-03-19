@@ -1,80 +1,75 @@
 package com.hivehub;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class DatabaseConnection {
     
-    private static Properties props = new Properties();
+    private static final String HOST;
+    private static final String PORT;
+    private static final String DATABASE;
+    private static final String USER;
+    private static final String PASSWORD;
+    private static final String URL;
     
-    // Load configuration on class initialization
     static {
-        try {
-            InputStream input = DatabaseConnection.class
-                .getClassLoader()
-                .getResourceAsStream("config.properties");
-            
-            if (input == null) {
-                System.err.println("ERROR: config.properties not found!");
-                System.err.println("Please create config.properties in src/main/resources/");
-                System.err.println("Use config.properties.example as a template.");
-                throw new RuntimeException("config.properties not found in classpath");
+        // Read from Azure environment variables first
+        String host = System.getenv("DB_HOST");
+        String port = System.getenv("DB_PORT");
+        String database = System.getenv("DB_NAME");
+        String user = System.getenv("DB_USER");
+        String password = System.getenv("DB_PASSWORD");
+        
+        // Fall back to config.properties for local development
+        if (host == null || host.isEmpty()) {
+            try {
+                java.util.Properties props = new java.util.Properties();
+                java.io.InputStream input = DatabaseConnection.class
+                    .getClassLoader()
+                    .getResourceAsStream("config.properties");
+                
+                if (input == null) {
+                    throw new RuntimeException("config.properties not found");
+                }
+                
+                props.load(input);
+                host = props.getProperty("db.host");
+                port = props.getProperty("db.port", "5432");
+                database = props.getProperty("db.name");
+                user = props.getProperty("db.user");
+                password = props.getProperty("db.password");
+                
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to load configuration", e);
             }
-            
-            props.load(input);
-            System.out.println("✓ Configuration loaded successfully");
-            
-        } catch (IOException e) {
-            System.err.println("ERROR: Could not load config.properties");
-            e.printStackTrace();
-            throw new RuntimeException("Failed to load configuration", e);
         }
+        
+        HOST = host;
+        PORT = port != null ? port : "5432";
+        DATABASE = database;
+        USER = user;
+        PASSWORD = password;
+        URL = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE + 
+              "?sslmode=require&application_name=HiveHub";
+              
+        System.out.println("✓ Database configuration loaded. Host: " + HOST);
     }
     
-    // Get values from config file
-    private static final String HOST = props.getProperty("db.host");
-    private static final String PORT = props.getProperty("db.port");
-    private static final String DATABASE = props.getProperty("db.name");
-    private static final String USER = props.getProperty("db.user");
-    private static final String PASSWORD = props.getProperty("db.password");
-    private static final String SSL_MODE = props.getProperty("db.sslmode", "verify-full");
-    
-    // Build connection URL
-    private static final String URL = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE + 
-        "?sslmode=" + SSL_MODE + "&application_name=HiveHub";
-    
-    /**
-     * Get database connection
-     * @return Connection to CockroachDB
-     * @throws SQLException if connection fails
-     */
     public static Connection getConnection() throws SQLException {
         try {
             Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException e) {
-            throw new SQLException("PostgreSQL JDBC Driver not found. " +
-                "Make sure postgresql dependency is in pom.xml", e);
+            throw new SQLException("PostgreSQL JDBC Driver not found.", e);
         }
     }
     
-    /**
-     * Test database connection
-     * @return true if connection successful
-     */
     public static boolean testConnection() {
         try (Connection conn = getConnection()) {
-            System.out.println("✓ Connected to CockroachDB successfully!");
-            System.out.println("  Database: " + conn.getCatalog());
-            System.out.println("  Host: " + HOST);
+            System.out.println("✓ Connected to database successfully!");
             return conn != null && !conn.isClosed();
         } catch (SQLException e) {
             System.err.println("✗ Connection test failed: " + e.getMessage());
-            e.printStackTrace();
             return false;
         }
     }
