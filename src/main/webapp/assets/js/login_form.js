@@ -1,6 +1,6 @@
 //cosmetic references:
-const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
-const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3")
+const hover_audio = new Audio("/assets/audio/pop-on.mp3");
+const click_audio = new Audio("/assets/audio/click-sound.mp3")
 
 /*Create references to parent block and footer*/
 

@@ -1,8 +1,8 @@
 
 //cosemtic references:
 
-const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3");
-const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
+const click_audio = new Audio("/assets/audio/click-sound.mp3");
+const hover_audio = new Audio("/assets/audio/pop-on.mp3");
 
 /*Reference containers*/
 const pf_container = document.querySelector(".profile-container");
@@ -11,7 +11,7 @@ const footer = document.querySelector(".HH-footer");
 
 /*Create profile picture element*/
 const pfp_outline = document.createElement("img");
-pfp_outline.src = "/webapp/assets/img/icons/combBlank.svg";
+pfp_outline.src = "/assets/img/icons/combBlank.svg";
 pfp_outline.width = 150;
 pfp_outline.float = "center";
 pfp_outline.onerror = function () { console.log("Error loading profile picture border."); };
@@ -26,7 +26,7 @@ pfp_outline.addEventListener('mouseenter', () => {
 });
 
 const pfp_Icon = document.createElement("img");
-pfp_Icon.src = "/webapp/assets/img/icons/defaultPfp.svg";
+pfp_Icon.src = "/assets/img/icons/defaultPfp.svg";
 pfp_Icon.width = 150;
 pfp_Icon.float = "center";
 pfp_Icon.onerror = function () { console.log("Error loading profile picture."); };
