@@ -1,11 +1,4 @@
-﻿.post-card {
-    background: black;
-    width: 500px;
-    margin: 20px auto;
-    overflow: hidden;
-}
-
-.title-input::placeholder {
+﻿.title-input::placeholder {
     color: rgba(255, 184, 77, 0.5);
 }
 
