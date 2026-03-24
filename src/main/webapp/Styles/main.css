@@ -95,13 +95,29 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(100% - 680px);
     width: 46%;
     min-height: 90vh;
     margin: 40px auto;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 5;
+}
+.HH-Discovery {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 46%;
+    height: fit-content;
+    margin: auto;
+}
+/*Home, New post*/
+.HH-default {
+    background: black;
+    width: 95%;
+    margin: 20px auto;
+    overflow: hidden;
 }
 
 .HH-MyHive button {
