@@ -367,38 +367,40 @@ document.getElementById('location-insert').onclick = () => {
 document.getElementById('location-cancel').onclick = hideAllModals;
 
 // ========== POST BUTTON (single, includes tags) ==========
-document.getElementById('post-btn').onclick = async () => {
+document.getElementById('post-btn').onclick = () => {
     const title = document.getElementById('post-title').value.trim();
-    if (!title) return alert("Title required");
+    if (!title) {
+        alert("Title required");
+        return;
+    }
 
     const body = editor.getHTML();
     const tags = selectedTags.join(',');
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('body', body);
-    formData.append('tags', tags);
+    // Build a form and submit it directly
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'post';
 
-    try {
-        const response = await fetch('post', {
-            method: 'POST',
-            body: formData
-        });
+    const titleField = document.createElement('input');
+    titleField.type = 'hidden';
+    titleField.name = 'title';
+    titleField.value = title;
 
-        if (response.redirected) {
-            window.location.href = response.url; // follow redirect to Home
-        } else if (response.ok) {
-            const status = document.getElementById('post-status');
-            status.classList.remove('hidden');
-            setTimeout(() => {
-                status.classList.add('hidden');
-                window.location.href = 'Home.html';
-            }, 1500);
-        } else {
-            alert('Failed to post. Try again.');
-        }
-    } catch (err) {
-        console.error('Post error:', err);
-        alert('Something went wrong.');
-    }
+    const bodyField = document.createElement('input');
+    bodyField.type = 'hidden';
+    bodyField.name = 'body';
+    bodyField.value = body;
+
+    const tagsField = document.createElement('input');
+    tagsField.type = 'hidden';
+    tagsField.name = 'tags';
+    tagsField.value = tags;
+
+    form.appendChild(titleField);
+    form.appendChild(bodyField);
+    form.appendChild(tagsField);
+
+    document.body.appendChild(form);
+    form.submit();
 };
