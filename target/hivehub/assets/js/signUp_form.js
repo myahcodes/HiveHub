@@ -86,10 +86,10 @@ btn_signup.addEventListener("click", function(event) {
     console.log("Username:", txt_username.value);
     console.log("Password:", txt_password.value ? "***" : "empty");
     
-    console.log("Sending fetch to /hivehub/register");
+    console.log("Sending fetch to /register");
     
     // Send to RegisterServlet
-    fetch('/hivehub/register', {
+    fetch('/register', {
         method: 'POST',
         body: formData
     })
