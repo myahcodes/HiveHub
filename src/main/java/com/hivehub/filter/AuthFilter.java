@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/Home.html", "/Profile.html", "/Settings.html", "/dashboard"}) // add any protected pages
+@WebFilter(urlPatterns = {"/Home.html", "/Posting.html", "/Profile.html", "/Settings.html", "/dashboard"}) // add any protected pages
 public class AuthFilter implements Filter {
 
     @Override
