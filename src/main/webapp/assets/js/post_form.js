@@ -367,15 +367,38 @@ document.getElementById('location-insert').onclick = () => {
 document.getElementById('location-cancel').onclick = hideAllModals;
 
 // ========== POST BUTTON (single, includes tags) ==========
-document.getElementById('post-btn').onclick = () => {
-    const title = document.getElementById('post-title').value;
+document.getElementById('post-btn').onclick = async () => {
+    const title = document.getElementById('post-title').value.trim();
     if (!title) return alert("Title required");
-    const status = document.getElementById('post-status');
-    status.classList.remove('hidden');
-    setTimeout(() => status.classList.add('hidden'), 2000);
-    console.log({
-        title,
-        html: editor.getHTML(),
-        tags: selectedTags
-    });
+
+    const body = editor.getHTML();
+    const tags = selectedTags.join(',');
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('body', body);
+    formData.append('tags', tags);
+
+    try {
+        const response = await fetch('post', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.redirected) {
+            window.location.href = response.url; // follow redirect to Home
+        } else if (response.ok) {
+            const status = document.getElementById('post-status');
+            status.classList.remove('hidden');
+            setTimeout(() => {
+                status.classList.add('hidden');
+                window.location.href = 'Home.html';
+            }, 1500);
+        } else {
+            alert('Failed to post. Try again.');
+        }
+    } catch (err) {
+        console.error('Post error:', err);
+        alert('Something went wrong.');
+    }
 };
