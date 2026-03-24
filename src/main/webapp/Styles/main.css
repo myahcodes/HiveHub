@@ -75,7 +75,7 @@ body {
     margin: auto;
 }
 
-.HH-Home, .HH-Posting {
+.HH-Home {
     font-family: BeePollen, Chewy;
     display: flex;
     flex-direction: column;
@@ -84,6 +84,35 @@ body {
     width: 46%;
     height: fit-content;
     margin: auto;
+}
+.HH-Posting {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 46%;
+    min-height: 90vh;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 5;
+}
+.HH-Discovery {
+    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 46%;
+    height: fit-content;
+    margin: auto;
+}
+/*Home, New post*/
+.HH-default {
+    background: black;
+    width: 95%;
+    margin: 20px auto;
+    overflow: hidden;
 }
 
 .HH-MyHive button {

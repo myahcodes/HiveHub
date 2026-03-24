@@ -65,6 +65,7 @@
 
 .option:hover{
     text-decoration: solid underline #ffb84d;
+    text-shadow: 0px 0px 5px #ffb84d;
     cursor: pointer;
 }
 
