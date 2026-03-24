@@ -22,6 +22,73 @@
             <h1>New Post</h1>
         </div>
         <div class="HH-contents">
+    <input type="text" id="post-title" placeholder="Title" maxlength="300" />
+
+    <div id="tag-list"></div>
+
+    <!-- Toolbar -->
+    <div id="editor-toolbar">
+        <button data-cmd="bold">B</button>
+        <button data-cmd="italic">I</button>
+        <button data-cmd="h1">H1</button>
+        <button data-cmd="h2">H2</button>
+        <button data-cmd="bulletList">• List</button>
+        <button data-cmd="orderedList">1. List</button>
+        <button data-cmd="undo">↩</button>
+        <button data-cmd="redo">↪</button>
+        <button id="btn-link">🔗</button>
+        <button id="btn-image">🖼</button>
+        <button id="btn-location">📍</button>
+        <button id="emoji-trigger">😊</button>
+        <button id="tagging">🏷 Tag</button>
+    </div>
+
+    <!-- Editor -->
+    <div id="editor-content"></div>
+    <div id="emoji-picker-container"></div>
+
+    <!-- Post button -->
+    <button id="post-btn">Post</button>
+    <p id="post-status" class="hidden">Posted!</p>
+
+    <!-- Link Modal -->
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="link-modal" class="hidden">
+        <input type="text" id="link-url" placeholder="https://..." />
+        <button id="link-insert">Insert</button>
+        <button id="link-cancel">Cancel</button>
+    </div>
+
+    <!-- Location Modal -->
+    <div id="location-modal" class="hidden">
+        <input type="text" id="loc-street" placeholder="Street" />
+        <input type="text" id="loc-city" placeholder="City" />
+        <input type="text" id="loc-state" placeholder="State" />
+        <input type="text" id="loc-zip" placeholder="ZIP" />
+        <button id="country-button" class="placeholder">Country</button>
+        <ul id="country-list" class="hidden">
+            <li data-value="US">🇺🇸 United States</li>
+            <li data-value="UK">🇬🇧 United Kingdom</li>
+            <li data-value="CA">🇨🇦 Canada</li>
+        </ul>
+        <button id="location-insert">Insert</button>
+        <button id="location-cancel">Cancel</button>
+    </div>
+
+    <!-- Tag Modal -->
+    <div id="tag-modal" class="hidden">
+        <div id="Interest-tags">
+            <button type="button" class="tag-opt" data-tag="Tech">Tech</button>
+            <button type="button" class="tag-opt" data-tag="Art">Art</button>
+            <button type="button" class="tag-opt" data-tag="Music">Music</button>
+            <button type="button" class="tag-opt" data-tag="Sports">Sports</button>
+            <button type="button" class="tag-opt" data-tag="Gaming">Gaming</button>
+            <input type="text" id="custom-tag-input" placeholder="Add tag..." />
+        </div>
+        <button id="tag-insert">Add</button>
+        <button id="tag-cancel">Cancel</button>
+    </div>
+</div>
 
         </div>
     </div>
