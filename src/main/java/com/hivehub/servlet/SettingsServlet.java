@@ -34,7 +34,18 @@ public class SettingsServlet extends HttpServlet {
 
         long userId = (long) session.getAttribute("userId");
         String action = request.getParameter("action");
-
+        
+        // Add this:
+        if (action == null || action.trim().isEmpty()) {
+            response.getWriter().print("{\"success\":false,\"error\":\"No action specified\"}");
+            return;
+        }
+        
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        try {
+            switch (action) {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
