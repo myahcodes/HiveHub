@@ -45,7 +45,7 @@ public class HomeServlet extends HttpServlet {
                 Post p = posts.get(i);
                 out.print("{");
                 out.print("\"postId\":" + p.getPostId() + ",");
-                out.print("\"userId\":" + p.getUserId() + ",");
+                out.print("\"username\":\"" + escapeJson(p.getUsername()) + "\",");
                 out.print("\"title\":\"" + escapeJson(p.getTitle()) + "\",");
                 out.print("\"body\":\"" + escapeJson(p.getBody()) + "\",");
                 out.print("\"tags\":\"" + escapeJson(p.getTags()) + "\",");
