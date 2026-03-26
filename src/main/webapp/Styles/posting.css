@@ -299,9 +299,17 @@
     color: #ffb84d;
 }
 
-    .modal.hidden {
-        display: none;
-    }
+.modal.hidden {
+    display: none !important;
+}
+
+.modal-backdrop.hidden {
+    display: none !important;
+}
+
+.hidden {
+    display: none !important;
+}
 
     /* Font and placeholder consistency for modals */
     .modal,

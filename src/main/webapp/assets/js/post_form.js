@@ -1,14 +1,16 @@
-﻿import { Editor } from 'https://esm.sh/@tiptap/core'
+import { Editor } from 'https://esm.sh/@tiptap/core'
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
 import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder'
 import Link from 'https://esm.sh/@tiptap/extension-link'
 import Image from 'https://esm.sh/@tiptap/extension-image'
+import { createIcons, icons } from 'https://esm.sh/lucide'
+import { createPicker } from 'https://cdn.jsdelivr.net/npm/picmo@latest/+esm'
 
-lucide.createIcons();
+createIcons({ icons });
 
 // Emoji picker setup
 const pickerContainer = document.getElementById('emoji-picker-container');
-const picker = picmo.createPicker({
+const picker = createPicker({
     rootElement: pickerContainer,
     showPreview: false,
     showSearch: true,
@@ -368,14 +370,39 @@ document.getElementById('location-cancel').onclick = hideAllModals;
 
 // ========== POST BUTTON (single, includes tags) ==========
 document.getElementById('post-btn').onclick = () => {
-    const title = document.getElementById('post-title').value;
-    if (!title) return alert("Title required");
-    const status = document.getElementById('post-status');
-    status.classList.remove('hidden');
-    setTimeout(() => status.classList.add('hidden'), 2000);
-    console.log({
-        title,
-        html: editor.getHTML(),
-        tags: selectedTags
-    });
+    const title = document.getElementById('post-title').value.trim();
+    if (!title) {
+        alert("Title required");
+        return;
+    }
+
+    const body = editor.getHTML();
+    const tags = selectedTags.join(',');
+
+    // Build a form and submit it directly
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'post';
+
+    const titleField = document.createElement('input');
+    titleField.type = 'hidden';
+    titleField.name = 'title';
+    titleField.value = title;
+
+    const bodyField = document.createElement('input');
+    bodyField.type = 'hidden';
+    bodyField.name = 'body';
+    bodyField.value = body;
+
+    const tagsField = document.createElement('input');
+    tagsField.type = 'hidden';
+    tagsField.name = 'tags';
+    tagsField.value = tags;
+
+    form.appendChild(titleField);
+    form.appendChild(bodyField);
+    form.appendChild(tagsField);
+
+    document.body.appendChild(form);
+    form.submit();
 };

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The HiveHub-Posting</title>
+    <link rel="icon" href="assets/img/icons/defaultPfp.svg" />
+    <link rel="stylesheet" href="Styles/main.css" />
+    <link rel="stylesheet" href="Styles/posting.css" />
+</head>
+<body class="Main-page">
+    <div id="left-nav">
+        <a href="Profile.html" class=""></a>
+        <a href="Hive.html" class="left-bttns icon-hive"></a>
+    </div>
+    <div id="right-nav">
+        <a href="Discovery.html" class="right-bttns icon-search"></a>
+        <a href="Posting.html" class="right-bttns icon-post"></a>
+        <a href="Buzzboard.html" class="right-bttns icon-buzzboard"></a>
+        <a href="Home.html" class="right-bttns icon-home"></a>
+    </div>
+    <div class="HH-Posting">
+        <div class="HH-Header">
+            <h1>New Post</h1>
+        </div>
+        <div class="HH-contents">
+            <input type="text" id="post-title" class="title-input" placeholder="Title" maxlength="300" />
+
+            <div class="post-tags">
+                <button type="button" class="tag-trigger" id="tagging">🏷 Tag</button>
+                <div class="tags-container" id="tag-list"></div>
+            </div>
+
+            <div class="post-editor">
+                <div class="toolbar" id="editor-toolbar">
+                    <button data-cmd="bold">B</button>
+                    <button data-cmd="italic">I</button>
+                    <button data-cmd="h1">H1</button>
+                    <button data-cmd="h2">H2</button>
+                    <button data-cmd="bulletList">• List</button>
+                    <button data-cmd="orderedList">1. List</button>
+                    <button data-cmd="undo">↩</button>
+                    <button data-cmd="redo">↪</button>
+                    <button id="btn-link">🔗</button>
+                    <button id="btn-image">🖼</button>
+                    <button id="btn-location">📍</button>
+                    <button id="emoji-trigger">😊</button>
+                </div>
+                <div id="editor-content"></div>
+                <div id="emoji-picker-container"></div>
+                <div class="footer">
+                    <button class="post-btn" id="post-btn">POST</button>
+                    <p id="post-status" class="hidden">Posted!</p>
+                </div>
+            </div>
+
+            <input type="file" id="hidden-file-input" accept="image/*,video/*" style="display:none;" />
+
+            <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+
+            <div id="link-modal" class="modal hidden">
+                <h4>Insert Link</h4>
+                <input type="text" id="link-url" placeholder="https://..." />
+                <div class="modal-actions">
+                    <button id="link-cancel">Cancel</button>
+                    <button id="link-insert">Insert</button>
+                </div>
+            </div>
+
+            <div id="location-modal" class="modal hidden">
+                <h4>Insert Location</h4>
+                <input type="text" id="loc-street" placeholder="Street" />
+                <div class="flex">
+                    <div class="flex-1"><input type="text" id="loc-city" placeholder="City" /></div>
+                    <div class="flex-1"><input type="text" id="loc-state" placeholder="State" /></div>
+                </div>
+                <div class="flex">
+                    <div class="flex-1"><input type="text" id="loc-zip" placeholder="ZIP" /></div>
+                    <div class="flex-1">
+                        <div class="custom-dropdown">
+                            <button id="country-button" class="dropdown-button placeholder">Country</button>
+                            <ul id="country-list" class="dropdown-list hidden">
+                                <li data-value="US">🇺🇸 United States</li>
+                                <li data-value="UK">🇬🇧 United Kingdom</li>
+                                <li data-value="CA">🇨🇦 Canada</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="location-cancel">Cancel</button>
+                    <button id="location-insert">Insert</button>
+                </div>
+            </div>
+
+            <div id="tag-modal" class="modal hidden">
+                <h4>Add Tags</h4>
+                <p class="tag-section-header">Interests</p>
+                <div class="tag-row" id="Interest-tags">
+                    <button type="button" class="tag-opt" data-tag="Tech">Tech</button>
+                    <button type="button" class="tag-opt" data-tag="Art">Art</button>
+                    <button type="button" class="tag-opt" data-tag="Music">Music</button>
+                    <button type="button" class="tag-opt" data-tag="Sports">Sports</button>
+                    <button type="button" class="tag-opt" data-tag="Gaming">Gaming</button>
+                    <input type="text" id="custom-tag-input" class="tag-opt" placeholder="Add tag..." />
+                </div>
+                <div class="modal-actions">
+                    <button id="tag-cancel">Cancel</button>
+                    <button id="tag-insert">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="HH-footer">
+        <a href="Contact.html">contact us</a>
+        <a href="about.html">our mission</a>
+    </footer>
+
+    <script type="module" src="assets/js/post_form.js"></script>
+    <script src="assets/js/navBttn_activity.js"></script>
+</body>
+</html>

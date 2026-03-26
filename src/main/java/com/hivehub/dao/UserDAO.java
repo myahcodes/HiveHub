@@ -39,6 +39,59 @@ public class UserDAO {
         return false;
     }
     
+    public boolean updateName(long userId, String firstName, String lastName) throws SQLException {
+    String sql = "UPDATE users SET first_name = ?, last_name = ? WHERE user_id = ?";
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        pstmt.setString(1, firstName);
+        pstmt.setString(2, lastName != null ? lastName : "");
+        pstmt.setLong(3, userId);
+        return pstmt.executeUpdate() > 0;
+    }
+}
+
+    public boolean updateUsername(long userId, String username) throws SQLException {
+        String sql = "UPDATE users SET username = ? WHERE user_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, username);
+            pstmt.setLong(2, userId);
+            return pstmt.executeUpdate() > 0;
+        }
+    }
+    
+    public boolean updateEmail(long userId, String email) throws SQLException {
+        String sql = "UPDATE users SET email = ? WHERE user_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            pstmt.setLong(2, userId);
+            return pstmt.executeUpdate() > 0;
+        }
+    }
+    
+    public boolean updatePassword(long userId, String hashedPassword) throws SQLException {
+        String sql = "UPDATE users SET password = ? WHERE user_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, hashedPassword);
+            pstmt.setLong(2, userId);
+            return pstmt.executeUpdate() > 0;
+        }
+    }
+    
+    public String getPasswordHash(long userId) throws SQLException {
+        String sql = "SELECT password FROM users WHERE user_id = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setLong(1, userId);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) return rs.getString("password");
+            }
+        }
+        return null;
+    }
+    
     public User authenticateUser(String usernameOrEmail, String password) throws SQLException {
         String sql = "SELECT user_id, username, email, password, first_name, last_name, role_id, created_at " +
                      "FROM users WHERE username = ? OR email = ?";
@@ -109,4 +162,30 @@ public class UserDAO {
         
         return false;
     }
+
+    public User findById(long userId) throws SQLException {
+    String sql = "SELECT user_id, username, email, first_name, last_name, role_id, created_at " +
+                 "FROM users WHERE user_id = ?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        pstmt.setLong(1, userId);
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getLong("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setRoleId(rs.getInt("role_id"));
+                user.setCreatedAt(rs.getTimestamp("created_at"));
+                return user;
+            }
+        }
+    }
+    return null;
+}
 }
