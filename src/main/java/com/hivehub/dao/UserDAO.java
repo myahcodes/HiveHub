@@ -109,4 +109,30 @@ public class UserDAO {
         
         return false;
     }
+
+    public User findById(long userId) throws SQLException {
+    String sql = "SELECT user_id, username, email, first_name, last_name, role_id, created_at " +
+                 "FROM users WHERE user_id = ?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        pstmt.setLong(1, userId);
+
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                User user = new User();
+                user.setUserId(rs.getLong("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setEmail(rs.getString("email"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setRoleId(rs.getInt("role_id"));
+                user.setCreatedAt(rs.getTimestamp("created_at"));
+                return user;
+            }
+        }
+    }
+    return null;
+}
 }
