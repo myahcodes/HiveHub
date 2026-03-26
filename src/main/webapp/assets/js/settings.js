@@ -1,3 +1,4 @@
+let currentAction = null;
 document.addEventListener('DOMContentLoaded', () => {
 
 const hover_control = new Audio("/assets/audio/pop-on.mp3");
@@ -19,8 +20,6 @@ const panelMessage = document.getElementById('panel-message');
 const panelClose = document.getElementById('panel-close');
 const panelCancel = document.getElementById('panel-cancel');
 const panelSave = document.getElementById('panel-save');
-
-let currentAction = null;
 
 function showPanel(title, bodyHTML, action) {
     panelTitle.textContent = title;
