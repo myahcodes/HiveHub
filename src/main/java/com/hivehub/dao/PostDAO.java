@@ -33,26 +33,29 @@ public class PostDAO {
     }
 
     public List<Post> getAllPosts() throws SQLException {
-        List<Post> posts = new ArrayList<>();
-        String sql = "SELECT * FROM posts ORDER BY created_at DESC";
+    List<Post> posts = new ArrayList<>();
+    String sql = "SELECT p.post_id, p.user_id, p.title, p.body, p.tags, p.created_at, u.username " +
+                 "FROM posts p JOIN users u ON p.user_id = u.user_id " +
+                 "ORDER BY p.created_at DESC";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+    try (Connection conn = DatabaseConnection.getConnection();
+         Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(sql)) {
 
-            while (rs.next()) {
-                Post post = new Post();
-                post.setPostId(rs.getLong("post_id"));
-                post.setUserId(rs.getLong("user_id"));
-                post.setTitle(rs.getString("title"));
-                post.setBody(rs.getString("body"));
-                post.setTags(rs.getString("tags"));
-                post.setCreatedAt(rs.getTimestamp("created_at"));
-                posts.add(post);
-            }
+        while (rs.next()) {
+            Post post = new Post();
+            post.setPostId(rs.getLong("post_id"));
+            post.setUserId(rs.getLong("user_id"));
+            post.setTitle(rs.getString("title"));
+            post.setBody(rs.getString("body"));
+            post.setTags(rs.getString("tags"));
+            post.setCreatedAt(rs.getTimestamp("created_at"));
+            post.setUsername(rs.getString("username"));
+            posts.add(post);
         }
-        return posts;
     }
+    return posts;
+}
 
     public List<Post> getPostsByUser(long userId) throws SQLException {
         List<Post> posts = new ArrayList<>();
