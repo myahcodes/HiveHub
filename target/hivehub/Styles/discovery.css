@@ -1,0 +1,16 @@
+.search-input {
+    font-family: BeePollen, Chewy;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    border: 2.5px solid #ffb84d;
+    margin-bottom: 12px;
+    background: black;
+    color: #ffb84d;
+    transition: transform 0.2s ease;
+    outline: none;
+}
+.search-input::placeholder {
+    color: rgba(255, 184, 77, 0.5);
+}
+.discovery-card

@@ -1,0 +1,8 @@
+/workspaces/HiveHub/src/main/java/com/hivehub/DatabaseConnection.java
+/workspaces/HiveHub/src/main/java/com/hivehub/dao/UserDAO.java
+/workspaces/HiveHub/src/main/java/com/hivehub/database/DatabaseManager.java
+/workspaces/HiveHub/src/main/java/com/hivehub/filter/AuthFilter.java
+/workspaces/HiveHub/src/main/java/com/hivehub/model/User.java
+/workspaces/HiveHub/src/main/java/com/hivehub/servlet/LoginServlet.java
+/workspaces/HiveHub/src/main/java/com/hivehub/servlet/RegisterServlet.java
+/workspaces/HiveHub/src/main/java/com/hivehub/test/TestConnection.java

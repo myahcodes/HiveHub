@@ -1,0 +1,8 @@
+com/hivehub/model/User.class
+com/hivehub/filter/AuthFilter.class
+com/hivehub/servlet/RegisterServlet.class
+com/hivehub/test/TestConnection.class
+com/hivehub/DatabaseConnection.class
+com/hivehub/database/DatabaseManager.class
+com/hivehub/servlet/LoginServlet.class
+com/hivehub/dao/UserDAO.class

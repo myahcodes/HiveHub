@@ -1,0 +1,194 @@
+@font-face {
+    font-family: Magic;
+    src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: BeePollen;
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+}
+
+.HH-contents
+{
+    font-family: BeePollen, Chewy;
+    
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.HH-Buzzboard {
+    display:flex;
+
+    flex-direction: column;
+    
+    max-width: auto;
+    padding: 0 10px 0 10px;
+
+    background-color: #ffb84d;
+    border: solid #ffb84d;
+}
+
+.month-nav
+{
+    display:flex;
+
+    background-color: #ffb84d;
+
+    gap:30px;
+}
+
+.month-panel 
+{
+    display:flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: black;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    background-color: #ffb84d;
+}
+
+.month-nav li
+{
+    font-family: BeePollen, Chewy;
+
+    list-style-type: none;
+
+    display: inline-flex;
+
+    align-self: center;
+    justify-self: center;
+}
+
+#MOY
+{
+    width: 200px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.prev
+{
+    display: flex;
+
+    justify-content: center;
+
+    margin-right: 5px;
+}
+
+.next
+{
+    display: flex;
+
+    justify-content: center;
+
+    margin-left: 5px;
+}
+
+.calendar-grid {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 100px;
+    grid-gap: 1.1px 1.5px;
+
+    width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    background-color: #ffb84d;
+    background-color: #ffb84d;
+
+    list-style-type: none;
+}
+
+.calendar-grid li
+{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    
+    box-sizing: border-box;
+    border: solid #ffb84d;
+    aspect-ratio:1/1;
+}
+
+.weekdays 
+{
+    color: black;
+    background-color: #ffb84d;
+}
+
+.days 
+{
+    display: flex;
+
+    align-items: flex-start;
+
+    color: #ffb84d;
+    background-color: black;
+
+    box-sizing: border-box;
+    
+    
+    box-sizing: border-box;
+}
+
+.days p
+{
+    float: right;
+    margin: 0 0 auto auto;
+    padding: 2.5px;
+}
+
+.days:hover
+{
+    color: black;
+
+    background-color: #ffb84d;
+
+    border: 1px solid black;
+}
+
+.details-section
+{
+    color: black;
+}
+
+#toggle_button
+{
+    display:flex; 
+
+    justify-self: center;
+
+    background-color: black;
+
+    width: 40px;
+    height: 10px;
+    margin-top: 25px;
+
+    border: 3px outset;
+    border-radius: 5px;
+    border-color: black;
+}
+
+#details-content
+{
+    display: list-item;
+
+    background-color: #ffb84d;
+    overflow: hidden;
+}

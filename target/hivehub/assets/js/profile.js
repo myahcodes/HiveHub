@@ -1,53 +1,50 @@
-
-/*Reference containers*/
-const pf_container = document.querySelector(".profile-container");
-const buzz_container = document.querySelector(".buzz-container");
-const footer = document.querySelector(".HH-footer");
-
-/*Create profile picture element*/
-const pfp_outline = document.createElement('img');
-pfp_outline.src = 'assets/icons/combBlank.svg';
-pfp_outline.width = 150;
-pfp_outline.float = "center";
-pfp_outline.onerror = function () { console.log("Error loading profile picture border."); };
-
-pfp_outline.addEventListener('mouseover', () => {
-    pfp_outline.classList.add('shake');
-
-    pfp_outline.addEventListener('animationend', () =>
-        pfp_outline.classList.remove('shake'),
-        { once: true }
-    );
-});
-
-const pfp_Icon = document.createElement('img');
-pfp_Icon.src = 'assets/icons/defaultPfp.svg';
-pfp_Icon.width = 150;
-pfp_Icon.float = "center";
-pfp_Icon.onerror = function () { console.log("Error loading profile picture."); };
-
-/*Create settings icon*/
-const settings_icon = document.createElement('img');
-
-/*Create My Buzz elements*/
-const 
-
-const new_buzz = document.createElement('button');
-new_buzz.textContent = "New";
-new_buzz.style.padding = "4px 25px";
-
-const old_buzz = document.createElement('button');
-old_buzz.textContent = "Old";
-old_buzz.style.padding = "4px 25px";
-
-const buzz = document.createElement('button');
-buzz.textContent = "Buzz";
-buzz.style.padding = "4px 25px";
-
-/*Place elements*/
-pf_container.appendChild(pfp_outline);
-pf_container.appendChild(pfp_Icon);
-
-buzz_container.appendChild(new_buzz);
-buzz_container.appendChild(old_buzz);
-buzz_container.appendChild(buzz);
+async function loadProfile() {
+    try {
+        const response = await fetch('api/profile');
+        if (response.status === 401) {
+            window.location.href = 'Login.html';
+            return;
+        }
+        const data = await response.json();
+        document.getElementById('profile-name').textContent = data.firstName + ' ' + data.lastName;
+        document.getElementById('profile-username').textContent = '@' + data.username;
+        document.getElementById('profile-email').textContent = data.email;
+        const container = document.getElementById('user-posts');
+        container.innerHTML = '';
+        if (data.posts.length === 0) {
+            container.innerHTML = '<p style="color:#ffb84d; text-align:center;">No posts yet.</p>';
+            return;
+        }
+        data.posts.forEach(post => {
+            const buzz = document.createElement('div');
+            buzz.className = 'buzz';
+            buzz.innerHTML = `
+                <div class="buzz-header">
+                    <img src="assets/img/icons/defaultPfp.svg" alt="Profile" class="profile" />
+                    <div class="user-info">
+                        <span>@${data.username}</span>
+                        <span class="user-info-divide">${new Date(post.createdAt).toLocaleDateString()}</span>
+                        ${post.tags ? '<span class="distance">' + post.tags + '</span>' : ''}
+                    </div>
+                </div>
+                <div class="buzz-content">
+                    <h3 style="color:#ffb84d; margin-bottom:8px;">${post.title}</h3>
+                    <div style="color:#ffb84d;">${post.body}</div>
+                </div>
+                <div class="buzz-actions">
+                    <div style="display: flex; gap: 15px;">
+                        <button class="action-bttns commentFeedIcon"></button>
+                        <button class="action-bttns addToBuzzboardIcon"></button>
+                    </div>
+                    <div>
+                        <button class="action-bttns shareIcon"></button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(buzz);
+        });
+    } catch (err) {
+        console.error('Failed to load profile:', err);
+    }
+}
+loadProfile();
