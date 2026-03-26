@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 const hover_control = new Audio("/assets/audio/pop-on.mp3");
 const click_audio = new Audio("/assets/audio/classic-click.mp3");
 
@@ -9,7 +11,6 @@ options_effects.forEach(option => {
     });
 });
 
-// Panel elements
 const panel = document.getElementById('settings-panel');
 const backdrop = document.getElementById('panel-backdrop');
 const panelTitle = document.getElementById('panel-title');
@@ -40,7 +41,6 @@ panelClose.addEventListener('click', hidePanel);
 panelCancel.addEventListener('click', hidePanel);
 backdrop.addEventListener('click', hidePanel);
 
-// Option click handlers
 document.querySelectorAll('.option').forEach(option => {
     option.addEventListener('click', () => {
         click_audio.currentTime = 0;
@@ -68,23 +68,36 @@ document.querySelectorAll('.option').forEach(option => {
     });
 });
 
-// Save handler
 panelSave.addEventListener('click', async () => {
     const formData = new FormData();
 
     if (currentAction === 'updateProfile') {
+        const firstName = document.getElementById('field-firstName').value.trim();
+        const lastName = document.getElementById('field-lastName').value.trim();
+        if (!firstName && !lastName) {
+            panelMessage.textContent = 'Please enter a value to update.';
+            panelMessage.style.color = 'red';
+            return;
+        }
         formData.append('action', 'updateProfile');
-        formData.append('firstName', document.getElementById('field-firstName').value.trim());
-        formData.append('lastName', document.getElementById('field-lastName').value.trim());
+        formData.append('firstName', firstName);
+        formData.append('lastName', lastName);
 
     } else if (currentAction === 'updateEmailUser') {
         const username = document.getElementById('field-username').value.trim();
         const email = document.getElementById('field-email').value.trim();
 
+        if (!username && !email) {
+            panelMessage.textContent = 'Please enter a username or email.';
+            panelMessage.style.color = 'red';
+            return;
+        }
+
         if (username) {
-            formData.append('action', 'updateUsername');
-            formData.append('username', username);
-            const res = await fetch('settings', { method: 'POST', body: formData });
+            const fd = new FormData();
+            fd.append('action', 'updateUsername');
+            fd.append('username', username);
+            const res = await fetch('settings', { method: 'POST', body: fd });
             const data = await res.json();
             if (!data.success) {
                 panelMessage.textContent = data.error || 'Failed to update username.';
@@ -94,10 +107,10 @@ panelSave.addEventListener('click', async () => {
         }
 
         if (email) {
-            const emailForm = new FormData();
-            emailForm.append('action', 'updateEmail');
-            emailForm.append('email', email);
-            const res = await fetch('settings', { method: 'POST', body: emailForm });
+            const fd = new FormData();
+            fd.append('action', 'updateEmail');
+            fd.append('email', email);
+            const res = await fetch('settings', { method: 'POST', body: fd });
             const data = await res.json();
             if (!data.success) {
                 panelMessage.textContent = 'Failed to update email.';
@@ -115,6 +128,12 @@ panelSave.addEventListener('click', async () => {
         const newPass = document.getElementById('field-newPassword').value;
         const confirmPass = document.getElementById('field-confirmPassword').value;
 
+        if (!newPass) {
+            panelMessage.textContent = 'Please enter a new password.';
+            panelMessage.style.color = 'red';
+            return;
+        }
+
         if (newPass !== confirmPass) {
             panelMessage.textContent = 'Passwords do not match.';
             panelMessage.style.color = 'red';
@@ -124,6 +143,11 @@ panelSave.addEventListener('click', async () => {
         formData.append('action', 'updatePassword');
         formData.append('currentPassword', document.getElementById('field-currentPassword').value);
         formData.append('newPassword', newPass);
+
+    } else {
+        panelMessage.textContent = 'No action selected.';
+        panelMessage.style.color = 'red';
+        return;
     }
 
     try {
@@ -145,7 +169,6 @@ panelSave.addEventListener('click', async () => {
     }
 });
 
-// Logout
 document.getElementById('logout_button').addEventListener('click', () => {
     click_audio.currentTime = 0;
     click_audio.play();
@@ -153,3 +176,5 @@ document.getElementById('logout_button').addEventListener('click', () => {
         window.location.href = 'logout';
     }, 300);
 });
+
+}); // end DOMContentLoaded
