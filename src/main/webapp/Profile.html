@@ -26,18 +26,19 @@
 
         <div class="HH-contents">
             <div class="profile-container">
-
+                <img src="assets/img/icons/defaultPfp.svg" alt="Profile Picture" class="profile-pic" id="profile-pic" />
                 <div class="label-area">
-                    <h1>Name</h1>
-                    <h1>Username</h1>
+                    <h2 id="profile-name">Loading...</h2>
+                    <span id="profile-username" style="color: rgba(255,184,77,0.7);">@username</span>
+                    <span id="profile-email" style="color: rgba(255,184,77,0.5); font-size:13px;"></span>
                 </div>
-
+                <button id="logout-btn" onclick="window.location.href='logout'">Log Out</button>
             </div>
-
-            <div class="buzz-container">
-               
+        
+            <div class="buzz-container" id="user-posts">
+                <p style="color:#ffb84d; text-align:center;">Loading your posts...</p>
             </div>
-
+        
             <div>
                 <noscript>Scripts are required to run the site.</noscript>
             </div>
