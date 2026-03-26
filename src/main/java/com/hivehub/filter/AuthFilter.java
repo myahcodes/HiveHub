@@ -1,11 +1,4 @@
-package com.hivehub.filter;
-
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.*;
-import java.io.IOException;
-
-@WebFilter(urlPatterns = {"/Home.html", "/Posting.html", "/Profile.html", "/Settings.html", "/dashboard", "/api/posts", "/api/profile", "/settings"}) // add any protected pages
+@WebFilter(urlPatterns = {"/Home.html", "/Posting.html", "/Profile.html", "/Settings.html", "/api/posts", "/api/profile", "/settings"})
 public class AuthFilter implements Filter {
 
     @Override
@@ -19,9 +12,15 @@ public class AuthFilter implements Filter {
         boolean loggedIn = session != null && session.getAttribute("username") != null;
 
         if (loggedIn) {
-            chain.doFilter(request, response); // ✅ let them through
+            chain.doFilter(request, response);
         } else {
-            httpRes.sendRedirect(httpReq.getContextPath() + "/Login.html"); // ❌ kick them out
+            String uri = httpReq.getRequestURI();
+            // For API/servlet endpoints return 401 instead of redirecting
+            if (uri.contains("/api/") || uri.endsWith("/settings") || uri.endsWith("/post")) {
+                httpRes.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            } else {
+                httpRes.sendRedirect(httpReq.getContextPath() + "/Login.html");
+            }
         }
     }
 
