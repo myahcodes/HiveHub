@@ -1,14 +1,16 @@
-﻿import { Editor } from 'https://esm.sh/@tiptap/core'
+import { Editor } from 'https://esm.sh/@tiptap/core'
 import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
 import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder'
 import Link from 'https://esm.sh/@tiptap/extension-link'
 import Image from 'https://esm.sh/@tiptap/extension-image'
+import { createIcons, icons } from 'https://esm.sh/lucide'
+import { createPicker } from 'https://cdn.jsdelivr.net/npm/picmo@latest/+esm'
 
-lucide.createIcons();
+createIcons({ icons });
 
 // Emoji picker setup
 const pickerContainer = document.getElementById('emoji-picker-container');
-const picker = picmo.createPicker({
+const picker = createPicker({
     rootElement: pickerContainer,
     showPreview: false,
     showSearch: true,
