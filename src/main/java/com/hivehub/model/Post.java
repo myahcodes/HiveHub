@@ -9,7 +9,11 @@ public class Post {
     private String body;
     private String tags;
     private Timestamp createdAt;
+    private String username;
 
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    
     public long getPostId() { return postId; }
     public void setPostId(long postId) { this.postId = postId; }
 
