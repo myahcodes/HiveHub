@@ -68,7 +68,9 @@ document.querySelectorAll('.option').forEach(option => {
     });
 });
 
-panelSave.addEventListener('click', async () => {
+document.getElementById('settings-panel').addEventListener('click', async (e) => {
+    if (!e.target || e.target.id !== 'panel-save') return;
+    
     const formData = new FormData();
 
     if (currentAction === 'updateProfile') {
