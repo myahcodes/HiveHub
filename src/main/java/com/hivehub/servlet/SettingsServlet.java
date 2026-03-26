@@ -34,20 +34,14 @@ public class SettingsServlet extends HttpServlet {
 
         long userId = (long) session.getAttribute("userId");
         String action = request.getParameter("action");
-        
-        // Add this:
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+
         if (action == null || action.trim().isEmpty()) {
             response.getWriter().print("{\"success\":false,\"error\":\"No action specified\"}");
             return;
         }
-        
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        
-        try {
-            switch (action) {
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
 
         try {
             switch (action) {
@@ -79,7 +73,6 @@ public class SettingsServlet extends HttpServlet {
                     String currentPassword = request.getParameter("currentPassword");
                     String newPassword = request.getParameter("newPassword");
                     String storedHash = userDAO.getPasswordHash(userId);
-
                     if (storedHash != null && BCrypt.checkpw(currentPassword, storedHash)) {
                         String newHash = BCrypt.hashpw(newPassword, BCrypt.gensalt());
                         boolean success = userDAO.updatePassword(userId, newHash);
