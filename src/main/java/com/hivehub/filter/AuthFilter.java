@@ -1,3 +1,10 @@
+package com.hivehub.filter;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.*;
+import java.io.IOException;
+
 @WebFilter(urlPatterns = {"/Home.html", "/Posting.html", "/Profile.html", "/Settings.html", "/api/posts", "/api/profile", "/settings"})
 public class AuthFilter implements Filter {
 
@@ -15,7 +22,6 @@ public class AuthFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             String uri = httpReq.getRequestURI();
-            // For API/servlet endpoints return 401 instead of redirecting
             if (uri.contains("/api/") || uri.endsWith("/settings") || uri.endsWith("/post")) {
                 httpRes.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             } else {
