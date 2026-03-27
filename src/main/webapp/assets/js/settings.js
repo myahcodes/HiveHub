@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const panelSave = document.getElementById('panel-save');
     
     function showPanel(title, bodyHTML, action) {
+        console.log("showPanel called with action:", action);
         panelTitle.textContent = title;
         panelBody.innerHTML = bodyHTML;
         panelMessage.textContent = '';
