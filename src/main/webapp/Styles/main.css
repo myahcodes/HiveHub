@@ -41,6 +41,11 @@ html {
     .HH-Home {
         width: 90% !important;
     }
+
+    .HH-contents{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 body {

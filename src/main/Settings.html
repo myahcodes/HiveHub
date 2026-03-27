@@ -39,24 +39,148 @@
         <div class="options">
 
             <div class="Profile-options">
+
                 <h2 class="option">Profile</h2>
-                <p class="option">Icon</p>
-                <p class="option">Display name</p>
-                <p class="option">Bio</p>
+
+                <p id="icon-option" class="option">Icon</p>
+
+                <template id="icon-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+                            
+                            <div class="option-background">
+                                <h3>Pick an Icon</h3>
+                                <p>icon content here</p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <p id="display-option" class="option">Display name</p>
+
+                <template id="display-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <h3>Change Display name</h3>
+
+                                <div class="input-row">
+                                    <p>New name: </p>
+                                    <input id="name-change-input" />
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+
+                </template>
+
+                <p id="bio-option" class="option">Bio</p>
+
+                <template id="bio-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <h3>Whats buzzing with you?</h3>
+
+                                <div class="input-row">
+                                    <input />
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </template>
+
             </div>
 
             <div class="Account-options">
                 <h2 class="option">Account</h2>
-                <p class="option">Change password</p>
-                <p class="option">Update email/user</p>
-                <p class="option">Deactivate</p>
+
+                <p id="password-option" class="option">Change password</p>
+
+                <template id="password-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <div class="input-row">
+                                    <p>Current Password:</p>
+                                    <input />
+                                    <p>New Password:</p>
+                                    <input />
+                                    <p>Retype Password:</p>
+                                    <input />
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <p id="email-option" class="option">Update email/user</p>
+
+                <template id="email-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <div class="input-row">
+                                    <p>New email:</p>
+                                    <input />
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <p id="delete-option" class="option">Deactivate</p>
+
+                <template id="account-deletion-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <h3>Pick an Icon</h3>
+                                <p>icon content here</p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                </template>
+
             </div>
 
             <div class="Privacy-options">
                 <h2 class="option">Privacy</h2>
-                <p class="option">Event activity</p>
-                <p class="option">Visibility</p>
-                <p class="option">Bio</p>
+
+                <p id="event-option" class="option">Event activity</p>
+
+
+                <p id="visibility-option" class="option">Visibility</p>
+
+
             </div>
 
         </div>

@@ -100,7 +100,6 @@
     padding: 0;
 
     background-color: #ffb84d;
-    background-color: #ffb84d;
 
     list-style-type: none;
 }
@@ -130,7 +129,8 @@
     background-color: black;
     box-sizing: border-box;
     box-sizing: border-box;
-    cursor: var(--default-cursor);
+    box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .days p
@@ -171,10 +171,13 @@
     border-color: black;
 }
 
-#details-content
+#details-wrapper
 {
     display: list-item;
 
     background-color: #ffb84d;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+
+    scrollbar-color: black #ffb84d;
 }
