@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     document.getElementById('panel-save').addEventListener('click', async () => {
+        console.log("Save clicked, currentAction:", currentAction);   
         
         const formData = new FormData();
     
