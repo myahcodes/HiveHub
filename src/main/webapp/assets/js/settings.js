@@ -1,6 +1,7 @@
-let currentAction = null;
+
 document.addEventListener('DOMContentLoaded', () => {
 
+    let currentAction = null;
     const hover_control = new Audio("/assets/audio/pop-on.mp3");
     const click_audio = new Audio("/assets/audio/classic-click.mp3");
     
@@ -67,8 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    document.getElementById('settings-panel').addEventListener('click', async (e) => {
-        if (!e.target || e.target.id !== 'panel-save') return;
+    document.getElementById('panel-save').addEventListener('click', async () => {
         
         const formData = new FormData();
     
