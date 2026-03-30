@@ -31,13 +31,10 @@
     border: solid #ffb84d;
 }
 
-.month-nav
-{
-    display:flex;
-
+.month-nav {
+    display: flex;
     background-color: #ffb84d;
-
-    gap:30px;
+    gap: 30px;
 }
 
 .month-panel 
@@ -67,31 +64,25 @@
     justify-self: center;
 }
 
-#MOY
-{
+#MOY {
     width: 200px;
-
     display: flex;
-
     justify-content: center;
+    cursor: var(--default-cursor);
 }
 
-.prev
-{
+.prev {
     display: flex;
-
     justify-content: center;
-
     margin-right: 5px;
+    cursor: var(--pointer-cursor);
 }
 
-.next
-{
+.next {
     display: flex;
-
     justify-content: center;
-
     margin-left: 5px;
+    cursor: var(--pointer-cursor);
 }
 
 .calendar-grid {
@@ -131,15 +122,14 @@
     background-color: #ffb84d;
 }
 
-.days 
-{
+.days {
     display: flex;
-
     align-items: flex-start;
-
     color: #ffb84d;
     background-color: black;
-
+    box-sizing: border-box;
+    box-sizing: border-box;
+    box-sizing: border-box;
     box-sizing: border-box;
 }
 

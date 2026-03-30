@@ -1,3 +1,8 @@
+:root {
+    --default-cursor: url('/webapp/assets/img/icons/cursors/honeyCursor.png') 2 2, auto;
+    --pointer-cursor: url('/webapp/assets/img/icons/cursors/honeyPointer.png') 8 3, pointer;
+    --text-cursor: url('/webapp/assets/img/icons/cursors/honeyText.png') 4 7, text;
+}
 @font-face {
     font-family: Magic;
     src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
@@ -50,6 +55,28 @@ body {
     color: #ffb84d;
     min-height: 100%;
 }
+/*Change cursors*/
+html, body {
+    cursor: var(--default-cursor);
+}
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+label[onclick],
+[onclick] {
+    cursor: var(--pointer-cursor);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+[contenteditable="true"] {
+    cursor: var(--text-cursor);
+}
+
 
     /* For login and signup pages */
     body.SignOn-page {
