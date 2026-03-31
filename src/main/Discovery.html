@@ -21,10 +21,23 @@
     </div>
     <div class="HH-Discovery">
         <div class="discovery-window">
-            <div class="search-bar">
-                <img src="" />
-                <input type="text" placeholder="Find a new hive.." class="search-input" name="search">
+            <div id="search-bar-discovery">
+
+                <div class="searchbar">
+                    <svg id="search-comb" aria-hidden="true">
+                        <use href="webapp/assets/img/activityBar/activitySprites.svg#search"></use>
+                    </svg>
+                    <input id="search-bar" placeholder="Find a new hive.." onmousedown="new Audio('/webapp/assets/audio/click-sound.mp3').play()" />
+                </div>
+
             </div>
+            <!--<form action="/search" method="get" class="search-bar">
+                <span class="search-icon">
+                    <img src="search-icon.svg" alt="" aria-hidden="true">
+                    <button type="submit" class="visually-hidden">Search</button>
+                </span>
+                <input type="text" placeholder="Find a new hive.." class="search-input" name="search">
+            </form>-->
             <div class="discovery-feed">
                 <!-- Discovery content goes here -->
                 <div class="row">

@@ -1,7 +1,7 @@
 :root {
-    --default-cursor: url('/webapp/assets/img/icons/cursors/honeyCursor.png') 2 2, auto;
-    --pointer-cursor: url('/webapp/assets/img/icons/cursors/honeyPointer.png') 8 3, pointer;
-    --text-cursor: url('/webapp/assets/img/icons/cursors/honeyText.png') 4 7, text;
+    --default-cursor: url("/webapp/assets/img/icons/cursors/honeyCursor.png") 2 2, auto;
+    --pointer-cursor: url("/webapp/assets/img/icons/cursors/honeyPointer.png") 8 3, pointer;
+    --text-cursor: url("/webapp/assets/img/icons/cursors/honeyText.png") 4 7, text;
 }
 @font-face {
     font-family: Magic;
@@ -56,6 +56,22 @@ body {
     min-height: 100%;
 }
 /*Change cursors*/
+/* Default cursor hover effects */
+/*.cursor-pointer-hover img {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.cursor-text-hover img {
+    transform: scale(0.9);
+    filter: brightness(0.8);
+}*/
+
+/* Hide the default system cursor */
+/*html, body {
+    cursor: none;
+}*/
+
 html, body {
     cursor: var(--default-cursor);
 }
@@ -124,7 +140,7 @@ textarea,
     align-items: center;
     width: 46%;
     min-height: 90vh;
-    margin: 40px auto;
+    margin: auto;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 5;
