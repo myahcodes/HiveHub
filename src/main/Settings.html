@@ -48,19 +48,19 @@
 
                     <div class="option-wrapper">
                         <div class="elements-container">
-                            
+
                             <div class="option-background">
                                 <h3>Pick an Icon</h3>
                                 <p>icon content here</p>
                             </div>
-                            
+
                         </div>
 
                     </div>
 
                 </template>
 
-                <p id="display-option" class="option">Display name</p>
+                <p id="display-option" class="option">Display</p>
 
                 <template id="display-change-template">
 
@@ -75,7 +75,7 @@
                                     <input id="name-change-input" />
                                 </div>
                             </div>
-                            
+
 
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                                     <input />
                                 </div>
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -120,12 +120,12 @@
                                     <p>Current Password:</p>
                                     <input />
                                     <p>New Password:</p>
-                                    <input />
-                                    <p>Retype Password:</p>
-                                    <input />
+                                    <input type="password"/>
+                                    <p>Confirm new Password:</p>
+                                    <input type="password"/>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -143,9 +143,11 @@
                                 <div class="input-row">
                                     <p>New email:</p>
                                     <input />
+                                    <p>Confirm new email:</p>
+                                    <input />
                                 </div>
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -160,10 +162,10 @@
                         <div class="elements-container">
 
                             <div class="option-background">
-                                <h3>Pick an Icon</h3>
-                                <p>icon content here</p>
+                                <h3>Delete Account</h3>
+                                <p>Are you sure you want to delete your account?</p>
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -177,15 +179,20 @@
 
                 <p id="event-option" class="option">Event activity</p>
 
+                <div id="visibility-container">
+                    <p id="visibility-option" class="option" data-bs-toggle="tooltip" title="turn off to hide your account">Visibility</p>
 
-                <p id="visibility-option" class="option">Visibility</p>
-
+                    <label class="visibility-toggle">
+                        <input type="checkbox" />
+                        <span id="slider" onclick="new Audio('/webapp/assets/audio/click-sound.mp3').play()"></span>
+                    </label>
+                </div>
 
             </div>
 
         </div>
 
-        <button id="logout_button">Logout</button>
+        <button id="logout_button" onclick="window.location.href = 'Login.html'">Logout</button>
 
         <div>
             <noscript>Scripts are required to run the site.</noscript>
@@ -199,6 +206,7 @@
     </div>
 
     <script src="webapp/assets/js/settings.js"></script>
+    <script src="webapp/assets/js/settings_searchbar.js"></script>
     <script src="webapp/assets/js/navBttn_activity.js"></script>
 </body>
 </html>
