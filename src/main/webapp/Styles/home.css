@@ -66,6 +66,11 @@
         transform: rotate(90deg);
     }
 /*Post*/
+.buzz-content a {
+    color: #ffb84d;
+    text-decoration: none;
+}
+
 .buzz-content p {
     margin: 0 0 10px 0;
     line-height: 1.4;
