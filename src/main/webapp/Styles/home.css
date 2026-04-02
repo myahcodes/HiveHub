@@ -90,8 +90,21 @@
     display: flex;
     gap: 15px;
 }
-
 .action-bttns {
+    background: none;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+    .action-bttns .icon {
+        width: 30px;
+        height: 30px;
+        fill: currentColor; /* inherits button text color */
+        transition: fill 0.2s;
+    }
+/*.action-bttns {
     width: 30px;
     height: 30px;
     background-image: url(../assets/img/activityBar/activitySprites.png);
@@ -103,7 +116,7 @@
     overflow: visible;
     display: block;
     position: relative;
-}
+}*/
 
 .action-bttns:hover {transform: scale(1.15);}
 

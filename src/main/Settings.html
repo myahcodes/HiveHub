@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hivehub-Settings</title>
+    <link rel="icon" href="webapp/assets/img/icons/defaultPfp.svg" />
+    <link rel="stylesheet" href="webapp/Styles/main.css">
+    <link rel="stylesheet" href="webapp/Styles/settings.css"/>
+    <!--<link rel="stylesheet" href="Styles/home.css" />-->
+</head>
+<body class="Main-page">
+    <div id="left-nav">
+        <a href="Profile.html" class=""></a>
+        <a href="Hive.html" class="left-bttns icon-hive"></a>
+    </div>
+
+    <div id="right-nav">
+        <a href="Discovery.html" class="right-bttns icon-search"></a>
+        <a href="Posting.html" class="right-bttns icon-post"></a>
+        <a href="Buzzboard.html" class="right-bttns icon-buzzboard"></a>
+        <a href="Home.html" class="right-bttns icon-home"></a>
+    </div>
+
+    <div class="HH-contents">
+
+        <div class="HH-Header">
+            <h1>Settings</h1>
+        </div>
+
+        <div id="search-bar-settings">
+
+            <div class="searchbar">
+                <img id="search-comb" src="webapp/assets/img/icons/hiveIcon.svg" alt="img" />
+                <input id="search-bar" placeholder="search" onmousedown="new Audio('/webapp/assets/audio/click-sound.mp3').play()" />
+            </div>
+
+        </div>
+
+        <div class="options">
+
+            <div class="Profile-options">
+
+                <h2 class="option">Profile</h2>
+
+                <p id="icon-option" class="option">Icon</p>
+
+                <template id="icon-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <h3>Pick an Icon</h3>
+                                <p>icon content here</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <p id="display-option" class="option">Display</p>
+
+                <template id="display-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <h3>Change Display name</h3>
+
+                                <div class="input-row">
+                                    <p>New name: </p>
+                                    <input id="name-change-input" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </template>
+
+                <p id="bio-option" class="option">Bio</p>
+
+                <template id="bio-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <h3>Whats buzzing with you?</h3>
+
+                                <div class="input-row">
+                                    <input />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+            <div class="Account-options">
+                <h2 class="option">Account</h2>
+
+                <p id="password-option" class="option">Change password</p>
+
+                <template id="password-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <div class="input-row">
+                                    <p>Current Password:</p>
+                                    <input />
+                                    <p>New Password:</p>
+                                    <input type="password"/>
+                                    <p>Confirm new Password:</p>
+                                    <input type="password"/>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <p id="email-option" class="option">Update email/user</p>
+
+                <template id="email-change-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <div class="input-row">
+                                    <p>New email:</p>
+                                    <input />
+                                    <p>Confirm new email:</p>
+                                    <input />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+                <p id="delete-option" class="option">Deactivate</p>
+
+                <template id="account-deletion-template">
+
+                    <div class="option-wrapper">
+                        <div class="elements-container">
+
+                            <div class="option-background">
+                                <h3>Delete Account</h3>
+                                <p>Are you sure you want to delete your account?</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+            <div class="Privacy-options">
+                <h2 class="option">Privacy</h2>
+
+                <p id="event-option" class="option">Event activity</p>
+
+                <div id="visibility-container">
+                    <p id="visibility-option" class="option" data-bs-toggle="tooltip" title="turn off to hide your account">Visibility</p>
+
+                    <label class="visibility-toggle">
+                        <input type="checkbox" />
+                        <span id="slider" onclick="new Audio('/webapp/assets/audio/click-sound.mp3').play()"></span>
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <button id="logout_button" onclick="window.location.href = 'Login.html'">Logout</button>
+
+        <div>
+            <noscript>Scripts are required to run the site.</noscript>
+        </div>
+
+        <footer class="HH-footer">
+            <a href="contact.html">contact us</a>
+            <a href="about.html">about us</a>
+        </footer>
+
+    </div>
+
+    <script src="webapp/assets/js/settings.js"></script>
+    <script src="webapp/assets/js/settings_searchbar.js"></script>
+    <script src="webapp/assets/js/navBttn_activity.js"></script>
+</body>
+</html>

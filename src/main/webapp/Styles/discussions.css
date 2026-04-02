@@ -58,6 +58,10 @@
     table-layout: fixed;
 }
 
+#topics-header:hover{
+    cursor: default;
+}
+
 #topics-header th{
     padding: 20px;
     border-bottom: solid thick #ffb84d;
@@ -65,6 +69,7 @@
 
 .topics-row td:hover{
     cursor: pointer;
+    text-decoration: dotted #ffb84d;
 }
 
 .topic-col{

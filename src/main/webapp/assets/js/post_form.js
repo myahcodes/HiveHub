@@ -136,7 +136,7 @@ tagButton.addEventListener('click', (e) => {
     showModal(tagModal);
 });
 
-// Helper to create a new custom tag button (with delete & edit)
+//create a new custom tag button
 function createCustomTagButton(tagName) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -155,8 +155,6 @@ function createCustomTagButton(tagName) {
     btn.querySelector('.remove-modal-tag').addEventListener('click', (e) => {
         e.stopPropagation();
         btn.remove(); // remove from modal
-        // Also remove from selectedTags if it was selected? We'll let the user handle via modal "Add" button.
-        // No need to update selectedTags now; it will be refreshed when "Add" is clicked.
     });
 
     // Double-click to edit
