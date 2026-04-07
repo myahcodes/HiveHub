@@ -1,3 +1,16 @@
+package com.hivehub.servlet;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+
+import java.io.File;
+import java.io.IOException;
+
 @WebServlet("/api/upload")
 @MultipartConfig
 public class UploadServlet extends HttpServlet {
@@ -10,7 +23,6 @@ public class UploadServlet extends HttpServlet {
         Part filePart = request.getPart("image");
         String fileName = System.currentTimeMillis() + "_" + filePart.getSubmittedFileName();
 
-        // Save to a folder inside your webapp
         String uploadDir = getServletContext().getRealPath("/uploads");
         File dir = new File(uploadDir);
         if (!dir.exists()) dir.mkdirs();
