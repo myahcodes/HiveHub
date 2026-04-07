@@ -32,11 +32,52 @@ html {
     min-height: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+    #left-nav, #right-nav {
+        width: 250px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #left-nav, #right-nav {
+        width: 180px;
+    }
+
+    .HH-Home,
+    .HH-Posting,
+    .HH-Discovery {
+        width: 55% !important;
+    }
+}
+
+@media (max-width: 800px) {
+    #left-nav, #right-nav {
+        width: 120px;
+    }
+
+    .HH-Home,
+    .HH-Posting,
+    .HH-Discovery {
+        width: 65% !important;
+    }
+}
+
+@media (max-width: 640px) {
     #left-nav, #right-nav {
         display: none;
     }
 
+    .HH-Home,
+    .HH-Posting,
+    .HH-Discovery,
+    .HH-MyHive {
+        width: 95% !important;
+    }
+
+    .HH-Header h1 {
+        font-size: 40px;
+    }
+}
     /* Adjust main content to take full width when navs are gone */
     .HH-Home {
         width: 90% !important;
@@ -224,6 +265,7 @@ textarea,
 #left-nav, #right-nav {
     position: fixed;
     width: 322px;
+    min-width: 0;
     height: 768px;
     top: 0;
     z-index: 10;
