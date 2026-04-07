@@ -7,6 +7,53 @@ const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3")
 const container = document.querySelector(".HH-contents");
 const footer = document.querySelector(".HH-footer");
 
+function buildApiUrl(path) {
+    if (window.location.protocol === "file:") {
+        return `http://localhost:8080/hivehub${path}`;
+    }
+
+    return path.replace(/^\//, "");
+}
+
+async function trySignup(payload) {
+    const authResponse = await fetch(buildApiUrl("/api/auth/signup"), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
+    });
+
+    if (authResponse.status !== 404) {
+        const data = await authResponse.json();
+        if (!authResponse.ok || !data.ok) {
+            throw new Error(data.message || "Sign up failed.");
+        }
+        return;
+    }
+
+    // Fallback for feature/mysql-integration flow.
+    const formData = new FormData();
+    formData.append("username", txt_username.value.trim());
+    formData.append("password", txt_password.value);
+    formData.append("email", txt_email.value.trim());
+    formData.append("name", txt_name.value.trim());
+
+    const legacyResponse = await fetch(buildApiUrl("/register"), {
+        method: "POST",
+        body: formData
+    });
+
+    if (legacyResponse.redirected) {
+        window.location.href = legacyResponse.url;
+        return;
+    }
+
+    if (!legacyResponse.ok) {
+        throw new Error("Sign up failed.");
+    }
+}
+
 /*Create form*/
 
 const form = document.createElement("form");
@@ -17,6 +64,8 @@ form.className = "signOn_form";
 const txt_email = document.createElement("input");
 txt_email.type = "text";
 txt_email.placeholder = "Email";
+txt_email.required = true;
+txt_email.name = "email";
 
 txt_email.onfocus = () => {
     click_audio.currentTime = 0;
@@ -28,6 +77,8 @@ txt_email.onfocus = () => {
 const txt_name = document.createElement("input");
 txt_name.type = "text";
 txt_name.placeholder = "Name";
+txt_name.required = true;
+txt_name.name = "name";
 
 txt_name.onfocus = () => {
     click_audio.currentTime = 0;
@@ -40,6 +91,7 @@ const txt_username = document.createElement("input");
 txt_username.type = "text";
 txt_username.placeholder = "Username";
 txt_username.required = true;
+txt_username.name = "username";
 
 txt_username.onfocus = () => {
     click_audio.currentTime = 0;
@@ -52,6 +104,7 @@ const txt_password = document.createElement("input");
 txt_password.type = "password";
 txt_password.placeholder = "Password";
 txt_password.required = true;
+txt_password.name = "password";
 
 txt_password.onfocus = () => {
     click_audio.currentTime = 0;
@@ -63,6 +116,7 @@ txt_password.onfocus = () => {
 const btn_Login = document.createElement("button");
 btn_Login.textContent = "Login";
 btn_Login.id = "login_button";
+btn_Login.type = "button";
 
 btn_Login.style.color = " #ffb84d";
 btn_Login.style.backgroundColor = "black";
@@ -107,9 +161,21 @@ btn_signup.addEventListener("click", function(event) {
         return;
     }
 
-    setTimeout(() => {
-        window.location.href = "Login.html";// Redirects to login page
-    }, 550); // equivalent to 5.5 milliseconds
+    const payload = new URLSearchParams({
+        email: txt_email.value.trim(),
+        name: txt_name.value.trim(),
+        username: txt_username.value.trim(),
+        password: txt_password.value
+    });
+
+    trySignup(payload)
+        .then(() => {
+            alert("Account created. Please log in.");
+            window.location.href = "Login.html";
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
 });
 
 btn_Login.addEventListener("click", function(event) {

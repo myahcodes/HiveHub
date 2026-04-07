@@ -5,6 +5,7 @@ This a repository for the WebApp, HiveHub which is community calendar and event 
 * Alana Henry
 * Ande Adams
 * Andrea Mabry
+* Jaydon Linsey
 
 # Extensions:
 * Tomcat (AI-rimi): Advanced Apache Tomcat management. Full server control, smart deployment, browser integration and debugging support, ctr+s to deploy.

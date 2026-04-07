@@ -1,0 +1,4 @@
+# Copy this file to src/main/resources/database.properties and set values for local development.
+db.url=jdbc:mysql://localhost:3306/hivehub?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+db.username=root
+db.password=your_password_here
