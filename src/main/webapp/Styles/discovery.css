@@ -23,7 +23,7 @@
 #search-bar-discovery {
     display: flex;
     justify-content: right;
-    width: 675px;
+    width: 588px;
     height: 50px;
     border: #ffb84d solid;
 }
@@ -31,24 +31,78 @@
 .searchbar {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: stretch;
+    padding: 8px;
 }
 
-#search-comb {
+.search-icons {
     width: 40px;
     height: 40px;
-    padding: 7px 10px 7px 7px;
 }
+
+.bizzy-bttn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+#bizzy-bee {
+    transform: translateY(-1.5px);
+    scale: 1.8;
+    transform-origin: center;
+}
+
+    #bizzy-bee:hover {
+        animation-name: HeaderAnim;
+        animation-duration: 0.8s;
+    }
+/*    #bizzy-bee.animate-on-load {
+        animation: HeaderAnim 0.8s;
+    }*/
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1999;
+}
+    .modal-backdrop.hidden {
+        display: none;
+    }
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*    background: black;
+    border: 2px solid #ffb84d;*/
+    background: #ffb84d;
+    padding: 24px;
+    z-index: 2000;
+    /*    box-shadow: 0 8px 16px rgba(255, 184, 77, 0.3);
+    color: #ffb84d;*/
+    width: 44%;
+    height: 100%;
+    color: black;
+}
+    .modal.hidden {
+        display: none;
+    }
 
 #search-bar {
     font-family: inherit;
     color: inherit;
     display: flex;
-    align-self: center;
-    height: 45px;
-    width: 610px;
+    justify-content: center;
+    width: stretch;
     background-color: black;
     border-style: none;
     outline: none;
+    padding: 0 8px 0 8px;
 }
 
     #search-bar::placeholder {
@@ -65,13 +119,15 @@
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
 .discovery-window {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 592px;
     height: fit-content;
 }
+
 .row {
     display: -ms-flexbox;
     display: flex;
@@ -79,6 +135,7 @@
     flex-wrap: wrap;
     padding: 0 4px;
 }
+
 .column {
     -ms-flex: 25%; /* IE10 */
     flex: 25%;
