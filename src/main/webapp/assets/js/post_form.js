@@ -294,25 +294,20 @@ document.getElementById('btn-image').onclick = (e) => {
     e.stopPropagation();
     hiddenFileInput.click();
 };
-//Sends image to api/upload on server and inserts returned URL
-hiddenFileInput.addEventListener('change', async () => {
+// Reads the selected file and embeds it directly into the editor as base64
+hiddenFileInput.addEventListener('change', () => {
     const file = hiddenFileInput.files[0];
     if (!file) return;
-
-    if (file.type.startsWith('image/')) {
-        const formData = new FormData();
-        formData.append('image', file);
-
-        try {
-            const res = await fetch('api/upload', { method: 'POST', body: formData });
-            const data = await res.json();
-            editor.chain().focus().setImage({ src: data.imageUrl }).run();
-        } catch (err) {
-            console.error('Image upload failed:', err);
-            alert('Image upload failed.');
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const dataUrl = e.target.result;
+        if (file.type.startsWith('image/')) {
+            editor.chain().focus().setImage({ src: dataUrl }).run();
+        } else if (file.type.startsWith('video/')) {
+            editor.chain().focus().insertContent(`<video controls src="${dataUrl}" style="max-width:100%;"></video>`).run();
         }
-    }
-
+    };
+    reader.readAsDataURL(file);
     hiddenFileInput.value = '';
 });
 // ========== LOCATION BUTTON ==========
