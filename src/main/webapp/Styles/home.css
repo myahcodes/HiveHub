@@ -80,6 +80,14 @@
     margin: 0 0 10px 0;
     line-height: 1.4;
 }
+.buzz-content img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    display: block;
+}
 .buzz-media {
     width: 100%;
     height: 360px;
