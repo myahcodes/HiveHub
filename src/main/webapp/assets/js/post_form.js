@@ -294,23 +294,27 @@ document.getElementById('btn-image').onclick = (e) => {
     e.stopPropagation();
     hiddenFileInput.click();
 };
-
-hiddenFileInput.addEventListener('change', () => {
+//Sends image to api/upload on server and inserts returned URL
+hiddenFileInput.addEventListener('change', async () => {
     const file = hiddenFileInput.files[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const dataUrl = e.target.result;
-        if (file.type.startsWith('image/')) {
-            editor.chain().focus().setImage({ src: dataUrl }).run();
-        } else if (file.type.startsWith('video/')) {
-            editor.chain().focus().insertContent(`<video controls src="${dataUrl}" style="max-width:100%;"></video>`).run();
+
+    if (file.type.startsWith('image/')) {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        try {
+            const res = await fetch('api/upload', { method: 'POST', body: formData });
+            const data = await res.json();
+            editor.chain().focus().setImage({ src: data.imageUrl }).run();
+        } catch (err) {
+            console.error('Image upload failed:', err);
+            alert('Image upload failed.');
         }
-    };
-    reader.readAsDataURL(file);
+    }
+
     hiddenFileInput.value = '';
 });
-
 // ========== LOCATION BUTTON ==========
 const countryButton = document.getElementById('country-button');
 const countryList = document.getElementById('country-list');
