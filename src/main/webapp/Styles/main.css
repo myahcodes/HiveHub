@@ -32,50 +32,31 @@ html {
     min-height: 100%;
 }
 
-@media (max-width: 1200px) {
-    #left-nav, #right-nav {
-        width: 250px;
-    }
+.HH-Home,
+.HH-Posting,
+.HH-Discovery,
+.HH-MyHive,
+.HH-contents {
+    margin-left: 322px;
+    margin-right: 322px;
+    width: auto !important;
+    box-sizing: border-box;
 }
 
-@media (max-width: 1000px) {
-    #left-nav, #right-nav {
-        width: 180px;
-    }
-
-    .HH-Home,
-    .HH-Posting,
-    .HH-Discovery {
-        width: 55% !important;
-    }
-}
-
-@media (max-width: 800px) {
-    #left-nav, #right-nav {
-        width: 120px;
-    }
-
-    .HH-Home,
-    .HH-Posting,
-    .HH-Discovery {
-        width: 65% !important;
-    }
-}
-
-@media (max-width: 640px) {
-    #left-nav, #right-nav {
-        display: none;
-    }
-
+@media (max-width: 900px) {
     .HH-Home,
     .HH-Posting,
     .HH-Discovery,
-    .HH-MyHive {
+    .HH-MyHive,
+    .HH-contents {
+        margin-left: 0;
+        margin-right: 0;
         width: 95% !important;
+        margin: 0 auto;
     }
 
-    .HH-Header h1 {
-        font-size: 40px;
+    #left-nav, #right-nav {
+        display: none;
     }
 }
     /* Adjust main content to take full width when navs are gone */
