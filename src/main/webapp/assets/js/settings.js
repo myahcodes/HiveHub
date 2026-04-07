@@ -180,7 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
             panelMessage.textContent = 'Network error.';
             panelMessage.style.color = 'red';
         }
-    
+     });
+
+        
     document.getElementById('logout_button').addEventListener('click', () => {
         click_audio.currentTime = 0;
         click_audio.play();
