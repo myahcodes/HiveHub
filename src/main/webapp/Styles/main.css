@@ -135,7 +135,7 @@ textarea,
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 46%;
+    width: 90%;
     height: fit-content;
     margin: auto;
 }
@@ -144,7 +144,7 @@ textarea,
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 46%;
+    width: 90%;
     min-height: 90vh;
     margin: auto;
     padding: 0 20px;
@@ -157,7 +157,7 @@ textarea,
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 46%;
+    width: 90%;
     height: fit-content;
     margin: auto;
 }
