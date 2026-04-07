@@ -68,7 +68,6 @@
 .option:hover{
     text-decoration: solid underline #ffb84d;
     text-shadow: 0px 0px 5px #ffb84d;
-    cursor: pointer;
 }
 
 .option-wrapper{
@@ -125,6 +124,59 @@
     border: solid thin #ffb84d;
 }
 
+#color-options{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border: solid thin #ffb84d;
+    background-color: red;
+    width: 200px;
+    height: 40px;
+}
+
+#color-options span{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}
+
+#pink-color{
+    background-color: hotpink;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#lightblue-color{
+    background-color: deepskyblue;
+    top: 0;
+    bottom: 0;
+    left: 25px;
+}
+
+#blue-color {
+    background-color: blue;
+    top: 0;
+    bottom: 0;
+    left: 50px;
+}
+
+#lilac-color{
+    background-color: mediumpurple;
+    top: 0;
+    bottom: 0;
+    right: 25px;
+}
+
+#green-color {
+    background-color: lawngreen;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
 #visibility-container{
     display: flex;
     flex-direction: row;
@@ -162,7 +214,6 @@
     border-radius: 50%;
 }
 #slider{
-    cursor: pointer;
     position: absolute;
     background-color: black;
     top: 0;
@@ -186,7 +237,6 @@ input:checked + #slider::before{
 }
 
 #logout_button{
-    cursor:pointer;
 
     font-family: inherit;
     font-size: 17px;
