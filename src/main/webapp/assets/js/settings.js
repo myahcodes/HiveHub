@@ -99,10 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             if (username) {
-                const fd = new FormData();
-                fd.append('action', 'updateUsername');
-                fd.append('username', username);
-                const res = await fetch('settings', { method: 'POST', body: fd });
+                const res = await fetch('settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `action=updateUsername&username=${encodeURIComponent(username)}`
+                });
                 const data = await res.json();
                 console.log('updateUsername response:', data);
                 if (!data.success) {
@@ -113,10 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
     
             if (email) {
-                const fd = new FormData();
-                fd.append('action', 'updateEmail');
-                fd.append('email', email);
-                const res = await fetch('settings', { method: 'POST', body: fd });
+                const res = await fetch('settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `action=updateEmail&email=${encodeURIComponent(email)}`
+                });
                 const data = await res.json();
                 console.log('updateEmail response:', data);
                 if (!data.success) {
