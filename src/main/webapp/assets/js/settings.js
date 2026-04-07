@@ -70,8 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     document.getElementById('panel-save').addEventListener('click', async () => {
-        console.log("Save clicked, currentAction:", currentAction);   
-        
+        const username = document.getElementById('field-username')?.value.trim();
+        const email = document.getElementById('field-email')?.value.trim();
+        console.log('username:', username, 'email:', email, 'action:', currentAction);
+            
         const formData = new FormData();
     
         if (currentAction === 'updateProfile') {
