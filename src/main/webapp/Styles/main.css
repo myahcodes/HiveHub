@@ -41,16 +41,7 @@ html {
         padding-right: 0;
     }
 }
-    /* Adjust main content to take full width when navs are gone */
-    .HH-Home {
-        width: 90% !important;
-    }
 
-    .HH-contents{
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
 
 body {
     margin: 0;
