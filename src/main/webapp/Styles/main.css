@@ -3,7 +3,6 @@
     --pointer-cursor: url("/webapp/assets/img/icons/cursors/honeyPointer.png") 8 3, pointer;
     --text-cursor: url("/webapp/assets/img/icons/cursors/honeyText.png") 4 7, text;
 }
-
 @font-face {
     font-family: Magic;
     src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
@@ -15,9 +14,17 @@
 }
 
 @keyframes HeaderAnim {
-    33% { transform: rotate(10deg); }
-    66% { transform: rotate(-10deg); }
-    100% { transform: rotate(0deg); }
+    33% {
+        transform: rotate(10deg);
+    }
+
+    66% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 html {
@@ -25,32 +32,19 @@ html {
     min-height: 100%;
 }
 
-body.Main-page {
-    padding-left: 322px;
-    padding-right: 322px;
-    box-sizing: border-box;
-}
+@media (max-width: 768px) {
+    #left-nav, #right-nav {
+        display: none;
+    }
 
-@media (max-width: 1200px) {
-    #left-nav, #right-nav { width: 250px; }
-    body.Main-page { padding-left: 250px; padding-right: 250px; }
-}
+    /* Adjust main content to take full width when navs are gone */
+    .HH-Home {
+        width: 90% !important;
+    }
 
-@media (max-width: 1000px) {
-    #left-nav, #right-nav { width: 180px; }
-    body.Main-page { padding-left: 180px; padding-right: 180px; }
-}
-
-@media (max-width: 800px) {
-    #left-nav, #right-nav { width: 120px; }
-    body.Main-page { padding-left: 120px; padding-right: 120px; }
-}
-
-@media (max-width: 600px) {
-    #left-nav, #right-nav { display: none; }
-    body.Main-page { padding-left: 0; padding-right: 0; }
-    .HH-Home, .HH-Posting, .HH-Discovery, .HH-MyHive {
-        width: 95% !important;
+    .HH-contents{
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -60,12 +54,6 @@ body {
     background-color: black;
     color: #ffb84d;
     min-height: 100%;
-}
-
-body.Main-page {
-    padding-left: 322px;
-    padding-right: 322px;
-    box-sizing: border-box;
 }
 /*Change cursors*/
 /* Default cursor hover effects */
@@ -141,7 +129,7 @@ textarea,
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 46%;
     height: fit-content;
     margin: auto;
 }
@@ -150,7 +138,7 @@ textarea,
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
+    width: 46%;
     min-height: 90vh;
     margin: auto;
     padding: 0 20px;
@@ -163,7 +151,7 @@ textarea,
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 46%;
     height: fit-content;
     margin: auto;
 }
@@ -236,16 +224,14 @@ textarea,
 #left-nav, #right-nav {
     position: fixed;
     width: 322px;
-    min-width: 0;
     height: 768px;
     top: 0;
     z-index: 10;
     transition: all 0.3s ease-in-out;
     background-color: black;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     background-position: center;
-    overflow: hidden;
 }
 
 #left-nav {
