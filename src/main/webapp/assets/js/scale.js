@@ -4,14 +4,14 @@ function scaleApp() {
 
     if (windowWidth < naturalWidth) {
         const scale = windowWidth / naturalWidth;
-        document.body.style.transform = `scale(${scale})`;
-        document.body.style.transformOrigin = 'top left';
-        document.body.style.width = `${naturalWidth}px`;
-        document.body.style.height = `${window.innerHeight / scale}px`;
+        document.documentElement.style.transform = `scale(${scale})`;
+        document.documentElement.style.transformOrigin = 'top left';
+        document.documentElement.style.width = `${naturalWidth}px`;
+        document.documentElement.style.height = `${window.innerHeight / scale}px`;
     } else {
-        document.body.style.transform = 'scale(1)';
-        document.body.style.width = '100%';
-        document.body.style.height = 'auto';
+        document.documentElement.style.transform = 'scale(1)';
+        document.documentElement.style.width = '100%';
+        document.documentElement.style.height = 'auto';
     }
 }
 
