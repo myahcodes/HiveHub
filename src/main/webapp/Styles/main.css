@@ -61,6 +61,12 @@ body {
     color: #ffb84d;
     min-height: 100%;
 }
+
+body.Main-page {
+    padding-left: 322px;
+    padding-right: 322px;
+    box-sizing: border-box;
+}
 /*Change cursors*/
 /* Default cursor hover effects */
 /*.cursor-pointer-hover img {
