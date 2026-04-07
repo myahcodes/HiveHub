@@ -1,7 +1,8 @@
 package com.hivehub.servlet;
 
-import com.hivehub.model.UserRecord;
-import com.hivehub.store.InMemoryUserStore;
+import com.hivehub.dao.AuthUserDao;
+import com.hivehub.dao.AuthUserDao.AuthUser;
+import com.hivehub.service.EmailService;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 @WebServlet(name = "AuthServlet", urlPatterns = {
         "/api/auth/signup",
@@ -19,6 +21,14 @@ import java.io.PrintWriter;
         "/api/auth/session"
 })
 public class AuthServlet extends HttpServlet {
+    private AuthUserDao authUserDao;
+    private EmailService emailService;
+
+    @Override
+    public void init() {
+        authUserDao = new AuthUserDao();
+        emailService = new EmailService();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -30,6 +40,7 @@ public class AuthServlet extends HttpServlet {
 
         HttpSession session = req.getSession(false);
         Object username = session == null ? null : session.getAttribute("username");
+        Object userId = session == null ? null : session.getAttribute("userId");
 
         if (username == null) {
             writeJson(resp, HttpServletResponse.SC_OK, "{\"ok\":true,\"authenticated\":false}");
@@ -37,7 +48,8 @@ public class AuthServlet extends HttpServlet {
         }
 
         writeJson(resp, HttpServletResponse.SC_OK,
-                "{\"ok\":true,\"authenticated\":true,\"username\":\"" + escapeJson(username.toString()) + "\"}");
+                "{\"ok\":true,\"authenticated\":true,\"userId\":\"" + escapeJson(String.valueOf(userId))
+                        + "\",\"username\":\"" + escapeJson(username.toString()) + "\"}");
     }
 
     @Override
@@ -78,12 +90,23 @@ public class AuthServlet extends HttpServlet {
             return;
         }
 
-        String hash = BCrypt.hashpw(password, BCrypt.gensalt());
-        UserRecord newUser = new UserRecord(email, fullName, username, hash, System.currentTimeMillis());
+        try {
+            if (authUserDao.findByIdentifier(username) != null || authUserDao.emailExists(email)) {
+                writeJson(resp, HttpServletResponse.SC_CONFLICT,
+                        "{\"ok\":false,\"message\":\"Username or email already exists\"}");
+                return;
+            }
 
-        if (!InMemoryUserStore.addUser(newUser)) {
-            writeJson(resp, HttpServletResponse.SC_CONFLICT,
-                    "{\"ok\":false,\"message\":\"Username or email already exists\"}");
+            String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+            boolean created = authUserDao.createUser(email, fullName, username, hash);
+            if (!created) {
+                writeJson(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                        "{\"ok\":false,\"message\":\"Unable to create account\"}");
+                return;
+            }
+        } catch (SQLException e) {
+            writeJson(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    "{\"ok\":false,\"message\":\"Database error during signup\"}");
             return;
         }
 
@@ -101,18 +124,25 @@ public class AuthServlet extends HttpServlet {
             return;
         }
 
-        UserRecord user = InMemoryUserStore.findByIdentifier(identifier);
-        if (user == null || !BCrypt.checkpw(password, user.getPasswordHash())) {
-            writeJson(resp, HttpServletResponse.SC_UNAUTHORIZED,
-                    "{\"ok\":false,\"message\":\"Invalid credentials\"}");
-            return;
+        try {
+            AuthUser user = authUserDao.findByIdentifier(identifier);
+            if (user == null || !BCrypt.checkpw(password, user.getPasswordHash())) {
+                writeJson(resp, HttpServletResponse.SC_UNAUTHORIZED,
+                        "{\"ok\":false,\"message\":\"Invalid credentials\"}");
+                return;
+            }
+
+            HttpSession session = req.getSession(true);
+            session.setAttribute("userId", user.getUserId());
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("email", user.getEmail());
+
+            writeJson(resp, HttpServletResponse.SC_OK,
+                    "{\"ok\":true,\"message\":\"Login successful\",\"redirect\":\"Home.html\"}");
+        } catch (SQLException e) {
+            writeJson(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                    "{\"ok\":false,\"message\":\"Database error during login\"}");
         }
-
-        HttpSession session = req.getSession(true);
-        session.setAttribute("username", user.getUsername());
-
-        writeJson(resp, HttpServletResponse.SC_OK,
-                "{\"ok\":true,\"message\":\"Login successful\",\"redirect\":\"Home.html\"}");
     }
 
     private void handleForgot(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -122,6 +152,21 @@ public class AuthServlet extends HttpServlet {
             writeJson(resp, HttpServletResponse.SC_BAD_REQUEST,
                     "{\"ok\":false,\"message\":\"Email is required\"}");
             return;
+        }
+
+        try {
+            AuthUser user = authUserDao.findByEmail(email);
+            if (user != null) {
+                String appBaseUrl = buildAppBaseUrl(req);
+                boolean sent = emailService.sendPasswordResetEmail(user.getEmail(), user.getUsername(), appBaseUrl);
+                if (sent) {
+                    System.out.println("Password reset email sent to: " + user.getEmail());
+                } else {
+                    System.out.println("Password reset email could not be sent for: " + user.getEmail());
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Forgot-password DB lookup failed: " + e.getMessage());
         }
 
         writeJson(resp, HttpServletResponse.SC_OK,
@@ -145,5 +190,21 @@ public class AuthServlet extends HttpServlet {
         return value
                 .replace("\\", "\\\\")
                 .replace("\"", "\\\"");
+    }
+
+    private String buildAppBaseUrl(HttpServletRequest req) {
+        String scheme = req.getScheme();
+        String host = req.getServerName();
+        int port = req.getServerPort();
+        String contextPath = req.getContextPath();
+
+        boolean isDefaultPort = ("http".equalsIgnoreCase(scheme) && port == 80)
+                || ("https".equalsIgnoreCase(scheme) && port == 443);
+
+        if (isDefaultPort) {
+            return scheme + "://" + host + contextPath;
+        }
+
+        return scheme + "://" + host + ":" + port + contextPath;
     }
 }
