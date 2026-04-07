@@ -29,11 +29,17 @@ html {
     #left-nav, #right-nav {
         width: 250px;
     }
+    .HH-Home, .HH-Posting, .HH-Discovery {
+        width: calc(100% - 500px) !important;
+    }
 }
 
 @media (max-width: 1000px) {
     #left-nav, #right-nav {
         width: 180px;
+    }
+    .HH-Home, .HH-Posting, .HH-Discovery {
+        width: calc(100% - 360px) !important;
     }
 }
 
@@ -41,22 +47,19 @@ html {
     #left-nav, #right-nav {
         width: 120px;
     }
+    .HH-Home, .HH-Posting, .HH-Discovery {
+        width: calc(100% - 240px) !important;
+    }
 }
 
 @media (max-width: 600px) {
     #left-nav, #right-nav {
         display: none;
     }
-
-    .HH-Home,
-    .HH-Posting,
-    .HH-Discovery,
-    .HH-MyHive,
-    .HH-contents {
+    .HH-Home, .HH-Posting, .HH-Discovery,
+    .HH-MyHive, .HH-contents {
         width: 95% !important;
         margin: 0 auto;
-        padding-left: 0;
-        padding-right: 0;
     }
 }
 
