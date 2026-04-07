@@ -1,17 +1,19 @@
 function scaleApp() {
     const naturalWidth = 1400;
     const windowWidth = window.innerWidth;
+    const root = document.getElementById('app-root');
+    if (!root) return;
 
     if (windowWidth < naturalWidth) {
         const scale = windowWidth / naturalWidth;
-        document.documentElement.style.transform = `scale(${scale})`;
-        document.documentElement.style.transformOrigin = 'top left';
-        document.documentElement.style.width = `${naturalWidth}px`;
-        document.documentElement.style.height = `${window.innerHeight / scale}px`;
+        root.style.transform = `scale(${scale})`;
+        root.style.transformOrigin = 'top left';
+        root.style.width = `${naturalWidth}px`;
+        document.body.style.height = `${root.offsetHeight * scale}px`;
     } else {
-        document.documentElement.style.transform = 'scale(1)';
-        document.documentElement.style.width = '100%';
-        document.documentElement.style.height = 'auto';
+        root.style.transform = 'scale(1)';
+        root.style.width = '100%';
+        document.body.style.height = 'auto';
     }
 }
 
