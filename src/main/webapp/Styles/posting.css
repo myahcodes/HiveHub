@@ -1,4 +1,9 @@
-﻿.title-input::placeholder {
+﻿.title-panel {
+/*    display: flex;
+    flex-direction: column;
+    align-content: center;*/
+}
+.title-input::placeholder {
     color: rgba(255, 184, 77, 0.5);
 }
 
@@ -71,7 +76,6 @@
     align-items: center;
     gap: 8px;
     font-size: 13px;
-    cursor: pointer;
     width: 100%;
     text-align: left;
     border: none;
@@ -94,8 +98,8 @@
     gap: 4px;
     border: none;
     background: transparent;
-    cursor: pointer;
     border-radius: 2px;
+    cursor: var(--pointer-cursor);
 }
 
     .toolbar button:hover, .dropdown-trigger:hover, .toolbar button.is-active {
@@ -160,7 +164,6 @@
     padding: 6px 24px;
     font-size: 14px;
     border: none;
-    cursor: pointer;
     border-radius: 2px;
     text-transform: uppercase;
     transition: opacity 0.2s;
@@ -256,7 +259,6 @@
 
 .emoji-btn {
     color: #ffb84d;
-    cursor: pointer;
     padding: 6px 6px;
     display: flex;
     align-items: center;
@@ -349,7 +351,6 @@
         background: #ffb84d;
         color: black;
         border: none;
-        cursor: pointer;
         font-weight: bold;
         border-radius: 2px;
         font-family: BeePollen, Chewy, sans-serif;
@@ -373,7 +374,6 @@
         color: #ffb84d;
         font-family: BeePollen, Chewy, sans-serif;
         text-align: left;
-        cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -415,7 +415,6 @@
         .custom-dropdown .dropdown-list li {
             padding: 8px 10px;
             color: #ffb84d;
-            cursor: pointer;
         }
 
             .custom-dropdown .dropdown-list li:hover {
@@ -469,7 +468,6 @@
     padding: 6px 12px;
     font-size: 13px;
     font-family: BeePollen, Chewy, sans-serif;
-    cursor: pointer;
     border-radius: 2px;
     transition: all 0.2s;
 }
@@ -496,12 +494,10 @@
     font-size: 13px;
     font-family: BeePollen, Chewy, sans-serif;
     border-radius: 16px;
-    cursor: default;
 }
 
     .tag-button .remove-tag {
         margin-left: 6px;
-        cursor: pointer;
         font-weight: bold;
         font-size: 14px;
         line-height: 1;
@@ -527,7 +523,6 @@
     right: 6px;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer;
     font-weight: bold;
     font-size: 14px;
     line-height: 1;
@@ -576,7 +571,6 @@
     padding: 8px 12px;
     font-family: BeePollen, Chewy, sans-serif;
     font-size: 13px;
-    cursor: pointer;
     border-radius: 2px;
     transition: all 0.2s;
     white-space: nowrap;
@@ -608,7 +602,6 @@
     font-size: 13px;
     transition: border-color 0.2s, border-width 0.2s;
     box-sizing: content-box;
-    cursor: text;
 }
 
     #Interest-tags input.tag-opt:focus {

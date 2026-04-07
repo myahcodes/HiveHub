@@ -21,9 +21,19 @@
     </div>
     <div class="HH-Discovery">
         <div class="discovery-window">
-            <div class="search-bar">
-                <img src="" />
-                <input type="text" placeholder="Find a new hive.." class="search-input" name="search">
+            <div id="search-bar-discovery">
+
+                <div class="searchbar">
+                    <svg class="search-icons" aria-hidden="true">
+                        <use href="webapp/assets/img/activityBar/activitySprites.svg#search"></use>
+                    </svg>
+                    <input id="search-bar" placeholder="Find a new hive.." onmousedown="new Audio('/webapp/assets/audio/click-sound.mp3').play()" />
+                    <button class="bizzy-bttn" aria-label="Bizzy" id="bizzy-trigger">
+                        <svg class="search-icons" id="bizzy-bee" aria-hidden="true">
+                            <use href="webapp/assets/img/activityBar/activitySprites.svg#bizzybee"></use>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <div class="discovery-feed">
                 <!-- Discovery content goes here -->
@@ -40,13 +50,21 @@
                 </div>
             </div>
         </div>
-        <!--<hr id="divider" />
-        <footer class="HH-footer">
-            <a href="Contact.html">contact us</a>
-            <a href="about.html">our mission</a>
-        </footer>-->
+    </div>
+    <!--<hr id="divider" />
+    <footer class="HH-footer">
+        <a href="Contact.html">contact us</a>
+        <a href="about.html">our mission</a>
+    </footer>-->
+    <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+    <div id="bizzy-modal" class="modal hidden">
+        <button class="close-modal" style="float:right; background:none; border:none; color:black; cursor:pointer;">&times;</button>
+        <h4>Bizzy</h4>
+        <p>Some text. Some text. Some text.</p>
+        <p>Some text. Some text. Some text.</p>
     </div>
     <!--<script src="assets/js/discovery.js"></script>-->
     <script src="webapp/assets/js/navBttn_activity.js"></script>
+    <script src="webapp/assets/js/bizzy_form.js"></script>
 </body>
 <</html>
