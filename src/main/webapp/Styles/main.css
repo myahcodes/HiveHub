@@ -3,7 +3,6 @@
     --pointer-cursor: url("/webapp/assets/img/icons/cursors/honeyPointer.png") 8 3, pointer;
     --text-cursor: url("/webapp/assets/img/icons/cursors/honeyText.png") 4 7, text;
 }
-
 @font-face {
     font-family: Magic;
     src: url("../assets/fonts/MagicBubble-0v0Gr.ttf") format('truetype');
@@ -15,128 +14,104 @@
 }
 
 @keyframes HeaderAnim {
-    33% { transform: rotate(10deg); }
-    66% { transform: rotate(-10deg); }
-    100% { transform: rotate(0deg); }
+    33% {
+        transform: rotate(10deg);
+    }
+
+    66% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
-html, body {
+html {
     height: 100%;
     min-height: 100%;
-    margin: 0;
-    padding: 0;
+}
+
+@media (max-width: 768px) {
+    #left-nav, #right-nav {
+        display: none;
+    }
+
+    /* Adjust main content to take full width when navs are gone */
+    .HH-Home {
+        width: 90% !important;
+    }
+
+    .HH-contents{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: black;
     color: #ffb84d;
+    min-height: 100%;
+}
+/*Change cursors*/
+/* Default cursor hover effects */
+/*.cursor-pointer-hover img {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.cursor-text-hover img {
+    transform: scale(0.9);
+    filter: brightness(0.8);
+}*/
+
+/* Hide the default system cursor */
+/*html, body {
+    cursor: none;
+}*/
+
+html, body {
     cursor: var(--default-cursor);
 }
-
-/* ── App Shell ── */
-.app-shell {
-    display: flex;
-    flex-direction: row;
-    min-height: 100vh;
-    width: 100%;
-}
-
-#left-nav, #right-nav {
-    width: 322px;
-    min-width: 322px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    z-index: 10;
-    background-color: black;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-}
-
-#left-nav {
-    background-image: url(../assets/img/nav/bar/leftNav.jpg);
-    border-right: 3px solid #ffb84d;
-}
-
-#right-nav {
-    background-image: url(../assets/img/nav/bar/rightNav.jpg);
-    border-left: 3px solid #ffb84d;
-}
-
-.main-content {
-    flex: 1;
-    overflow-y: auto;
-    min-width: 0;
-}
-
-/* ── Nav Buttons ── */
-.left-bttns, .right-bttns {
-    position: absolute;
-    width: 133px;
-    height: 133px;
-    background-image: url(../assets/img/nav/bttn_icons/bttn_sprites.png);
-    background-size: auto;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    display: block;
-    clip-path: polygon(26.5% 0%, 91.5% 10.5%, 100% 60%, 73.5% 100%, 8.5% 89.5%, 0% 40%);
-}
-
-.icon-home { background-position: -316px -163px; }
-.icon-home:hover, .icon-home.active { background-position: -10px -10px; }
-.icon-hive { background-position: -469px -316px; }
-.icon-hive:hover, .icon-hive.active { background-position: -163px -10px; }
-.icon-post { background-position: -163px -163px; }
-.icon-post:hover, .icon-post.active { background-position: -10px -163px; }
-.icon-search { background-position: -316px -10px; }
-.icon-search:hover, .icon-search.active { background-position: -316px -316px; }
-.icon-comment { background-position: -10px -316px; }
-.icon-comment:hover, .icon-comment.active { background-position: -163px -469px; }
-.icon-buzzboard { background-position: -469px -163px; }
-.icon-buzzboard:hover, .icon-buzzboard.active { background-position: -163px -316px; }
-.icon-buzzDropdown { background-position: -469px -10px; }
-.icon-buzzDropdown:hover, .icon-buzzDropdown.active { background-position: -10px -469px; }
-
-/* Button positioning */
-#left-nav .icon-hive { top: 142px; left: 154px; }
-#right-nav .icon-buzzboard { top: 404px; right: 149px; }
-#right-nav .icon-search { top: 243px; right: 5px; }
-#right-nav .icon-home { top: 365px; right: 32px; }
-#right-nav .icon-post { top: 280px; right: 125px; }
-
-/* ── Cursors ── */
-a, button, [role="button"],
-input[type="submit"], input[type="button"],
-label[onclick], [onclick] {
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+label[onclick],
+[onclick] {
     cursor: var(--pointer-cursor);
 }
 
-input[type="text"], input[type="email"],
-input[type="password"], textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
 [contenteditable="true"] {
     cursor: var(--text-cursor);
 }
 
-/* ── Page types ── */
-body.SignOn-page {
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
 
-body.Main-page {
-    background-position: center top;
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+    /* For login and signup pages */
+    body.SignOn-page {
+        /* background-image: url(../assets/img/HHBckgrd.jpeg); */
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
 
-/* ── Content containers ── */
+    /* For pages with honey combs */
+    body.Main-page {
+        /*background-image: url(../assets/img/HHBckgrd.jpeg);*/
+        background-position: center top;
+        background-size: 100vw 100vh;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
 .HH-MyHive {
     font-family: BeePollen, Chewy;
     display: flex;
@@ -154,35 +129,33 @@ body.Main-page {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 46%;
     height: fit-content;
-    margin: 0 auto;
+    margin: auto;
 }
-
 .HH-Posting {
     font-family: BeePollen, Chewy;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
+    width: 46%;
     min-height: 90vh;
-    margin: 0 auto;
+    margin: auto;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 5;
 }
-
 .HH-Discovery {
     font-family: BeePollen, Chewy;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 46%;
     height: fit-content;
-    margin: 0 auto;
+    margin: auto;
 }
-
+/*Home, New post*/
 .HH-default {
     background: black;
     width: 95%;
@@ -198,12 +171,12 @@ body.Main-page {
     border: none;
 }
 
-/* ── Header ── */
 .HH-Header h1 {
     font-family: Magic, 'Comic Sans MS';
     font-size: 64px;
     font-weight: normal;
     font-style: normal;
+
     width: fit-content;
     height: fit-content;
 }
@@ -214,16 +187,18 @@ body.Main-page {
     cursor: default;
 }
 
-/* ── Footer ── */
 .HH-footer {
     font-family: BeePollen, Chewy;
     text-align: center;
-    display: flex;
-    flex-direction: column;
+
+    display:flex;
+    flex-direction:column;
     justify-content: center;
     align-items: center;
+
     width: fit-content;
     margin-top: 0.4cm;
+    
     border-top-color: #ffb84d;
     border-top-style: solid;
 }
@@ -231,20 +206,104 @@ body.Main-page {
 .HH-footer a {
     color: inherit;
     text-decoration: none;
+
     display: block;
+
     margin-top: 0.4cm;
 }
 
-.HH-footer a:visited { color: inherit; }
-.HH-footer a:hover { text-decoration: underline; }
+.HH-footer a:visited {
+    color: inherit;
+}
 
-/* ── Responsive ── */
-@media (max-width: 768px) {
-    #left-nav, #right-nav {
-        display: none;
-    }
+.HH-footer a:hover {
+    text-decoration: underline;
+}
 
-    .HH-Home, .HH-Posting, .HH-Discovery {
-        width: 95%;
-    }
+/*Nav Bar & Buttons*/
+#left-nav, #right-nav {
+    position: fixed;
+    width: 322px;
+    height: 768px;
+    top: 0;
+    z-index: 10;
+    transition: all 0.3s ease-in-out;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+#left-nav {
+    background-image: url(../assets/img/nav/bar/leftNav.jpg);
+    left: 0;
+    border-right: 3px solid #ffb84d;
+}
+
+#right-nav {
+    background-image: url(../assets/img/nav/bar/rightNav.jpg);
+    right: 0;
+    border-left: 3px solid #ffb84d;
+}
+
+.left-bttns, .right-bttns {
+    position: absolute;
+    width: 133px;
+    height: 133px;
+    background-image: url(../assets/img/nav/bttn_icons/bttn_sprites.png);
+    background-size: auto;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: block;
+    overflow: hidden;
+    clip-path: polygon( 26.5% 0%, 91.5% 10.5%, 100% 60%, 73.5% 100%, 8.5% 89.5%, 0% 40%);
+}
+
+.icon-home { background-position: -316px -163px; }
+.icon-home:hover, .icon-home.active { background-position: -10px -10px; }
+
+.icon-hive { background-position: -469px -316px; }
+.icon-hive:hover, .icon-hive.active { background-position: -163px -10px; }
+
+.icon-post { background-position: -163px -163px; }
+.icon-post:hover, .icon-post.active { background-position: -10px -163px; }
+
+.icon-search { background-position: -316px -10px; }
+.icon-search:hover, .icon-search.active { background-position: -316px -316px; }
+
+.icon-comment { background-position: -10px -316px; }
+.icon-comment:hover, .icon-comment.active { background-position: -163px -469px; }
+
+.icon-buzzboard { background-position: -469px -163px; }
+.icon-buzzboard:hover, .icon-buzzboard.active { background-position: -163px -316px; }
+
+.icon-buzzDropdown { background-position: -469px -10px; }
+.icon-buzzDropdown:hover, .icon-buzzDropdown.active { background-position: -10px -469px; }
+
+/*Button positioning*/
+/*Left Nav */
+#left-nav .icon-hive {
+    top: 142px;
+    left: 154px;
+}
+
+/*Right Nav Positions*/
+#right-nav .icon-buzzboard {
+    top: 404px;
+    right: 149px;
+}
+
+#right-nav .icon-search {
+    top: 243px;
+    right: 5px;
+}
+
+#right-nav .icon-home {
+    top: 365px;
+    right: 32px;
+}
+
+#right-nav .icon-post {
+    top: 280px;
+    right: 125px;
 }
