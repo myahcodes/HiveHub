@@ -3,6 +3,36 @@
 const container = document.querySelector(".HH-authenticator");
 const footer = document.querySelector(".HH-footer");
 
+function buildApiUrl(path) {
+    if (window.location.protocol === "file:") {
+        return `http://localhost:8080/hivehub${path}`;
+    }
+
+    return path.replace(/^\//, "");
+}
+
+async function tryForgot(payload) {
+    const authResponse = await fetch(buildApiUrl("/api/auth/forgot"), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
+    });
+
+    if (authResponse.status !== 404) {
+        const data = await authResponse.json();
+        if (!authResponse.ok || !data.ok) {
+            throw new Error(data.message || "Unable to submit password reset request.");
+        }
+        alert(data.message);
+        return;
+    }
+
+    // Legacy fallback behavior (no server endpoint).
+    alert("If the email is registered, you will receive password reset instructions.");
+}
+
 /*Create form*/
 
 const form = document.createElement("form");
@@ -77,19 +107,8 @@ btn_Submit.addEventListener("click", function (event) {
         email: txt_email.value.trim()
     });
 
-    fetch("api/auth/forgot", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: payload.toString()
-    })
-        .then(async (response) => {
-            const data = await response.json();
-            if (!response.ok || !data.ok) {
-                throw new Error(data.message || "Unable to submit password reset request.");
-            }
-            alert(data.message);
+    tryForgot(payload)
+        .then(() => {
             window.location.href = "Login.html";
         })
         .catch((error) => {

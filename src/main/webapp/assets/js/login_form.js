@@ -3,6 +3,66 @@
 const container = document.querySelector(".HH-authenticator");
 const footer = document.querySelector(".HH-footer");
 
+function buildApiUrl(path) {
+    if (window.location.protocol === "file:") {
+        return `http://localhost:8080/hivehub${path}`;
+    }
+
+    return path.replace(/^\//, "");
+}
+
+async function tryLogin(payload) {
+    const authResponse = await fetch(buildApiUrl("/api/auth/login"), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
+    });
+
+    if (authResponse.status !== 404) {
+        const data = await authResponse.json();
+        if (!authResponse.ok || !data.ok) {
+            throw new Error(data.message || "Login failed.");
+        }
+
+        const redirectTarget = data.redirect || "Home.html";
+        if (/^https?:\/\//i.test(redirectTarget)) {
+            window.location.href = redirectTarget;
+        } else if (redirectTarget.startsWith("/")) {
+            window.location.href = `${window.location.origin}${redirectTarget}`;
+        } else {
+            window.location.href = redirectTarget;
+        }
+        return;
+    }
+
+    // Fallback for feature/mysql-integration flow.
+    const legacyPayload = new URLSearchParams({
+        username: txt_username.value.trim(),
+        password: txt_password.value
+    });
+
+    const legacyResponse = await fetch(buildApiUrl("/login"), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: legacyPayload.toString()
+    });
+
+    if (legacyResponse.redirected) {
+        window.location.href = legacyResponse.url;
+        return;
+    }
+
+    if (!legacyResponse.ok) {
+        throw new Error("Login failed.");
+    }
+
+    window.location.href = "Home.html";
+}
+
 /*Create form*/
 
 const form = document.createElement("form");
@@ -71,20 +131,7 @@ btn_Login.addEventListener("click", function(event) {
         password: txt_password.value
     });
 
-    fetch("api/auth/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: payload.toString()
-    })
-        .then(async (response) => {
-            const data = await response.json();
-            if (!response.ok || !data.ok) {
-                throw new Error(data.message || "Login failed.");
-            }
-            window.location.href = data.redirect || "Home.html";
-        })
+    tryLogin(payload)
         .catch((error) => {
             alert(error.message);
         });

@@ -3,6 +3,53 @@
 const container = document.querySelector(".HH-contents");
 const footer = document.querySelector(".HH-footer");
 
+function buildApiUrl(path) {
+    if (window.location.protocol === "file:") {
+        return `http://localhost:8080/hivehub${path}`;
+    }
+
+    return path.replace(/^\//, "");
+}
+
+async function trySignup(payload) {
+    const authResponse = await fetch(buildApiUrl("/api/auth/signup"), {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
+    });
+
+    if (authResponse.status !== 404) {
+        const data = await authResponse.json();
+        if (!authResponse.ok || !data.ok) {
+            throw new Error(data.message || "Sign up failed.");
+        }
+        return;
+    }
+
+    // Fallback for feature/mysql-integration flow.
+    const formData = new FormData();
+    formData.append("username", txt_username.value.trim());
+    formData.append("password", txt_password.value);
+    formData.append("email", txt_email.value.trim());
+    formData.append("name", txt_name.value.trim());
+
+    const legacyResponse = await fetch(buildApiUrl("/register"), {
+        method: "POST",
+        body: formData
+    });
+
+    if (legacyResponse.redirected) {
+        window.location.href = legacyResponse.url;
+        return;
+    }
+
+    if (!legacyResponse.ok) {
+        throw new Error("Sign up failed.");
+    }
+}
+
 /*Create form*/
 
 const form = document.createElement("form");
@@ -91,18 +138,8 @@ btn_signup.addEventListener("click", function(event) {
         password: txt_password.value
     });
 
-    fetch("api/auth/signup", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: payload.toString()
-    })
-        .then(async (response) => {
-            const data = await response.json();
-            if (!response.ok || !data.ok) {
-                throw new Error(data.message || "Sign up failed.");
-            }
+    trySignup(payload)
+        .then(() => {
             alert("Account created. Please log in.");
             window.location.href = "Login.html";
         })
