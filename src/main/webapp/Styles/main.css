@@ -25,44 +25,34 @@ html {
     min-height: 100%;
 }
 
+body.Main-page {
+    padding-left: 322px;
+    padding-right: 322px;
+    box-sizing: border-box;
+}
+
 @media (max-width: 1200px) {
-    #left-nav, #right-nav {
-        width: 250px;
-    }
-    .HH-Home, .HH-Posting, .HH-Discovery {
-        width: calc(100% - 500px) !important;
-    }
+    #left-nav, #right-nav { width: 250px; }
+    body.Main-page { padding-left: 250px; padding-right: 250px; }
 }
 
 @media (max-width: 1000px) {
-    #left-nav, #right-nav {
-        width: 180px;
-    }
-    .HH-Home, .HH-Posting, .HH-Discovery {
-        width: calc(100% - 360px) !important;
-    }
+    #left-nav, #right-nav { width: 180px; }
+    body.Main-page { padding-left: 180px; padding-right: 180px; }
 }
 
 @media (max-width: 800px) {
-    #left-nav, #right-nav {
-        width: 120px;
-    }
-    .HH-Home, .HH-Posting, .HH-Discovery {
-        width: calc(100% - 240px) !important;
-    }
+    #left-nav, #right-nav { width: 120px; }
+    body.Main-page { padding-left: 120px; padding-right: 120px; }
 }
 
 @media (max-width: 600px) {
-    #left-nav, #right-nav {
-        display: none;
-    }
-    .HH-Home, .HH-Posting, .HH-Discovery,
-    .HH-MyHive, .HH-contents {
+    #left-nav, #right-nav { display: none; }
+    body.Main-page { padding-left: 0; padding-right: 0; }
+    .HH-Home, .HH-Posting, .HH-Discovery, .HH-MyHive {
         width: 95% !important;
-        margin: 0 auto;
     }
 }
-
 
 body {
     margin: 0;
