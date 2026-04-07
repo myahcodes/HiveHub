@@ -1,3 +1,7 @@
+//cosmetic references:
+const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
+const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3")
+
 /*Create references to parent block and footer*/
 
 const container = document.querySelector(".HH-authenticator");
@@ -75,6 +79,12 @@ txt_username.placeholder = "Username, email";
 txt_username.required = true;
 txt_username.name = "identifier";
 
+txt_username.onfocus = () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+};
+
+
 /*Password field*/
 
 const txt_password = document.createElement("input");
@@ -83,12 +93,18 @@ txt_password.placeholder = "Password";
 txt_password.required = true;
 txt_password.name = "password";
 
+txt_password.onfocus = () => {
+    click_audio.currentTime = 0;
+    click_audio.play();
+};
+
 /*Creation of Login Button*/
 
 const btn_Login = document.createElement("button");
 btn_Login.textContent = "Login";
 btn_Login.id = "login_button";
 btn_Login.type = "submit";
+btn_Login.style.cursor = "pointer";
 
 btn_Login.style.color = "black";
 btn_Login.style.backgroundColor = " #ffb84d";
@@ -99,6 +115,7 @@ const btn_signup = document.createElement("button");
 btn_signup.textContent = "Sign Up";
 btn_signup.id = "signup_button";
 btn_signup.type = "button";
+btn_signup.style.cursor = "pointer";
 
 btn_signup.style.color = " #ffb84d";
 btn_signup.style.backgroundColor = "black";
@@ -114,13 +131,23 @@ form.appendChild(btn_signup);
 
 container.insertBefore(form, footer);
 
-btn_signup.addEventListener("click", function(event) {
+btn_signup.addEventListener("click", function (event) {
     event.preventDefault();
-    window.location.href = "SignUp.html";
+
+    click_audio.currentTime = 0;
+    click_audio.play();
+
+    setTimeout(() => {
+        window.location.href = "SignUp.html";
+    }, 550); // equivalent to 5.5 milliseconds
 });
 
-btn_Login.addEventListener("click", function(event) {
+btn_Login.addEventListener("click", function (event) {
+    click_audio.currentTime = 0;
+    click_audio.play();
+
     event.preventDefault();
+
     if (!form.checkValidity()) {
         alert("Please fill in all required fields.");
         return;

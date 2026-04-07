@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The HiveHub-Posting</title>
+    <link rel="icon" href="webapp/assets/img/icons/defaultPfp.svg" />
+    <link rel="stylesheet" href="webapp/Styles/main.css" />
+    <link rel="stylesheet" href="webapp/Styles/posting.css" />
+</head>
+<body class="Main-page">
+    <div id="left-nav">
+        <a href="Profile.html" class=""></a>
+        <a href="Hive.html" class="left-bttns icon-hive"></a>
+    </div>
+    <div id="right-nav">
+        <a href="Discovery.html" class="right-bttns icon-search"></a>
+        <a href="Posting.html" class="right-bttns icon-post"></a>
+        <a href="Buzzboard.html" class="right-bttns icon-buzzboard"></a>
+        <a href="Home.html" class="right-bttns icon-home"></a>
+    </div>
+    <div class="HH-Posting">
+        <div class="HH-Header">
+            <h1>New Post</h1>
+        </div>
+        <div class="HH-default" style="width: 95%">
+            <!-- Title Field -->
+            <input type="text" id="post-title" placeholder="Title" class="title-input">
+            <!--Tag Field-->
+            <div class="post-tags">
+                <button id="tagging" class="tag-trigger">
+                    <i data-lucide="tag" class="w-4 h-4"></i> Add Tags
+                </button>
+                <div id="tag-list" class="tags-container"></div>
+            </div>
+            <!--Editor Container-->
+            <div class="post-editor">
+                <div class="toolbar">
+                    <button data-cmd="undo" title="Undo"><i data-lucide="undo-2" class="w-4 h-4"></i></button>
+                    <button data-cmd="redo" title="Redo"><i data-lucide="redo-2" class="w-4 h-4"></i></button>
+
+                    <div class="w-[1px] h-4 bg-orange-300/30 self-center mx-1"></div>
+
+                    <div class="dropdown">
+                        <button class="dropdown-trigger"><i data-lucide="type" class="w-4 h-4"></i> <i data-lucide="chevron-down" class="w-3 h-3"></i></button>
+                        <div class="dropdown-content">
+                            <button class="dropdown-item" data-cmd="h1">Heading 1</button>
+                            <button class="dropdown-item" data-cmd="h2">Heading 2</button>
+                            <button class="dropdown-item" data-cmd="paragraph">Text</button>
+                        </div>
+                    </div>
+
+                    <button data-cmd="bold" title="Bold"><i data-lucide="bold" class="w-4 h-4"></i></button>
+                    <button data-cmd="italic" title="Italic"><i data-lucide="italic" class="w-4 h-4"></i></button>
+
+                    <div class="w-[1px] h-4 bg-orange-300/30 self-center mx-1"></div>
+
+                    <div class="dropdown">
+                        <button class="dropdown-trigger"><i data-lucide="list" class="w-4 h-4"></i> <i data-lucide="chevron-down" class="w-3 h-3"></i></button>
+                        <div class="dropdown-content">
+                            <button class="dropdown-item" data-cmd="bulletList">Bulleted List</button>
+                            <button class="dropdown-item" data-cmd="orderedList">Numbered List</button>
+                        </div>
+                    </div>
+
+                    <div class="w-[1px] h-4 bg-orange-300/30 self-center mx-1"></div>
+
+                    <button id="btn-link" title="Link"><i data-lucide="link" class="w-4 h-4"></i></button>
+                    <button id="btn-image" title="Image"><i data-lucide="image" class="w-4 h-4"></i></button>
+                    <button id="btn-location" title="Location"><i data-lucide="map-pin" class="w-4 h-4"></i></button>
+                </div>
+
+                <div id="editor-content" class="tiptap no-scrollbar"></div>
+            </div>
+            <div class="footer">
+                <div class="relative">
+                    <button id="emoji-trigger" class="emoji-btn">
+                        <i data-lucide="smile" class="w-5 h-5"></i>
+                    </button>
+                    <div id="emoji-picker-container"></div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <span id="post-status" class="text-[#ffb84d] text-xs font-bold hidden">CONTENT SAVED</span>
+                    <button id="post-btn" class="post-btn">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<hr id="divider" />
+    <footer class="HH-footer">
+        <a href="Contact.html">contact us</a>
+        <a href="about.html">our mission</a>
+    </footer>-->
+
+    <!-- Modal Backdrop -->
+    <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+
+    <!-- Link Modal -->
+    <div id="link-modal" class="modal hidden">
+        <h4>Insert Link</h4>
+        <input type="text" id="link-url" placeholder="https://example.com" />
+        <div class="modal-actions">
+            <button id="link-insert">Insert</button>
+            <button id="link-cancel">Cancel</button>
+        </div>
+    </div>
+
+    <!-- image/video -->
+    <input type="file" id="hidden-file-input" accept="image/*,video/*" style="display: none;" />
+
+    <!-- Location Modal with custom country dropdown -->
+    <div id="location-modal" class="modal hidden">
+        <h4>Enter Address</h4>
+        <input type="text" id="loc-street" placeholder="Street" />
+        <input type="text" id="loc-city" placeholder="City" />
+        <input type="text" id="loc-state" placeholder="State" />
+        <div class="flex gap-4 mb-4">
+            <input type="text" id="loc-zip" placeholder="Zip" class="flex-1" />
+            <!-- Custom country dropdown -->
+            <div class="custom-dropdown flex-1" id="country-dropdown">
+                <button type="button" class="dropdown-button placeholder" id="country-button">Country</button>
+                <ul class="dropdown-list hidden" id="country-list">
+                    <li data-value="">Country</li>
+                    <li data-value="Afghanistan">Afghanistan</li>
+                    <li data-value="Albania">Albania</li>
+                    <li data-value="Algeria">Algeria</li>
+                    <li data-value="Andorra">Andorra</li>
+                    <li data-value="Angola">Angola</li>
+                    <li data-value="Antigua and Barbuda">Antigua and Barbuda</li>
+                    <li data-value="Argentina">Argentina</li>
+                    <li data-value="Armenia">Armenia</li>
+                    <li data-value="Australia">Australia</li>
+                    <li data-value="Austria">Austria</li>
+                    <li data-value="Azerbaijan">Azerbaijan</li>
+                    <li data-value="Bahamas">Bahamas</li>
+                    <li data-value="Bahrain">Bahrain</li>
+                    <li data-value="Bangladesh">Bangladesh</li>
+                    <li data-value="Barbados">Barbados</li>
+                    <li data-value="Belarus">Belarus</li>
+                    <li data-value="Belgium">Belgium</li>
+                    <li data-value="Belize">Belize</li>
+                    <li data-value="Benin">Benin</li>
+                    <li data-value="Bhutan">Bhutan</li>
+                    <li data-value="Bolivia">Bolivia</li>
+                    <li data-value="Bosnia and Herzegovina">Bosnia and Herzegovina</li>
+                    <li data-value="Botswana">Botswana</li>
+                    <li data-value="Brazil">Brazil</li>
+                    <li data-value="Brunei">Brunei</li>
+                    <li data-value="Bulgaria">Bulgaria</li>
+                    <li data-value="Burkina Faso">Burkina Faso</li>
+                    <li data-value="Burundi">Burundi</li>
+                    <li data-value="Côte d'Ivoire">Côte d'Ivoire</li>
+                    <li data-value="Cabo Verde">Cabo Verde</li>
+                    <li data-value="Cambodia">Cambodia</li>
+                    <li data-value="Cameroon">Cameroon</li>
+                    <li data-value="Canada">Canada</li>
+                    <li data-value="Central African Republic">Central African Republic</li>
+                    <li data-value="Chad">Chad</li>
+                    <li data-value="Chile">Chile</li>
+                    <li data-value="China">China</li>
+                    <li data-value="Colombia">Colombia</li>
+                    <li data-value="Comoros">Comoros</li>
+                    <li data-value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville)</li>
+                    <li data-value="Costa Rica">Costa Rica</li>
+                    <li data-value="Croatia">Croatia</li>
+                    <li data-value="Cuba">Cuba</li>
+                    <li data-value="Cyprus">Cyprus</li>
+                    <li data-value="Czechia (Czech Republic)">Czechia (Czech Republic)</li>
+                    <li data-value="Democratic Republic of the Congo">Democratic Republic of the Congo</li>
+                    <li data-value="Denmark">Denmark</li>
+                    <li data-value="Djibouti">Djibouti</li>
+                    <li data-value="Dominica">Dominica</li>
+                    <li data-value="Dominican Republic">Dominican Republic</li>
+                    <li data-value="Ecuador">Ecuador</li>
+                    <li data-value="Egypt">Egypt</li>
+                    <li data-value="El Salvador">El Salvador</li>
+                    <li data-value="Equatorial Guinea">Equatorial Guinea</li>
+                    <li data-value="Eritrea">Eritrea</li>
+                    <li data-value="Estonia">Estonia</li>
+                    <li data-value="Eswatini (fmr. Swaziland)">Eswatini (fmr. Swaziland)</li>
+                    <li data-value="Ethiopia">Ethiopia</li>
+                    <li data-value="Fiji">Fiji</li>
+                    <li data-value="Finland">Finland</li>
+                    <li data-value="France">France</li>
+                    <li data-value="Gabon">Gabon</li>
+                    <li data-value="Gambia">Gambia</li>
+                    <li data-value="Georgia">Georgia</li>
+                    <li data-value="Germany">Germany</li>
+                    <li data-value="Ghana">Ghana</li>
+                    <li data-value="Greece">Greece</li>
+                    <li data-value="Grenada">Grenada</li>
+                    <li data-value="Guatemala">Guatemala</li>
+                    <li data-value="Guinea">Guinea</li>
+                    <li data-value="Guinea-Bissau">Guinea-Bissau</li>
+                    <li data-value="Guyana">Guyana</li>
+                    <li data-value="Haiti">Haiti</li>
+                    <li data-value="Holy See">Holy See</li>
+                    <li data-value="Honduras">Honduras</li>
+                    <li data-value="Hungary">Hungary</li>
+                    <li data-value="Iceland">Iceland</li>
+                    <li data-value="India">India</li>
+                    <li data-value="Indonesia">Indonesia</li>
+                    <li data-value="Iran">Iran</li>
+                    <li data-value="Iraq">Iraq</li>
+                    <li data-value="Ireland">Ireland</li>
+                    <li data-value="Israel">Israel</li>
+                    <li data-value="Italy">Italy</li>
+                    <li data-value="Jamaica">Jamaica</li>
+                    <li data-value="Japan">Japan</li>
+                    <li data-value="Jordan">Jordan</li>
+                    <li data-value="Kazakhstan">Kazakhstan</li>
+                    <li data-value="Kenya">Kenya</li>
+                    <li data-value="Kiribati">Kiribati</li>
+                    <li data-value="Kuwait">Kuwait</li>
+                    <li data-value="Kyrgyzstan">Kyrgyzstan</li>
+                    <li data-value="Laos">Laos</li>
+                    <li data-value="Latvia">Latvia</li>
+                    <li data-value="Lebanon">Lebanon</li>
+                    <li data-value="Lesotho">Lesotho</li>
+                    <li data-value="Liberia">Liberia</li>
+                    <li data-value="Libya">Libya</li>
+                    <li data-value="Liechtenstein">Liechtenstein</li>
+                    <li data-value="Lithuania">Lithuania</li>
+                    <li data-value="Luxembourg">Luxembourg</li>
+                    <li data-value="Madagascar">Madagascar</li>
+                    <li data-value="Malawi">Malawi</li>
+                    <li data-value="Malaysia">Malaysia</li>
+                    <li data-value="Maldives">Maldives</li>
+                    <li data-value="Mali">Mali</li>
+                    <li data-value="Malta">Malta</li>
+                    <li data-value="Marshall Islands">Marshall Islands</li>
+                    <li data-value="Mauritania">Mauritania</li>
+                    <li data-value="Mauritius">Mauritius</li>
+                    <li data-value="Mexico">Mexico</li>
+                    <li data-value="Micronesia">Micronesia</li>
+                    <li data-value="Moldova">Moldova</li>
+                    <li data-value="Monaco">Monaco</li>
+                    <li data-value="Mongolia">Mongolia</li>
+                    <li data-value="Montenegro">Montenegro</li>
+                    <li data-value="Morocco">Morocco</li>
+                    <li data-value="Mozambique">Mozambique</li>
+                    <li data-value="Myanmar (formerly Burma)">Myanmar (formerly Burma)</li>
+                    <li data-value="Namibia">Namibia</li>
+                    <li data-value="Nauru">Nauru</li>
+                    <li data-value="Nepal">Nepal</li>
+                    <li data-value="Netherlands">Netherlands</li>
+                    <li data-value="New Zealand">New Zealand</li>
+                    <li data-value="Nicaragua">Nicaragua</li>
+                    <li data-value="Niger">Niger</li>
+                    <li data-value="Nigeria">Nigeria</li>
+                    <li data-value="North Korea">North Korea</li>
+                    <li data-value="North Macedonia">North Macedonia</li>
+                    <li data-value="Norway">Norway</li>
+                    <li data-value="Oman">Oman</li>
+                    <li data-value="Pakistan">Pakistan</li>
+                    <li data-value="Palau">Palau</li>
+                    <li data-value="Palestine State">Palestine State</li>
+                    <li data-value="Panama">Panama</li>
+                    <li data-value="Papua New Guinea">Papua New Guinea</li>
+                    <li data-value="Paraguay">Paraguay</li>
+                    <li data-value="Peru">Peru</li>
+                    <li data-value="Philippines">Philippines</li>
+                    <li data-value="Poland">Poland</li>
+                    <li data-value="Portugal">Portugal</li>
+                    <li data-value="Qatar">Qatar</li>
+                    <li data-value="Romania">Romania</li>
+                    <li data-value="Russia">Russia</li>
+                    <li data-value="Rwanda">Rwanda</li>
+                    <li data-value="Saint Kitts and Nevis">Saint Kitts and Nevis</li>
+                    <li data-value="Saint Lucia">Saint Lucia</li>
+                    <li data-value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</li>
+                    <li data-value="Samoa">Samoa</li>
+                    <li data-value="San Marino">San Marino</li>
+                    <li data-value="Sao Tome and Principe">Sao Tome and Principe</li>
+                    <li data-value="Saudi Arabia">Saudi Arabia</li>
+                    <li data-value="Senegal">Senegal</li>
+                    <li data-value="Serbia">Serbia</li>
+                    <li data-value="Seychelles">Seychelles</li>
+                    <li data-value="Sierra Leone">Sierra Leone</li>
+                    <li data-value="Singapore">Singapore</li>
+                    <li data-value="Slovakia">Slovakia</li>
+                    <li data-value="Slovenia">Slovenia</li>
+                    <li data-value="Solomon Islands">Solomon Islands</li>
+                    <li data-value="Somalia">Somalia</li>
+                    <li data-value="South Africa">South Africa</li>
+                    <li data-value="South Korea">South Korea</li>
+                    <li data-value="South Sudan">South Sudan</li>
+                    <li data-value="Spain">Spain</li>
+                    <li data-value="Sri Lanka">Sri Lanka</li>
+                    <li data-value="Sudan">Sudan</li>
+                    <li data-value="Suriname">Suriname</li>
+                    <li data-value="Sweden">Sweden</li>
+                    <li data-value="Switzerland">Switzerland</li>
+                    <li data-value="Syria">Syria</li>
+                    <li data-value="Tajikistan">Tajikistan</li>
+                    <li data-value="Tanzania">Tanzania</li>
+                    <li data-value="Thailand">Thailand</li>
+                    <li data-value="Timor-Leste">Timor-Leste</li>
+                    <li data-value="Togo">Togo</li>
+                    <li data-value="Tonga">Tonga</li>
+                    <li data-value="Trinidad and Tobago">Trinidad and Tobago</li>
+                    <li data-value="Tunisia">Tunisia</li>
+                    <li data-value="Turkey">Turkey</li>
+                    <li data-value="Turkmenistan">Turkmenistan</li>
+                    <li data-value="Tuvalu">Tuvalu</li>
+                    <li data-value="Uganda">Uganda</li>
+                    <li data-value="Ukraine">Ukraine</li>
+                    <li data-value="United Arab Emirates">United Arab Emirates</li>
+                    <li data-value="United Kingdom">United Kingdom</li>
+                    <li data-value="United States of America">United States of America</li>
+                    <li data-value="Uruguay">Uruguay</li>
+                    <li data-value="Uzbekistan">Uzbekistan</li>
+                    <li data-value="Vanuatu">Vanuatu</li>
+                    <li data-value="Venezuela">Venezuela</li>
+                    <li data-value="Vietnam">Vietnam</li>
+                    <li data-value="Yemen">Yemen</li>
+                    <li data-value="Zambia">Zambia</li>
+                    <li data-value="Zimbabwe">Zimbabwe</li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button id="location-insert">Confirm</button>
+            <button id="location-cancel">Cancel</button>
+        </div>
+    </div>
+    <div id="tag-modal" class="modal hidden">
+        <h4>Select Tags</h4>
+        <div class="tag-section-header">Post Type</div>
+        <div class="tag-row" id="Type-tags">
+            <button type="button" class="tag-opt" data-tag="Opening">Grand Opening</button>
+            <button type="button" class="tag-opt" data-tag="Event">Event</button>
+            <button type="button" class="tag-opt" data-tag="Announcement">Announcement</button>
+            <button type="button" class="tag-opt" data-tag="Discussion">Discussion</button>
+        </div>
+        <div class="tag-section-header">Interests</div>
+        <div class="tag-row" id="Interest-tags">
+            <button type="button" class="tag-opt" data-tag="Food">Food</button>
+            <button type="button" class="tag-opt" data-tag="Music">Music</button>
+            <button type="button" class="tag-opt" data-tag="Tech">Tech</button>
+            <button type="button" class="tag-opt" data-tag="Art">Art</button>
+            <button type="button" class="tag-opt" data-tag="Thrifting">Thrifting</button>
+            <input type="text" id="custom-tag-input" class="tag-opt" placeholder="New Tag" />
+        </div>
+        <div class="modal-actions">
+            <button id="tag-insert">Add</button>
+            <button id="tag-cancel">Cancel</button>
+        </div>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
+    <script type="module" src="webapp/assets/js/post_form.js"></script>
+    <script src="webapp/assets/js/navBttn_activity.js"></script>
+</body>
+</html>

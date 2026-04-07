@@ -1,0 +1,91 @@
+@font-face {
+    font-family: BeePollen, system-ui;
+    src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
+    font-style: normal;
+}
+
+.HH-contents {
+    font-family: BeePollen, Chewy;
+    color:#ffb84d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#discussion-header {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+
+    color: inherit;
+
+    padding-right: 300px;
+    margin-bottom: 10px;
+}
+
+#discussion-header h4{
+    margin: 0px;
+    padding: 0px 40px 0px 40px;
+}
+
+#discussion-header h4:hover{
+    cursor: pointer;
+    font: larger;
+}
+
+#discussion-header button {
+    color:inherit;
+    font: inherit;
+
+    text-align: center;
+
+    height: fit-content;
+    width:fit-content;
+
+    background-color: inherit;
+    padding: 5px;
+    border: 2px solid #ffb84d;
+}
+
+#discussion-header button:hover{
+    cursor: pointer;
+}
+
+#topic-table{
+    table-layout: fixed;
+}
+
+#topics-header:hover{
+    cursor: default;
+}
+
+#topics-header th{
+    padding: 20px;
+    border-bottom: solid thick #ffb84d;
+}
+
+.topics-row td:hover{
+    cursor: pointer;
+    text-decoration: dotted #ffb84d;
+}
+
+.topic-col{
+    text-align: left;
+    width: 400px;
+}
+
+.reply-col{
+    width: 10px;
+
+    text-align: center;
+
+    padding: 50px 0px 50px 0px;
+}
+
+.activity-col{
+    width: 25px;
+    text-align: center;
+}
