@@ -25,7 +25,25 @@ html {
     min-height: 100%;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
+    #left-nav, #right-nav {
+        width: 250px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #left-nav, #right-nav {
+        width: 180px;
+    }
+}
+
+@media (max-width: 800px) {
+    #left-nav, #right-nav {
+        width: 120px;
+    }
+}
+
+@media (max-width: 600px) {
     #left-nav, #right-nav {
         display: none;
     }
