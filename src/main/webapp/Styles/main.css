@@ -54,6 +54,7 @@ body {
     background-color: black;
     color: #ffb84d;
     min-height: 100%;
+    min-width: 1400px
 }
 /*Change cursors*/
 /* Default cursor hover effects */
