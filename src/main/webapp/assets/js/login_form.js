@@ -9,7 +9,11 @@ function buildApiUrl(path) {
     if (window.location.protocol === "file:") {
         return `http://localhost:8080/hivehub${path}`;
     }
-    return path;
+
+    const segments = window.location.pathname.split("/").filter(Boolean);
+    const first = segments.length > 0 ? segments[0] : "";
+    const contextPath = first && !first.includes(".") && first.toLowerCase() !== "api" ? `/${first}` : "";
+    return `${contextPath}${path}`;
 }
 
 async function tryLogin(payload) {

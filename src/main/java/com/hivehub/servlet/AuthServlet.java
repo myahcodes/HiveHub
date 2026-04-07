@@ -5,7 +5,6 @@ import com.hivehub.dao.AuthUserDao.AuthUser;
 import com.hivehub.service.EmailService;
 import org.mindrot.jbcrypt.BCrypt;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,12 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-@WebServlet(name = "AuthServlet", urlPatterns = {
-        "/api/auth/signup",
-        "/api/auth/login",
-        "/api/auth/forgot",
-        "/api/auth/session"
-})
 public class AuthServlet extends HttpServlet {
     private AuthUserDao authUserDao;
     private EmailService emailService;
