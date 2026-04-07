@@ -244,8 +244,9 @@ textarea,
     transition: all 0.3s ease-in-out;
     background-color: black;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     background-position: center;
+    overflow: hidden;
 }
 
 #left-nav {
