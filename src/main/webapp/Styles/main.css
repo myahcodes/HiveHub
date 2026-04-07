@@ -32,51 +32,11 @@ html {
     min-height: 100%;
 }
 
-@media (max-width: 1100px) {
-    #left-nav, #right-nav {
-        width: 200px;
-    }
-
-    #left-nav .icon-hive {
-        top: 142px;
-        left: 80px;
-    }
-
-    #right-nav .icon-buzzboard {
-        top: 404px;
-        right: 40px;
-    }
-
-    #right-nav .icon-search {
-        top: 243px;
-        right: 5px;
-    }
-
-    #right-nav .icon-home {
-        top: 365px;
-        right: 20px;
-    }
-
-    #right-nav .icon-post {
-        top: 280px;
-        right: 60px;
-    }
-}
-
 @media (max-width: 768px) {
     #left-nav, #right-nav {
         display: none;
     }
 
-    .HH-Home {
-        width: 90% !important;
-    }
-
-    .HH-contents {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
     /* Adjust main content to take full width when navs are gone */
     .HH-Home {
         width: 90% !important;
