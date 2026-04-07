@@ -1,6 +1,6 @@
 package com.hivehub.dao;
 
-import com.hivehub.DatabaseConnection;
+import com.hivehub.database.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
