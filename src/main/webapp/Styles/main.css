@@ -221,8 +221,13 @@ textarea,
 }
 
 /*Nav Bar & Buttons*/
+#app-root {
+    position: relative;
+    min-height: 100vh;
+}
+
 #left-nav, #right-nav {
-    position: fixed;
+    position: absolute;
     width: 322px;
     height: 768px;
     top: 0;
