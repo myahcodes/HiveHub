@@ -97,13 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 panelMessage.style.color = 'red';
                 return;
             }
-    
+            
             if (username) {
                 const fd = new FormData();
                 fd.append('action', 'updateUsername');
                 fd.append('username', username);
                 const res = await fetch('settings', { method: 'POST', body: fd });
                 const data = await res.json();
+                console.log('updateUsername response:', data);
                 if (!data.success) {
                     panelMessage.textContent = data.error || 'Failed to update username.';
                     panelMessage.style.color = 'red';
@@ -117,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fd.append('email', email);
                 const res = await fetch('settings', { method: 'POST', body: fd });
                 const data = await res.json();
+                console.log('updateEmail response:', data);
                 if (!data.success) {
                     panelMessage.textContent = 'Failed to update email.';
                     panelMessage.style.color = 'red';
