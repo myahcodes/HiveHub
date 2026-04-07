@@ -1,35 +1,38 @@
-async function loadProfile() {
+async function loadPosts() {
+    const feed = document.getElementById('buzz-feed');
+
     try {
-        const response = await fetch('api/profile');
+        const response = await fetch('api/posts');
+
         if (response.status === 401) {
             window.location.href = 'Login.html';
             return;
         }
-        const data = await response.json();
-        document.getElementById('profile-name').textContent = data.firstName + ' ' + data.lastName;
-        document.getElementById('profile-username').textContent = '@' + data.username;
-        document.getElementById('profile-email').textContent = data.email;
-        const container = document.getElementById('user-posts');
-        container.innerHTML = '';
-        if (data.posts.length === 0) {
-            container.innerHTML = '<p style="color:#ffb84d; text-align:center;">No posts yet.</p>';
+
+        const posts = await response.json();
+        feed.innerHTML = '';
+
+        if (posts.length === 0) {
+            feed.innerHTML = '<p style="color:#ffb84d; text-align:center;">No posts yet. Be the first to post!</p>';
             return;
         }
-        data.posts.forEach(post => {
+
+        posts.forEach(post => {
             const buzz = document.createElement('div');
             buzz.className = 'buzz';
             buzz.innerHTML = `
                 <div class="buzz-header">
                     <img src="assets/img/icons/defaultPfp.svg" alt="Profile" class="profile" />
                     <div class="user-info">
-                        <span>@${data.username}</span>
+                        <span>${post.username}</span>
                         <span class="user-info-divide">${new Date(post.createdAt).toLocaleDateString()}</span>
-                        ${post.tags ? '<span class="distance">' + post.tags + '</span>' : ''}
+                        ${post.tags ? `<span class="distance">${post.tags}</span>` : ''}
                     </div>
                 </div>
                 <div class="buzz-content">
                     <h3 style="color:#ffb84d; margin-bottom:8px;">${post.title}</h3>
-                    <div style="color:#ffb84d;">${post.body}</div>
+                    <div style="color:#ffb84d; margin-bottom:8px;">${post.body}</div>
+                    ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image" class="buzz-media" />` : ''}
                 </div>
                 <div class="buzz-actions">
                     <div style="display: flex; gap: 15px;">
@@ -41,10 +44,13 @@ async function loadProfile() {
                     </div>
                 </div>
             `;
-            container.appendChild(buzz);
+            feed.appendChild(buzz);
         });
+
     } catch (err) {
-        console.error('Failed to load profile:', err);
+        console.error('Failed to load posts:', err);
+        feed.innerHTML = '<p style="color:red; text-align:center;">Failed to load posts.</p>';
     }
 }
-loadProfile();
+
+loadPosts();

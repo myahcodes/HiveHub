@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>The HiveHub-Home</title>
-    <link rel="icon" href="webapp/assets/img/icons/defaultPfp.svg" />
-    <link rel="stylesheet" href="webapp/Styles/main.css" />
-    <link rel="stylesheet" href="webapp/Styles/home.css" />
+    <link rel="icon" href="assets/img/icons/defaultPfp.svg" />
+    <link rel="stylesheet" href="Styles/main.css" />
+    <link rel="stylesheet" href="Styles/home.css" />
 </head>
 <body class="Main-page">
     <div id="left-nav">
@@ -23,10 +23,12 @@
             <h1>HiveHub</h1>
         </div>
         <div class="HH-default" style="width: 95%">
-            <div class="buzz-feed">
-                <div class="buzz">
+            <div class="buzz-feed" id="buzz-feed">
+                <p id="feed-loading" style="color:#ffb84d; text-align:center;">Loading posts...</p>
+            </div>
+                
                     <div class="buzz-header">
-                        <img src="webapp/assets/img/placeholder/defaultPfpPlcHldr.svg" alt="Thrift Store Pfp" class="profile" />
+                        <img src="assets/img/placeholder/defaultPfpPlcHldr.svg" alt="Thrift Store Pfp" class="profile" />
                         <div class="user-info">
                             <span>Thrift Store Express</span>
                             <span class="rating-score">3</span>
@@ -37,27 +39,15 @@
                     <div class="buzz-content">
                         <noscript>Check out our new collection of vintage clothing and accessories! Great deals await you.</noscript>
                         <!--img placeholder here -->
-                        <img src="webapp\assets\img\placeholder\page-1.jpeg" alt="Post Image" class="buzz-media" />
+                        <img src="webapp/assets/img/placeholder/page-1.jpeg" alt="Post Image" class="buzz-media" />
                     </div>
                     <div class="buzz-actions">
                         <div style="display: flex; gap: 15px;">
-                            <button class="action-bttns" aria-label="comment">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="webapp/assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
-                                </svg>
-                            </button>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="webapp/assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
-                                </svg>
-                            </button>
+                            <button class="action-bttns commentFeedIcon"></button>
+                            <button class="action-bttns addToBuzzboardIcon"></button>
                         </div>
                         <div>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="webapp/assets/img/activityBar/activitySprites.svg#shareicon"></use>
-                                </svg>
-                            </button>
+                            <button class="action-bttns shareIcon"></button>
                         </div>
                     </div>
                 </div>
@@ -74,27 +64,15 @@
                     <div class="buzz-content">
                         <noscript>Wow so much candy!</noscript>
                         <!--img placeholder here -->
-                        <img src="webapp\assets\img\placeholder\page-2.jpeg" alt="Post Image" class="buzz-media" />
+                        <img src="webapp/assets/img/placeholder/page-2.jpeg" alt="Post Image" class="buzz-media" />
                     </div>
                     <div class="buzz-actions">
                         <div style="display: flex; gap: 15px;">
-                            <button class="action-bttns" aria-label="comment">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="webapp/assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
-                                </svg>
-                            </button>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="webapp/assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
-                                </svg>
-                            </button>
+                            <button class="action-bttns commentFeedIcon"></button>
+                            <button class="action-bttns addToBuzzboardIcon"></button>
                         </div>
                         <div>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="webapp/assets/img/activityBar/activitySprites.svg#shareicon"></use>
-                                </svg>
-                            </button>
+                            <button class="action-bttns shareIcon"></button>
                         </div>
                     </div>
                 </div>
@@ -106,8 +84,7 @@
             <a href="about.html">our mission</a>
         </footer>
     </div>
-    <script src="webapp/assets/js/cursor.js"></script>
-    <script src="webapp/assets/js/home.js"></script>
-    <script src="webapp/assets/js/navBttn_activity.js"></script>
+    <script src="assets/js/home.js"></script>
+    <script src="assets/js/navBttn_activity.js"></script>
 </body>
 </html>

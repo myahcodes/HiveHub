@@ -31,7 +31,7 @@
 .post-editor {
     border: 1px solid rgba(255, 184, 77, 0.5);
     background: black;
-    overflow: hidden;
+    overflow-y: auto;   /* was: hidden */
     position: relative;
     height: 250px;
 }
@@ -301,9 +301,17 @@
     color: #ffb84d;
 }
 
-    .modal.hidden {
-        display: none;
-    }
+.modal.hidden {
+    display: none !important;
+}
+
+.modal-backdrop.hidden {
+    display: none !important;
+}
+
+.hidden {
+    display: none !important;
+}
 
     /* Font and placeholder consistency for modals */
     .modal,

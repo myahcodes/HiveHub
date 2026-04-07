@@ -1,8 +1,6 @@
-//cosmetic references:
-const hover_audio = new Audio("/webapp/assets/audio/pop-on.mp3");
-const click_audio = new Audio("/webapp/assets/audio/click-sound.mp3")
-
-/*Create references to parent block and footer*/
+// Cosmetic audio
+const hover_audio = new Audio("assets/audio/pop-on.mp3");
+const click_audio = new Audio("assets/audio/click-sound.mp3");
 
 const container = document.querySelector(".HH-authenticator");
 const footer = document.querySelector(".HH-footer");
@@ -11,8 +9,7 @@ function buildApiUrl(path) {
     if (window.location.protocol === "file:") {
         return `http://localhost:8080/hivehub${path}`;
     }
-
-    return path.replace(/^\//, "");
+    return path;
 }
 
 async function tryLogin(payload) {
@@ -25,7 +22,13 @@ async function tryLogin(payload) {
     });
 
     if (authResponse.status !== 404) {
-        const data = await authResponse.json();
+        let data = {};
+        try {
+            data = await authResponse.json();
+        } catch (_) {
+            throw new Error("Login failed.");
+        }
+
         if (!authResponse.ok || !data.ok) {
             throw new Error(data.message || "Login failed.");
         }
@@ -67,67 +70,56 @@ async function tryLogin(payload) {
     window.location.href = "Home.html";
 }
 
-/*Create form*/
-
 const form = document.createElement("form");
 form.className = "signOn_form";
-/*Username field*/
 
 const txt_username = document.createElement("input");
 txt_username.type = "text";
 txt_username.placeholder = "Username, email";
 txt_username.required = true;
 txt_username.name = "identifier";
-
 txt_username.onfocus = () => {
     click_audio.currentTime = 0;
     click_audio.play();
 };
-
-
-/*Password field*/
 
 const txt_password = document.createElement("input");
 txt_password.type = "password";
 txt_password.placeholder = "Password";
 txt_password.required = true;
 txt_password.name = "password";
-
 txt_password.onfocus = () => {
     click_audio.currentTime = 0;
     click_audio.play();
 };
-
-/*Creation of Login Button*/
 
 const btn_Login = document.createElement("button");
 btn_Login.textContent = "Login";
 btn_Login.id = "login_button";
 btn_Login.type = "submit";
 btn_Login.style.cursor = "pointer";
-
 btn_Login.style.color = "black";
-btn_Login.style.backgroundColor = " #ffb84d";
-
-/*Creation of Signup Button*/
+btn_Login.style.backgroundColor = "#ffb84d";
 
 const btn_signup = document.createElement("button");
 btn_signup.textContent = "Sign Up";
 btn_signup.id = "signup_button";
 btn_signup.type = "button";
 btn_signup.style.cursor = "pointer";
-
-btn_signup.style.color = " #ffb84d";
+btn_signup.style.color = "#ffb84d";
 btn_signup.style.backgroundColor = "black";
 
-/*Place buttons in the form*/
+[btn_Login, btn_signup].forEach((btn) => {
+    btn.addEventListener("mouseenter", () => {
+        hover_audio.currentTime = 0;
+        hover_audio.play();
+    });
+});
 
 form.appendChild(txt_username);
 form.appendChild(txt_password);
 form.appendChild(btn_Login);
 form.appendChild(btn_signup);
-
-/*Place form in HH-authenticator block*/
 
 container.insertBefore(form, footer);
 
@@ -139,7 +131,7 @@ btn_signup.addEventListener("click", function (event) {
 
     setTimeout(() => {
         window.location.href = "SignUp.html";
-    }, 550); // equivalent to 5.5 milliseconds
+    }, 550); // equivalent to 0.55 seconds
 });
 
 btn_Login.addEventListener("click", function (event) {
@@ -158,8 +150,7 @@ btn_Login.addEventListener("click", function (event) {
         password: txt_password.value
     });
 
-    tryLogin(payload)
-        .catch((error) => {
-            alert(error.message);
-        });
+    tryLogin(payload).catch((error) => {
+        alert(error.message);
+    });
 });
