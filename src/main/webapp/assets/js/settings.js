@@ -160,23 +160,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         try {
-            const response = await fetch('settings', { method: 'POST', body: formData });
-            const data = await response.json();
-    
-            if (data.success) {
-                panelMessage.textContent = 'Saved successfully!';
-                panelMessage.style.color = '#ffb84d';
-                setTimeout(hidePanel, 1500);
-            } else {
-                panelMessage.textContent = data.error || 'Something went wrong.';
-                panelMessage.style.color = 'red';
-            }
-        } catch (err) {
-            console.error(err);
-            panelMessage.textContent = 'Network error.';
-            panelMessage.style.color = 'red';
-        }
+    const response = await fetch('settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
     });
+    const data = await response.json();
+
+    if (data.success) {
+        panelMessage.textContent = 'Saved successfully!';
+        panelMessage.style.color = '#ffb84d';
+        setTimeout(hidePanel, 1500);
+    } else {
+        panelMessage.textContent = data.error || 'Something went wrong.';
+        panelMessage.style.color = 'red';
+    }
+} catch (err) {
+    console.error(err);
+    panelMessage.textContent = 'Network error.';
+    panelMessage.style.color = 'red';
+}
     
     document.getElementById('logout_button').addEventListener('click', () => {
         click_audio.currentTime = 0;
