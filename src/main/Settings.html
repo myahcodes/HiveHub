@@ -68,11 +68,19 @@
                         <div class="elements-container">
 
                             <div class="option-background">
-                                <h3>Change Display name</h3>
+                                <h3>Display Settings</h3>
 
                                 <div class="input-row">
-                                    <p>New name: </p>
+                                    <p>Displayed name: </p>
                                     <input id="name-change-input" />
+                                </div>
+                                <p>Display color</p>
+                                <div id="color-options">
+                                    <label><input id="pink-color" type="checkbox"/></label>
+                                    <label><input id="lightblue-color" type="checkbox"/></label>
+                                    <label><input id="blue-color" type="checkbox"/></label>
+                                    <label><input id="lilac-color" type="checkbox"/></label>
+                                    <label><input id="green-color" type="checkbox"/></label>
                                 </div>
                             </div>
 
@@ -92,8 +100,58 @@
                             <div class="option-background">
                                 <h3>Whats buzzing with you?</h3>
 
-                                <div class="input-row">
-                                    <input />
+                                <!--Editor Container-->
+
+                                <div class="post-editor">
+                                    <div class="toolbar">
+                                        <button data-cmd="undo" title="Undo"><i data-lucide="undo-2" class="w-4 h-4"></i></button>
+                                        <button data-cmd="redo" title="Redo"><i data-lucide="redo-2" class="w-4 h-4"></i></button>
+
+                                        <div class="w-[1px] h-4 bg-orange-300/30 self-center mx-1"></div>
+
+                                        <div class="dropdown">
+                                            <button class="dropdown-trigger"><i data-lucide="type" class="w-4 h-4"></i> <i data-lucide="chevron-down" class="w-3 h-3"></i></button>
+                                            <div class="dropdown-content">
+                                                <button class="dropdown-item" data-cmd="h1">Heading 1</button>
+                                                <button class="dropdown-item" data-cmd="h2">Heading 2</button>
+                                                <button class="dropdown-item" data-cmd="paragraph">Text</button>
+                                            </div>
+                                        </div>
+
+                                        <button data-cmd="bold" title="Bold"><i data-lucide="bold" class="w-4 h-4"></i></button>
+                                        <button data-cmd="italic" title="Italic"><i data-lucide="italic" class="w-4 h-4"></i></button>
+
+                                        <div class="w-[1px] h-4 bg-orange-300/30 self-center mx-1"></div>
+
+                                        <div class="dropdown">
+                                            <button class="dropdown-trigger"><i data-lucide="list" class="w-4 h-4"></i> <i data-lucide="chevron-down" class="w-3 h-3"></i></button>
+                                            <div class="dropdown-content">
+                                                <button class="dropdown-item" data-cmd="bulletList">Bulleted List</button>
+                                                <button class="dropdown-item" data-cmd="orderedList">Numbered List</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-[1px] h-4 bg-orange-300/30 self-center mx-1"></div>
+
+                                        <button id="btn-link" title="Link"><i data-lucide="link" class="w-4 h-4"></i></button>
+                                        <button id="btn-image" title="Image"><i data-lucide="image" class="w-4 h-4"></i></button>
+                                        <button id="btn-location" title="Location"><i data-lucide="map-pin" class="w-4 h-4"></i></button>
+                                    </div>
+
+                                    <div id="editor-content" class="tiptap no-scrollbar"></div>
+                                </div>
+                                <div class="footer">
+                                    <div class="relative">
+                                        <button id="emoji-trigger" class="emoji-btn">
+                                            <i data-lucide="smile" class="w-5 h-5"></i>
+                                        </button>
+                                        <div id="emoji-picker-container"></div>
+                                    </div>
+
+                                    <div class="flex items-center gap-4">
+                                        <span id="post-status" class="text-[#ffb84d] text-xs font-bold hidden">CONTENT SAVED</span>
+                                        <button id="post-btn" class="post-btn">Post</button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -120,9 +178,9 @@
                                     <p>Current Password:</p>
                                     <input />
                                     <p>New Password:</p>
-                                    <input type="password"/>
+                                    <input type="password" />
                                     <p>Confirm new Password:</p>
-                                    <input type="password"/>
+                                    <input type="password" />
                                 </div>
                             </div>
 
@@ -142,9 +200,9 @@
                             <div class="option-background">
                                 <div class="input-row">
                                     <p>New email:</p>
-                                    <input />
+                                    <input type="email"/>
                                     <p>Confirm new email:</p>
-                                    <input />
+                                    <input type="email"/>
                                 </div>
                             </div>
 
@@ -205,7 +263,10 @@
 
     </div>
 
+
     <script src="webapp/assets/js/settings.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="webapp/assets/js/post_form.js"></script>
     <script src="webapp/assets/js/settings_searchbar.js"></script>
     <script src="webapp/assets/js/navBttn_activity.js"></script>
 </body>
