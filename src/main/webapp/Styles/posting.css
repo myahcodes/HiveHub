@@ -1,7 +1,13 @@
-﻿.title-panel {
-/*    display: flex;
+﻿.HH-Posting .HH-Header h1 {
+    margin-block-end: 0.20em;
+}
+.HH-Posting .HH-default {
+    overflow: visible;
+}
+.title-panel {
+    display: flex;
     flex-direction: column;
-    align-content: center;*/
+    align-content: center;
 }
 .title-input::placeholder {
     color: rgba(255, 184, 77, 0.5);
@@ -17,6 +23,7 @@
     background: black;
     color: #ffb84d;
     transition: transform 0.2s ease;
+    box-sizing: border-box;
 }
 
     .title-input:focus {
@@ -109,7 +116,7 @@
 
 /* TipTap Styling */
 .tiptap {
-    padding: 6px 10px;
+    padding: 0px 10px;
     font-family: BeePollen, Chewy;
     outline: none;
     font-size: 14px;
@@ -180,10 +187,11 @@
     bottom: 41px;
     left: -4px;
     z-index: 1000;
-    width: 495px;
+/*    width: 495px;*/
     height: 175px;
     border-top: solid 1px rgba(255, 184, 77, 0.5);
     overflow: hidden;
+    background-color: black;
 }
 
     #emoji-picker-container.show {
@@ -274,6 +282,9 @@
         color: #ffb84d;
         border-radius: 4px;
     }
+.relative {
+    position: relative;
+}
 
 /* Modal Styles (general) */
 .modal-backdrop {
@@ -304,7 +315,9 @@
     .modal.hidden {
         display: none;
     }
-
+.modal-backdrop.hidden {
+    display: none;
+}
     /* Font and placeholder consistency for modals */
     .modal,
     .modal input,
@@ -621,4 +634,45 @@
 
 #custom-tag-input .tag-opt {
     min-height: 10px;
+}
+/* Simple replacements for Tailwind spacing utilities used in toolbar */
+.toolbar button i,
+.emoji-btn i,
+.post-btn i {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+}
+
+.toolbar .dropdown-trigger i:last-child {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.footer .emoji-btn i {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.w-4 {
+    width: 1rem;
+}
+
+.h-4 {
+    height: 1rem;
+}
+
+.w-5 {
+    width: 1.25rem;
+}
+
+.h-5 {
+    height: 1.25rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+.hidden {
+    display: none;
 }
