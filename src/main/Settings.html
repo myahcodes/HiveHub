@@ -76,11 +76,12 @@
                                 </div>
                                 <p>Display color</p>
                                 <div id="color-options">
-                                    <label><input id="pink-color" type="checkbox"/></label>
-                                    <label><input id="lightblue-color" type="checkbox"/></label>
-                                    <label><input id="blue-color" type="checkbox"/></label>
-                                    <label><input id="lilac-color" type="checkbox"/></label>
-                                    <label><input id="green-color" type="checkbox"/></label>
+                                    <label class="color-container"><input id="default-color" value="#ffb84d" type="radio" name="color" /></label>
+                                    <label class="color-container"><input id="pink-color" value="hotpink" type="radio" name="color" /></label>
+                                    <label class="color-container"><input id="lightblue-color" value="deepskyblue" type="radio" name="color" /></label>
+                                    <label class="color-container"><input id="blue-color" value="blue" type="radio" name="color" /></label>
+                                    <label class="color-container"><input id="lilac-color" value="mediumpurple" type="radio" name="color" /></label>
+                                    <label class="color-container"><input id="green-color" value="lawngreen" type="radio" name="color" /></label>
                                 </div>
                             </div>
 
@@ -200,9 +201,9 @@
                             <div class="option-background">
                                 <div class="input-row">
                                     <p>New email:</p>
-                                    <input type="email"/>
+                                    <input type="email" />
                                     <p>Confirm new email:</p>
-                                    <input type="email"/>
+                                    <input type="email" />
                                 </div>
                             </div>
 
@@ -265,9 +266,11 @@
 
 
     <script src="webapp/assets/js/settings.js"></script>
+    <script src="webapp/assets/js/settings_searchbar.js"></script>
+    <script src="webapp/assets/js/theme.js"></script>
+    <script src="webapp/assets/js/updateTheme.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script type="module" src="webapp/assets/js/post_form.js"></script>
-    <script src="webapp/assets/js/settings_searchbar.js"></script>
     <script src="webapp/assets/js/navBttn_activity.js"></script>
 </body>
 </html>
