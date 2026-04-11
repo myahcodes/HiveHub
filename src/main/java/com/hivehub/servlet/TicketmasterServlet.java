@@ -109,7 +109,7 @@ public class TicketmasterServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().print("[]");
+            response.getWriter().print("{\"error\":\"" + e.getMessage() + "\"}");
         }
     }
 
