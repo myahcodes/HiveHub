@@ -10,6 +10,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 322px;
+    padding-right: 322px;
+    box-sizing: border-box;
 }
 
 #search-bar-settings {
@@ -46,193 +49,202 @@
     width: 610px;
     background-color: black;
     border-style: none;
+    outline: none;
 }
 
 #search-bar::placeholder{
     color: inherit;
 }
 
-#search-bar:focus{
-    outline: none;
-}
-
-.options{
-    display:flex;
-    flex-direction: column;
-
+.options {
+    width: 100%;
+    align-self: stretch;
+    justify-content: center;
+    display: block;
     padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 .option:hover{
     text-decoration: solid underline #ffb84d;
     text-shadow: 0px 0px 5px #ffb84d;
-    cursor: pointer;
+}
+
+.option-wrapper{
+    
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    color: inherit;
+    text-align: center;
+
+    background-color: rgba(0,0,0,0.4);
+}
+
+.elements-container{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    height: 100%;
+}
+
+.option-background{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    background-color: black;
+    border: solid thin #ffb84d;
+    padding: 30px;
+}
+
+.input-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-row p{
+    display: inline-flex;
+    padding-right: 5px;
+}
+
+.input-row input{
+    color: inherit;
+    font: inherit;
+    background-color: black;
+    outline: none;
+    border: solid thin #ffb84d;
+}
+
+#color-options{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border: solid thin #ffb84d;
+    background-color: red;
+    width: 200px;
+    height: 40px;
+}
+
+#color-options span{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+}
+
+#pink-color{
+    background-color: hotpink;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#lightblue-color{
+    background-color: deepskyblue;
+    top: 0;
+    bottom: 0;
+    left: 25px;
+}
+
+#blue-color {
+    background-color: blue;
+    top: 0;
+    bottom: 0;
+    left: 50px;
+}
+
+#lilac-color{
+    background-color: mediumpurple;
+    top: 0;
+    bottom: 0;
+    right: 25px;
+}
+
+#green-color {
+    background-color: lawngreen;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#visibility-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#visibility-option{
+    padding-right: 20px;
+}
+
+.visibility-toggle{
+    display: inline-block;
+    position: relative;
+    width: 54px;
+    height: 28px;
+    flex-shrink: 0;
+    border: 2px solid #ffb84d;
+    border-radius: 28px;
+}
+.visibility-toggle input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+#slider::before{
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 2.2px;
+    bottom: 3px;
+    background-color: #ffb84d;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+#slider{
+    position: absolute;
+    background-color: black;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 28px;
+}
+
+input:checked + #slider{
+    background-color: #ffb84d;
+}
+
+input:checked + #slider::before{
+    background-color: black;
+    -webkit-transform: translateX(28px);
+    -ms-transform: translateX(28px);
+    transform: translateX(28px);
 }
 
 #logout_button{
-    cursor:pointer;
 
     font-family: inherit;
+    font-size: 17px;
     color: black;
 
     width: 100px;
     height: 30px;
     background-color: #ffb84d;
-    border-style: none;
+    border-radius: 6px;
+    border: solid;
 }
-
-const hover_control = new Audio("/assets/audio/pop-on.mp3");
-const click_audio = new Audio("/assets/audio/classic-click.mp3");
-
-const options_effects = document.querySelectorAll(".option");
-options_effects.forEach(option => {
-    option.addEventListener("mouseenter", () => {
-        hover_control.currentTime = 0;
-        hover_control.play();
-    });
-});
-
-// Panel elements
-const panel = document.getElementById('settings-panel');
-const backdrop = document.getElementById('panel-backdrop');
-const panelTitle = document.getElementById('panel-title');
-const panelBody = document.getElementById('panel-body');
-const panelMessage = document.getElementById('panel-message');
-const panelClose = document.getElementById('panel-close');
-const panelCancel = document.getElementById('panel-cancel');
-const panelSave = document.getElementById('panel-save');
-
-let currentAction = null;
-
-function showPanel(title, bodyHTML, action) {
-    panelTitle.textContent = title;
-    panelBody.innerHTML = bodyHTML;
-    panelMessage.textContent = '';
-    currentAction = action;
-    panel.classList.remove('hidden');
-    backdrop.classList.remove('hidden');
-}
-
-function hidePanel() {
-    panel.classList.add('hidden');
-    backdrop.classList.add('hidden');
-    currentAction = null;
-}
-
-panelClose.addEventListener('click', hidePanel);
-panelCancel.addEventListener('click', hidePanel);
-backdrop.addEventListener('click', hidePanel);
-
-// Option click handlers
-document.querySelectorAll('.option').forEach(option => {
-    option.addEventListener('click', () => {
-        click_audio.currentTime = 0;
-        click_audio.play();
-
-        const text = option.textContent.trim();
-
-        if (text === 'Display name') {
-            showPanel('Update Display Name', `
-                <input type="text" id="field-firstName" placeholder="First name" />
-                <input type="text" id="field-lastName" placeholder="Last name" />
-            `, 'updateProfile');
-        } else if (text === 'Update email/user') {
-            showPanel('Update Email & Username', `
-                <input type="text" id="field-username" placeholder="New username" />
-                <input type="text" id="field-email" placeholder="New email" />
-            `, 'updateEmailUser');
-        } else if (text === 'Change password') {
-            showPanel('Change Password', `
-                <input type="password" id="field-currentPassword" placeholder="Current password" />
-                <input type="password" id="field-newPassword" placeholder="New password" />
-                <input type="password" id="field-confirmPassword" placeholder="Confirm new password" />
-            `, 'updatePassword');
-        }
-    });
-});
-
-// Save handler
-panelSave.addEventListener('click', async () => {
-    const formData = new FormData();
-
-    if (currentAction === 'updateProfile') {
-        formData.append('action', 'updateProfile');
-        formData.append('firstName', document.getElementById('field-firstName').value.trim());
-        formData.append('lastName', document.getElementById('field-lastName').value.trim());
-
-    } else if (currentAction === 'updateEmailUser') {
-        const username = document.getElementById('field-username').value.trim();
-        const email = document.getElementById('field-email').value.trim();
-
-        if (username) {
-            formData.append('action', 'updateUsername');
-            formData.append('username', username);
-            const res = await fetch('settings', { method: 'POST', body: formData });
-            const data = await res.json();
-            if (!data.success) {
-                panelMessage.textContent = data.error || 'Failed to update username.';
-                panelMessage.style.color = 'red';
-                return;
-            }
-        }
-
-        if (email) {
-            const emailForm = new FormData();
-            emailForm.append('action', 'updateEmail');
-            emailForm.append('email', email);
-            const res = await fetch('settings', { method: 'POST', body: emailForm });
-            const data = await res.json();
-            if (!data.success) {
-                panelMessage.textContent = 'Failed to update email.';
-                panelMessage.style.color = 'red';
-                return;
-            }
-        }
-
-        panelMessage.textContent = 'Updated successfully!';
-        panelMessage.style.color = '#ffb84d';
-        setTimeout(hidePanel, 1500);
-        return;
-
-    } else if (currentAction === 'updatePassword') {
-        const newPass = document.getElementById('field-newPassword').value;
-        const confirmPass = document.getElementById('field-confirmPassword').value;
-
-        if (newPass !== confirmPass) {
-            panelMessage.textContent = 'Passwords do not match.';
-            panelMessage.style.color = 'red';
-            return;
-        }
-
-        formData.append('action', 'updatePassword');
-        formData.append('currentPassword', document.getElementById('field-currentPassword').value);
-        formData.append('newPassword', newPass);
-    }
-
-    try {
-        const response = await fetch('settings', { method: 'POST', body: formData });
-        const data = await response.json();
-
-        if (data.success) {
-            panelMessage.textContent = 'Saved successfully!';
-            panelMessage.style.color = '#ffb84d';
-            setTimeout(hidePanel, 1500);
-        } else {
-            panelMessage.textContent = data.error || 'Something went wrong.';
-            panelMessage.style.color = 'red';
-        }
-    } catch (err) {
-        console.error(err);
-        panelMessage.textContent = 'Network error.';
-        panelMessage.style.color = 'red';
-    }
-});
-
-// Logout
-document.getElementById('logout_button').addEventListener('click', () => {
-    click_audio.currentTime = 0;
-    click_audio.play();
-    setTimeout(() => {
-        window.location.href = 'logout';
-    }, 300);
-});
