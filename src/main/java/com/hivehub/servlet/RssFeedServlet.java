@@ -59,7 +59,7 @@ public class RssFeedServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().print("[]");
+            response.getWriter().print("{\"error\":\"" + e.getMessage() + "\"}");
         }
     }
 
