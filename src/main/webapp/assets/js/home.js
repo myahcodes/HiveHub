@@ -53,7 +53,6 @@ async function loadPosts() {
     }
 }
 
-loadPosts();
 
 async function loadRssFeed() {
     try {
@@ -89,4 +88,4 @@ async function loadRssFeed() {
     }
 }
 
-loadRssFeed();
+loadPosts().then(() => loadRssFeed());
