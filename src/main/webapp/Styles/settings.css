@@ -68,7 +68,9 @@ body{
     width: 100%;
     align-self: stretch;
     justify-content: center;
+
     display: block;
+
     padding-left: 20px;
     padding-bottom: 20px;
 }
@@ -76,6 +78,7 @@ body{
 .option:hover {
     text-decoration: solid underline var(--theme-color);
     text-shadow: 0px 0px 5px var(--theme-color);
+    cursor: var(--pointer-cursor);
 }
 
 .option-wrapper{
