@@ -248,3 +248,21 @@ input:checked + #slider::before{
     border-radius: 6px;
     border: solid;
 }
+
+.settings-save-btn {
+    font-family: inherit;
+    font-size: 17px;
+    color: black;
+    width: 100px;
+    height: 30px;
+    background-color: #ffb84d;
+    border-radius: 6px;
+    border: solid;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.settings-message {
+    margin-top: 8px;
+    font-size: 14px;
+}
