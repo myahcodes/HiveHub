@@ -1,29 +1,69 @@
 <!DOCTYPE html>
-<HTML>
-<Head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>The HiveHub-Profile</title>
     <link rel="icon" href="assets/img/icons/defaultPfp.svg" />
     <link rel="stylesheet" href="Styles/main.css" />
     <link rel="stylesheet" href="Styles/profile.css" />
-</Head>
+</head>
 <body class="Main-page">
     <div id="left-nav">
-        <a href="Profile.html" class=""></a>
-        <a href="Hive.html" class="left-bttns icon-hive"></a>
+        <svg class="nav-bg">
+            <use href="assets/img/nav/bar/navBars.svg#leftnav"></use>
+        </svg>
+        <a href="Hive.html" class="left-bttns icon-hive">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#hiveicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#hiveiconslct"></use>
+            </svg>
+        </a>
     </div>
+
     <div id="right-nav">
-        <a href="Discovery.html" class="right-bttns icon-search"></a>
-        <a href="Posting.html" class="right-bttns icon-post"></a>
-        <a href="Buzzboard.html" class="right-bttns icon-buzzboard"></a>
-        <a href="Home.html" class="right-bttns icon-home"></a>
+        <svg class="nav-bg">
+            <use href="assets/img/nav/bar/navBars.svg#rightnav"></use>
+        </svg>
+        <a href="Discovery.html" class="right-bttns icon-discovery">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#discoveryicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#discoveryiconslct"></use>
+            </svg>
+        </a>
+        <a href="Posting.html" class="right-bttns icon-post">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#posticon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#posticonslct"></use>
+            </svg>
+        </a>
+        <a href="Buzzboard.html" class="right-bttns icon-buzzboard">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#buzzboardicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#buzzboardiconslct"></use>
+            </svg>
+        </a>
+        <a href="Home.html" class="right-bttns icon-home">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#homeicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttn_icons/bttns.svg#homeiconslct"></use>
+            </svg>
+        </a>
     </div>
 
     <div class="HH-MyHive">
-
         <div class="HH-Header">
             <h1>My Hive</h1>
         </div>
-
         <div class="HH-contents">
             <div class="profile-container">
                 <img src="assets/img/icons/defaultPfp.svg" alt="Profile Picture" class="profile-pic" id="profile-pic" />
@@ -34,11 +74,11 @@
                 </div>
                 <button id="logout-btn" onclick="window.location.href='logout'">Log Out</button>
             </div>
-        
+
             <div class="buzz-container" id="user-posts">
                 <p style="color:#ffb84d; text-align:center;">Loading your posts...</p>
             </div>
-        
+
             <div>
                 <noscript>Scripts are required to run the site.</noscript>
             </div>
@@ -49,7 +89,20 @@
             <a href="about.html">our mission</a>
         </footer>
     </div>
+
+    <script>
+        ['assets/img/nav/bar/navBars.svg', 'assets/img/nav/bttn_icons/bttns.svg'].forEach(src => {
+            fetch(src)
+                .then(r => r.text())
+                .then(svg => {
+                    const div = document.createElement('div');
+                    div.style.display = 'none';
+                    div.innerHTML = svg;
+                    document.body.insertBefore(div, document.body.firstChild);
+                });
+        });
+    </script>
     <script src="assets/js/profile.js"></script>
     <script src="assets/js/navBttn_activity.js"></script>
 </body>
-</HTML> 
+</html>
