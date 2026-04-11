@@ -3,24 +3,31 @@
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
     font-style: normal;
 }
+:root {
+    --theme-color: #ffb84d;
+}
+
+body {
+    color: var(--theme-color);
+}
 
 .HH-contents {
     font-family: BeePollen, Chewy;
-    color:#ffb84d;
     display: flex;
+    color: var(--theme-color);
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 322px;
+    padding-right: 322px;
 }
 
 #discussion-header {
     display: flex;
     flex-direction: row;
-
+    color:inherit;
     justify-content: center;
     align-items: center;
-
-    color: inherit;
 
     padding-right: 300px;
     margin-bottom: 10px;
@@ -32,12 +39,12 @@
 }
 
 #discussion-header h4:hover{
-    cursor: pointer;
+    cursor: var(--pointer-cursor);
     font: larger;
 }
 
 #discussion-header button {
-    color:inherit;
+    color:var(--theme-color);
     font: inherit;
 
     text-align: center;
@@ -47,29 +54,29 @@
 
     background-color: inherit;
     padding: 5px;
-    border: 2px solid #ffb84d;
+    border: 2px solid var(--theme-color);
 }
 
 #discussion-header button:hover{
-    cursor: pointer;
+    cursor: var(--pointer-cursor);
 }
 
 #topic-table{
     table-layout: fixed;
 }
 
-#topics-header:hover{
-    cursor: default;
+#topics-header:hover {
+    cursor: var(--default-cursor);
 }
 
-#topics-header th{
+#topics-header th {
     padding: 20px;
-    border-bottom: solid thick #ffb84d;
+    border-bottom: solid thick var(--theme-color);
 }
 
-.topics-row td:hover{
-    cursor: pointer;
-    text-decoration: dotted #ffb84d;
+.topics-row td:hover {
+    cursor: var(--pointer-cursor);
+    text-decoration: dotted var(--theme-color);
 }
 
 .topic-col{
