@@ -126,7 +126,15 @@
 }
 
 /* Fix buzz-container to take full width */
-.buzz-container {
+.buzz-content {
+    overflow: hidden;
+}
+
+.buzz-content img {
     width: 100%;
-    box-sizing: border-box;
+    height: 360px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    display: block;
 }
