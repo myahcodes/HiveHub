@@ -52,7 +52,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-    color: #ffb84d;
+    color: var(--theme-color);
     min-height: 100%;
 }
 /*Change cursors*/
@@ -199,7 +199,7 @@ textarea,
     width: fit-content;
     margin-top: 0.4cm;
     
-    border-top-color: #ffb84d;
+    border-top-color: var(--theme-color);
     border-top-style: solid;
 }
 
