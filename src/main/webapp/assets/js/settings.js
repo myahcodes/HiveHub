@@ -1,3 +1,6 @@
+
+// audio section: 
+
 const hover_control = new Audio("/webapp/assets/audio/pop-on.mp3");
 const click_audio = new Audio("/webapp/assets/audio/classic-click.mp3");
 
@@ -15,7 +18,7 @@ options_effects.forEach(option => {
     });
 });
 
-// Display name options:
+// Display options:
 
 const options_panel = document.querySelector(".options");
 const display_template = document.querySelector("#display-change-template");
@@ -27,6 +30,9 @@ display_option.addEventListener("click", (e) => {
 
     const clone_pointer = display_template.content.cloneNode(true);
     clone = options_panel.appendChild(clone_pointer.firstElementChild);
+
+    //pass modal to theme.js
+    ThemePicker(clone);
 });
 
 //icon options:
@@ -111,6 +117,8 @@ event_option.addEventListener("click", (e) => {
 
 //visibility: (toggle or dropdown)
 
+
+// close modals:
 document.body.addEventListener("click", (e) => {
 
     const options_elements = document.querySelector(".elements-container");
