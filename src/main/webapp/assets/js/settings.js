@@ -1,188 +1,216 @@
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    let currentAction = null;
-    const hover_control = new Audio("/assets/audio/pop-on.mp3");
-    const click_audio = new Audio("/assets/audio/classic-click.mp3");
-    
+    const hover_control = new Audio("/webapp/assets/audio/pop-on.mp3");
+    const click_audio = new Audio("/webapp/assets/audio/classic-click.mp3");
+
     const options_effects = document.querySelectorAll(".option");
     options_effects.forEach(option => {
         option.addEventListener("mouseenter", () => {
             hover_control.currentTime = 0;
             hover_control.play();
         });
-    });
-    
-    const panel = document.getElementById('settings-panel');
-    const backdrop = document.getElementById('panel-backdrop');
-    const panelTitle = document.getElementById('panel-title');
-    const panelBody = document.getElementById('panel-body');
-    const panelMessage = document.getElementById('panel-message');
-    const panelClose = document.getElementById('panel-close');
-    const panelCancel = document.getElementById('panel-cancel');
-    const panelSave = document.getElementById('panel-save');
-    
-    function showPanel(title, bodyHTML, action) {
-        console.log("showPanel called with action:", action);
-        panelTitle.textContent = title;
-        panelBody.innerHTML = bodyHTML;
-        panelMessage.textContent = '';
-        currentAction = action;
-        panel.classList.remove('hidden');
-        backdrop.classList.remove('hidden');
-    }
-    
-    function hidePanel() {
-        panel.classList.add('hidden');
-        backdrop.classList.add('hidden');
-        currentAction = null;
-    }
-    
-    panelClose.addEventListener('click', hidePanel);
-    panelCancel.addEventListener('click', hidePanel);
-    backdrop.addEventListener('click', hidePanel);
-    
-    document.querySelectorAll('.option').forEach(option => {
-        option.addEventListener('click', () => {
+        option.addEventListener("click", () => {
             click_audio.currentTime = 0;
             click_audio.play();
-    
-            const text = option.textContent.trim();
-    
-            if (text === 'Display name') {
-                showPanel('Update Display Name', `
-                    <input type="text" id="field-firstName" placeholder="First name" />
-                    <input type="text" id="field-lastName" placeholder="Last name" />
-                `, 'updateProfile');
-            } else if (text === 'Update email/user') {
-                showPanel('Update Email & Username', `
-                    <input type="text" id="field-username" placeholder="New username" />
-                    <input type="text" id="field-email" placeholder="New email" />
-                `, 'updateEmailUser');
-            } else if (text === 'Change password') {
-                showPanel('Change Password', `
-                    <input type="password" id="field-currentPassword" placeholder="Current password" />
-                    <input type="password" id="field-newPassword" placeholder="New password" />
-                    <input type="password" id="field-confirmPassword" placeholder="Confirm new password" />
-                `, 'updatePassword');
+        });
+    });
+
+    const options_panel = document.querySelector(".options");
+    let clone = null;
+
+    function removeClone() {
+        if (clone) {
+            clone.remove();
+            clone = null;
+        }
+    }
+
+    function appendTemplate(templateId) {
+        removeClone();
+        const template = document.querySelector(templateId);
+        const clonePointer = template.content.cloneNode(true);
+        clone = options_panel.appendChild(clonePointer.firstElementChild);
+    }
+
+    // ── Close on backdrop click ──
+    document.body.addEventListener("click", (e) => {
+        if (!clone) return;
+        const container = clone.querySelector(".elements-container");
+        const background = clone.querySelector(".option-background");
+        if (background && !background.contains(e.target)) {
+            removeClone();
+        }
+    });
+
+    // ── Display name ──
+    document.querySelector("#display-option").addEventListener("click", (e) => {
+        e.stopPropagation();
+        appendTemplate("#display-change-template");
+    });
+
+    // ── Icon ──
+    document.querySelector("#icon-option").addEventListener("click", (e) => {
+        e.stopPropagation();
+        appendTemplate("#icon-change-template");
+    });
+
+    // ── Bio ──
+    document.querySelector("#bio-option").addEventListener("click", (e) => {
+        e.stopPropagation();
+        appendTemplate("#bio-change-template");
+    });
+
+    // ── Change Password ──
+    document.querySelector("#password-option").addEventListener("click", (e) => {
+        e.stopPropagation();
+        appendTemplate("#password-change-template");
+
+        // Add save button and message to the template after cloning
+        const background = clone.querySelector(".option-background");
+        const saveBtn = document.createElement("button");
+        saveBtn.textContent = "Save";
+        saveBtn.className = "settings-save-btn";
+        const message = document.createElement("p");
+        message.className = "settings-message";
+        background.appendChild(saveBtn);
+        background.appendChild(message);
+
+        saveBtn.addEventListener("click", async () => {
+            const inputs = clone.querySelectorAll("input");
+            const currentPassword = inputs[0].value;
+            const newPassword = inputs[1].value;
+            const confirmPassword = inputs[2].value;
+
+            if (!newPassword) {
+                message.textContent = "Please enter a new password.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                message.textContent = "Passwords do not match.";
+                message.style.color = "red";
+                return;
+            }
+
+            try {
+                const res = await fetch('settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `action=updatePassword&currentPassword=${encodeURIComponent(currentPassword)}&newPassword=${encodeURIComponent(newPassword)}`
+                });
+                const data = await res.json();
+                if (data.success) {
+                    message.textContent = "Password updated!";
+                    message.style.color = "#ffb84d";
+                    setTimeout(removeClone, 1500);
+                } else {
+                    message.textContent = data.error || "Failed to update password.";
+                    message.style.color = "red";
+                }
+            } catch (err) {
+                message.textContent = "Network error.";
+                message.style.color = "red";
             }
         });
     });
-    
-    document.getElementById('panel-save').addEventListener('click', async () => {
-        const username = document.getElementById('field-username')?.value.trim();
-        const email = document.getElementById('field-email')?.value.trim();
-        console.log('username:', username, 'email:', email, 'action:', currentAction);
-            
-        const formData = new FormData();
-    
-        if (currentAction === 'updateProfile') {
-            const firstName = document.getElementById('field-firstName').value.trim();
-            const lastName = document.getElementById('field-lastName').value.trim();
-            if (!firstName && !lastName) {
-                panelMessage.textContent = 'Please enter a value to update.';
-                panelMessage.style.color = 'red';
-                return;
-            }
-            formData.append('action', 'updateProfile');
-            formData.append('firstName', firstName);
-            formData.append('lastName', lastName);
-    
-        } else if (currentAction === 'updateEmailUser') {
-            const username = document.getElementById('field-username').value.trim();
-            const email = document.getElementById('field-email').value.trim();
-    
-            if (!username && !email) {
-                panelMessage.textContent = 'Please enter a username or email.';
-                panelMessage.style.color = 'red';
-                return;
-            }
-            
-            if (username) {
-                const res = await fetch('settings', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `action=updateUsername&username=${encodeURIComponent(username)}`
-                });
-                const data = await res.json();
-                console.log('updateUsername response:', data);
-                if (!data.success) {
-                    panelMessage.textContent = data.error || 'Failed to update username.';
-                    panelMessage.style.color = 'red';
-                    return;
-                }
-            }
-    
-            if (email) {
-                const res = await fetch('settings', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: `action=updateEmail&email=${encodeURIComponent(email)}`
-                });
-                const data = await res.json();
-                console.log('updateEmail response:', data);
-                if (!data.success) {
-                    panelMessage.textContent = 'Failed to update email.';
-                    panelMessage.style.color = 'red';
-                    return;
-                }
-            }
-    
-            panelMessage.textContent = 'Updated successfully!';
-            panelMessage.style.color = '#ffb84d';
-            setTimeout(hidePanel, 1500);
-            return;
-    
-        } else if (currentAction === 'updatePassword') {
-            const newPass = document.getElementById('field-newPassword').value;
-            const confirmPass = document.getElementById('field-confirmPassword').value;
-    
-            if (!newPass) {
-                panelMessage.textContent = 'Please enter a new password.';
-                panelMessage.style.color = 'red';
-                return;
-            }
-    
-            if (newPass !== confirmPass) {
-                panelMessage.textContent = 'Passwords do not match.';
-                panelMessage.style.color = 'red';
-                return;
-            }
-    
-            formData.append('action', 'updatePassword');
-            formData.append('currentPassword', document.getElementById('field-currentPassword').value);
-            formData.append('newPassword', newPass);
-    
-        } else {
-            panelMessage.textContent = 'No action selected.';
-            panelMessage.style.color = 'red';
-            return;
-        }
-    
-        try {
-            const response = await fetch('settings', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            });
-            const data = await response.json();
-        
-            if (data.success) {
-                panelMessage.textContent = 'Saved successfully!';
-                panelMessage.style.color = '#ffb84d';
-                setTimeout(hidePanel, 1500);
-            } else {
-                panelMessage.textContent = data.error || 'Something went wrong.';
-                panelMessage.style.color = 'red';
-            }
-        } catch (err) {
-            console.error(err);
-            panelMessage.textContent = 'Network error.';
-            panelMessage.style.color = 'red';
-        }
-     });
 
-        
+    // ── Update Email/Username ──
+    document.querySelector("#email-option").addEventListener("click", (e) => {
+        e.stopPropagation();
+        appendTemplate("#email-change-template");
+
+        const background = clone.querySelector(".option-background");
+
+        // Add username field since their template only has email
+        const usernameLabel = document.createElement("p");
+        usernameLabel.textContent = "New username:";
+        const usernameInput = document.createElement("input");
+        usernameInput.type = "text";
+        usernameInput.placeholder = "New username (optional)";
+
+        const inputRow = clone.querySelector(".input-row");
+        inputRow.insertBefore(usernameInput, inputRow.firstChild);
+        inputRow.insertBefore(usernameLabel, usernameInput);
+
+        const saveBtn = document.createElement("button");
+        saveBtn.textContent = "Save";
+        saveBtn.className = "settings-save-btn";
+        const message = document.createElement("p");
+        message.className = "settings-message";
+        background.appendChild(saveBtn);
+        background.appendChild(message);
+
+        saveBtn.addEventListener("click", async () => {
+            const username = usernameInput.value.trim();
+            const inputs = clone.querySelectorAll("input[type='email']");
+            const email = inputs[0].value.trim();
+
+            if (!username && !email) {
+                message.textContent = "Please enter a username or email.";
+                message.style.color = "red";
+                return;
+            }
+
+            if (username) {
+                try {
+                    const res = await fetch('settings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `action=updateUsername&username=${encodeURIComponent(username)}`
+                    });
+                    const data = await res.json();
+                    if (!data.success) {
+                        message.textContent = data.error || "Failed to update username.";
+                        message.style.color = "red";
+                        return;
+                    }
+                } catch (err) {
+                    message.textContent = "Network error.";
+                    message.style.color = "red";
+                    return;
+                }
+            }
+
+            if (email) {
+                try {
+                    const res = await fetch('settings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: `action=updateEmail&email=${encodeURIComponent(email)}`
+                    });
+                    const data = await res.json();
+                    if (!data.success) {
+                        message.textContent = "Failed to update email.";
+                        message.style.color = "red";
+                        return;
+                    }
+                } catch (err) {
+                    message.textContent = "Network error.";
+                    message.style.color = "red";
+                    return;
+                }
+            }
+
+            message.textContent = "Updated successfully!";
+            message.style.color = "#ffb84d";
+            setTimeout(removeClone, 1500);
+        });
+    });
+
+    // ── Deactivate ──
+    document.querySelector("#delete-option").addEventListener("click", (e) => {
+        e.stopPropagation();
+        appendTemplate("#account-deletion-template");
+    });
+
+    // ── Event activity ──
+    document.querySelector("#event-option").addEventListener("click", (e) => {
+        e.stopPropagation();
+        appendTemplate("#event-change-template");
+    });
+
+    // ── Logout ──
     document.getElementById('logout_button').addEventListener('click', () => {
         click_audio.currentTime = 0;
         click_audio.play();
