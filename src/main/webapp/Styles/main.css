@@ -180,7 +180,7 @@ textarea,
 .HH-MyHive button {
     font-family: BeePollen, Chewy;
     font-size: 24px;
-    color: #ffb84d;
+    color: var(--theme-color);
     background-color: black;
     border: none;
 }
@@ -287,7 +287,7 @@ textarea,
     position: absolute;
     top: 0;
     left: 0;
-    fill: #ffb84d; /* your gold color */
+    fill: var(--theme-color); /* your gold color */
 }
 
 .icon-static {

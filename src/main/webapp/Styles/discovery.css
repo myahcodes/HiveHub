@@ -20,12 +20,17 @@
 .search-input::placeholder {
     color: rgba(255, 184, 77, 0.5);
 }*/
+
+:root{
+    --theme-color: #ffb84d;
+}
+
 #search-bar-discovery {
     display: flex;
     justify-content: right;
     width: 588px;
     height: 50px;
-    border: #ffb84d solid;
+    border: var(--theme-color) solid;
 }
 
 .searchbar {
@@ -39,6 +44,8 @@
 .search-icons {
     width: 40px;
     height: 40px;
+    color: var(--theme-color);
+    fill: var(--theme-color);
 }
 
 .bizzy-bttn {
@@ -80,7 +87,7 @@
     transform: translate(-50%, -50%);
     /*    background: black;
     border: 2px solid #ffb84d;*/
-    background: #ffb84d;
+    background: var(--theme-color);
     padding: 24px;
     z-index: 2000;
     /*    box-shadow: 0 8px 16px rgba(255, 184, 77, 0.3);
