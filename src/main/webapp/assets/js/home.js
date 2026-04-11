@@ -54,3 +54,39 @@ async function loadPosts() {
 }
 
 loadPosts();
+
+async function loadRssFeed() {
+    try {
+        const response = await fetch('api/rss');
+        const items = await response.json();
+        const feed = document.getElementById('buzz-feed');
+
+        items.forEach(item => {
+            const buzz = document.createElement('div');
+            buzz.className = 'buzz rss-post';
+            buzz.innerHTML = `
+                <div class="buzz-header">
+                    <img src="assets/img/icons/defaultPfp.svg" alt="We Are Huntsville" class="profile" />
+                    <div class="user-info">
+                        <span>${item.source}</span>
+                        <span class="user-info-divide">${new Date(item.pubDate).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <div class="buzz-content">
+                    <h3 style="color:#ffb84d; margin-bottom:8px;">
+                        <a href="${item.link}" target="_blank" style="color:#ffb84d;">${item.title}</a>
+                    </h3>
+                    <div style="color:#ffb84d; margin-bottom:8px;">${item.description}</div>
+                </div>
+                <div class="buzz-actions">
+                    <div style="display:flex; gap:15px;"></div>
+                </div>
+            `;
+            feed.appendChild(buzz);
+        });
+    } catch (err) {
+        console.error('Failed to load RSS feed:', err);
+    }
+}
+
+loadRssFeed();
