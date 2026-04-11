@@ -28,7 +28,11 @@ public class RssFeedServlet extends HttpServlet {
             URL url = new URL("https://wearehuntsville.com/feed/");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(url.openStream());
+            java.net.HttpURLConnection connection = (java.net.HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
+            connection.setRequestProperty("Accept", "application/rss+xml, application/xml, text/xml, */*");
+            connection.connect();
+            Document doc = builder.parse(connection.getInputStream());
 
             NodeList items = doc.getElementsByTagName("item");
             PrintWriter out = response.getWriter();
