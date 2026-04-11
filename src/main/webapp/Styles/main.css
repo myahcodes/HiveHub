@@ -1,7 +1,8 @@
 :root {
-    --default-cursor: url("/webapp/assets/img/icons/cursors/honeyCursor.png") 2 2, auto;
-    --pointer-cursor: url("/webapp/assets/img/icons/cursors/honeyPointer.png") 8 3, pointer;
-    --text-cursor: url("/webapp/assets/img/icons/cursors/honeyText.png") 4 7, text;
+    --default-cursor: url("/assets/img/icons/cursors/honeyCursor.png") 2 2, auto;
+    --pointer-cursor: url("/assets/img/icons/cursors/honeyPointer.png") 8 3, pointer;
+    --text-cursor: url("/assets/img/icons/cursors/honeyText.png") 4 7, text;
+    --theme-color: #ffb84d;
 }
 @font-face {
     font-family: Magic;
@@ -52,7 +53,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-    color: #ffb84d;
+    color: var(--theme-color);
     min-height: 100%;
 }
 /*Change cursors*/
@@ -144,6 +145,16 @@ textarea,
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 5;
+/*    font-family: BeePollen, Chewy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 46%;
+    height: fit-content;
+    margin: auto;
+    padding: 0;
+    min-height: fit-content;*/
 }
 .HH-Discovery {
     font-family: BeePollen, Chewy;
@@ -199,7 +210,7 @@ textarea,
     width: fit-content;
     margin-top: 0.4cm;
     
-    border-top-color: #ffb84d;
+    border-top-color: var(--theme-color);
     border-top-style: solid;
 }
 
@@ -227,58 +238,76 @@ textarea,
     height: 768px;
     top: 0;
     z-index: 10;
-    transition: all 0.3s ease-in-out;
+/*    transition: all 0.3s ease-in-out;
     background-color: black;
     background-repeat: no-repeat;
     background-size: auto;
-    background-position: center;
+    background-position: center;*/
 }
 
 #left-nav {
-    background-image: url(../assets/img/nav/bar/leftNav.jpg);
+/*    background-image: url(../assets/img/nav/bar/leftNav.jpg);*/
     left: 0;
     border-right: 3px solid #ffb84d;
 }
 
 #right-nav {
-    background-image: url(../assets/img/nav/bar/rightNav.jpg);
+/*    background-image: url(../assets/img/nav/bar/rightNav.jpg);*/
     right: 0;
     border-left: 3px solid #ffb84d;
+}
+.nav-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .left-bttns, .right-bttns {
     position: absolute;
     width: 133px;
     height: 133px;
-    background-image: url(../assets/img/nav/bttn_icons/bttn_sprites.png);
-    background-size: auto;
-    background-repeat: no-repeat;
-    overflow: hidden;
     display: block;
     overflow: hidden;
-    clip-path: polygon( 26.5% 0%, 91.5% 10.5%, 100% 60%, 73.5% 100%, 8.5% 89.5%, 0% 40%);
+    clip-path: polygon(26.5% 0%, 91.5% 10.5%, 100% 60%, 73.5% 100%, 8.5% 89.5%, 0% 40%);
+    z-index: 2;
+    background: transparent;
+}
+.button-icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: #ffb84d; /* your gold color */
 }
 
-.icon-home { background-position: -316px -163px; }
-.icon-home:hover, .icon-home.active { background-position: -10px -10px; }
+.icon-static {
+    opacity: 1;
+}
 
-.icon-hive { background-position: -469px -316px; }
-.icon-hive:hover, .icon-hive.active { background-position: -163px -10px; }
+.icon-hover {
+    opacity: 0;
+}
 
-.icon-post { background-position: -163px -163px; }
-.icon-post:hover, .icon-post.active { background-position: -10px -163px; }
+/* On hover OR when active, swap */
+.right-bttns:hover .icon-static,
+.left-bttns:hover .icon-static,
+.right-bttns.active .icon-static,
+.left-bttns.active .icon-static {
+    opacity: 0;
+}
 
-.icon-search { background-position: -316px -10px; }
-.icon-search:hover, .icon-search.active { background-position: -316px -316px; }
-
-.icon-comment { background-position: -10px -316px; }
-.icon-comment:hover, .icon-comment.active { background-position: -163px -469px; }
-
-.icon-buzzboard { background-position: -469px -163px; }
-.icon-buzzboard:hover, .icon-buzzboard.active { background-position: -163px -316px; }
-
-.icon-buzzDropdown { background-position: -469px -10px; }
-.icon-buzzDropdown:hover, .icon-buzzDropdown.active { background-position: -10px -469px; }
+.right-bttns:hover .icon-hover,
+.left-bttns:hover .icon-hover,
+.right-bttns.active .icon-hover,
+.left-bttns.active .icon-hover {
+    opacity: 1;
+}
 
 /*Button positioning*/
 /*Left Nav */
@@ -293,7 +322,7 @@ textarea,
     right: 149px;
 }
 
-#right-nav .icon-search {
+#right-nav .icon-discovery {
     top: 243px;
     right: 5px;
 }
