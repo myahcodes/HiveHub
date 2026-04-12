@@ -42,6 +42,9 @@
             border-left: 1px solid var(--theme-color);
             padding-left: 6px;
         }
+.buzz-date {
+    color: rgba(255, 184, 77, 0.5);
+}
 
 .display-name {
     padding-right: 4px;
@@ -128,6 +131,137 @@
 
 .action-bttns:hover {transform: scale(1.15);}
 
-.commentFeedIcon {background-position: -10px -10px}
-.addToBuzzboardIcon {background-position: -10px -60px}
-.shareIcon {background-position: -60px -10px}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1999;
+}
+
+    .modal-backdrop.hidden {
+        display: none;
+    }
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+    border: 2px solid #ffb84d;
+    /*    padding: 24px;*/
+    z-index: 2000;
+    color: #ffb84d;
+    width: 70%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 0px;
+}
+    .modal > :not(.div1) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .modal.hidden {
+        display: none;
+    }
+
+.div1 {
+    grid-column: span 3 / span 3;
+    grid-row: span 9 / span 9;
+}
+
+.div2 {
+    grid-column: span 4 / span 4;
+    grid-column-start: 4;
+    border-bottom: 0.2px solid rgba(255, 184, 77, 0.3);
+}
+
+.div3 {
+    grid-column: span 4 / span 4;
+    grid-row: span 6 / span 6;
+    grid-column-start: 4;
+    grid-row-start: 2;
+    overflow-y: auto;
+    padding: 8px;
+}
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.comment-item {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 8px;
+}
+
+.comment-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.comment-content {
+    flex: 1;
+}
+
+.comment-header {
+    display: flex;
+    gap: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+}
+
+.comment-username {
+    font-weight: bold;
+    color: #ffb84d;
+}
+
+.comment-time {
+    color: rgba(255, 184, 77, 0.5);
+    font-size: 0.7rem;
+}
+
+.comment-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: #ffb84d;
+}
+
+.div4 {
+    grid-column: span 4 / span 4;
+    grid-column-start: 4;
+    grid-row-start: 8;
+    border-top: 0.2px solid rgba(255, 184, 77, 0.3);
+}
+.post-date {
+    color: rgba(255, 184, 77, 0.5);
+    margin-left: 10px;
+}
+
+.comment-field {
+    font-family: BeePollen, Chewy;
+    grid-column: span 4 / span 4;
+    grid-column-start: 4;
+    grid-row-start: 9;
+    color: #ffb84d;
+    background: black;
+    border: none;
+    border-top: 1px solid rgba(255, 184, 77, 0.5);
+    outline: none;
+/*    padding-left: 10px;
+    padding-right: 10px;*/
+}
+    .comment-field::placeholder {
+        color: rgba(255, 184, 77, 0.5);
+    }
