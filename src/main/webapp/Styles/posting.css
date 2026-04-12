@@ -1,4 +1,8 @@
-﻿.HH-Posting .HH-Header h1 {
+﻿:root{
+    --theme-color: #ffb84d;
+}
+
+.HH-Posting .HH-Header h1 {
     margin-block-end: 0.20em;
 }
 .HH-Posting .HH-default {
@@ -10,7 +14,7 @@
     align-content: center;
 }
 .title-input::placeholder {
-    color: rgba(255, 184, 77, 0.5);
+    color: color-mix(in srgb, var(--theme-color) 50%, transparent);
 }
 
 .title-input {
@@ -18,16 +22,16 @@
     width: 100%;
     padding: 12px 16px;
     font-size: 14px;
-    border: 1px solid rgba(255, 184, 77, 0.5);
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
     margin-bottom: 12px;
     background: black;
-    color: #ffb84d;
+    color: var(--theme-color);
     transition: transform 0.2s ease;
     box-sizing: border-box;
 }
 
     .title-input:focus {
-        border: 2.5px solid #ffb84d;
+        border: 2.5px solid var(--theme-color);
         outline: none;
     }
 
@@ -36,7 +40,7 @@
     }
 
 .post-editor {
-    border: 1px solid rgba(255, 184, 77, 0.5);
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
     background: black;
     overflow: hidden;
     position: relative;
@@ -44,7 +48,7 @@
 }
 
     .post-editor:focus-within {
-        border-color: #ffb84d;
+        border-color: var(--theme-color);
     }
 
 .toolbar {
@@ -65,9 +69,9 @@
     position: absolute;
     background-color: black;
     min-width: 140px;
-    box-shadow: 0px 8px 16px 0px rgba(255, 184, 77, 0.5);
+    box-shadow: 0px 8px 16px 0px color-mix(in srgb, var(--theme-color) 50%, transparent);
     z-index: 50;
-    border: 1px solid rgba(255, 184, 77, 0.5);
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
     margin-top: 0px;
 }
 
@@ -76,7 +80,7 @@
 }
 
 .dropdown-item {
-    color: #ffb84d;
+    color: var(--theme-color);
     padding: 8px 12px;
     text-decoration: none;
     display: flex;
@@ -90,7 +94,7 @@
 }
 
     .dropdown-item:hover {
-        background-color: rgba(255, 184, 77, 0.5);
+        background-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
         color: black;
     }
 
@@ -99,7 +103,7 @@
     align-items: center;
     justify-content: center;
     padding: 4px 8px;
-    color: #ffb84d;
+    color: var(--theme-color);
     font-size: 12px;
     transition: background 0.1s;
     gap: 4px;
@@ -110,7 +114,7 @@
 }
 
     .toolbar button:hover, .dropdown-trigger:hover, .toolbar button.is-active {
-        background-color: rgba(255, 184, 77, 0.5);
+        background-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
         color: black;
     }
 
@@ -120,14 +124,14 @@
     font-family: BeePollen, Chewy;
     outline: none;
     font-size: 14px;
-    color: #ffb84d;
+    color: var(--theme-color);
     background: black;
 }
 
     .tiptap p.is-editor-empty:first-child::before {
         content: attr(data-placeholder);
         float: left;
-        color: rgba(255, 184, 77, 0.5);
+        color: color-mix(in srgb, var(--theme-color) 50%, transparent);
         pointer-events: none;
         height: 0;
     }
@@ -165,7 +169,7 @@
 }
 
 .post-btn {
-    background-color: #ffb84d;
+    background-color:var(--theme-color);
     color: black;
     font-weight: bold;
     padding: 6px 24px;
@@ -187,9 +191,9 @@
     bottom: 41px;
     left: -4px;
     z-index: 1000;
-/*    width: 495px;*/
+    /*    width: 495px;*/
     height: 175px;
-    border-top: solid 1px rgba(255, 184, 77, 0.5);
+    border-top: solid 1px color-mix(in srgb, var(--theme-color) 50%, transparent);
     overflow: hidden;
     background-color: black;
 }
@@ -200,7 +204,7 @@
     }
 
     #emoji-picker-container .picmo__searchField::placeholder {
-        color: rgba(255, 184, 77, 0.5);
+        color: color-mix(in srgb, var(--theme-color) 50%, transparent);
     }
 
 .picmo__picker.picmo__picker.dark {
@@ -249,13 +253,13 @@
 
 .picker {
     --background-color: #000000;
-    --text-color: #ffb84d;
-    --secondary-text-color: rgba(255, 184, 77, 0.5);
+    --text-color: var(--theme-color);
+    --secondary-text-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
     --category-tabs-background-color: #111;
-    --border-color: rgba(255, 184, 77, 0.5);
-    --hover-background-color: rgba(255, 184, 77, 0.5);
-    --focus-indicator-color: #ffb84d;
-    --accent-color: #ffb84d;
+    --border-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    --hover-background-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    --focus-indicator-color: var(--theme-color);
+    --accent-color: var(--theme-color);
     border-top: solid;
     width: 100%;
     height: 100%;
@@ -266,7 +270,7 @@
 }
 
 .emoji-btn {
-    color: #ffb84d;
+    color: var(--theme-color);
     padding: 6px 6px;
     display: flex;
     align-items: center;
@@ -278,8 +282,8 @@
 }
 
     .emoji-btn:hover {
-        background: rgba(255, 184, 77, 0.2);
-        color: #ffb84d;
+        background: color-mix(in srgb, var(--theme-color) 20%, transparent);
+        color: var(--theme-color);
         border-radius: 4px;
     }
 .relative {
@@ -293,7 +297,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: color-mix(in srgb, var(--theme-color) 70%, transparent);
     z-index: 1999;
 }
 
@@ -303,13 +307,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: black;
-    border: 2px solid #ffb84d;
+    border: 2px solid var(--theme-color);
     padding: 24px;
     z-index: 2000;
     width: 400px;
     max-width: 90%;
-    box-shadow: 0 8px 16px rgba(255, 184, 77, 0.3);
-    color: #ffb84d;
+    box-shadow: 0 8px 16px color-mix(in srgb, var(--theme-color) 30%, transparent);
+    color: var(--theme-color);
 }
 
     .modal.hidden {
@@ -328,7 +332,7 @@
     }
 
         .modal input::placeholder {
-            color: rgba(255, 184, 77, 0.5);
+            color: color-mix(in srgb, var(--theme-color) 50%, transparent);
         }
 
         .modal input[type="text"],
@@ -337,13 +341,13 @@
             padding: 10px;
             margin-bottom: 12px;
             background: black;
-            border: 1px solid rgba(255, 184, 77, 0.5);
-            color: #ffb84d;
+            border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+            color: var(--theme-color);
         }
 
             .modal input[type="text"]:focus,
             .modal input[type="file"]:focus {
-                border-color: #ffb84d;
+                border-color: var(--theme-color);
                 outline: none;
             }
 
@@ -361,7 +365,7 @@
 
     .modal-actions button {
         padding: 8px 16px;
-        background: #ffb84d;
+        background: var(--theme-color);
         color: black;
         border: none;
         font-weight: bold;
@@ -383,8 +387,8 @@
         width: 100%;
         padding: 10px;
         background: black;
-        border: 1px solid rgba(255, 184, 77, 0.5);
-        color: #ffb84d;
+        border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+        color: var(--theme-color);
         font-family: BeePollen, Chewy, sans-serif;
         text-align: left;
         display: flex;
@@ -395,17 +399,17 @@
         .custom-dropdown .dropdown-button::after {
             content: "▼"; /* fixed arrow */
             font-size: 12px;
-            color: #ffb84d;
+            color: var(--theme-color);
         }
 
         .custom-dropdown .dropdown-button:focus {
-            border-color: #ffb84d;
+            border-color: var(--theme-color);
             outline: none;
         }
 
         /* Placeholder state (when no country selected) */
         .custom-dropdown .dropdown-button.placeholder {
-            color: rgba(255, 184, 77, 0.5);
+            color: color-mix(in srgb, var(--theme-color) 50%, transparent);
         }
 
     .custom-dropdown .dropdown-list {
@@ -416,7 +420,7 @@
         max-height: 200px;
         overflow-y: auto;
         background: black;
-        border: 1px solid #ffb84d;
+        border: 1px solid var(--theme-color);
         border-top: none;
         z-index: 100;
         list-style: none;
@@ -427,16 +431,16 @@
 
         .custom-dropdown .dropdown-list li {
             padding: 8px 10px;
-            color: #ffb84d;
+            color: var(--theme-color);
         }
 
             .custom-dropdown .dropdown-list li:hover {
-                background: rgba(255, 184, 77, 0.5);
+                background: color-mix(in srgb, var(--theme-color) 50%, transparent);
                 color: black;
             }
 
             .custom-dropdown .dropdown-list li.selected {
-                background: rgba(255, 184, 77, 0.3);
+                background: color-mix(in srgb, var(--theme-color) 30%, transparent);
                 font-weight: bold;
             }
 
@@ -476,8 +480,8 @@
     align-items: center;
     gap: 6px;
     background: transparent;
-    border: 1px solid rgba(255, 184, 77, 0.5);
-    color: #ffb84d;
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+    color: var(--theme-color);
     padding: 6px 12px;
     font-size: 13px;
     font-family: BeePollen, Chewy, sans-serif;
@@ -486,8 +490,8 @@
 }
 
     .tag-trigger:hover {
-        background: rgba(255, 184, 77, 0.2);
-        border-color: #ffb84d;
+        background: color-mix(in srgb, var(--theme-color) 20%, transparent);
+        border-color: var(--theme-color);
     }
 
 .tags-container {
@@ -500,9 +504,9 @@
 .tag-button {
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 184, 77, 0.2);
-    border: 1px solid #ffb84d;
-    color: #ffb84d;
+    background: color-mix(in srgb, var(--theme-color) 20%, transparent);
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
     padding: 4px 10px;
     font-size: 13px;
     font-family: BeePollen, Chewy, sans-serif;
@@ -539,7 +543,7 @@
     font-weight: bold;
     font-size: 14px;
     line-height: 1;
-    color: #ffb84d;
+    color: var(--theme-color);
 }
 
     .remove-modal-tag:hover {
@@ -549,8 +553,8 @@
 /* Edit input (when double-clicking a custom tag) */
 .tag-opt.edit-input {
     background: transparent;
-    border: 1px solid #ffb84d;
-    color: #ffb84d;
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
     padding: 4px 10px;
     font-family: BeePollen, Chewy, sans-serif;
     font-size: 13px;
@@ -560,7 +564,7 @@
     min-width: 10ch;
 }
 .tag-section-header {
-    color: #ffb84d;
+    color: var(--theme-color);
     font-family: BeePollen, Chewy, sans-serif;
     font-size: 14px;
     font-weight: bold;
@@ -579,8 +583,8 @@
 
 .tag-opt {
     background: transparent;
-    border: 1px solid rgba(255, 184, 77, 0.5);
-    color: #ffb84d;
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+    color: var(--theme-color);
     padding: 8px 12px;
     font-family: BeePollen, Chewy, sans-serif;
     font-size: 13px;
@@ -591,13 +595,13 @@
 }
 
     .tag-opt:hover {
-        background: rgba(255, 184, 77, 0.2);
+        background: color-mix(in srgb, var(--theme-color) 20%, transparent);
     }
 
     .tag-opt.selected {
-        background: #ffb84d;
+        background: var(--theme-color);
         color: black;
-        border-color: #ffb84d;
+        border-color: var(--theme-color);
     }
 
 /* Custom tag input inside Interests row*/
@@ -607,9 +611,9 @@
     min-width: 10ch;
     max-width: 22ch;
     background: transparent;
-    border: 1px solid rgba(255, 184, 77, 0.5);
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
     border-radius: 2px;
-    color: #ffb84d;
+    color: var(--theme-color);
     padding: 8px 12px;
     font-family: BeePollen, Chewy, sans-serif;
     font-size: 13px;
@@ -618,17 +622,17 @@
 }
 
     #Interest-tags input.tag-opt:focus {
-        border-color: #ffb84d;
+        border-color: var(--theme-color);
         outline: none;
     }
 
     #Interest-tags input.tag-opt::placeholder {
-        color: rgba(255, 184, 77, 0.5);
+        color: color-mix(in srgb, var(--theme-color) 50%, transparent);
         text-align: center;
     }
 
     #Interest-tags input.tag-opt.warning {
-        border-color: #ff4444 !important;
+        border-color: var(--theme-color) !important;
         border-width: 2px !important;
     }
 
