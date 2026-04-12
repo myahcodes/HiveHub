@@ -1,3 +1,7 @@
+:root{
+    --theme-color: #ffb84d;
+}
+
 .buzz-feed {
     width: 100%;
     overflow-y: auto;
@@ -5,7 +9,7 @@
 }
 
 .buzz {
-    border-bottom: 1px solid #ffb84d;
+    border-bottom: 1px solid var(--theme-color);
     margin-bottom: 15px;
 }
 /*Header & Avatar*/
@@ -21,6 +25,8 @@
     height: 30px;
     margin-right: 10px;
     object-fit: contain;
+    color: var(--theme-color);
+    fill: var(--theme-color);
 }
 
 .user-info {
@@ -33,7 +39,7 @@
     }
 
         .user-info span + span {
-            border-left: 1px solid #ffb84d;
+            border-left: 1px solid var(--theme-color);
             padding-left: 6px;
         }
 
@@ -46,7 +52,7 @@
 }
 
 .user-info-divide {
-    border-right: 1px solid #ffb84d;
+    border-right: 1px solid var(--theme-color);
     padding-right: 6px;
     padding-left: 6px;
 }
@@ -61,7 +67,7 @@
         content: '';
         width: 8px;
         height: 8px;
-        background-color: #ffb84d;
+        background-color: var(--theme-color);
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         transform: rotate(90deg);
     }
@@ -90,6 +96,7 @@
     display: flex;
     gap: 15px;
 }
+
 .action-bttns {
     background: none;
     border: none;
@@ -101,7 +108,8 @@
     .action-bttns .icon {
         width: 30px;
         height: 30px;
-        fill: currentColor; /* inherits button text color */
+        color: var(--theme-color);
+        fill: var(--theme-color); /* inherits button text color */
         transition: fill 0.2s;
     }
 /*.action-bttns {
