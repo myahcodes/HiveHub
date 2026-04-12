@@ -71,7 +71,10 @@
         <div id="search-bar-settings">
 
             <div class="searchbar">
-                  <img id="search-comb" src="webapp/assets/img/icons/hiveIcon.svg" alt="img" />
+                <svg id="search-comb" aria-hidden="true">
+                    <use href="webapp/assets/img/activityBar/activitySprites.svg#search"></use>
+                </svg>
+         
                 <input id="search-bar" placeholder="search" onmousedown="new Audio('/webapp/assets/audio/click-sound.mp3').play()" />
             </div>
 
