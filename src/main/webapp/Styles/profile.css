@@ -6,6 +6,14 @@
     animation: shake 0.5s ease;
 }
 
+:root{
+    --theme-color: #ffb84d;
+}
+
+body{
+    color: var(--theme-color);
+}
+
 .profile-container {
     display: grid;
     grid-template-columns: auto auto;
@@ -38,7 +46,7 @@
 
 #divider {
     width: 100%;
-    border-color: #ffb84d;
+    border-color: var(--theme-color);
 }
 
 #buzz-content {

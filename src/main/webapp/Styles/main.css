@@ -27,6 +27,10 @@
     }
 }
 
+:root{
+    --theme-color: #ffb84d;
+}
+
 html {
     height: 100%;
     min-height: 100%;
@@ -52,7 +56,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: black;
-    color: #ffb84d;
+    color: var(--theme-color);
     min-height: 100%;
 }
 /*Change cursors*/
@@ -176,7 +180,7 @@ textarea,
 .HH-MyHive button {
     font-family: BeePollen, Chewy;
     font-size: 24px;
-    color: #ffb84d;
+    color: var(--theme-color);
     background-color: black;
     border: none;
 }
@@ -194,7 +198,7 @@ textarea,
 .HH-Header h1:hover {
     animation-name: HeaderAnim;
     animation-duration: 0.8s;
-/*    cursor: default;*/
+    cursor: var(--default-cursor);
 }
 
 .HH-footer {
@@ -209,7 +213,7 @@ textarea,
     width: fit-content;
     margin-top: 0.4cm;
     
-    border-top-color: #ffb84d;
+    border-top-color: var(--theme-color);
     border-top-style: solid;
 }
 
@@ -245,15 +249,15 @@ textarea,
 }
 
 #left-nav {
-/*    background-image: url(../assets/img/nav/bar/leftNav.jpg);*/
+    /*    background-image: url(../assets/img/nav/bar/leftNav.jpg);*/
     left: 0;
-    border-right: 3px solid #ffb84d;
+    border-right: 3px solid var(--theme-color);
 }
 
 #right-nav {
 /*    background-image: url(../assets/img/nav/bar/rightNav.jpg);*/
     right: 0;
-    border-left: 3px solid #ffb84d;
+    border-left: 3px solid var(--theme-color);
 }
 .nav-bg {
     position: absolute;
@@ -278,11 +282,12 @@ textarea,
 .button-icon {
     width: 100%;
     height: 100%;
+    color: var(--theme-color);
     display: block;
     position: absolute;
     top: 0;
     left: 0;
-    fill: #ffb84d; /* your gold color */
+    fill: var(--theme-color); /* your gold color */
 }
 
 .icon-static {

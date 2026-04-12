@@ -8,32 +8,36 @@
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
 }
 
-.HH-contents
-{
-    font-family: BeePollen, Chewy;
-    
-    display: flex;
+:root{
+    --theme-color: #ffb84d;
+}
 
+body {
+    color: var(--theme-color);
+}
+
+.HH-contents {
+    font-family: BeePollen, Chewy;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 322px;
+    padding-right: 322px;
 }
 
 .HH-Buzzboard {
-    display:flex;
-
+    display: flex;
     flex-direction: column;
-    
     max-width: auto;
     padding: 0 10px 0 10px;
-
-    background-color: #ffb84d;
-    border: solid #ffb84d;
+    background-color: var(--theme-color);
+    border: solid var(--theme-color);
 }
 
 .month-nav {
     display: flex;
-    background-color: #ffb84d;
+    background-color: var(--theme-color);
     gap: 30px;
 }
 
@@ -49,7 +53,7 @@
     font-size: 40px;
     font-weight: bold;
 
-    background-color: #ffb84d;
+    background-color: var(--theme-color);
 }
 
 .month-nav li
@@ -99,7 +103,7 @@
     margin: 0;
     padding: 0;
 
-    background-color: #ffb84d;
+    background-color: var(--theme-color);
 
     list-style-type: none;
 }
@@ -112,20 +116,22 @@
     justify-content: center;
     
     box-sizing: border-box;
-    border: solid #ffb84d;
+    border: solid var(--theme-color);
     aspect-ratio:1/1;
 }
 
 .weekdays 
 {
     color: black;
-    background-color: #ffb84d;
+    background-color: var(--theme-color);
 }
 
 .days {
     display: flex;
     align-items: flex-start;
-    color: #ffb84d;
+
+    color: var(--theme-color);
+
     background-color: black;
     box-sizing: border-box;
     box-sizing: border-box;
@@ -144,7 +150,7 @@
 {
     color: black;
 
-    background-color: #ffb84d;
+    background-color: var(--theme-color);
 
     border: 1px solid black;
 }
@@ -175,9 +181,9 @@
 {
     display: list-item;
 
-    background-color: #ffb84d;
+    background-color: var(--theme-color);
     overflow-y: scroll;
     overflow-wrap: break-word;
 
-    scrollbar-color: black #ffb84d;
+    scrollbar-color: black var(--theme-color);
 }
