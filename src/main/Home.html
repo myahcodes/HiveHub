@@ -74,6 +74,7 @@
                             <span class="rating-score">3</span>
                             <span class="user-info-divide">Opens 10 AM </span>
                             <span class="distance">1.5 mi</span>
+                            <span class="buzz-date">2 days ago</span>
                         </div>
                     </div>
                     <div class="buzz-content">
@@ -83,7 +84,7 @@
                     </div>
                     <div class="buzz-actions">
                         <div style="display: flex; gap: 15px;">
-                            <button class="action-bttns" aria-label="comment">
+                            <button class="action-bttns comment-trigger" aria-label="comment">
                                 <svg class="icon" aria-hidden="true">
                                     <use href="webapp/assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
                                 </svg>
@@ -95,7 +96,7 @@
                             </button>
                         </div>
                         <div>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
+                            <button class="action-bttns" aria-label="share">
                                 <svg class="icon" aria-hidden="true">
                                     <use href="webapp/assets/img/activityBar/activitySprites.svg#shareicon"></use>
                                 </svg>
@@ -111,6 +112,7 @@
                             <span class="rating-score">4</span>
                             <span class="user-info-divide">Opens 10 AM </span>
                             <span class="distance">2.5 mi</span>
+                            <span class="buzz-date">2 days ago</span>
                         </div>
                     </div>
                     <div class="buzz-content">
@@ -120,7 +122,7 @@
                     </div>
                     <div class="buzz-actions">
                         <div style="display: flex; gap: 15px;">
-                            <button class="action-bttns" aria-label="comment">
+                            <button class="action-bttns comment-trigger" aria-label="comment">
                                 <svg class="icon" aria-hidden="true">
                                     <use href="webapp/assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
                                 </svg>
@@ -132,7 +134,7 @@
                             </button>
                         </div>
                         <div>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
+                            <button class="action-bttns" aria-label="share">
                                 <svg class="icon" aria-hidden="true">
                                     <use href="webapp/assets/img/activityBar/activitySprites.svg#shareicon"></use>
                                 </svg>
@@ -148,9 +150,58 @@
             <a href="about.html">our mission</a>
         </footer>
     </div>
+    <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+    <div id="comment-modal" class="modal hidden">
+        <!--<button class="close-modal" style="float:right; background:none; border:none; color:black; cursor:pointer;">&times;</button>-->
+        <div class="div1">1</div>
+        <div class="div2" style="padding-top: 10px">
+            <div class="buzz-header">
+                <img src="webapp/assets/img/placeholder/defaultPfpPlcHldr.svg" alt="Thrift Store Pfp" class="profile" />
+                <div class="user-info">
+                    <span>Thrift Store Express</span>
+                    <span class="rating-score">3</span>
+                    <span class="user-info-divide">Opens 10 AM </span>
+                    <span class="distance">1.5 mi</span>
+                </div>
+            </div>
+        </div>
+        <div class="div3">
+            <div class="comment-item">
+                <img src="webapp/assets/img/placeholder/defaultPfpPlcHldr.svg" class="comment-avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="comment-username">CoolBee123</span>
+                        <span class="comment-time">2 min ago</span>
+                    </div>
+                    <p class="comment-text">Love this post! 🍯</p>
+                </div>
+            </div>
+        </div>
+        <div class="div4">
+            <div class="buzz-actions" style="padding-bottom: 0px">
+                <div>
+                    <button class="action-bttns" aria-label="addToBuzzboard">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="webapp/assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
+                        </svg>
+                    </button>
+                    <button class="action-bttns" aria-label="share">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="webapp/assets/img/activityBar/activitySprites.svg#shareicon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="post-date" style="padding-bottom: 5px">
+                XX days ago
+            </div>
+        </div>
+        <input class="comment-field" placeholder="Comment.." onmousedown="new Audio('/webapp/assets/audio/click-sound.mp3').play()"/>
+    </div>
     <script src="webapp/assets/js/cursor.js"></script>
     <!--<script src="webapp/assets/js/home.js"></script>-->
     <script src="webapp/assets/js/navBttn_activity.js"></script>
+    <script src="webapp/assets/js/buzz_actions.js"></script>
     <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
 </body>
 </html>
