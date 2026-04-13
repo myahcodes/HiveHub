@@ -76,6 +76,9 @@
     margin: 0 0 10px 0;
     line-height: 1.4;
 }
+.buzz-content .buzz-text {
+    display: none;
+}
 
 .buzz-media {
     max-width: 100%;
