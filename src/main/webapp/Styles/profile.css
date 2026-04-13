@@ -6,10 +6,6 @@
     animation: shake 0.5s ease;
 }
 
-:root{
-    --theme-color: #ffb84d;
-}
-
 body{
     color: var(--theme-color);
 }

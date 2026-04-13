@@ -3,9 +3,6 @@
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
     font-style: normal;
 }
-:root {
-    --theme-color: #ffb84d;
-}
 
 body {
     color: var(--theme-color);
