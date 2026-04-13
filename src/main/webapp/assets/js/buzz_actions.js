@@ -1,4 +1,3 @@
-// Modal elements
 const backdrop = document.getElementById('modal-backdrop');
 const commentModal = document.getElementById('comment-modal');
 let currentModal = null;
@@ -29,7 +28,6 @@ function populateModalWithPost(postElement) {
         const header = postElement.querySelector('.buzz-header');
         if (!header) return false;
 
-        // Extract data from the clicked buzz
         const profileImg = header.querySelector('.profile')?.src || 'webapp/assets/img/placeholder/defaultPfpPlcHldr.svg';
         const userInfo = header.querySelector('.user-info');
         const displayName = userInfo?.querySelector('span:first-child')?.innerText || 'Unknown User';
@@ -41,7 +39,9 @@ function populateModalWithPost(postElement) {
         const mediaImg = postElement.querySelector('.buzz-media');
         const mediaSrc = mediaImg ? mediaImg.src : '';
 
-        // Populate modal sections
+        const postTextElement = postElement.querySelector('.buzz-text');
+        const postText = postTextElement ? postTextElement.innerText : '';
+
         const div1 = commentModal.querySelector('.div1');
         if (div1) {
             div1.innerHTML = mediaSrc
@@ -51,7 +51,7 @@ function populateModalWithPost(postElement) {
 
         const div2 = commentModal.querySelector('.div2');
         if (div2) {
-            div2.innerHTML = `
+            let userInfoHtml = `
                 <div class="buzz-header">
                     <img src="${profileImg}" class="profile" />
                     <div class="user-info">
@@ -62,6 +62,10 @@ function populateModalWithPost(postElement) {
                     </div>
                 </div>
             `;
+            if (postText.trim()) {
+                userInfoHtml += `<div class="modal-post-text" style="padding: 4px 0;">${escapeHtml(postText)}</div>`;
+            }
+            div2.innerHTML = userInfoHtml;
         }
 
         const div3 = commentModal.querySelector('.div3');
@@ -106,7 +110,6 @@ function populateModalWithPost(postElement) {
     }
 }
 
-// Open modal on comment button click
 document.querySelector('.buzz-feed')?.addEventListener('click', (e) => {
     const btn = e.target.closest('.comment-trigger');
     if (!btn) return;
@@ -115,6 +118,5 @@ document.querySelector('.buzz-feed')?.addEventListener('click', (e) => {
     if (post && populateModalWithPost(post)) showModal(commentModal);
 });
 
-// Close modal
 backdrop?.addEventListener('click', hideAllModals);
 commentModal?.querySelector('.close-modal')?.addEventListener('click', hideAllModals);

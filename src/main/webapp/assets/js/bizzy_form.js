@@ -25,3 +25,4 @@ backdrop.addEventListener('click', hideAllModals);
 // Close button inside modal
 const closeBtn = bizzyModal.querySelector('.close-modal');
 if (closeBtn) closeBtn.addEventListener('click', hideAllModals);
+

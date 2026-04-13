@@ -66,14 +66,13 @@
             <div id="search-bar-discovery">
 
                 <div class="searchbar">
-                    <svg class="search-icons" aria-hidden="true">
+                    <svg class="icons" aria-hidden="true">
                         <use href="webapp/assets/img/activityBar/activitySprites.svg#search"></use>
                     </svg>
                     
                     <input id="search-bar" placeholder="Find a new hive.." onmousedown="new Audio('/webapp/assets/audio/click-sound.mp3').play()" />
-                    
                     <button class="bizzy-bttn" aria-label="Bizzy" id="bizzy-trigger">
-                        <svg class="search-icons" id="bizzy-bee" aria-hidden="true">
+                        <svg class="icons" id="bizzy-bee" aria-hidden="true">
                             <use href="webapp/assets/img/activityBar/activitySprites.svg#bizzybee"></use>
                         </svg>
                     </button>
@@ -102,10 +101,18 @@
     </footer>-->
     <div id="modal-backdrop" class="modal-backdrop hidden"></div>
     <div id="bizzy-modal" class="modal hidden">
-        <button class="close-modal" style="float:right; background:none; border:none; color:black; cursor:pointer;">&times;</button>
-        <h4>Bizzy</h4>
-        <p>Some text. Some text. Some text.</p>
-        <p>Some text. Some text. Some text.</p>
+        <button class="close-modal" style="margin-left: auto; background:none; border:none; color:black; font-size:18px;">&times;</button>
+        <div class="chat-container">
+            <div class="messages" id="messages"></div>
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="Type your message..." />
+                <button id="sendBtn">
+                    <svg style="color: black; width: 30px; height: 40px" aria-hidden="true">
+                        <use href="webapp/assets/img/activityBar/activitySprites.svg#shareicon"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
     <!--<script src="assets/js/discovery.js"></script>-->
     <script src="webapp/assets/js/navBttn_activity.js"></script>
