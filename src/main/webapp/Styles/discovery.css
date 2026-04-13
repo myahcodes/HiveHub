@@ -21,10 +21,6 @@
     color: rgba(255, 184, 77, 0.5);
 }*/
 
-:root{
-    --theme-color: #ffb84d;
-}
-
 #search-bar-discovery {
     display: flex;
     justify-content: right;
