@@ -149,7 +149,7 @@ details_button.addEventListener("mouseover", () => {
     hover_audio.play();
     // do things on hover here: 
     document.body.style.cursor = "pointer";
-    details_button.style.backgroundColor = "#ffb84d";
+    details_button.style.backgroundColor = "var(--theme-color)";
 });
 
 details_button.addEventListener("mouseout", () =>
