@@ -25,7 +25,7 @@ async function loadPosts() {
                     <img src="assets/img/icons/defaultPfp.svg" alt="Profile" class="profile" />
                     <div class="user-info">
                         <span>${post.username}</span>
-                        <span class="user-info-divide">${new Date(post.createdAt).toLocaleDateString()}</span>
+                        <span class="user-info-divide">#${post.postId}</span>
                         ${post.tags ? `<span class="distance">${post.tags}</span>` : ''}
                     </div>
                 </div>
