@@ -69,10 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add save button and message to the template after cloning
         const background = clone.querySelector(".option-background");
         const saveBtn = document.createElement("button");
+
         saveBtn.textContent = "Save";
+        saveBtn.style.font = "inherit";
+        saveBtn.style.backgroundColor = "var(--theme-color)";
+        saveBtn.style.border = "none";
+        saveBtn.style.borderRadius = "6px";
+        saveBtn.style.padding = "8px 0 8px 0";
+        saveBtn.style.margin = "15px 0 0 0";
+        
         saveBtn.className = "settings-save-btn";
+
         const message = document.createElement("p");
+
         message.className = "settings-message";
+
         background.appendChild(saveBtn);
         background.appendChild(message);
 
@@ -125,8 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add username field since their template only has email
         const usernameLabel = document.createElement("p");
+
         usernameLabel.textContent = "New username:";
+
         const usernameInput = document.createElement("input");
+
         usernameInput.type = "text";
         usernameInput.placeholder = "New username (optional)";
 
@@ -137,6 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const saveBtn = document.createElement("button");
         saveBtn.textContent = "Save";
         saveBtn.className = "settings-save-btn";
+        saveBtn.style.font = "inherit";
+        saveBtn.style.backgroundColor = "var(--theme-color)";
+        saveBtn.style.border = "none";
+        saveBtn.style.borderRadius = "6px";
+        saveBtn.style.padding = "8px 0 8px 0";
+        saveBtn.style.margin = "15px 0 0 0";
+
         const message = document.createElement("p");
         message.className = "settings-message";
         background.appendChild(saveBtn);
