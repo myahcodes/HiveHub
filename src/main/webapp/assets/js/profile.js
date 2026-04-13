@@ -126,3 +126,49 @@ pf_container.appendChild(pfp_Icon);
 buzz_container.appendChild(new_buzz);
 buzz_container.appendChild(old_buzz);
 buzz_container.appendChild(buzz);
+
+////Profile population working on
+//function fillProfile(userData) {
+//    const profileContainer = document.querySelector('.profile-container');
+//    if (!profileContainer) {
+//        console.error('Profile container not found');
+//        return false;
+//    }
+
+//    const labelArea = profileContainer.querySelector('.label-area');
+//    if (!labelArea) {
+//        console.error('Label area not found inside profile container');
+//        return false;
+//    }
+
+//    const displayNameElem = labelArea.querySelector('#display-name');
+//    const usernameElem = labelArea.querySelector('#username');
+
+//    if (displayNameElem) {
+//        displayNameElem.textContent = userData.displayName || 'Unknown Name';
+//    }
+//    if (usernameElem) {
+//        usernameElem.textContent = userData.username || 'Unknown Username';
+//    }
+
+//    return true;
+//}
+
+//// Mock user data – replace with real API call later
+//const mockUserData = {
+//    displayName: 'John Doe',
+//    username: '@johndoe'
+//};
+
+//// Populate profile when the DOM is fully loaded
+//document.addEventListener('DOMContentLoaded', () => {
+//    fillProfile(mockUserData);
+
+//    // Example of future server integration (commented out):
+//    /*
+//    fetch('/api/user/profile')
+//        .then(response => response.json())
+//        .then(data => fillProfile(data))
+//        .catch(err => console.error('Failed to load profile:', err));
+//    */
+//});

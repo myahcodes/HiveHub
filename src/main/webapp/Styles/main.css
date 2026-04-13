@@ -285,8 +285,6 @@ textarea,
     color: var(--theme-color);
     display: block;
     position: absolute;
-    top: 0;
-    left: 0;
     fill: var(--theme-color); /* your gold color */
 }
 
@@ -315,6 +313,10 @@ textarea,
 
 /*Button positioning*/
 /*Left Nav */
+#left-nav .icon-profile {
+    top: 51px;
+    left: 62px;
+}
 #left-nav .icon-hive {
     top: 142px;
     left: 154px;
