@@ -1,0 +1,7 @@
+# Optional local fallback for email settings.
+# Environment variables take precedence:
+#   SENDGRID_API_KEY
+#   SENDGRID_FROM_EMAIL
+
+sendgrid.apiKey=YOUR_SENDGRID_API_KEY
+sendgrid.fromEmail=verified-sender@example.com
