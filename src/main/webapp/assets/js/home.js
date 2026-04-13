@@ -31,18 +31,30 @@ async function loadPosts() {
                 </div>
                 <div class="buzz-content">
                     <h3 style="color:#ffb84d; margin-bottom:8px;">${post.title}</h3>
-                    <div style="color:#ffb84d; margin-bottom:8px;">${post.body}</div>
+                    <div class="buzz-text" style="color:#ffb84d; margin-bottom:8px;">${post.body}</div>
                     ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image" class="buzz-media" />` : ''}
                 </div>
-                <div class="buzz-actions">
-                    <div style="display: flex; gap: 15px;">
-                        <button class="action-bttns commentFeedIcon"></button>
-                        <button class="action-bttns addToBuzzboardIcon"></button>
-                    </div>
-                    <div>
-                        <button class="action-bttns shareIcon"></button>
-                    </div>
+               <div class="buzz-actions">
+                <div style="display: flex; gap: 15px;">
+                    <button class="action-bttns comment-trigger" aria-label="comment">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
+                        </svg>
+                    </button>
+                    <button class="action-bttns" aria-label="addToBuzzboard">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
+                        </svg>
+                    </button>
                 </div>
+                <div>
+                    <button class="action-bttns" aria-label="share">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#shareicon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
             `;
             feed.appendChild(buzz);
         });
