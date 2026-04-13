@@ -1,17 +1,16 @@
-﻿import { Editor } from 'https://esm.sh/@tiptap/core';
-import StarterKit from 'https://esm.sh/@tiptap/starter-kit';
-import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder';
-import Link from 'https://esm.sh/@tiptap/extension-link';
-import Image from 'https://esm.sh/@tiptap/extension-image';
+import { Editor } from 'https://esm.sh/@tiptap/core'
+import StarterKit from 'https://esm.sh/@tiptap/starter-kit'
+import Placeholder from 'https://esm.sh/@tiptap/extension-placeholder'
+import Link from 'https://esm.sh/@tiptap/extension-link'
+import Image from 'https://esm.sh/@tiptap/extension-image'
+import { createIcons, icons } from 'https://esm.sh/lucide'
+import { createPicker } from 'https://cdn.jsdelivr.net/npm/picmo@latest/+esm'
 
-lucide.createIcons();
+createIcons({ icons });
 
 // Emoji picker setup
-const emojiTrigger = document.getElementById('emoji-trigger');
 const pickerContainer = document.getElementById('emoji-picker-container');
-const editorContainer = document.querySelector('.post-editor');
-
-const picker = picmo.createPicker({
+const picker = createPicker({
     rootElement: pickerContainer,
     showPreview: false,
     showSearch: true,
@@ -23,28 +22,15 @@ picker.addEventListener('emoji:select', (selection) => {
     pickerContainer.classList.remove('show');
 });
 
-emojiTrigger.onclick = (e) => {
+document.getElementById('emoji-trigger').onclick = (e) => {
     e.stopPropagation();
     pickerContainer.classList.toggle('show');
-    setTimeout(updatePickerWidth, 10);
 };
 
 document.addEventListener('click', (e) => {
-    if (!pickerContainer.contains(e.target) && !emojiTrigger.contains(e.target)) {
+    if (!pickerContainer.contains(e.target) && !document.getElementById('emoji-trigger').contains(e.target)) {
         pickerContainer.classList.remove('show');
     }
-});
-
-function updatePickerWidth() {
-    if (!editorContainer || !pickerContainer) return;
-    pickerContainer.style.width = editorContainer.offsetWidth + 'px';
-    const editorRect = editorContainer.getBoundingClientRect();
-    const triggerRect = emojiTrigger.getBoundingClientRect();
-    pickerContainer.style.left = (editorRect.left - triggerRect.left) + 'px';
-}
-
-window.addEventListener('resize', () => {
-    if (pickerContainer.classList.contains('show')) updatePickerWidth();
 });
 
 // Editor setup
@@ -75,7 +61,7 @@ const commands = {
 };
 
 document.querySelectorAll('[data-cmd]').forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = (e) => {
         const cmd = btn.getAttribute('data-cmd');
         if (commands[cmd]) commands[cmd]();
     };
@@ -87,6 +73,7 @@ function updateToolbarState() {
         const isActive = (cmd === 'h1' || cmd === 'h2')
             ? editor.isActive('heading', { level: parseInt(cmd[1]) })
             : editor.isActive(cmd);
+
         if (isActive) btn.classList.add('is-active');
         else btn.classList.remove('is-active');
     });
@@ -120,10 +107,12 @@ const tagButton = document.getElementById('tagging');
 const customTagInput = document.getElementById('custom-tag-input');
 let selectedTags = [];
 
+// Toggle selection on tag buttons (both predefined and custom)
 function toggleTag(e) {
     e.currentTarget.classList.toggle('selected');
 }
 
+// Attach toggle listeners to all tag options
 function attachTagToggleListeners() {
     document.querySelectorAll('.tag-opt').forEach(opt => {
         opt.removeEventListener('click', toggleTag);
@@ -132,35 +121,43 @@ function attachTagToggleListeners() {
 }
 attachTagToggleListeners();
 
+// Open modal – sync selected state
 tagButton.addEventListener('click', (e) => {
     e.stopPropagation();
     const tagOptions = tagModal.querySelectorAll('.tag-opt');
     tagOptions.forEach(opt => {
         const tag = opt.getAttribute('data-tag');
-        if (selectedTags.includes(tag)) opt.classList.add('selected');
-        else opt.classList.remove('selected');
+        if (selectedTags.includes(tag)) {
+            opt.classList.add('selected');
+        } else {
+            opt.classList.remove('selected');
+        }
     });
     showModal(tagModal);
 });
 
+//create a new custom tag button
 function createCustomTagButton(tagName) {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'tag-opt custom-tag selected';
+    btn.className = 'tag-opt custom-tag selected'; // 'custom-tag' for identification
     btn.setAttribute('data-tag', tagName);
     btn.innerHTML = `${tagName} <span class="remove-modal-tag">&times;</span>`;
 
+    // Toggle selection when clicking the button (excluding the delete span)
     btn.addEventListener('click', (e) => {
         if (!e.target.classList.contains('remove-modal-tag')) {
             e.currentTarget.classList.toggle('selected');
         }
     });
 
+    // Delete button inside tag
     btn.querySelector('.remove-modal-tag').addEventListener('click', (e) => {
         e.stopPropagation();
-        btn.remove();
+        btn.remove(); // remove from modal
     });
 
+    // Double-click to edit
     btn.addEventListener('dblclick', (e) => {
         e.stopPropagation();
         const oldTag = btn.getAttribute('data-tag');
@@ -168,16 +165,19 @@ function createCustomTagButton(tagName) {
         input.type = 'text';
         input.value = oldTag;
         input.className = 'tag-opt edit-input';
-        input.style.width = btn.offsetWidth + 'px';
+        input.style.width = btn.offsetWidth + 'px'; // approximate width
 
+        // Replace button with input
         btn.replaceWith(input);
         input.focus();
 
+        // Save on Enter or blur
         const saveEdit = () => {
             const newVal = input.value.trim();
             if (newVal && newVal.length <= 20) {
                 input.replaceWith(createCustomTagButton(newVal));
             } else {
+                // If invalid, revert to old tag
                 input.replaceWith(createCustomTagButton(oldTag));
             }
         };
@@ -194,16 +194,19 @@ function createCustomTagButton(tagName) {
     return btn;
 }
 
+// Custom tag input – dynamic width, character limit (hard stop at 20), auto-select on Enter
 function adjustInputWidth() {
     const valueLength = customTagInput.value.length || customTagInput.placeholder.length;
     customTagInput.style.width = `${Math.min(valueLength + 2, 22)}ch`;
 }
 
 customTagInput.addEventListener('input', () => {
+    // Enforce 20 character limit
     if (customTagInput.value.length > 20) {
         customTagInput.value = customTagInput.value.slice(0, 20);
     }
     adjustInputWidth();
+    // Show red border if at limit
     if (customTagInput.value.length === 20) {
         customTagInput.style.borderColor = '#ff4444';
         customTagInput.style.borderWidth = '2px';
@@ -218,9 +221,15 @@ customTagInput.addEventListener('keydown', (e) => {
         e.preventDefault();
         const tagName = customTagInput.value.trim();
         if (!tagName || tagName.length > 20) return;
+
+        // Create new custom tag button
         const newTag = createCustomTagButton(tagName);
+
+        // Insert before the input field (so input stays at the end)
         const interestRow = document.getElementById('Interest-tags');
         interestRow.insertBefore(newTag, customTagInput);
+
+        // Clear input and reset styles
         customTagInput.value = '';
         adjustInputWidth();
         customTagInput.style.borderColor = 'rgba(255, 184, 77, 0.5)';
@@ -228,8 +237,10 @@ customTagInput.addEventListener('keydown', (e) => {
     }
 });
 
+// Initial adjustment
 adjustInputWidth();
 
+// Insert selected tags (including custom) into the main tag list
 document.getElementById('tag-insert').addEventListener('click', () => {
     const selected = tagModal.querySelectorAll('.tag-opt.selected');
     selectedTags = Array.from(selected).map(opt => opt.getAttribute('data-tag'));
@@ -237,8 +248,10 @@ document.getElementById('tag-insert').addEventListener('click', () => {
     hideAllModals();
 });
 
+// Cancel
 document.getElementById('tag-cancel').addEventListener('click', hideAllModals);
 
+// Update the tag pills below title
 function updateTagsDisplay() {
     tagsContainer.innerHTML = '';
     selectedTags.forEach(tag => {
@@ -247,6 +260,7 @@ function updateTagsDisplay() {
         pill.innerHTML = `${tag} <span class="remove-tag" data-tag="${tag}">&times;</span>`;
         tagsContainer.appendChild(pill);
     });
+
     document.querySelectorAll('.remove-tag').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -276,8 +290,11 @@ document.getElementById('link-cancel').onclick = hideAllModals;
 
 // ========== IMAGE/VIDEO BUTTON ==========
 const hiddenFileInput = document.getElementById('hidden-file-input');
-document.getElementById('btn-image').onclick = () => hiddenFileInput.click();
-
+document.getElementById('btn-image').onclick = (e) => {
+    e.stopPropagation();
+    hiddenFileInput.click();
+};
+// Reads the selected file and embeds it directly into the editor as base64
 hiddenFileInput.addEventListener('change', () => {
     const file = hiddenFileInput.files[0];
     if (!file) return;
@@ -293,7 +310,6 @@ hiddenFileInput.addEventListener('change', () => {
     reader.readAsDataURL(file);
     hiddenFileInput.value = '';
 });
-
 // ========== LOCATION BUTTON ==========
 const countryButton = document.getElementById('country-button');
 const countryList = document.getElementById('country-list');
@@ -335,6 +351,7 @@ document.getElementById('location-insert').onclick = () => {
     if (parts.length === 0) return;
     const address = parts.join(', ');
     const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
+    // Use proper location emoji
     editor.chain().focus().insertContent(`<a href="${mapsUrl}" target="_blank" class="location-badge">📍 ${address}</a> `).run();
     hideAllModals();
     document.getElementById('loc-street').value = '';
@@ -348,20 +365,41 @@ document.getElementById('location-insert').onclick = () => {
 
 document.getElementById('location-cancel').onclick = hideAllModals;
 
-// ========== POST BUTTON ==========
+// ========== POST BUTTON (single, includes tags) ==========
 document.getElementById('post-btn').onclick = () => {
-    const title = document.getElementById('post-title').value;
+    const title = document.getElementById('post-title').value.trim();
+    if (!title) {
+        alert("Title required");
+        return;
+    }
 
-    const status = document.getElementById('post-status');
-    status.classList.remove('hidden');
+    const body = editor.getHTML();
+    const tags = selectedTags.join(',');
 
-    console.log({
-        title,
-        html: editor.getHTML(),
-        tags: selectedTags
-    });
+    // Build a form and submit it directly
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'post';
 
-    setTimeout(() => {
-        window.location.href = 'Home.html';
-    }, 1000);
+    const titleField = document.createElement('input');
+    titleField.type = 'hidden';
+    titleField.name = 'title';
+    titleField.value = title;
+
+    const bodyField = document.createElement('input');
+    bodyField.type = 'hidden';
+    bodyField.name = 'body';
+    bodyField.value = body;
+
+    const tagsField = document.createElement('input');
+    tagsField.type = 'hidden';
+    tagsField.name = 'tags';
+    tagsField.value = tags;
+
+    form.appendChild(titleField);
+    form.appendChild(bodyField);
+    form.appendChild(tagsField);
+
+    document.body.appendChild(form);
+    form.submit();
 };
