@@ -1,6 +1,18 @@
+function timeAgo(dateStr) {
+    const seconds = Math.floor((new Date() - new Date(dateStr)) / 1000);
+    if (seconds < 60) return seconds + 's ago';
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return minutes + 'm ago';
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return hours + 'h ago';
+    return Math.floor(hours / 24) + 'd ago';
+}
+
 async function loadPosts() {
     const feed = document.getElementById('buzz-feed');
 
+    
+    
     try {
         const response = await fetch('api/posts');
 
@@ -25,8 +37,10 @@ async function loadPosts() {
                     <img src="assets/img/icons/defaultPfp.svg" alt="Profile" class="profile" />
                     <div class="user-info">
                         <span>${post.username}</span>
-                        <span class="user-info-divide">#${post.postId}</span>
-                        ${post.tags ? `<span class="distance">${post.tags}</span>` : ''}
+                        <span class="rating-score">${post.rating ?? 0}</span>
+                        ${post.openTime ? `<span class="user-info-divide">${post.openTime}</span>` : ''}
+                        ${post.location ? `<span class="distance">${post.location}</span>` : ''}
+                        <span>${timeAgo(post.createdAt)}</span>
                     </div>
                 </div>
                 <div class="buzz-content">
