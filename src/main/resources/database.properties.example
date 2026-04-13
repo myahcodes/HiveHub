@@ -1,4 +1,6 @@
 # Copy this file to src/main/resources/database.properties and set values for local development.
-db.url=jdbc:mysql://localhost:3306/hivehub?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-db.username=root
+db.url=jdbc:postgresql://your-server.postgres.database.azure.com:5432/hivehub?sslmode=require
+db.username=your_username
 db.password=your_password_here
+db.driver=org.postgresql.Driver
+db.pool.maxPoolSize=10

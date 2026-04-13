@@ -8,12 +8,9 @@
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
 }
 
-:root{
-    --theme-color: #ffb84d;
-}
-
 body {
     color: var(--theme-color);
+    cursor: var(--default-cursor);
 }
 
 .HH-contents {

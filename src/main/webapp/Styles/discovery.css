@@ -2,6 +2,10 @@
     --theme-color: #ffb84d;
 }
 
+:root{
+    --theme-color: #ffb84d;
+}
+
 #search-bar-discovery {
     display: flex;
     justify-content: right;

@@ -4,10 +4,6 @@
     font-style: normal;
 }
 
-:root{
-    --theme-color:#ffb84d;
-}
-
 body{
     color: var(--theme-color);
 }
@@ -63,6 +59,10 @@ body{
 
 #search-bar::placeholder{
     color: inherit;
+}
+
+#search-bar:hover{
+    cursor: var(--text-cursor);
 }
 
 .options {
@@ -136,11 +136,20 @@ body{
     border: solid thin var(--theme-color);
 }
 
+.input-row input:hover{
+    cursor: var(--text-cursor);
+}
+
 #color-options {
     display: flex;
     width: fit-content;
     height: fit-content;
     border: solid thin var(--theme-color);
+    cursor: var(--default-cursor);
+}
+
+.color-container{
+    cursor: var(--default-cursor);
 }
 
 .color-container input{
@@ -149,6 +158,10 @@ body{
     width: 30px;
     height: 30px;
     margin: 10px;
+}
+
+.color-container input:hover{
+    cursor: var(--pointer-cursor);
 }
 
 .color-container input:checked{

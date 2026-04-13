@@ -47,13 +47,13 @@ next_month.addEventListener("mouseover", function () {
 
     // enlargen on hover:
     next_month.style.transform = "scale(1.2)";
-    document.body.style.cursor = "pointer";
+    document.body.style.cursor = "var(--pointer-cursor)";
 });
 
 next_month.addEventListener("mouseout", function () {
     //revert on mouse exit:
     next_month.style.transform = "scale(1)";
-    document.body.style.cursor = "default";
+    document.body.style.cursor = "var(--default-cursor)";
 });
 
 prev_month.addEventListener("mouseover", () => {
@@ -62,13 +62,13 @@ prev_month.addEventListener("mouseover", () => {
 
     //enlargen on hover:
     prev_month.style.transform = "scale(1.2)";
-    document.body.style.cursor = "pointer";
+    document.body.style.cursor = "var(--pointer-cursor)";
 });
 
 prev_month.addEventListener("mouseout", () => {
     //revert on mouse exit:
     prev_month.style.transform = "scale(1)";
-    document.body.style.cursor = "default";
+    document.body.style.cursor = "var(--default-cursor)";
 });
 
 // Function to change months:
@@ -148,13 +148,13 @@ details_button.addEventListener("mouseover", () => {
     hover_audio.currentTime = 0;
     hover_audio.play();
     // do things on hover here: 
-    document.body.style.cursor = "pointer";
+    document.body.style.cursor = "var(--pointer-cursor)";
     details_button.style.backgroundColor = "var(--theme-color)";
 });
 
 details_button.addEventListener("mouseout", () =>
 {
-    document.body.style.cursor = "default";
+    document.body.style.cursor = "var(--default-cursor)";
     details_button.style.backgroundColor = "black";
 });
 

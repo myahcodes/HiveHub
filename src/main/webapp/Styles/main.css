@@ -1,7 +1,8 @@
 :root {
-    --default-cursor: url("/webapp/assets/img/icons/cursors/honeyCursor.png") 2 2, auto;
-    --pointer-cursor: url("/webapp/assets/img/icons/cursors/honeyPointer.png") 8 3, pointer;
-    --text-cursor: url("/webapp/assets/img/icons/cursors/honeyText.png") 4 7, text;
+    --default-cursor: url("../assets/img/icons/cursors/honeyCursor.png") 2 2, auto;
+    --pointer-cursor: url("../assets/img/icons/cursors/honeyPointer.png") 8 3, pointer;
+    --text-cursor: url("../assets/img/icons/cursors/honeyText.png") 4 7, text;
+    --theme-color: #ffb84d;
 }
 @font-face {
     font-family: Magic;
@@ -25,10 +26,6 @@
     100% {
         transform: rotate(0deg);
     }
-}
-
-:root{
-    --theme-color: #ffb84d;
 }
 
 html {

@@ -3,59 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>The HiveHub-Home</title>
-    <link rel="icon" href="assets/icons/hivehubIcon.svg" />
-    <link rel="icon" href="assets/icons/defaultPfp.svg" />
+    <link rel="icon" href="assets/img/icons/defaultPfp.svg" />
     <link rel="stylesheet" href="Styles/main.css" />
     <link rel="stylesheet" href="Styles/home.css" />
-
 </head>
 <body class="Main-page">
-    <div id="left-nav"></div>
-    <div id="right-nav"></div>
+    <div id="left-nav">
+        <svg class="nav-bg">
+            <use href="assets/img/nav/bar/navBars.svg#leftnav"></use>
+        </svg>
+        <a href="Hive.html" class="left-bttns icon-hive">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#hiveicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#hiveiconslct"></use>
+            </svg>
+        </a>
+    </div>
+
+    <div id="right-nav">
+        <svg class="nav-bg">
+            <use href="assets/img/nav/bar/navBars.svg#rightnav">
+            </use>
+        </svg>
+        <a href="Discovery.html" class="right-bttns icon-discovery">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#discoveryicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#discoveryiconslct"></use>
+            </svg>
+        </a>
+        <a href="Posting.html" class="right-bttns icon-post">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#posticon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#posticonslct"></use>
+            </svg>
+        </a>
+        <a href="Buzzboard.html" class="right-bttns icon-buzzboard">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#buzzboardicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#buzzboardiconslct"></use>
+            </svg>
+        </a>
+        <a href="Home.html" class="right-bttns icon-home active">
+            <svg class="button-icon icon-static" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#homeicon"></use>
+            </svg>
+            <svg class="button-icon icon-hover" aria-hidden="true">
+                <use href="assets/img/nav/bttnIcons/bttns.svg#homeiconslct"></use>
+            </svg>
+        </a>
+    </div>
     <div class="HH-Home">
         <div class="HH-Header">
             <h1>HiveHub</h1>
         </div>
-        <div class="HH-contents">
-            <div class="buzz-feed">
-                <div class="buzz">
-                    <div class="buzz-header">
-                        <img src="assets/img/placeholder/defaultPfpPlcHldr.svg" alt="Thrift Store Pfp" class="profile" />
-                        <div class="user-info">
-                            <span>Thrift Store Express</span>
-                            <span class="rating-score">3</span>
-                            <span class="user-info-divide">Opens 10 AM </span>
-                            <span class="distance">1.5 mi</span>
-                        </div>
-                    </div>
-                    <div class="buzz-content">
-                        <noscript>Check out our new collection of vintage clothing and accessories! Great deals await you.</noscript>
-                        <!--img placeholder here -->
-                        <img src="assets\img\placeholder\page-1.jpeg" alt="Post Image" class="buzz-media" />
-                    </div>
-                    <div class="buzz-actions">
-                        <!--Button for Rating, Comment, and Share?-->
-                    </div>
-                </div>
-                <div class="buzz">
-                    <div class="buzz-header">
-                        <img src="assets\img\placeholder\defaultPfpPlcHldr.svg" alt="Candy Store Pfp" class="profile" />
-                        <div class="user-info">
-                            <span>Candy Mart</span>
-                            <span class="rating-score">4</span>
-                            <span class="user-info-divide">Opens 10 AM </span>
-                            <span class="distance">2.5 mi</span>
-                        </div>
-                    </div>
-                    <div class="buzz-content">
-                        <noscript>Wow so much candy!</noscript>
-                        <!--img placeholder here -->
-                        <img src="assets\img\placeholder\page-2.jpeg" alt="Post Image" class="buzz-media" />
-                    </div>
-                    <div class="buzz-actions">
-                        <!--Button for Rating, Comment, and Share?-->
-                    </div>
-                </div>
+        <div class="HH-default">
+            <div class="buzz-feed" id="buzz-feed">
+                <p id="feed-loading" style="color:#ffb84d; text-align:center;">Loading posts...</p>
             </div>
         </div>
         <hr id="divider" />
@@ -64,6 +75,60 @@
             <a href="about.html">our mission</a>
         </footer>
     </div>
+    <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+    <div id="comment-modal" class="modal hidden">
+        <!--<button class="close-modal" style="float:right; background:none; border:none; color:black; cursor:pointer;">&times;</button>-->
+        <div class="div1">1</div>
+        <div class="div2" style="padding-top: 10px">
+            <div class="buzz-header">
+                <img src="assets/img/placeholder/defaultPfpPlcHldr.svg" alt="Thrift Store Pfp" class="profile" />
+                <div class="user-info">
+                    <span>Thrift Store Express</span>
+                    <span class="rating-score">3</span>
+                    <span class="user-info-divide">Opens 10 AM </span>
+                    <span class="distance">1.5 mi</span>
+                </div>
+            </div>
+        </div>
+        <div class="div3">
+            <div class="comment-item">
+                <img src="assets/img/placeholder/defaultPfpPlcHldr.svg" class="comment-avatar" />
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="comment-username">CoolBee123</span>
+                        <span class="comment-time">2 min ago</span>
+                    </div>
+                    <p class="comment-text">Love this post! 🍯</p>
+                </div>
+            </div>
+        </div>
+        <div class="div4">
+            <div class="buzz-actions" style="padding-bottom: 0px">
+                <div>
+                    <button class="action-bttns" aria-label="addToBuzzboard">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
+                        </svg>
+                    </button>
+                    <button class="action-bttns" aria-label="share">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#shareicon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="post-date" style="padding-bottom: 5px">
+                XX days ago
+            </div>
+        </div>
+        <input class="comment-field" placeholder="Comment.." onmousedown="new Audio('/assets/audio/click-sound.mp3').play()"/>
+    </div>
+    <script src="assets/js/cursor.js"></script>
     <script src="assets/js/home.js"></script>
+    <script src="assets/js/navBttn_activity.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/updateTheme.js"></script>
+    <script src="assets/js/buzz_actions.js"></script>
+    <script src="https://unpkg.com/picmo@latest/dist/umd/index.js"></script>
 </body>
 </html>
