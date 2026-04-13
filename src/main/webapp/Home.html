@@ -65,83 +65,8 @@
             <h1>HiveHub</h1>
         </div>
         <div class="HH-default">
-            <div class="buzz-feed">
-                <div class="buzz">
-                    <div class="buzz-header">
-                        <img src="assets/img/placeholder/defaultPfpPlcHldr.svg" alt="Thrift Store Pfp" class="profile" />
-                        <div class="user-info">
-                            <span>Thrift Store Express</span>
-                            <span class="rating-score">3</span>
-                            <span class="user-info-divide">Opens 10 AM </span>
-                            <span class="distance">1.5 mi</span>
-                            <span class="buzz-date">2 days ago</span>
-                        </div>
-                    </div>
-                    <div class="buzz-content">
-                        <p class="buzz-text">Check out our new collection of vintage clothing and accessories! Great deals await you.</p>
-                        <!--img placeholder here -->
-                        <img src="webapp\assets\img\placeholder\page-1.jpeg" alt="Post Image" class="buzz-media" />
-                    </div>
-                    <div class="buzz-actions">
-                        <div style="display: flex; gap: 15px;">
-                            <button class="action-bttns comment-trigger" aria-label="comment">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
-                                </svg>
-                            </button>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
-                                </svg>
-                            </button>
-                        </div>
-                        <div>
-                            <button class="action-bttns" aria-label="share">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="assets/img/activityBar/activitySprites.svg#shareicon"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="buzz">
-                    <div class="buzz-header">
-                        <img src="webapp\assets\img\placeholder\defaultPfpPlcHldr.svg" alt="Candy Store Pfp" class="profile" />
-                        <div class="user-info">
-                            <span>Candy Mart</span>
-                            <span class="rating-score">4</span>
-                            <span class="user-info-divide">Opens 10 AM </span>
-                            <span class="distance">2.5 mi</span>
-                            <span class="buzz-date">2 days ago</span>
-                        </div>
-                    </div>
-                    <div class="buzz-content">
-                        <p class="buzz-text">Wow so much candy!</p>
-                        <!--img placeholder here -->
-                        <img src="webapp\assets\img\placeholder\page-2.jpeg" alt="Post Image" class="buzz-media" />
-                    </div>
-                    <div class="buzz-actions">
-                        <div style="display: flex; gap: 15px;">
-                            <button class="action-bttns comment-trigger" aria-label="comment">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
-                                </svg>
-                            </button>
-                            <button class="action-bttns" aria-label="addToBuzzboard">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
-                                </svg>
-                            </button>
-                        </div>
-                        <div>
-                            <button class="action-bttns" aria-label="share">
-                                <svg class="icon" aria-hidden="true">
-                                    <use href="assets/img/activityBar/activitySprites.svg#shareicon"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="buzz-feed" id="buzz-feed">
+                <p id="feed-loading" style="color:#ffb84d; text-align:center;">Loading posts...</p>
             </div>
         </div>
         <hr id="divider" />
@@ -199,7 +124,7 @@
         <input class="comment-field" placeholder="Comment.." onmousedown="new Audio('/assets/audio/click-sound.mp3').play()"/>
     </div>
     <script src="assets/js/cursor.js"></script>
-    <!--<script src="assets/js/home.js"></script>-->
+    <script src="assets/js/home.js"></script>
     <script src="assets/js/navBttn_activity.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/updateTheme.js"></script>
