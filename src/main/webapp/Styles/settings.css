@@ -198,6 +198,10 @@ body{
 
 }
 
+input::placeholder {
+    color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+}
+
 #visibility-container{
     display: flex;
     flex-direction: row;
