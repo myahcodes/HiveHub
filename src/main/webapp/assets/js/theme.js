@@ -1,11 +1,8 @@
 function applyTheme() {
-    const theme = localStorage.getItem("themeColor");
+    const theme = localStorage.getItem("themeColor") || "#ffb84d";
     const root = document.documentElement;
-
-    if (theme) {
-        root.style.setProperty("--theme-color", theme);
-        updateCursor(theme);
-    }
+    root.style.setProperty("--theme-color", theme);
+    updateCursor(theme);
 }
 
 // update cursor:
