@@ -1,5 +1,7 @@
 function timeAgo(dateStr) {
-    const seconds = Math.floor((new Date() - new Date(dateStr)) / 1000);
+    const utcStr = dateStr.replace(' ', 'T') + (dateStr.endsWith('Z') ? '' : 'Z');
+    const seconds = Math.floor((new Date() - new Date(utcStr)) / 1000);
+    if (seconds < 0) return 'Just now';
     if (seconds < 60) return seconds + 's ago';
     const minutes = Math.floor(seconds / 60);
     if (minutes < 60) return minutes + 'm ago';
