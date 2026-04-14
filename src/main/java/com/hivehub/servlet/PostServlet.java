@@ -45,11 +45,14 @@ public class PostServlet extends HttpServlet {
         }
 
         try {
-            Post post = new Post();
+           Post post = new Post();
             post.setUserId(userId);
             post.setTitle(title.trim());
             post.setBody(body);
             post.setTags(tags);
+            post.setOpenTime(request.getParameter("open_time"));
+            post.setLocation(request.getParameter("location"));
+
 
             boolean success = postDAO.insertPost(post);
 

@@ -84,6 +84,7 @@ const backdrop = document.getElementById('modal-backdrop');
 const linkModal = document.getElementById('link-modal');
 const locationModal = document.getElementById('location-modal');
 let currentModal = null;
+let postLocation = '';
 
 function hideAllModals() {
     if (currentModal) currentModal.classList.add('hidden');
@@ -350,6 +351,7 @@ document.getElementById('location-insert').onclick = () => {
     const parts = [street, city, state, zip].filter(p => p);
     if (parts.length === 0) return;
     const address = parts.join(', ');
+    postLocation = address;
     const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(address)}`;
     // Use proper location emoji
     editor.chain().focus().insertContent(`<a href="${mapsUrl}" target="_blank" class="location-badge">📍 ${address}</a> `).run();
@@ -396,9 +398,21 @@ document.getElementById('post-btn').onclick = () => {
     tagsField.name = 'tags';
     tagsField.value = tags;
 
+    const openTimeField = document.createElement('input');
+    openTimeField.type = 'hidden';
+    openTimeField.name = 'open_time';
+    openTimeField.value = document.getElementById('post-open-time').value.trim();
+
+    const locationField = document.createElement('input');
+    locationField.type = 'hidden';
+    locationField.name = 'location';
+    locationField.value = postLocation;
+
     form.appendChild(titleField);
     form.appendChild(bodyField);
     form.appendChild(tagsField);
+    form.appendChild(openTimeField);
+    form.appendChild(locationField);
 
     document.body.appendChild(form);
     form.submit();

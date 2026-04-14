@@ -49,8 +49,13 @@ public class HomeServlet extends HttpServlet {
                 out.print("\"title\":\"" + escapeJson(p.getTitle()) + "\",");
                 out.print("\"body\":\"" + escapeJson(p.getBody()) + "\",");
                 out.print("\"tags\":\"" + escapeJson(p.getTags()) + "\",");
-                out.print("\"createdAt\":\"" + p.getCreatedAt() + "\"");
+                out.print("\"createdAt\":\"" + p.getCreatedAt() + "\",");
+                out.print("\"imageUrl\":" + (p.getImageUrl() != null ? "\"" + escapeJson(p.getImageUrl()) + "\"" : "null") + ",");
+                out.print("\"rating\":" + p.getRating() + ",");
+                out.print("\"openTime\":" + (p.getOpenTime() != null ? "\"" + escapeJson(p.getOpenTime()) + "\"" : "null") + ",");
+                out.print("\"location\":" + (p.getLocation() != null ? "\"" + escapeJson(p.getLocation()) + "\"" : "null"));
                 out.print("}");
+
                 if (i < posts.size() - 1) out.print(",");
             }
             out.print("]");

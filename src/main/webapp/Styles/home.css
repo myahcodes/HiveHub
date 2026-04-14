@@ -77,7 +77,7 @@
     line-height: 1.4;
 }
 .buzz-content .buzz-text {
-    display: none;
+    display: block;
 }
 
 .buzz-media {

@@ -10,9 +10,26 @@ public class Post {
     private String tags;
     private Timestamp createdAt;
     private String username;
+    private String imageUrl;
+    private double rating;
+    private String openTime;
+    private String location;
+
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    
+    public double getRating() { return rating; }
+    public void setRating(double rating) { this.rating = rating; }
+    
+    public String getOpenTime() { return openTime; }
+    public void setOpenTime(String openTime) { this.openTime = openTime; }
+    
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
     
     public long getPostId() { return postId; }
     public void setPostId(long postId) { this.postId = postId; }

@@ -4,65 +4,71 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    
-    private static final String HOST;
-    private static final String PORT;
-    private static final String DATABASE;
-    private static final String USER;
-    private static final String PASSWORD;
-    private static final String URL;
-    
+    private static String url;
+    private static String user;
+    private static String password;
+    private static SQLException initError;
+
     static {
-        // Read from Azure environment variables first
-        String host = System.getenv("DB_HOST");
-        String port = System.getenv("DB_PORT");
-        String database = System.getenv("DB_NAME");
-        String user = System.getenv("DB_USER");
-        String password = System.getenv("DB_PASSWORD");
-        
-        // Fall back to config.properties for local development
-        if (host == null || host.isEmpty()) {
-            try {
+        try {
+            String host = System.getenv("DB_HOST");
+            String port = System.getenv("DB_PORT");
+            String database = System.getenv("DB_NAME");
+            String dbUser = System.getenv("DB_USER");
+            String dbPassword = System.getenv("DB_PASSWORD");
+    
+            if (host == null || host.isEmpty()) {
                 java.util.Properties props = new java.util.Properties();
                 java.io.InputStream input = DatabaseConnection.class
                     .getClassLoader()
                     .getResourceAsStream("config.properties");
-                
+    
                 if (input == null) {
-                    throw new RuntimeException("config.properties not found");
+                    initError = new SQLException(
+                        "Database not configured: DB_HOST env var is not set and " +
+                        "config.properties was not found. " +
+                        "Set DB_HOST, DB_NAME, DB_USER, DB_PASSWORD in Azure App Settings.");
+                } else {
+                    try {
+                        props.load(input);
+                        host = props.getProperty("db.host");
+                        port = props.getProperty("db.port", "5432");
+                        database = props.getProperty("db.name");
+                        dbUser = props.getProperty("db.user");
+                        dbPassword = props.getProperty("db.password");
+                    } finally {
+                        input.close();
+                    }
                 }
-                
-                props.load(input);
-                host = props.getProperty("db.host");
-                port = props.getProperty("db.port", "5432");
-                database = props.getProperty("db.name");
-                user = props.getProperty("db.user");
-                password = props.getProperty("db.password");
-                
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to load configuration", e);
             }
+    
+            if (initError == null) {
+                String resolvedPort = (port != null && !port.isEmpty()) ? port : "5432";
+                url = "jdbc:postgresql://" + host + ":" + resolvedPort + "/" + database +
+                      "?sslmode=require&application_name=HiveHub";
+                user = dbUser;
+                password = dbPassword;
+                System.out.println("Database configuration loaded. Host: " + host);
+            }
+    
+        } catch (Exception e) {
+            initError = new SQLException("Failed to load database configuration: " + e.getMessage(), e);
         }
-        
-        HOST = host;
-        PORT = port != null ? port : "5432";
-        DATABASE = database;
-        USER = user;
-        PASSWORD = password;
-        URL = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE + 
-              "?sslmode=require&application_name=HiveHub";
-              
-        System.out.println("✓ Database configuration loaded. Host: " + HOST);
     }
     
+    
     public static Connection getConnection() throws SQLException {
+        if (initError != null) {
+            throw initError;
+        }
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            return DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException e) {
             throw new SQLException("PostgreSQL JDBC Driver not found.", e);
         }
     }
+
     
     public static boolean testConnection() {
         try (Connection conn = getConnection()) {

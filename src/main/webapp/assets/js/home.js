@@ -1,6 +1,18 @@
+function timeAgo(dateStr) {
+    const seconds = Math.floor((new Date() - new Date(dateStr)) / 1000);
+    if (seconds < 60) return seconds + 's ago';
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return minutes + 'm ago';
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return hours + 'h ago';
+    return Math.floor(hours / 24) + 'd ago';
+}
+
 async function loadPosts() {
     const feed = document.getElementById('buzz-feed');
 
+    
+    
     try {
         const response = await fetch('api/posts');
 
@@ -25,24 +37,38 @@ async function loadPosts() {
                     <img src="assets/img/icons/defaultPfp.svg" alt="Profile" class="profile" />
                     <div class="user-info">
                         <span>${post.username}</span>
-                        <span class="user-info-divide">${new Date(post.createdAt).toLocaleDateString()}</span>
-                        ${post.tags ? `<span class="distance">${post.tags}</span>` : ''}
+                        <span class="rating-score">${post.rating ?? 0}</span>
+                        ${post.openTime ? `<span class="user-info-divide">${post.openTime}</span>` : ''}
+                        ${post.location ? `<span class="distance">${post.location}</span>` : ''}
+                        <span>${timeAgo(post.createdAt)}</span>
                     </div>
                 </div>
                 <div class="buzz-content">
                     <h3 style="color:#ffb84d; margin-bottom:8px;">${post.title}</h3>
-                    <div style="color:#ffb84d; margin-bottom:8px;">${post.body}</div>
+                    <div class="buzz-text" style="color:#ffb84d; margin-bottom:8px;">${post.body}</div>
                     ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image" class="buzz-media" />` : ''}
                 </div>
-                <div class="buzz-actions">
-                    <div style="display: flex; gap: 15px;">
-                        <button class="action-bttns commentFeedIcon"></button>
-                        <button class="action-bttns addToBuzzboardIcon"></button>
-                    </div>
-                    <div>
-                        <button class="action-bttns shareIcon"></button>
-                    </div>
+               <div class="buzz-actions">
+                <div style="display: flex; gap: 15px;">
+                    <button class="action-bttns comment-trigger" aria-label="comment">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#commentfeedicon"></use>
+                        </svg>
+                    </button>
+                    <button class="action-bttns" aria-label="addToBuzzboard">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use>
+                        </svg>
+                    </button>
                 </div>
+                <div>
+                    <button class="action-bttns" aria-label="share">
+                        <svg class="icon" aria-hidden="true">
+                            <use href="assets/img/activityBar/activitySprites.svg#shareicon"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
             `;
             feed.appendChild(buzz);
         });
