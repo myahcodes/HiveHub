@@ -36,7 +36,7 @@ function populateModalWithPost(postElement) {
         const distance = userInfo?.querySelector('.distance')?.innerText || '0 mi';
         const postDateText = userInfo?.querySelector('.buzz-date')?.innerText || 'Just now';
 
-        const mediaImg = postElement.querySelector('.buzz-media');
+        const mediaImg = postElement.querySelector('.buzz-media') || postElement.querySelector('.buzz-content img');
         const mediaSrc = mediaImg ? mediaImg.src : '';
 
         const postTextElement = postElement.querySelector('.buzz-text');
