@@ -1,7 +1,11 @@
 @font-face {
-    font-family: BeePollen, system-ui;
+    font-family: BeePollen;
     src: url("../assets/fonts/BeePollen-lgE8Z.otf") format('opentype');
     font-style: normal;
+}
+
+:root{
+    --theme-color: ;
 }
 
 body{
@@ -9,7 +13,7 @@ body{
 }
 
 .HH-contents {
-    font-family: BeePollen;
+    font-family: BeePollen, cursive;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,6 +115,8 @@ body{
     display: flex;
     flex-direction: column;
     width: fit-content;
+    max-width: 80vh;
+    overflow-y: auto;
     background-color: black;
     border: solid thin var(--theme-color);
     padding: 30px;
@@ -200,6 +206,536 @@ body{
 
 input::placeholder {
     color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+}
+
+.HH-Posting .HH-Header h1 {
+    margin-block-end: 0.20em;
+}
+
+.HH-Posting .HH-default {
+    overflow: visible;
+}
+
+.title-panel {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.title-input::placeholder {
+    color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+}
+
+.title-input {
+    font-family: BeePollen, Chewy;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+    margin-bottom: 12px;
+    background: black;
+    color: var(--theme-color);
+    transition: transform 0.2s ease;
+    box-sizing: border-box;
+}
+
+    .title-input:focus {
+        border: 2.5px solid var(--theme-color);
+        outline: none;
+    }
+
+    .title-input:hover {
+        transform: scale(1.02);
+    }
+
+.post-editor {
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+    background: black;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+}
+
+.post-editor:focus-within {
+    border-color: var(--theme-color);
+    text-align: left;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px;
+    background: black;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px color-mix(in srgb, var(--theme-color) 50%, transparent);
+    z-index: 50;
+    border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+    margin-top: 0px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-item {
+    color: var(--theme-color);
+    padding: 8px 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+}
+
+.dropdown-item:hover {
+    background-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    color: black;
+}
+
+.toolbar button, .dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    color: var(--theme-color);
+    font-size: 12px;
+    transition: background 0.1s;
+    gap: 4px;
+    border: none;
+    background: transparent;
+    border-radius: 2px;
+    cursor: var(--pointer-cursor);
+}
+
+    .toolbar button:hover, .dropdown-trigger:hover, .toolbar button.is-active {
+        background-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+        color: black;
+    }
+
+/* TipTap Styling */
+.tiptap {
+    padding: 0px 10px;
+    font-family: BeePollen, Chewy;
+    outline: none;
+    font-size: 14px;
+    color: var(--theme-color);
+    background: black;
+}
+
+    .tiptap p.is-editor-empty:first-child::before {
+        content: attr(data-placeholder);
+        float: left;
+        color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+        pointer-events: none;
+        height: 0;
+    }
+
+    .tiptap h1 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .tiptap h2 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.75rem;
+    }
+
+    .tiptap ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+    }
+
+    .tiptap ol {
+        list-style-type: decimal;
+        padding-left: 1.5rem;
+    }
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5px;
+    background: black;
+    border: none;
+    gap: 16px;
+}
+
+.post-btn {
+    background-color: var(--theme-color);
+    color: black;
+    font-weight: bold;
+    padding: 6px 24px;
+    font-size: 14px;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+}
+
+    .post-btn:hover {
+        opacity: 0.9;
+    }
+
+/* Emoji Picker Styles */
+#emoji-picker-container {
+    display: none;
+    position: absolute;
+    bottom: 41px;
+    left: -4px;
+    z-index: 1000;
+    /*    width: 495px;*/
+    height: 175px;
+    border-top: solid 1px color-mix(in srgb, var(--theme-color) 50%, transparent);
+    overflow: hidden;
+    background-color: black;
+}
+
+    #emoji-picker-container.show {
+        display: block;
+        animation: slideUp 0.2s ease-out;
+    }
+
+    #emoji-picker-container .picmo__searchField::placeholder {
+        color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    }
+
+.picmo__picker.picmo__picker.dark {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)) !important;
+    gap: 5px;
+}
+
+#emoji-picker-container .picmo__categoryButtons {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#emoji-picker-container .picmo__categoryButtons {
+    justify-content: stretch;
+}
+
+#emoji-picker-container .picmo__categoryTab {
+    flex: 1 1 0;
+    text-align: center;
+    padding: 8px 4px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#emoji-picker-container .picmo__emojiArea::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.picker {
+    --background-color: #000000;
+    --text-color: var(--theme-color);
+    --secondary-text-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    --category-tabs-background-color: #111;
+    --border-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    --hover-background-color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    --focus-indicator-color: var(--theme-color);
+    --accent-color: var(--theme-color);
+    border-top: solid;
+    width: 100%;
+    height: 100%;
+}
+
+.picmo__noRecents, h3.picmo__categoryName, .picmo__searchField {
+    font-family: 'BeePollen';
+}
+
+.emoji-btn {
+    color: var(--theme-color);
+    padding: 6px 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    font-weight: 500;
+}
+
+    .emoji-btn:hover {
+        background: color-mix(in srgb, var(--theme-color) 20%, transparent);
+        color: var(--theme-color);
+        border-radius: 4px;
+    }
+
+.relative {
+    position: relative;
+}
+
+/* Modal Styles (general) */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: color-mix(in srgb, var(--theme-color) 70%, transparent);
+    z-index: 1999;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+    border: 2px solid var(--theme-color);
+    padding: 24px;
+    z-index: 2000;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 8px 16px color-mix(in srgb, var(--theme-color) 30%, transparent);
+    color: var(--theme-color);
+}
+
+    .modal.hidden {
+        display: none;
+    }
+
+.modal-backdrop.hidden {
+    display: none;
+}
+/* Font and placeholder consistency for modals */
+.modal,
+.modal input,
+.modal button,
+.modal label,
+.modal h4 {
+    font-family: BeePollen, Chewy, sans-serif;
+}
+
+    .modal input::placeholder {
+        color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    }
+
+    .modal input[type="text"],
+    .modal input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        background: black;
+        border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+        color: var(--theme-color);
+    }
+
+        .modal input[type="text"]:focus,
+        .modal input[type="file"]:focus {
+            border-color: var(--theme-color);
+            outline: none;
+        }
+
+    .modal h4 {
+        margin: 0 0 16px 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+    .modal-actions button {
+        padding: 8px 16px;
+        background: var(--theme-color);
+        color: black;
+        border: none;
+        font-weight: bold;
+        border-radius: 2px;
+        font-family: BeePollen, Chewy, sans-serif;
+    }
+
+        .modal-actions button:hover {
+            opacity: 0.9;
+        }
+
+/* Custom dropdown for country */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+    .custom-dropdown .dropdown-button {
+        width: 100%;
+        padding: 10px;
+        background: black;
+        border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+        color: var(--theme-color);
+        font-family: BeePollen, Chewy, sans-serif;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .custom-dropdown .dropdown-button::after {
+            content: "▼"; /* fixed arrow */
+            font-size: 12px;
+            color: var(--theme-color);
+        }
+
+        .custom-dropdown .dropdown-button:focus {
+            border-color: var(--theme-color);
+            outline: none;
+        }
+
+        /* Placeholder state (when no country selected) */
+        .custom-dropdown .dropdown-button.placeholder {
+            color: color-mix(in srgb, var(--theme-color) 50%, transparent);
+        }
+
+    .custom-dropdown .dropdown-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 200px;
+        overflow-y: auto;
+        background: black;
+        border: 1px solid var(--theme-color);
+        border-top: none;
+        z-index: 100;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-family: BeePollen, Chewy, sans-serif;
+    }
+
+.custom-dropdown .dropdown-list li {
+    padding: 8px 10px;
+    color: var(--theme-color);
+}
+
+.custom-dropdown .dropdown-list li:hover {
+    background: color-mix(in srgb, var(--theme-color) 50%, transparent);
+    color: black;
+}
+
+.custom-dropdown .dropdown-list li.selected {
+    background: color-mix(in srgb, var(--theme-color) 30%, transparent);
+    font-weight: bold;
+}
+
+.custom-dropdown .dropdown-list.hidden {
+    display: none;
+}
+
+/* Zip/Country row */
+#location-modal .flex {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+    #location-modal .flex .flex-1 {
+        flex: 1;
+    }
+
+
+    #location-modal .flex input,
+    #location-modal .flex .custom-dropdown {
+        margin-bottom: 0;
+    }
+
+/* Edit input (when double-clicking a custom tag) */
+.tag-opt.edit-input {
+    background: transparent;
+    border: 1px solid var(--theme-color);
+    color: var(--theme-color);
+    padding: 4px 10px;
+    font-family: BeePollen, Chewy, sans-serif;
+    font-size: 13px;
+    border-radius: 2px;
+    outline: none;
+    width: auto;
+    min-width: 10ch;
+}
+
+.ProseMirror{
+    color: var(--theme-color);
+}
+
+/* Simple replacements for Tailwind spacing utilities used in toolbar */
+.toolbar button i,
+.emoji-btn i,
+.post-btn i {
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+}
+
+.toolbar .dropdown-trigger i:last-child {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.footer .emoji-btn i {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.w-4 {
+    width: 1rem;
+}
+
+.h-4 {
+    height: 1rem;
+}
+
+.w-5 {
+    width: 1.25rem;
+}
+
+.h-5 {
+    height: 1.25rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.hidden {
+    display: none;
 }
 
 #visibility-container{

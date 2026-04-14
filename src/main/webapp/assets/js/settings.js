@@ -1,3 +1,5 @@
+import { initBioEditor } from "./post_bio.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const hover_control = new Audio("./assets/audio/pop-on.mp3");
@@ -59,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector("#bio-option").addEventListener("click", (e) => {
         e.stopPropagation();
         appendTemplate("#bio-change-template");
+
+        requestAnimationFrame(() => {
+            initBioEditor(clone);
+            createIcons({ icons });
+        });
     });
 
     // ── Change Password ──
