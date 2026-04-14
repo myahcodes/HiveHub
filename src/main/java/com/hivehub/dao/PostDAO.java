@@ -62,6 +62,7 @@ public class PostDAO {
             post.setRating(rs.getDouble("rating"));
             post.setOpenTime(rs.getString("open_time"));
             post.setLocation(rs.getString("location"));
+            posts.add(post);
         }
     }
     return posts;
@@ -88,7 +89,7 @@ public class PostDAO {
                     post.setRating(rs.getDouble("rating"));
                     post.setOpenTime(rs.getString("open_time"));
                     post.setLocation(rs.getString("location"));
-
+                    posts.add(post);
                 }
             }
         }
