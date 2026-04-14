@@ -120,3 +120,28 @@ document.querySelector('.buzz-feed')?.addEventListener('click', (e) => {
 
 backdrop?.addEventListener('click', hideAllModals);
 commentModal?.querySelector('.close-modal')?.addEventListener('click', hideAllModals);
+
+document.getElementById('comment-modal')?.addEventListener('click', (e) => {
+    if (!e.target.closest('#comment-submit')) return;
+    const input = document.getElementById('comment-input');
+    const text = input?.value.trim();
+    if (!text) return;
+
+    const list = document.getElementById('modal-comments-list');
+    if (list) {
+        const item = document.createElement('div');
+        item.className = 'comment-item';
+        item.innerHTML = `
+            <img src="assets/img/icons/defaultPfp.svg" class="comment-avatar" />
+            <div class="comment-content">
+                <div class="comment-header">
+                    <span class="comment-username">You</span>
+                    <span class="comment-time">Just now</span>
+                </div>
+                <p class="comment-text">${escapeHtml(text)}</p>
+            </div>`;
+        list.appendChild(item);
+        list.scrollTop = list.scrollHeight;
+    }
+    input.value = '';
+});
