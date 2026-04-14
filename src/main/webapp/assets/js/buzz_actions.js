@@ -44,10 +44,19 @@ function populateModalWithPost(postElement) {
 
         const div1 = commentModal.querySelector('.div1');
         if (div1) {
-            div1.innerHTML = mediaSrc
-                ? `<img src="${mediaSrc}" style="width:100%; height:100%; object-fit:cover;" />`
-                : '<div style="display:flex; align-items:center; justify-content:center; height:100%; color:rgba(255,184,77,0.5);">No image</div>';
+            if (mediaSrc) {
+                div1.innerHTML = `<img src="${mediaSrc}" style="width:100%; height:100%; object-fit:cover;" />`;
+            } else if (postText.trim()) {
+                div1.innerHTML = `<div style="display:flex; align-items:center; justify-content:center; height:100%; padding:16px; color:#ffb84d; font-family:BeePollen,Chewy; overflow:auto;">${escapeHtml(postText)}</div>`;
+            } else {
+                div1.innerHTML = `<div style="display:flex; align-items:center; justify-content:center; height:100%;">
+                    <svg style="width:60px; height:60px; fill:rgba(255,184,77,0.2);" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                </div>`;
+            }
         }
+
 
         const div2 = commentModal.querySelector('.div2');
         if (div2) {
