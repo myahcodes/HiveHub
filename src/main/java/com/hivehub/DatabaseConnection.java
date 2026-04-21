@@ -45,7 +45,7 @@ public class DatabaseConnection {
             if (initError == null) {
                 String resolvedPort = (port != null && !port.isEmpty()) ? port : "5432";
                 url = "jdbc:postgresql://" + host + ":" + resolvedPort + "/" + database +
-                      "?sslmode=require&application_name=HiveHub";
+                      "?sslmode=disable&application_name=HiveHub";
                 user = dbUser;
                 password = dbPassword;
                 System.out.println("Database configuration loaded. Host: " + host);
