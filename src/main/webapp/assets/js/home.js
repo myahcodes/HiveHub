@@ -42,7 +42,7 @@ async function loadPosts() {
                         <span class="rating-score">${post.rating ?? 0}</span>
                         ${post.openTime ? `<span class="user-info-divide">${post.openTime}</span>` : ''}
                         ${post.location ? `<span class="distance">${post.location}</span>` : ''}
-                        <span>${timeAgo(post.createdAt)}</span>
+                        <span class="buzz-date">${timeAgo(post.createdAt)}</span>
                     </div>
                 </div>
                 <div class="buzz-content">
