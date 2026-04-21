@@ -169,39 +169,32 @@ document.querySelector('.buzz-feed')?.addEventListener('click', (e) => {
 backdrop?.addEventListener('click', hideAllModals);
 commentModal?.querySelector('.close-modal')?.addEventListener('click', hideAllModals);
 
-document.getElementById('comment-modal')?.addEventListener('click', async (e) => {
-    if (!e.target.closest('#comment-submit')) return;
+document.getElementById('comment-submit')?.addEventListener('click', async () => {
     const input = document.getElementById('comment-input');
     const text = input?.value.trim();
     if (!text) return;
 
-    const postId = commentModal.dataset.postId;
-    if (!postId) return;
+    const postId = commentModal?.dataset.postId;
 
-    const submitBtn = document.getElementById('comment-submit');
-    submitBtn.disabled = true;
+    const list = document.getElementById('modal-comments-list');
+    if (list) {
+        const emptyMsg = list.querySelector('p');
+        if (emptyMsg) emptyMsg.remove();
+        list.insertAdjacentHTML('beforeend', buildCommentHtml('You', text, 'Just now'));
+        list.scrollTop = list.scrollHeight;
+    }
+    input.value = '';
 
-    try {
-        const res = await fetch('api/comments', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ postId: parseInt(postId), text })
-        });
-
-        if (!res.ok) throw new Error('Server error ' + res.status);
-
-        const saved = await res.json();
-        const list = document.getElementById('modal-comments-list');
-        if (list) {
-            const emptyMsg = list.querySelector('p');
-            if (emptyMsg) emptyMsg.remove();
-            list.insertAdjacentHTML('beforeend', buildCommentHtml(saved.username, saved.text, 'Just now'));
-            list.scrollTop = list.scrollHeight;
+    if (postId) {
+        try {
+            const res = await fetch('api/comments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ postId: parseInt(postId), text })
+            });
+            if (!res.ok) console.error('Comment saved to UI but server returned', res.status);
+        } catch (err) {
+            console.error('Comment saved to UI but server call failed:', err);
         }
-        input.value = '';
-    } catch (err) {
-        console.error('Failed to post comment:', err);
-    } finally {
-        submitBtn.disabled = false;
     }
 });
