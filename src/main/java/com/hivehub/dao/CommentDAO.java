@@ -34,24 +34,23 @@ public class CommentDAO {
         return comments;
     }
 
-    public Comment insertComment(long postId, long userId, String text) throws SQLException {
-        String sql = "INSERT INTO comments (post_id, user_id, text) VALUES (?, ?, ?)";
+public Comment insertComment(long postId, long userId, String text) throws SQLException {
+    String sql = "INSERT INTO comments (post_id, user_id, text) VALUES (?, ?, ?) RETURNING comment_id";
 
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            pstmt.setLong(1, postId);
-            pstmt.setLong(2, userId);
-            pstmt.setString(3, text);
-            pstmt.executeUpdate();
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        pstmt.setLong(1, postId);
+        pstmt.setLong(2, userId);
+        pstmt.setString(3, text);
 
-            try (ResultSet keys = pstmt.getGeneratedKeys()) {
-                if (keys.next()) {
-                    return getCommentById(conn, keys.getLong(1));
-                }
+        try (ResultSet rs = pstmt.executeQuery()) {
+            if (rs.next()) {
+                return getCommentById(conn, rs.getLong(1));
             }
         }
-        return null;
     }
+    return null;
+}
 
     private Comment getCommentById(Connection conn, long commentId) throws SQLException {
         String sql = "SELECT c.comment_id, c.post_id, c.user_id, c.text, c.created_at, u.username " +
