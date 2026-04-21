@@ -28,7 +28,7 @@ function populateModalWithPost(postElement) {
         const header = postElement.querySelector('.buzz-header');
         if (!header) return false;
 
-        const profileImg = header.querySelector('.profile')?.src || 'webapp/assets/img/placeholder/defaultPfpPlcHldr.svg';
+        const profileImg = header.querySelector('.profile')?.src || 'assets/img/icons/defaultPfp.svg';
         const userInfo = header.querySelector('.user-info');
         const displayName = userInfo?.querySelector('span:first-child')?.innerText || 'Unknown User';
         const rating = userInfo?.querySelector('.rating-score')?.innerText || '0';
@@ -82,7 +82,7 @@ function populateModalWithPost(postElement) {
             div3.innerHTML = `
                 <div class="comments-list" id="modal-comments-list">
                     <div class="comment-item">
-                        <img src="webapp/assets/img/placeholder/defaultPfpPlcHldr.svg" class="comment-avatar" />
+                        <img src="assets/img/icons/defaultPfp.svg" class="comment-avatar" />
                         <div class="comment-content">
                             <div class="comment-header">
                                 <span class="comment-username">LocalBee</span>
@@ -101,10 +101,10 @@ function populateModalWithPost(postElement) {
                 <div class="buzz-actions" style="padding-bottom: 0px">
                     <div>
                         <button class="action-bttns" aria-label="addToBuzzboard">
-                            <svg class="icon"><use href="webapp/assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use></svg>
+                            <svg class="icon"><use href="assets/img/activityBar/activitySprites.svg#addtobuzzboardicon"></use></svg>
                         </button>
                         <button class="action-bttns" aria-label="share">
-                            <svg class="icon"><use href="webapp/assets/img/activityBar/activitySprites.svg#shareicon"></use></svg>
+                            <svg class="icon"><usehref="assets/img/activityBar/activitySprites.svg#shareicon"></use></svg>
                         </button>
                     </div>
                 </div>
