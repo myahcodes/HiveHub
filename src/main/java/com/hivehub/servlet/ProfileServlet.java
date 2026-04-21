@@ -44,6 +44,10 @@ public class ProfileServlet extends HttpServlet {
 
         try {
             User user = userDAO.findById(userId);
+            if (user == null) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                return;
+            }
             List<Post> posts = postDAO.getPostsByUser(userId);
 
             PrintWriter out = response.getWriter();
