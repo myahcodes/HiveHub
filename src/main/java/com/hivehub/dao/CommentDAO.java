@@ -9,12 +9,28 @@ import java.util.List;
 
 public class CommentDAO {
 
-    public List<Comment> getCommentsByPost(long postId) throws SQLException {
+    public Comment insertComment(Comment comment) throws SQLException {
+        String sql = "INSERT INTO comments (post_id, user_id, text) VALUES (?, ?, ?) RETURNING comment_id, created_at";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setLong(1, comment.getPostId());
+            pstmt.setLong(2, comment.getUserId());
+            pstmt.setString(3, comment.getText());
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    comment.setCommentId(rs.getLong("comment_id"));
+                    comment.setCreatedAt(rs.getTimestamp("created_at"));
+                }
+            }
+        }
+        return comment;
+    }
+
+    public List<Comment> getCommentsByPostId(long postId) throws SQLException {
         List<Comment> comments = new ArrayList<>();
         String sql = "SELECT c.comment_id, c.post_id, c.user_id, c.text, c.created_at, u.username " +
                      "FROM comments c JOIN users u ON c.user_id = u.user_id " +
                      "WHERE c.post_id = ? ORDER BY c.created_at ASC";
-
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setLong(1, postId);
@@ -32,46 +48,5 @@ public class CommentDAO {
             }
         }
         return comments;
-    }
-
-public Comment insertComment(long postId, long userId, String text) throws SQLException {
-    String sql = "INSERT INTO comments (post_id, user_id, text) VALUES (?, ?, ?) RETURNING comment_id";
-
-    try (Connection conn = DatabaseConnection.getConnection();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-        pstmt.setLong(1, postId);
-        pstmt.setLong(2, userId);
-        pstmt.setString(3, text);
-
-        try (ResultSet rs = pstmt.executeQuery()) {
-            if (rs.next()) {
-                return getCommentById(conn, rs.getLong(1));
-            }
-        }
-    }
-    return null;
-}
-
-    private Comment getCommentById(Connection conn, long commentId) throws SQLException {
-        String sql = "SELECT c.comment_id, c.post_id, c.user_id, c.text, c.created_at, u.username " +
-                     "FROM comments c JOIN users u ON c.user_id = u.user_id " +
-                     "WHERE c.comment_id = ?";
-
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setLong(1, commentId);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    Comment c = new Comment();
-                    c.setCommentId(rs.getLong("comment_id"));
-                    c.setPostId(rs.getLong("post_id"));
-                    c.setUserId(rs.getLong("user_id"));
-                    c.setText(rs.getString("text"));
-                    c.setCreatedAt(rs.getTimestamp("created_at"));
-                    c.setUsername(rs.getString("username"));
-                    return c;
-                }
-            }
-        }
-        return null;
     }
 }
