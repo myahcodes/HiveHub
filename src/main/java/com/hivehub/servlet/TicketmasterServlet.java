@@ -24,7 +24,7 @@ public class TicketmasterServlet extends HttpServlet {
 
         String apiKey = System.getenv("TICKETMASTER_API_KEY");
         if (apiKey == null || apiKey.isEmpty()) {
-            response.getWriter().print("{\"error\":\"no api key\"}");
+            response.getWriter().print("[]");
             return;
         }
 
@@ -109,7 +109,7 @@ public class TicketmasterServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            response.getWriter().print("{\"error\":\"" + e.getMessage() + "\"}");
+            response.getWriter().print("[]");
         }
     }
 
