@@ -85,7 +85,7 @@
 
 .buzz-media {
     width: 100%;
-    max-height: 400px;
+    height: 220px;
     object-fit: cover;
     border-radius: 4px;
     display: block;
