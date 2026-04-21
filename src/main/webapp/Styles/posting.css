@@ -42,7 +42,7 @@
 .post-editor {
     border: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
     background: black;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     height: 250px;
     display: flex;           
@@ -59,7 +59,8 @@
     gap: 4px;
     padding: 8px;
     background: black;
-    flex-shrink: 0;  
+    flex-shrink: 0;
+}
 
 .dropdown {
     position: relative;
@@ -163,15 +164,32 @@
         padding-left: 1.5rem;
     }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 5px;
-    background: black;
-    border: none;
-    gap: 16px;
-}
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 8px;
+        background: black;
+        border-top: 1px solid color-mix(in srgb, var(--theme-color) 50%, transparent);
+        flex-shrink: 0;
+        gap: 8px;
+    }
+    
+    .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .footer-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+    }
 
 .post-btn {
     background-color:var(--theme-color);
