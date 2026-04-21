@@ -68,13 +68,6 @@
             <!-- Title Field -->
             <input type="text" id="post-title" placeholder="Title" class="title-input">
             <input type="text" id="post-open-time" placeholder="Open Time (e.g. Opens 9 AM)" class="title-input">
-            <!--Tag Field-->
-            <div class="post-tags">
-                <button id="tagging" class="tag-trigger">
-                    <i data-lucide="tag" class="w-4 h-4"></i> Add Tags
-                </button>
-                <div id="tag-list" class="tags-container"></div>
-            </div>
             <!--Editor Container-->
             <div class="post-editor">
                 <div class="toolbar">
@@ -113,18 +106,24 @@
                 </div>
 
                 <div id="editor-content" class="tiptap no-scrollbar"></div>
-            </div>
-            <div class="footer">
-                <div class="relative">
-                    <button id="emoji-trigger" class="emoji-btn">
-                        <i data-lucide="smile" class="w-5 h-5"></i>
-                    </button>
-                    <div id="emoji-picker-container"></div>
-                </div>
 
-                <div class="flex items-center gap-4">
-                    <span id="post-status" class="text-[#ffb84d] text-xs font-bold hidden">CONTENT SAVED</span>
-                    <button id="post-btn" class="post-btn">Post</button>
+                <div class="footer">
+                    <div class="footer-left">
+                        <div class="relative">
+                            <button id="emoji-trigger" class="emoji-btn">
+                                <i data-lucide="smile" class="w-5 h-5"></i>
+                            </button>
+                            <div id="emoji-picker-container"></div>
+                        </div>
+                        <button id="tagging" class="tag-trigger">
+                            <i data-lucide="tag" class="w-4 h-4"></i> Add Tags
+                        </button>
+                        <div id="tag-list" class="tags-container"></div>
+                    </div>
+                    <div class="footer-right">
+                        <span id="post-status" class="hidden" style="color:#ffb84d; font-size:0.75rem; font-weight:bold;">CONTENT SAVED</span>
+                        <button id="post-btn" class="post-btn">Post</button>
+                    </div>
                 </div>
             </div>
         </div>
