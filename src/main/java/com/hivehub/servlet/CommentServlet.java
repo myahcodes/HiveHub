@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -28,7 +27,6 @@ public class CommentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("userId") == null) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
@@ -37,7 +35,15 @@ public class CommentServlet extends HttpServlet {
 
         String postIdParam = request.getParameter("postId");
         if (postIdParam == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "postId required");
+            return;
+        }
+
+        long postId;
+        try {
+            postId = Long.parseLong(postIdParam);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "invalid postId");
             return;
         }
 
@@ -45,10 +51,8 @@ public class CommentServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         try {
-            long postId = Long.parseLong(postIdParam);
-            List<Comment> comments = commentDAO.getCommentsByPost(postId);
+            List<Comment> comments = commentDAO.getCommentsByPostId(postId);
             PrintWriter out = response.getWriter();
-
             out.print("[");
             for (int i = 0; i < comments.size(); i++) {
                 Comment c = comments.get(i);
@@ -61,9 +65,6 @@ public class CommentServlet extends HttpServlet {
                 if (i < comments.size() - 1) out.print(",");
             }
             out.print("]");
-
-        } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         } catch (SQLException e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -73,71 +74,83 @@ public class CommentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("userId") == null) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
-       
+
         long userId = (long) session.getAttribute("userId");
         String username = (String) session.getAttribute("username");
+
+        request.setCharacterEncoding("UTF-8");
+        StringBuilder sb = new StringBuilder();
+        String line;
+        try (java.io.BufferedReader reader = request.getReader()) {
+            while ((line = reader.readLine()) != null) sb.append(line);
+        }
+
+        String body = sb.toString();
+        long postId = extractLong(body, "postId");
+        String text = extractString(body, "text");
+
+        if (postId <= 0 || text == null || text.trim().isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "postId and text required");
+            return;
+        }
+
+        Comment comment = new Comment();
+        comment.setPostId(postId);
+        comment.setUserId(userId);
+        comment.setText(text.trim());
+        comment.setUsername(username);
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
         try {
-            BufferedReader reader = request.getReader();
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) sb.append(line);
-            String body = sb.toString();
-
-            long postId = Long.parseLong(extractJson(body, "postId"));
-            String text = extractJson(body, "text");
-
-            if (text == null || text.trim().isEmpty()) {
-                response.getWriter().print("{\"ok\":false,\"error\":\"empty comment\"}");
-                return;
-            }
-
-            Comment comment = commentDAO.insertComment(postId, userId, text.trim());
-            if (comment == null) {
-                response.getWriter().print("{\"ok\":false,\"error\":\"failed to save\"}");
-                return;
-            }
-
+            comment = commentDAO.insertComment(comment);
             PrintWriter out = response.getWriter();
-            out.print("{\"ok\":true,\"comment\":{");
+            out.print("{");
             out.print("\"commentId\":" + comment.getCommentId() + ",");
-            out.print("\"username\":\"" + escapeJson(comment.getUsername() != null ? comment.getUsername() : username) + "\",");
+            out.print("\"username\":\"" + escapeJson(comment.getUsername()) + "\",");
             out.print("\"text\":\"" + escapeJson(comment.getText()) + "\",");
             out.print("\"createdAt\":\"" + comment.getCreatedAt() + "\"");
-            out.print("}}");
-
-        } catch (Exception e) {
+            out.print("}");
+        } catch (SQLException e) {
             e.printStackTrace();
-            response.getWriter().print("{\"ok\":false,\"error\":\"server error\"}");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
     }
 
-    private String extractJson(String json, String key) {
-        String search = "\"" + key + "\"";
+    private long extractLong(String json, String key) {
+        String search = "\"" + key + "\":";
         int idx = json.indexOf(search);
-        if (idx == -1) return null;
-        idx += search.length();
-        while (idx < json.length() && (json.charAt(idx) == ':' || json.charAt(idx) == ' ')) idx++;
-        if (idx >= json.length()) return null;
-        if (json.charAt(idx) == '"') {
-            int start = idx + 1;
-            int end = json.indexOf('"', start);
-            return end == -1 ? null : json.substring(start, end);
-        } else {
-            int start = idx;
-            int end = start;
-            while (end < json.length() && json.charAt(end) != ',' && json.charAt(end) != '}') end++;
-            return json.substring(start, end).trim();
+        if (idx < 0) return -1;
+        int start = idx + search.length();
+        int end = start;
+        while (end < json.length() && (Character.isDigit(json.charAt(end)) || json.charAt(end) == '-')) end++;
+        try {
+            return Long.parseLong(json.substring(start, end).trim());
+        } catch (NumberFormatException e) {
+            return -1;
         }
+    }
+
+    private String extractString(String json, String key) {
+        String search = "\"" + key + "\":\"";
+        int idx = json.indexOf(search);
+        if (idx < 0) return null;
+        int start = idx + search.length();
+        int end = start;
+        while (end < json.length()) {
+            if (json.charAt(end) == '"' && json.charAt(end - 1) != '\\') break;
+            end++;
+        }
+        return json.substring(start, end)
+                   .replace("\\\"", "\"")
+                   .replace("\\n", "\n")
+                   .replace("\\\\", "\\");
     }
 
     private String escapeJson(String s) {
