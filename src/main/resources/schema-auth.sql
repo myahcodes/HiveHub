@@ -21,3 +21,11 @@ CREATE TABLE IF NOT EXISTS posts (
     tags       VARCHAR(500),
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS comments (
+    comment_id BIGSERIAL PRIMARY KEY,
+    post_id    BIGINT NOT NULL REFERENCES posts(post_id) ON DELETE CASCADE,
+    user_id    BIGINT NOT NULL REFERENCES users(user_id),
+    text       TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
