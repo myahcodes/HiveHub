@@ -79,7 +79,7 @@ public class CommentServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
-
+       
         long userId = (long) session.getAttribute("userId");
         String username = (String) session.getAttribute("username");
 
