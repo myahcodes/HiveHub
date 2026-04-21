@@ -1,13 +1,11 @@
 const backdrop = document.getElementById('modal-backdrop');
 const commentModal = document.getElementById('comment-modal');
 let currentModal = null;
-let currentPostId = null;
 
 function hideAllModals() {
     if (currentModal) currentModal.classList.add('hidden');
     if (backdrop) backdrop.classList.add('hidden');
     currentModal = null;
-    currentPostId = null;
 }
 
 function showModal(modal) {
@@ -24,14 +22,52 @@ function escapeHtml(str) {
 }
 
 function timeAgo(dateStr) {
+    if (!dateStr) return 'Just now';
     const utcStr = dateStr.replace(' ', 'T') + (dateStr.endsWith('Z') ? '' : 'Z');
     const seconds = Math.floor((new Date() - new Date(utcStr)) / 1000);
-    if (seconds < 60) return 'Just now';
+    if (seconds < 0) return 'Just now';
+    if (seconds < 60) return seconds + 's ago';
     const minutes = Math.floor(seconds / 60);
     if (minutes < 60) return minutes + 'm ago';
     const hours = Math.floor(minutes / 60);
     if (hours < 24) return hours + 'h ago';
     return Math.floor(hours / 24) + 'd ago';
+}
+
+function buildCommentHtml(username, text, time) {
+    return `
+        <div class="comment-item">
+            <img src="assets/img/icons/defaultPfp.svg" class="comment-avatar" />
+            <div class="comment-content">
+                <div class="comment-header">
+                    <span class="comment-username">${escapeHtml(username)}</span>
+                    <span class="comment-time">${escapeHtml(time)}</span>
+                </div>
+                <p class="comment-text">${escapeHtml(text)}</p>
+            </div>
+        </div>`;
+}
+
+async function loadComments(postId) {
+    const list = document.getElementById('modal-comments-list');
+    if (!list) return;
+    list.innerHTML = '<p style="color:#ffb84d; text-align:center; padding:8px;">Loading...</p>';
+    try {
+        const res = await fetch('api/comments?postId=' + postId);
+        if (!res.ok) { list.innerHTML = ''; return; }
+        const comments = await res.json();
+        list.innerHTML = '';
+        if (comments.length === 0) {
+            list.innerHTML = '<p style="color:rgba(255,184,77,0.5); text-align:center; padding:8px;">No comments yet.</p>';
+            return;
+        }
+        comments.forEach(c => {
+            list.insertAdjacentHTML('beforeend', buildCommentHtml(c.username, c.text, timeAgo(c.createdAt)));
+        });
+    } catch (err) {
+        console.error('Failed to load comments:', err);
+        list.innerHTML = '';
+    }
 }
 
 function populateModalWithPost(postElement) {
@@ -41,16 +77,20 @@ function populateModalWithPost(postElement) {
         const header = postElement.querySelector('.buzz-header');
         if (!header) return false;
 
+        const postId = postElement.dataset.postId;
+        commentModal.dataset.postId = postId || '';
+
         const profileImg = header.querySelector('.profile')?.src || 'assets/img/icons/defaultPfp.svg';
         const userInfo = header.querySelector('.user-info');
         const displayName = userInfo?.querySelector('span:first-child')?.innerText || 'Unknown User';
         const rating = userInfo?.querySelector('.rating-score')?.innerText || '0';
-        const openTime = userInfo?.querySelector('.user-info-divide')?.innerText || '';
-        const distance = userInfo?.querySelector('.distance')?.innerText || '';
+        const openTime = userInfo?.querySelector('.user-info-divide')?.innerText || 'Opens 10 AM';
+        const distance = userInfo?.querySelector('.distance')?.innerText || '0 mi';
         const postDateText = userInfo?.querySelector('.buzz-date')?.innerText || 'Just now';
 
         const mediaImg = postElement.querySelector('.buzz-media') || postElement.querySelector('.buzz-content img');
         const mediaSrc = mediaImg ? mediaImg.src : '';
+
         const postTextElement = postElement.querySelector('.buzz-text');
         const postText = postTextElement ? postTextElement.innerText : '';
 
@@ -71,27 +111,27 @@ function populateModalWithPost(postElement) {
 
         const div2 = commentModal.querySelector('.div2');
         if (div2) {
-            let html = `
+            let userInfoHtml = `
                 <div class="buzz-header">
                     <img src="${profileImg}" class="profile" />
                     <div class="user-info">
                         <span>${escapeHtml(displayName)}</span>
                         <span class="rating-score">${escapeHtml(rating)}</span>
-                        ${openTime ? `<span class="user-info-divide">${escapeHtml(openTime)}</span>` : ''}
-                        ${distance ? `<span class="distance">${escapeHtml(distance)}</span>` : ''}
+                        <span class="user-info-divide">${escapeHtml(openTime)}</span>
+                        <span class="distance">${escapeHtml(distance)}</span>
                     </div>
-                </div>`;
+                </div>
+            `;
             if (postText.trim()) {
-                html += `<div class="modal-post-text" style="padding: 4px 0;">${escapeHtml(postText)}</div>`;
+                userInfoHtml += `<div class="modal-post-text" style="padding: 4px 0;">${escapeHtml(postText)}</div>`;
             }
-            div2.innerHTML = html;
+            div2.innerHTML = userInfoHtml;
         }
 
         const div3 = commentModal.querySelector('.div3');
         if (div3) {
-            div3.innerHTML = `<div class="comments-list" id="modal-comments-list">
-                <p style="color:#ffb84d; text-align:center; font-size:0.85rem;">Loading comments...</p>
-            </div>`;
+            div3.innerHTML = `<div class="comments-list" id="modal-comments-list"></div>`;
+            if (postId) loadComments(postId);
         }
 
         const div4 = commentModal.querySelector('.div4');
@@ -107,7 +147,8 @@ function populateModalWithPost(postElement) {
                         </button>
                     </div>
                 </div>
-                <div class="post-date" style="padding-bottom: 5px">${escapeHtml(postDateText)}</div>`;
+                <div class="post-date" style="padding-bottom: 5px">${escapeHtml(postDateText)}</div>
+            `;
         }
 
         return true;
@@ -117,52 +158,12 @@ function populateModalWithPost(postElement) {
     }
 }
 
-async function loadComments(postId) {
-    const list = document.getElementById('modal-comments-list');
-    if (!list) return;
-
-    try {
-        const res = await fetch(`api/comments?postId=${postId}`);
-        if (!res.ok) { list.innerHTML = ''; return; }
-
-        const comments = await res.json();
-        if (comments.length === 0) {
-            list.innerHTML = '<p style="color:#ffb84d; text-align:center; font-size:0.85rem;">No comments yet.</p>';
-            return;
-        }
-
-        list.innerHTML = '';
-        comments.forEach(c => {
-            const item = document.createElement('div');
-            item.className = 'comment-item';
-            item.innerHTML = `
-                <img src="assets/img/icons/defaultPfp.svg" class="comment-avatar" />
-                <div class="comment-content">
-                    <div class="comment-header">
-                        <span class="comment-username">${escapeHtml(c.username)}</span>
-                        <span class="comment-time">${timeAgo(c.createdAt)}</span>
-                    </div>
-                    <p class="comment-text">${escapeHtml(c.text)}</p>
-                </div>`;
-            list.appendChild(item);
-        });
-    } catch (err) {
-        console.error('Failed to load comments:', err);
-        list.innerHTML = '';
-    }
-}
-
 document.querySelector('.buzz-feed')?.addEventListener('click', (e) => {
     const btn = e.target.closest('.comment-trigger');
     if (!btn) return;
     e.stopPropagation();
     const post = btn.closest('.buzz');
-    if (!post) return;
-    currentPostId = post.dataset.postId || null;
-    if (populateModalWithPost(post)) {
-        showModal(commentModal);
-        if (currentPostId) loadComments(currentPostId);
-    }
+    if (post && populateModalWithPost(post)) showModal(commentModal);
 });
 
 backdrop?.addEventListener('click', hideAllModals);
@@ -172,36 +173,35 @@ document.getElementById('comment-modal')?.addEventListener('click', async (e) =>
     if (!e.target.closest('#comment-submit')) return;
     const input = document.getElementById('comment-input');
     const text = input?.value.trim();
-    if (!text || !currentPostId) return;
+    if (!text) return;
+
+    const postId = commentModal.dataset.postId;
+    if (!postId) return;
+
+    const submitBtn = document.getElementById('comment-submit');
+    submitBtn.disabled = true;
 
     try {
         const res = await fetch('api/comments', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ postId: Number(currentPostId), text })
+            body: JSON.stringify({ postId: parseInt(postId), text })
         });
-        const data = await res.json();
-        if (!data.ok) return;
 
+        if (!res.ok) throw new Error('Server error ' + res.status);
+
+        const saved = await res.json();
         const list = document.getElementById('modal-comments-list');
-        const noComments = list?.querySelector('p');
-        if (noComments) noComments.remove();
-
-        const item = document.createElement('div');
-        item.className = 'comment-item';
-        item.innerHTML = `
-            <img src="assets/img/icons/defaultPfp.svg" class="comment-avatar" />
-            <div class="comment-content">
-                <div class="comment-header">
-                    <span class="comment-username">${escapeHtml(data.comment.username)}</span>
-                    <span class="comment-time">Just now</span>
-                </div>
-                <p class="comment-text">${escapeHtml(data.comment.text)}</p>
-            </div>`;
-        list?.appendChild(item);
-        list.scrollTop = list.scrollHeight;
+        if (list) {
+            const emptyMsg = list.querySelector('p');
+            if (emptyMsg) emptyMsg.remove();
+            list.insertAdjacentHTML('beforeend', buildCommentHtml(saved.username, saved.text, 'Just now'));
+            list.scrollTop = list.scrollHeight;
+        }
         input.value = '';
     } catch (err) {
         console.error('Failed to post comment:', err);
+    } finally {
+        submitBtn.disabled = false;
     }
 });
