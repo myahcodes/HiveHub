@@ -34,6 +34,7 @@ async function loadPosts() {
         posts.forEach(post => {
             const buzz = document.createElement('div');
             buzz.className = 'buzz';
+            buzz.dataset.postId = post.postId;
             buzz.innerHTML = `
                 <div class="buzz-header">
                     <img src="assets/img/icons/defaultPfp.svg" alt="Profile" class="profile" />
